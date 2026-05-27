@@ -1016,23 +1016,41 @@ function renderAnalysisHtml(a) {
     <p style="font-size:13px">${h(a.strategieOffre)}</p></div>` : ''}`
 }
 
+function ensureArray(v) {
+  if (Array.isArray(v)) return v
+  if (!v) return []
+  if (typeof v === 'string') return v.trim() ? [v] : []
+  if (typeof v === 'object') {
+    const vals = Object.values(v)
+    return vals.length ? vals.map(x => String(x)) : []
+  }
+  return [String(v)]
+}
+
 function renderChecklistHtml(cl, bonId) {
+  if (!cl || typeof cl !== 'object') return '<div class="card" style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Checklist indisponible — format invalide.</div>'
   if (!detailChecks[bonId]) detailChecks[bonId] = {}
   const sections = [
-    {key:'submission',     icon:'bi-send',         title:'Documents de soumission'},
-    {key:'technical',      icon:'bi-tools',         title:'Dossier technique'},
-    {key:'administrative', icon:'bi-card-list',     title:'Dossier administratif'},
-    {key:'financial',      icon:'bi-cash-stack',    title:'Dossier financier'},
+    {key:'submission',     icon:'bi-send',      title:'Documents de soumission'},
+    {key:'technical',      icon:'bi-tools',      title:'Dossier technique'},
+    {key:'administrative', icon:'bi-card-list',  title:'Dossier administratif'},
+    {key:'financial',      icon:'bi-cash-stack', title:'Dossier financier'},
   ]
-  return sections.filter(s => cl[s.key]?.length).map(s => `
-    <div class="checklist-section"><h4><i class="bi ${s.icon}" style="color:var(--orange)"></i> ${s.title}</h4>
-    ${cl[s.key].map((item,i) => {
+  const rendered = sections.map(s => {
+    const items = ensureArray(cl[s.key])
+    if (!items.length) return ''
+    return `<div class="checklist-section"><h4><i class="bi ${s.icon}" style="color:var(--orange)"></i> ${s.title}</h4>
+    ${items.map((item,i) => {
       const ckId = `ck-${s.key}-${i}`
       const chk  = detailChecks[bonId][ckId]
       return `<div class="check-item ${chk?'done':''}" onclick="toggleCheck('${ckId}','${bonId}',this)">
-        <input type="checkbox" id="${ckId}" ${chk?'checked':''}><span>${h(item)}</span></div>`
+        <input type="checkbox" id="${ckId}" ${chk?'checked':''}><span>${h(String(item))}</span></div>`
     }).join('')}</div>`
-  ).join('') + `<div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px">
+  }).filter(Boolean).join('')
+
+  if (!rendered) return '<div class="card" style="text-align:center;padding:24px;color:var(--muted);font-size:13px">Aucun élément checklist disponible.</div>'
+
+  return rendered + `<div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px">
     <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase">Date limite</label><div style="font-weight:600;margin-top:3px">${h(cl.deadline||'À vérifier')}</div></div>
     <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase">Caution provisoire</label><div style="font-weight:600;margin-top:3px">${h(cl.caution||'À vérifier')}</div></div>
   </div>`
