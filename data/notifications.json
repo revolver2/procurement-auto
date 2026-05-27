@@ -1,5 +1,14 @@
 [
   {
+    "id": 1779911029943,
+    "read": false,
+    "createdAt": "2026-05-27T19:43:49.943Z",
+    "type": "new_bons",
+    "title": "12 nouveaux bons trouvés",
+    "message": "Scraping automatique GitHub Actions : 12 bon(s) correspondant à vos mots-clés.",
+    "count": 12
+  },
+  {
     "id": 1779910332911,
     "read": false,
     "createdAt": "2026-05-27T19:32:12.911Z",

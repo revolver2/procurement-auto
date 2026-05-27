@@ -1,1 +1,1231 @@
-[]
+[
+  {
+    "id": "a230a547-5d8f-4855-8e95-ae6ce4b1953b",
+    "reference": "02MOPLLOUDAYA/BF/2026",
+    "title": "Objet Achat de la matière d’œuvre et petit outillage et didactique (Articles de Menuiserie Aluminium) pour le Centre de formation au sein de la PL LOUDAYA relevant du Complexe de Formation Professionnelle AZLI relevant de la direction régionale Marrakech Safi de l’OFPPT au titre de l'année 2026.",
+    "buyer": "OFPPT / COMPLEXE DE FORMATION PROFESSIONNELLE AZLI",
+    "location": "MARRAKECH",
+    "category": "Fournitures",
+    "naturePrestation": "Achat d’articles de droguerie, de quincaillerie, d’électricité, de menuiserie et de plomberie sanitaire",
+    "deadline": "04/06/2026 10:30",
+    "estimatedBudget": "",
+    "description": "Objet Achat de la matière d’œuvre et petit outillage et didactique (Articles de Menuiserie Aluminium) pour le Centre de formation au sein de la PL LOUDAYA relevant du Complexe de Formation Professionnelle AZLI relevant de la direction régionale Marrakech Safi de l’OFPPT au titre de l'année 2026.",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Poinçonneuse (matrice)",
+        "unite": "U",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Dormant à frappe petit tubulaire avec couvre joint",
+        "unite": "ML",
+        "quantite": 48,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Dormant à frappe petit tubulaire sans couvre joint",
+        "unite": "ML",
+        "quantite": 48,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Ouvrant petit tubulaire",
+        "unite": "ML",
+        "quantite": 48,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Ouvrant grand tubulaire",
+        "unite": "ML",
+        "quantite": 48,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6Traverse grande tubulaire",
+        "unite": "ML",
+        "quantite": 30,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7Traverse petite tubulaire",
+        "unite": "ML",
+        "quantite": 30,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8Parclose",
+        "unite": "ML",
+        "quantite": 48,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9Equerre d’assemblage à visser 1er choix",
+        "unite": "U",
+        "quantite": 300,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10Paumelle réversible",
+        "unite": "U",
+        "quantite": 40,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11Loqueteau",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12Compas pour soufflet",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 13,
+        "designation": "#13Poignée anglaise",
+        "unite": "U",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 14,
+        "designation": "#14Bloc d’assemblage petite traverse",
+        "unite": "U",
+        "quantite": 50,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 15,
+        "designation": "#15Bloc d’assemblage grande traverse",
+        "unite": "U",
+        "quantite": 50,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 16,
+        "designation": "#16Busette de drainage",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 17,
+        "designation": "#17Verrou plat",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 18,
+        "designation": "#18Joint battu",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 19,
+        "designation": "#19Joint parclose (Ep : 6mm)",
+        "unite": "ML",
+        "quantite": 50,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 20,
+        "designation": "#20Fraise d’usinage diamètre 5mm",
+        "unite": "U",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 21,
+        "designation": "#21Six pans 5",
+        "unite": "U",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 22,
+        "designation": "#22Six pans 4",
+        "unite": "U",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 23,
+        "designation": "#23Plaque de verre monolithique 1m² Ep 6mm",
+        "unite": "U",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 24,
+        "designation": "#24Coupe verre diamant",
+        "unite": "U",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 25,
+        "designation": "#25Profilé cuisine dormant un départ",
+        "unite": "ML",
+        "quantite": 48,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 26,
+        "designation": "#26Profilé cuisine dormant deux départs",
+        "unite": "ML",
+        "quantite": 60,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 27,
+        "designation": "#27Profilé cuisine ouvrant plat",
+        "unite": "ML",
+        "quantite": 48,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 28,
+        "designation": "#28Coin trois départs invisibles",
+        "unite": "U",
+        "quantite": 80,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 29,
+        "designation": "#29Equerre ouvrant pour profiler cuisine",
+        "unite": "U",
+        "quantite": 80,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 30,
+        "designation": "#30Charnière invisible silencieuse",
+        "unite": "U",
+        "quantite": 40,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 31,
+        "designation": "#31Poignée tirage",
+        "unite": "U",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343010",
+    "resultStatus": "En cours",
+    "publicationDate": "21/05/2026 13:19",
+    "scrapedAt": "2026-05-27T19:41:57.916Z",
+    "keywords": [
+      "aluminium",
+      "menuiserie aluminium"
+    ]
+  },
+  {
+    "id": "98017f6e-fdd8-4637-8698-802dfa84f326",
+    "reference": "11/2026",
+    "title": "Objet Achat de la matière d’œuvre et petit outillage « Menuiserie aluminium» pour examens de fin de formation.",
+    "buyer": "COMPLEXE DE FORMATION PROFESSIONNELLE SOCIAL OUJDA",
+    "location": "OUJDA-ANGAD",
+    "category": "Fournitures",
+    "naturePrestation": "Achat d’articles de droguerie, de quincaillerie, d’électricité, de menuiserie et de plomberie sanitaire",
+    "deadline": "02/06/2026 12:00",
+    "estimatedBudget": "",
+    "description": "Objet Achat de la matière d’œuvre et petit outillage « Menuiserie aluminium» pour examens de fin de formation.",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1AGRAFE GRAPPA REF 204",
+        "unite": "UN",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2BUSETTE A CLAPET ANTI-RETOUR",
+        "unite": "UN",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3COUDE CARRE POUR SERIE IMMOBILIER (VITRINE) DEUX SORTIE 509",
+        "unite": "UN",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4COUDE POUR SERIE IMMOBILIER REF 501 ALUMINIUM",
+        "unite": "UN",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5DORMANT A FRAPPE AVEC OU SANS COUVRE JOINT 40 X 20",
+        "unite": "ML",
+        "quantite": 180,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6EQUERRE D'ASSEMBLAGE 20/40",
+        "unite": "UN",
+        "quantite": 400,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7JOINT BATTUE ROULEAU 50ML",
+        "unite": "UN",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8JOINT PARCLOSE ROULEAU 50ML",
+        "unite": "UN",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9PARCLOSE",
+        "unite": "ML",
+        "quantite": 50,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10PIEDS DE PLACARD EN PVC RIGIDE, FORME EN L",
+        "unite": "UN",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11UNION ALUMINIUM  20 X 40",
+        "unite": "MM",
+        "quantite": 400,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12VIS ASSEMBLAGE A TETE CYLINDRIQUE CM.M 4X 20.TETE MECHE paquet de 500",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 13,
+        "designation": "#13VIS ASSEMBLAGE A TETE CYLINDRIQUE CM.M 4X 30 TETE MECHE paquet de 500",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 14,
+        "designation": "#14VIS ASSEMBLAGE A TETE CYLINDRIQUE CM.M 5X 50.TETE MECHE paquet de 500",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343166/48416191",
+        "name": "avis d'achat 11-2026 .zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343166",
+    "resultStatus": "En cours",
+    "publicationDate": "21/05/2026 13:30",
+    "scrapedAt": "2026-05-27T19:42:01.864Z",
+    "keywords": [
+      "aluminium",
+      "menuiserie aluminium"
+    ]
+  },
+  {
+    "id": "eeba8bdc-148a-4e36-90ab-accb67e1fcb6",
+    "reference": "CFIA04/2026",
+    "title": "Objet Achat de de la matière d’œuvre et petit outillage « Menuiserie Aluminium/ Bois », nécessaires pour les examens de fin de formation au titre de l’année 2025/2026 des établissements relevant du Complexe de Formation Inezgane Ait Melloul.",
+    "buyer": "OFPPT - COMPLEXE DE FORMATION PROFESSIONNELLE INZEGANE AIT MELLOUL",
+    "location": "INEZGANE-AIT MELLOUL",
+    "category": "Fournitures",
+    "naturePrestation": "Achat d’articles de droguerie, de quincaillerie, d’électricité, de menuiserie et de plomberie sanitaire",
+    "deadline": "30/05/2026 12:00",
+    "estimatedBudget": "",
+    "description": "Objet Achat de de la matière d’œuvre et petit outillage « Menuiserie Aluminium/ Bois », nécessaires pour les examens de fin de formation au titre de l’année 2025/2026 des établissements relevant du Complexe de Formation Inezgane Ait Melloul.",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1CHARNIERE HYDRAULIQUE",
+        "unite": "UN",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2COMPAS DE SOUFFLET",
+        "unite": "UN",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3DORMANT SANS COUVRE JOINT DE 40 X 20",
+        "unite": "UN",
+        "quantite": 50,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4EMBOUT DE VISSAGE PZ2",
+        "unite": "UN",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5EQUERRE  40X20",
+        "unite": "UN",
+        "quantite": 360,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6EQUERRE PVC ( ouvrant cuisine 50MM)",
+        "unite": "UN",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7JOINT BATTU",
+        "unite": "UN",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8JOINT PARCLOSE",
+        "unite": "UN",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9MÈCHE DE PERÇAGE CHARNIERE",
+        "unite": "UN",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10MÈCHE DE PERÇAGE CHARNIERE",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11OUVRANT CUISINE 50MM",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12PARCLOSE EN BARRE DE 6 M",
+        "unite": "UN",
+        "quantite": 50,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 13,
+        "designation": "#13PAUMELLE",
+        "unite": "UN",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 14,
+        "designation": "#14VERRE 300*350*6MM",
+        "unite": "UN",
+        "quantite": 30,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 15,
+        "designation": "#15VIS A BOIS DE 4 X 20 MM",
+        "unite": "CT",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 16,
+        "designation": "#16VITRAGE",
+        "unite": "UN",
+        "quantite": 65,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 17,
+        "designation": "#17Disque tronçonneuse",
+        "unite": "UN",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344019/48567468",
+        "name": "AVIS CFIA04-2026.zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344019",
+    "resultStatus": "En cours",
+    "publicationDate": "25/05/2026 15:00",
+    "scrapedAt": "2026-05-27T19:42:05.794Z",
+    "keywords": [
+      "aluminium",
+      "menuiserie aluminium"
+    ]
+  },
+  {
+    "id": "3e610815-d425-4f5b-ba46-80e9ca70cde1",
+    "reference": "04/2026",
+    "title": "Objet Achat de matière d’œuvre et petit outillage Aluminium destinée à la formation au sein du complexe de formation professionnelle MEDIOUNA",
+    "buyer": "OFPPT / COMPLEXE DE FORMATION PROFESSIONNELLE MEDIOUNA",
+    "location": "MAROC, CASABLANCA, MEDIOUNA",
+    "category": "Fournitures",
+    "naturePrestation": "Achat d’articles de droguerie, de quincaillerie, d’électricité, de menuiserie et de plomberie sanitaire",
+    "deadline": "29/05/2026 10:00",
+    "estimatedBudget": "",
+    "description": "Objet Achat de matière d’œuvre et petit outillage Aluminium destinée à la formation au sein du complexe de formation professionnelle MEDIOUNA",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Equerre à visser",
+        "unite": "UN",
+        "quantite": 400,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Dormant à frappe tubulaire avec couvre joint",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Dormant à frappe tubulaire sans couvre joint",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Ouvrant petite tubulaire",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Traverse petite tubulaire",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6Parclose",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7Equerre 36*14",
+        "unite": "UN",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8Joint battue",
+        "unite": "ML",
+        "quantite": 200,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9UNION (à vis) 40*20",
+        "unite": "UN",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10Coupe verre",
+        "unite": "UN",
+        "quantite": 25,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11Clés à six pans diamètre 3",
+        "unite": "UN",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12Clés à six pans diamètre 4",
+        "unite": "UN",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 13,
+        "designation": "#13Verre Ep : 6 mm diamètre 1200*900 mm",
+        "unite": "UN",
+        "quantite": 12,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343685/48467778",
+        "name": "Avis d'achat 04-2026 CFP MEDIOUNA ALUM (1) (1).zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343685",
+    "resultStatus": "En cours",
+    "publicationDate": "22/05/2026 12:42",
+    "scrapedAt": "2026-05-27T19:42:09.724Z",
+    "keywords": [
+      "aluminium"
+    ]
+  },
+  {
+    "id": "c1da7e53-5aea-4315-98fd-dd5cb01027fe",
+    "reference": "24/POTEAUGUIDAGE/SRRPH/2026",
+    "title": "Objet FOURNITURE DE POTEAUX DE GUIDAGE EN INOX À SANGLE RÉTRACTABLE ET ACCESSOIRES POUR LE COMPTE DE LA SOCIÉTÉ RABAT RÉGION PATRIMOINE HISTORIQUE",
+    "buyer": "SOCIETE DE DEVELOPPEMENT REGIONAL RABAT REGION PATRIMOINE HISTORIQUE S.A",
+    "location": "RABAT",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de matériel de diagnostic, de recherche, de détection, de signalisation de défaut et de matériel de mesure",
+    "deadline": "03/06/2026 10:00",
+    "estimatedBudget": "",
+    "description": "Objet FOURNITURE DE POTEAUX DE GUIDAGE EN INOX À SANGLE RÉTRACTABLE ET ACCESSOIRES POUR LE COMPTE DE LA SOCIÉTÉ RABAT RÉGION PATRIMOINE HISTORIQUE",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1POTEAU DE GUIDAGE EN INOX À SANGLE RÉTRACTABLE – NOIRE – 2 M (20)",
+        "unite": "unité",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2POTEAU DE GUIDAGE EN INOX À SANGLE RÉTRACTABLE – NOIRE – 2 M , MUNIE D’UN CADRE D’INFORMATION (10)",
+        "unite": "unité",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/342914/48588894",
+        "name": "Fiche technique potelet11.zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/342914",
+    "resultStatus": "En cours",
+    "publicationDate": "26/05/2026 10:23",
+    "scrapedAt": "2026-05-27T19:42:17.806Z",
+    "keywords": [
+      "inox"
+    ]
+  },
+  {
+    "id": "25c3fe0d-026c-4752-bc4f-0519b2fd475a",
+    "reference": "21/2026",
+    "title": "Objet ACHAT DES BARRIERES METALLIQUES ET SUPPORTS MAT DES DRAPEAUX",
+    "buyer": "Commune urbaine de SAIDIA",
+    "location": "BERKANE",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de badges, de médailles, d’effigies, de fanions, de drapeaux et de portraits",
+    "deadline": "02/06/2026 15:00",
+    "estimatedBudget": "",
+    "description": "Objet ACHAT DES BARRIERES METALLIQUES ET SUPPORTS MAT DES DRAPEAUX",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Fourniture de barrière de sécurité métallique en tube d'acier rond galvanisé à chaud de longueur de 2000 mm, hauteur de 1060 mm et diamètre de 33 mm avec plaque portant « commune de saidia ». La barrière possède deux poses pieds et double système de crochet inter-barrières.",
+        "unite": "U",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#02Fourniture de support mât de drapeau en tube d'acier rond de longueur de 6000 mm et diamètre de 60 mm avec système de crochet et peinturé en blanc.",
+        "unite": "U",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344530/48599663",
+        "name": "BC-21-2026.zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344530",
+    "resultStatus": "En cours",
+    "publicationDate": "26/05/2026 13:08",
+    "scrapedAt": "2026-05-27T19:42:25.759Z",
+    "keywords": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal"
+    ]
+  },
+  {
+    "id": "1be4b663-3e8d-4f50-a04f-0ae7eef8904e",
+    "reference": "40/2026",
+    "title": "Objet Fourniture et pose des fenêtres, châssis métallique de la prison locale de bouarfa",
+    "buyer": "DIRECTEUR DE LA PRISON LOCALE A BOUAARFA",
+    "location": "FIGUIG",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "01/06/2026 17:00",
+    "estimatedBudget": "",
+    "description": "Objet Fourniture et pose des fenêtres, châssis métallique de la prison locale de bouarfa",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Dépose de fenêtres et Fourniture et pose de fenêtre et châssis métallique composée de n vantaux ouvrant à la française à réaliser conformément aux détails comprenant : -Cadre en fer à U de  40x20x5mm. -ouvrants avec cadre en fer à U de 40x20x5mm. -parcloses en fer carré vissé de 14mm. -Plexiglass de 6 mm selon détail architecte. -paumelles de 120mm. -pattes à scellement nécessaires. -couvre joint en fer plat de 30x6mm. -2 verrous inférieur et supérieur. -levier et gâche par ouvrant. Ouvrage payé au mètre carré",
+        "unite": "M2",
+        "quantite": 89,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/339896/48603385",
+        "name": "avis d'achat fenetres_005.zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/339896",
+    "resultStatus": "En cours",
+    "publicationDate": "26/05/2026 16:41",
+    "scrapedAt": "2026-05-27T19:42:29.679Z",
+    "keywords": [
+      "fourniture et pose",
+      "métallique",
+      "metallique",
+      "métal",
+      "metal"
+    ]
+  },
+  {
+    "id": "fd63f4f9-d541-4cfe-b23a-0b01e3473bb5",
+    "reference": "05/2026",
+    "title": "Objet Achat de matériel technique (Barrière métallique)",
+    "buyer": "COMMUNE SIDI AISSA BEN ALI",
+    "location": "FQUIH BEN SALAH",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de matériel audiovisuel, sonore et de mise en lumière",
+    "deadline": "01/06/2026 09:00",
+    "estimatedBudget": "",
+    "description": "Objet Achat de matériel technique (Barrière métallique)",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Barrière de sécurité galvanisé",
+        "unite": "U",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343583/48468913",
+        "name": "avis.zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343583",
+    "resultStatus": "En cours",
+    "publicationDate": "22/05/2026 12:56",
+    "scrapedAt": "2026-05-27T19:42:33.585Z",
+    "keywords": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal"
+    ]
+  },
+  {
+    "id": "ffcbc32b-0519-4af9-9e07-e08976679c86",
+    "reference": "28/2026",
+    "title": "Objet Travaux d’installation d’un caillebotis métallique au niveau de la fosse septique la prison locale de BERKANE.",
+    "buyer": "DIRECTEUR DE LA PRISON LOCALE DE BERKANE",
+    "location": "BERKANE",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "27/05/2026 12:15",
+    "estimatedBudget": "",
+    "description": "Objet Travaux d’installation d’un caillebotis métallique au niveau de la fosse septique la prison locale de BERKANE.",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Démolition partielle de la dalle couvrant la fosse septique",
+        "unite": "M2",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Fourniture et pose d’un caillebotis métallique",
+        "unite": "M2",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/342238/48272378",
+        "name": "19052026_002.zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/342238",
+    "resultStatus": "En cours",
+    "publicationDate": "20/05/2026 12:00",
+    "scrapedAt": "2026-05-27T19:42:37.499Z",
+    "keywords": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal"
+    ]
+  },
+  {
+    "id": "7f7e8970-b842-4cdf-8b9a-7b5bf7c230a7",
+    "reference": "59/2026/PL-SALE",
+    "title": "Objet Achat d'Articles de ferronnerie au profit de la prison locale Salé",
+    "buyer": "DIRECTEUR DE LA PRISON LOCAL DE SALE",
+    "location": "SALE",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de matériaux de construction",
+    "deadline": "27/05/2026 15:00",
+    "estimatedBudget": "",
+    "description": "Objet Achat d'Articles de ferronnerie au profit de la prison locale Salé",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fer à U (UAC) en acier laminés 60x30 mm",
+        "unite": "U",
+        "quantite": 60,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Fer à U (UAC) en acier laminés 30x15 mm",
+        "unite": "U",
+        "quantite": 60,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Fer plat en acier laminés 40x5 mm",
+        "unite": "U",
+        "quantite": 60,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Fer plat en acier laminés 40x10 mm",
+        "unite": "U",
+        "quantite": 30,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Tube carré 60*60*3 mm",
+        "unite": "U",
+        "quantite": 90,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6FER ROND D20",
+        "unite": "U",
+        "quantite": 60,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7TOLES EN ACIER LAMINE A CHAUD 30/10",
+        "unite": "U",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8PAUMELLE DE 150 x 32 TM",
+        "unite": "U",
+        "quantite": 200,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9PAUMELLE DE 120 TM",
+        "unite": "U",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10Disque à tronçonner abrasif 230 x 2.0 acier pour métal",
+        "unite": "U",
+        "quantite": 30,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11Disque à meuler abrasif haute performancede l'acier carbone/inoxydable 230x6",
+        "unite": "U",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12Electrodes R92 (baguette) soudage de 3,15mm Paquet de 200 MATICA ou Similaire",
+        "unite": "U",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344324/48564689",
+        "name": "05-25-2026-13-59-10.pdf"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344324",
+    "resultStatus": "En cours",
+    "publicationDate": "25/05/2026 14:07",
+    "scrapedAt": "2026-05-27T19:42:53.599Z",
+    "keywords": [
+      "ferronnerie"
+    ]
+  },
+  {
+    "id": "0b5a2fc6-8b53-41cb-9e1c-75e3da881c56",
+    "reference": "88/FONC/2026/UIT",
+    "title": "Objet Optimisation et contrôle des études relatives aux travaux d’aménagement d’une charpente métallo-textile à l’ESEF, à la réalisation d’un poste de transformation HT/BT, ainsi qu’à la réhabilitation d’une coupole à la Faculté des Sciences de l’Université Ibn Tofail de Kenitra.",
+    "buyer": "PRESIDENCE DE L'UNIVERSITE IBN TOFAIL KENITRA",
+    "location": "KENITRA",
+    "category": "Services",
+    "naturePrestation": "Études, conseil et formation",
+    "deadline": "01/06/2026 15:00",
+    "estimatedBudget": "",
+    "description": "Objet Optimisation et contrôle des études relatives aux travaux d’aménagement d’une charpente métallo-textile à l’ESEF, à la réalisation d’un poste de transformation HT/BT, ainsi qu’à la réhabilitation d’une coupole à la Faculté des Sciences de l’Université Ibn Tofail de Kenitra.",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#88/FONC/2026/UIT-1Contrôle et optimisation des études techniques",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#88/FONC/2026/UIT-2Suivi des travaux",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#88/FONC/2026/UIT-3Réception provisoire des travaux",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#88/FONC/2026/UIT-Réception définitive des travaux",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344349/48566196",
+        "name": "Avis d'achat 88-FONC-2026-UIT.zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344349",
+    "resultStatus": "En cours",
+    "publicationDate": "25/05/2026 14:35",
+    "scrapedAt": "2026-05-27T19:43:09.540Z",
+    "keywords": [
+      "métal",
+      "metal"
+    ]
+  },
+  {
+    "id": "d1142d8b-ff4e-48e7-a87d-79044185d31f",
+    "reference": "07/BP/2026",
+    "title": "Objet FOURNITURE ET POSE DE BLOCS SANITAIRES MODULAIRES EN PANNEAUX SANDWICHS AU NIVEAU DE LA BANDE LITTORALE MÉDITERRANÉENNE – PROVINCE DE TÉTOUAN",
+    "buyer": "Province de TETOUAN",
+    "location": "TETOUAN",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’installation de matériels divers",
+    "deadline": "01/06/2026 11:00",
+    "estimatedBudget": "",
+    "description": "Objet FOURNITURE ET POSE DE BLOCS SANITAIRES MODULAIRES EN PANNEAUX SANDWICHS AU NIVEAU DE LA BANDE LITTORALE MÉDITERRANÉENNE – PROVINCE DE TÉTOUAN",
+    "caution": "",
+    "contact": "",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Décapage, désherbage et nettoyage",
+        "unite": "M2",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#02Tout venant",
+        "unite": "M3",
+        "quantite": 23.76,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#03Hérissonnage en pierres sèches",
+        "unite": "M2",
+        "quantite": 118.8,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#04Dallage en béton y/c treillis soudé.",
+        "unite": "M2",
+        "quantite": 118.8,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#05Fourniture de blocs sanitaires modulaires en panneaux sandwichs",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344503/48595765",
+        "name": "AVIS D'ACHAT BLOC SANITAIR20260526_12344709_0086.zip"
+      }
+    ],
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344503",
+    "resultStatus": "En cours",
+    "publicationDate": "26/05/2026 12:01",
+    "scrapedAt": "2026-05-27T19:43:29.489Z",
+    "keywords": [
+      "fourniture et pose",
+      "panneaux sandwich"
+    ]
+  }
+]
