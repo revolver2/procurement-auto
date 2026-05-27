@@ -1,5 +1,14 @@
 [
   {
+    "id": 1779910332911,
+    "read": false,
+    "createdAt": "2026-05-27T19:32:12.911Z",
+    "type": "new_bons",
+    "title": "20 nouveaux bons trouvés",
+    "message": "Scraping automatique GitHub Actions : 20 bon(s) correspondant à vos mots-clés.",
+    "count": 20
+  },
+  {
     "id": 1779824202402,
     "type": "error",
     "title": "Échec synchronisation",
