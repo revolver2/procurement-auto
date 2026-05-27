@@ -1,16 +1,6 @@
 [
   {
     "date": "27/05/2026",
-    "heure": "23:00",
-    "nouveaux": 0,
-    "total": 12,
-    "statut": "Succès",
-    "startedAt": "2026-05-27T22:57:47.822Z",
-    "finishedAt": "2026-05-27T23:00:04.269Z",
-    "triggeredBy": "github-actions"
-  },
-  {
-    "date": "27/05/2026",
     "heure": "19:43",
     "nouveaux": 12,
     "total": 12,
