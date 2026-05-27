@@ -333,10 +333,15 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
         <p style="font-size:13px;color:var(--muted)">Portail Marocain des Marchés Publics — Automatisation</p></div>
         <button class="btn-sync" onclick="triggerScrape()"><i class="bi bi-lightning-charge-fill"></i> Synchroniser</button>
       </div>
-      <div class="kpi-grid">
+      <div class="kpi-grid" style="grid-template-columns:repeat(4,1fr)">
         <div class="kpi-card" onclick="navTo('dashboard')">
           <div class="kpi-icon" style="background:#f0f9ff;color:#0284c7"><i class="bi bi-cart3"></i></div>
-          <div><div class="kpi-val" id="kpi-bons">0</div><div class="kpi-label">Bons de commande</div></div>
+          <div><div class="kpi-val" id="kpi-bons">0</div><div class="kpi-label">Bons totaux</div></div>
+          <i class="bi bi-chevron-right kpi-arrow"></i>
+        </div>
+        <div class="kpi-card" onclick="navTo('dashboard')">
+          <div class="kpi-icon" style="background:#fef9c3;color:#ca8a04"><i class="bi bi-lightning-charge"></i></div>
+          <div><div class="kpi-val" id="kpi-urgent">0</div><div class="kpi-label">Urgents ≤5j</div></div>
           <i class="bi bi-chevron-right kpi-arrow"></i>
         </div>
         <div class="kpi-card" onclick="navTo('candidatures')">
@@ -344,14 +349,9 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
           <div><div class="kpi-val" id="kpi-cands">0</div><div class="kpi-label">Candidatures</div></div>
           <i class="bi bi-chevron-right kpi-arrow"></i>
         </div>
-        <div class="kpi-card" onclick="navTo('analytics')">
-          <div class="kpi-icon" style="background:#f0fdf4;color:#16a34a"><i class="bi bi-graph-up-arrow"></i></div>
-          <div><div class="kpi-val" id="kpi-analyzed">0</div><div class="kpi-label">Analysés IA</div></div>
-          <i class="bi bi-chevron-right kpi-arrow"></i>
-        </div>
-        <div class="kpi-card" onclick="navTo('notifs')">
-          <div class="kpi-icon" style="background:#faf5ff;color:#9333ea"><i class="bi bi-bell"></i></div>
-          <div><div class="kpi-val" id="kpi-notifs">0</div><div class="kpi-label">Notifications</div></div>
+        <div class="kpi-card" onclick="navTo('candidatures')">
+          <div class="kpi-icon" style="background:#f0fdf4;color:#16a34a"><i class="bi bi-trophy"></i></div>
+          <div><div class="kpi-val" id="kpi-success">—</div><div class="kpi-label">Taux de succès</div></div>
           <i class="bi bi-chevron-right kpi-arrow"></i>
         </div>
       </div>
@@ -400,9 +400,11 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
           <input type="text" class="search-input" id="search-input" placeholder="Rechercher par objet, acheteur, référence..." oninput="filterProjects()"></div>
         <select class="filter-select" id="filter-cat"    onchange="filterProjects()"><option value="">Toutes catégories</option></select>
         <select class="filter-select" id="filter-city"   onchange="filterProjects()"><option value="">Toutes villes</option></select>
+        <select class="filter-select" id="filter-activity" onchange="filterProjects()"><option value="">Toutes activités</option><option value="A">Aluminium</option><option value="B">Inox</option><option value="C">Métal</option><option value="D">Fourniture et pose</option><option value="E">Travaux connexes</option></select>
         <select class="filter-select" id="filter-status" onchange="filterProjects()">
           <option value="">Tous statuts</option><option value="en cours">En cours</option><option value="clos">Clos</option>
         </select>
+        <select class="filter-select" id="filter-urgent" onchange="filterProjects()"><option value="">Toutes échéances</option><option value="urgent">Urgents ≤5j</option></select>
       </div>
       <div id="orders-grid"><div class="loading"><span class="spinner"></span>Chargement...</div></div>
     </div>
@@ -446,10 +448,13 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
         <h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Paramètres</h1>
         <p style="font-size:13px;color:var(--muted)">Configuration du système d'automatisation</p>
       </div>
-      <div class="settings-tabs">
+      <div class="settings-tabs" style="flex-wrap:wrap;width:auto">
         <button class="settings-tab-btn active" onclick="switchSettingsTab('general',this)"><i class="bi bi-sliders"></i> Général</button>
-        <button class="settings-tab-btn" onclick="switchSettingsTab('keywords',this)"><i class="bi bi-search"></i> Mots-clés scraping</button>
+        <button class="settings-tab-btn" onclick="switchSettingsTab('activities',this)"><i class="bi bi-tags"></i> Activités</button>
+        <button class="settings-tab-btn" onclick="switchSettingsTab('exclusions',this)"><i class="bi bi-slash-circle"></i> Exclusions</button>
+        <button class="settings-tab-btn" onclick="switchSettingsTab('keywords',this)"><i class="bi bi-search"></i> Mots-clés</button>
         <button class="settings-tab-btn" onclick="switchSettingsTab('schedule',this)"><i class="bi bi-calendar-check"></i> Planification</button>
+        <button class="settings-tab-btn" onclick="switchSettingsTab('telegram',this)"><i class="bi bi-telegram"></i> Telegram</button>
       </div>
 
       <div id="stab-general">
@@ -512,6 +517,65 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
           <p style="font-size:12px;color:var(--muted);margin-top:8px"><i class="bi bi-info-circle"></i> Le serveur doit être actif. Fuseau: Africa/Casablanca.</p>
         </div>
         <button class="btn-save" onclick="saveSchedule()"><i class="bi bi-check-lg"></i> Sauvegarder planification</button>
+      </div>
+
+      <!-- ── Activities tab ── -->
+      <div id="stab-activities" style="display:none">
+        <div class="settings-section">
+          <h3><i class="bi bi-tags" style="color:var(--orange)"></i> Activités cibles</h3>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Chaque activité regroupe des mots-clés. Seuls les bons correspondant à une activité activée seront conservés.</p>
+          <div id="activities-editor"></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn-save" onclick="saveActivities()"><i class="bi bi-check-lg"></i> Sauvegarder activités</button>
+          <button class="btn-save" style="background:var(--sidebar)" onclick="testKeywords()"><i class="bi bi-play-circle"></i> Tester les règles</button>
+        </div>
+        <div id="kw-test-result" style="margin-top:14px;display:none"></div>
+      </div>
+
+      <!-- ── Exclusions tab ── -->
+      <div id="stab-exclusions" style="display:none">
+        <div class="settings-section">
+          <h3><i class="bi bi-slash-circle" style="color:var(--danger)"></i> Mots-clés d'exclusion</h3>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Les bons contenant ces mots seront ignorés, même s'ils matchent une activité cible.</p>
+          <div class="keywords-grid" id="exclusions-grid"></div>
+          <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+            <input type="text" class="form-control" id="new-excl-input" placeholder="Ajouter un mot à exclure..." style="max-width:280px" onkeydown="if(event.key==='Enter')addExclusion()">
+            <button class="btn-save" style="background:var(--danger)" onclick="addExclusion()" style="padding:8px 14px"><i class="bi bi-plus-lg"></i> Ajouter</button>
+          </div>
+        </div>
+        <button class="btn-save" onclick="saveExclusions()"><i class="bi bi-check-lg"></i> Sauvegarder exclusions</button>
+      </div>
+
+      <!-- ── Telegram tab ── -->
+      <div id="stab-telegram" style="display:none">
+        <div class="settings-section">
+          <h3><i class="bi bi-telegram" style="color:#0088cc"></i> Notifications Telegram</h3>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Recevez une notification Telegram pour chaque nouveau bon de commande trouvé lors du scraping automatique.</p>
+          <div class="toggle-row" style="margin-bottom:14px">
+            <div><div class="toggle-label">Activer les notifications Telegram</div><div class="toggle-sub">Un message par nouveau bon trouvé</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="s-telegram-enabled" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div class="form-group"><label>Token du Bot Telegram</label><div class="pw-wrap">
+            <input type="password" class="form-control" id="s-telegram-token" placeholder="1234567890:AAxxxxxx...">
+            <button class="pw-toggle" onclick="togglePw('s-telegram-token',this)" type="button"><i class="bi bi-eye"></i></button>
+          </div><p style="font-size:11px;color:var(--muted);margin-top:4px">Obtenir via <b>@BotFather</b> sur Telegram → /newbot</p></div>
+          <div class="form-group"><label>Chat ID</label>
+            <input type="text" class="form-control" id="s-telegram-chatid" placeholder="-1001234567890 ou votre user ID" style="max-width:280px">
+            <p style="font-size:11px;color:var(--muted);margin-top:4px">Obtenir via <b>@userinfobot</b> sur Telegram</p>
+          </div>
+          <div style="background:#f0f9ff;border:1px solid #bae6fd;border-radius:8px;padding:14px;font-size:13px;margin-top:4px">
+            <p style="font-weight:600;margin-bottom:6px"><i class="bi bi-info-circle" style="color:#0284c7"></i> Comment configurer:</p>
+            <ol style="margin-left:16px;color:var(--muted);line-height:1.8">
+              <li>Créez un bot via <b>@BotFather</b> → /newbot → copiez le token</li>
+              <li>Envoyez un message au bot pour l'activer</li>
+              <li>Obtenez votre Chat ID via <b>@userinfobot</b></li>
+              <li>Entrez le token et le Chat ID ci-dessus</li>
+              <li>Ajoutez <b>TELEGRAM_BOT_TOKEN</b> et <b>TELEGRAM_CHAT_ID</b> aux variables d'environnement Render</li>
+            </ol>
+          </div>
+        </div>
+        <button class="btn-save" onclick="saveTelegram()"><i class="bi bi-check-lg"></i> Sauvegarder Telegram</button>
       </div>
     </div>
 
@@ -632,10 +696,10 @@ const showPage = navTo
 async function fetchStats() {
   try {
     const s = await fetch('/api/stats').then(r => r.json())
-    document.getElementById('kpi-bons').textContent     = s.totalBons     || 0
-    document.getElementById('kpi-cands').textContent    = s.candidatures  || 0
-    document.getElementById('kpi-analyzed').textContent = s.analyzed      || 0
-    document.getElementById('kpi-notifs').textContent   = s.unreadNotifs  || 0
+    document.getElementById('kpi-bons').textContent    = s.totalBons    || 0
+    document.getElementById('kpi-cands').textContent   = s.candidatures || 0
+    document.getElementById('kpi-urgent').textContent  = s.urgent       || 0
+    document.getElementById('kpi-success').textContent = s.successRate != null ? s.successRate + '%' : '—'
     if (s.candidatures > 0) { const b = document.getElementById('sb-cand-count'); b.textContent = s.candidatures; b.style.display = '' }
     if (s.unreadNotifs > 0) {
       const b = document.getElementById('sb-notif-count'); b.textContent = s.unreadNotifs; b.style.display = ''
@@ -665,17 +729,37 @@ function populateFilters() {
   cities.forEach(c => { if (!citySel.querySelector(`option[value="${c}"]`)) citySel.appendChild(new Option(c,c)) })
 }
 
+function daysUntilDeadline(deadline) {
+  if (!deadline) return null
+  try {
+    let dl
+    if (deadline.includes('/')) {
+      const [d, m, y] = deadline.split('/')
+      dl = new Date(`${y}-${m}-${d}`)
+    } else {
+      dl = new Date(deadline)
+    }
+    return Math.ceil((dl - Date.now()) / 86400000)
+  } catch { return null }
+}
+
 function filterProjects() {
-  const q    = document.getElementById('search-input').value.toLowerCase()
-  const cat  = document.getElementById('filter-cat').value.toLowerCase()
-  const city = document.getElementById('filter-city').value.toLowerCase()
-  const st   = document.getElementById('filter-status').value.toLowerCase()
-  const res  = allProjects.filter(p => {
-    const hay = [p.title, p.buyer, p.reference, p.description].join(' ').toLowerCase()
+  const q        = document.getElementById('search-input').value.toLowerCase()
+  const cat      = document.getElementById('filter-cat').value.toLowerCase()
+  const city     = document.getElementById('filter-city').value.toLowerCase()
+  const st       = document.getElementById('filter-status').value.toLowerCase()
+  const act      = document.getElementById('filter-activity')?.value || ''
+  const urg      = document.getElementById('filter-urgent')?.value || ''
+  const res      = allProjects.filter(p => {
+    const hay    = [p.title, p.buyer, p.reference, p.description].join(' ').toLowerCase()
+    const dl     = daysUntilDeadline(p.deadline)
+    const urgent = dl !== null && dl >= 0 && dl <= 5
     return (!q    || hay.includes(q))
         && (!cat  || (p.category||'').toLowerCase().includes(cat))
-        && (!city || (p.location||'').toLowerCase().includes(city))
+        && (!city || (p.location||p.city||'').toLowerCase().includes(city))
         && (!st   || (p.resultStatus||'').toLowerCase().includes(st))
+        && (!act  || (p.categoryMatched||'') === act)
+        && (!urg  || urgent)
   })
   renderProjects(res)
 }
@@ -687,25 +771,34 @@ function renderProjects(list) {
     el.innerHTML = `<div class="empty-state"><i class="bi bi-cart-x"></i><p>Aucun bon de commande</p><small>Lancez une synchronisation pour récupérer les données</small></div>`
     return
   }
-  el.innerHTML = list.map(p => `<div class="order-card" onclick="openProject('${p.id}')">
+  const actColors = {A:'#0284c7',B:'#7c3aed',C:'#dc2626',D:'#ea580c',E:'#059669'}
+  const actLabels = {A:'Aluminium',B:'Inox',C:'Métal',D:'Fourniture',E:'Connexes'}
+  el.innerHTML = list.map(p => {
+    const daysLeft = p.deadline ? daysUntilDeadline(p.deadline) : null
+    const isUrgent = daysLeft !== null && daysLeft >= 0 && daysLeft <= 5
+    const actId    = p.categoryMatched || ''
+    const actColor = actColors[actId] || 'var(--muted)'
+    const actLabel = actLabels[actId] || ''
+    return `<div class="order-card" onclick="openProject('${p.id}')" style="${isUrgent?'border-left:3px solid #f59e0b':''}">
     <div class="order-badges">
       ${p.reference ? `<span class="badge badge-ref">${h(p.reference)}</span>` : ''}
-      ${p.category  ? `<span class="badge badge-cat">${h(p.category)}</span>`  : ''}
-      <span class="badge ${p.candidatureStatus ? 'badge-status-cand' : p.resultStatus?.toLowerCase().includes('clos') ? 'badge-status-clos' : 'badge-status-actif'}">${h(p.candidatureStatus || p.resultStatus || 'Actif')}</span>
+      ${actLabel ? `<span class="badge" style="background:${actColor}15;color:${actColor}">${actLabel}</span>` : ''}
+      ${isUrgent ? `<span class="badge" style="background:#fef9c3;color:#ca8a04"><i class="bi bi-lightning-charge-fill"></i> ${daysLeft}j</span>` : ''}
+      <span class="badge ${p.candidatureStatus ? 'badge-status-cand' : p.resultStatus?.toLowerCase().includes('clos') ? 'badge-status-clos' : 'badge-status-actif'}">${h(p.projectStatus || p.candidatureStatus || p.resultStatus || 'Nouveau')}</span>
     </div>
     <div class="order-title">${h(p.title)}</div>
     <div class="order-meta">
       ${p.buyer    ? `<span><i class="bi bi-building"></i>${h(p.buyer.substring(0,40))}</span>` : ''}
-      ${p.location ? `<span><i class="bi bi-geo-alt"></i>${h(p.location)}</span>` : ''}
-      ${p.estimatedBudget ? `<span><i class="bi bi-currency-exchange"></i>${h(p.estimatedBudget)}</span>` : ''}
+      ${p.city || p.location ? `<span><i class="bi bi-geo-alt"></i>${h(p.city || p.location)}</span>` : ''}
+      ${p.estimatedAmount || p.estimatedBudget ? `<span><i class="bi bi-currency-exchange"></i>${h(p.estimatedAmount || p.estimatedBudget)}</span>` : ''}
     </div>
     <div class="order-footer">
-      ${p.deadline ? `<span class="order-deadline"><i class="bi bi-calendar3"></i>${h(p.deadline)}</span>` : '<span></span>'}
+      ${p.deadline ? `<span class="order-deadline" style="${isUrgent?'color:#ca8a04;font-weight:600':''}"><i class="bi bi-calendar3"></i>${h(p.deadline)}</span>` : '<span></span>'}
       <button class="btn-postuler ${p.candidatureStatus?'done':''}" onclick="event.stopPropagation();postuler('${p.id}')">
         ${p.candidatureStatus ? '<i class="bi bi-check-lg"></i> Postulé' : 'Postuler'}
       </button>
     </div>
-  </div>`).join('')
+  </div>`}).join('')
 }
 
 function renderDashboardRecent() {
@@ -845,27 +938,70 @@ function mi(label, val) {
   return `<div class="detail-meta-item"><label>${label}</label><span>${h(val)}</span></div>`
 }
 
+function scoreBar(val, color) {
+  const pct = Math.round((val||5) * 10)
+  return `<div style="display:flex;align-items:center;gap:8px"><div style="flex:1;background:#f1f5f9;border-radius:20px;height:8px;overflow:hidden"><div style="width:${pct}%;height:100%;border-radius:20px;background:${color}"></div></div><span style="font-size:13px;font-weight:700;color:${color}">${val||5}/10</span></div>`
+}
+
 function renderAnalysisHtml(a) {
-  return `<div class="card">
-    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
-      <span class="complexity-badge complexity-${a.complexity||'Medium'}">${a.complexity||'Medium'}</span>
-      <span style="font-size:13px;color:var(--muted)">${a.durationDays||'?'} jours · ${a.teamSize||'?'} personnes · Marge: ${a.marginOpportunity||'?'}</span>
+  // Support both old format (complexity/roles/materials) and new 15-point format
+  const isNew = a.resume || a.activiteDetectee
+  if (!isNew) {
+    // Legacy format
+    return `<div class="card">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+        <span class="complexity-badge complexity-${a.complexity||'Medium'}">${a.complexity||'Medium'}</span>
+        <span style="font-size:13px;color:var(--muted)">${a.durationDays||'?'} jours · ${a.teamSize||'?'} personnes</span>
+      </div>
+      <div class="analysis-grid">
+        <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Rôles</label>
+          <div class="tag-list">${(a.roles||[]).map(r=>`<span class="tag">${h(r)}</span>`).join('')||'—'}</div></div>
+        <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Fournisseurs</label>
+          <div class="tag-list">${(a.suppliers||[]).map(s=>`<span class="tag tag-orange">${h(s)}</span>`).join('')||'—'}</div></div>
+        <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Risques</label>
+          <div class="tag-list">${(a.risks||[]).map(r=>`<span class="tag" style="background:rgba(239,68,68,.08);color:#dc2626">${h(r)}</span>`).join('')||'—'}</div></div>
+      </div></div>`
+  }
+
+  return `
+  <div class="card" style="margin-bottom:14px">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+      <div>
+        <span class="badge badge-cat" style="font-size:13px;padding:4px 12px">${h(a.activiteDetectee||'—')}</span>
+        ${a.actionRecommandee ? `<div style="font-size:13px;font-weight:600;color:var(--orange);margin-top:8px">→ ${h(a.actionRecommandee)}</div>` : ''}
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;min-width:300px">
+        <div><label style="font-size:10px;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:3px">Difficulté</label>${scoreBar(a.difficulte,'#ef4444')}</div>
+        <div><label style="font-size:10px;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:3px">Urgence</label>${scoreBar(a.urgence,'#f97316')}</div>
+        <div><label style="font-size:10px;color:var(--muted);text-transform:uppercase;display:block;margin-bottom:3px">Rentabilité</label>${scoreBar(a.rentabilite,'#10b981')}</div>
+      </div>
     </div>
+    ${a.resume ? `<div style="font-size:13px;color:var(--muted);line-height:1.6;padding:12px;background:#f8fafc;border-radius:8px;margin-bottom:12px">${h(a.resume)}</div>` : ''}
     <div class="analysis-grid">
-      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Rôles requis</label>
-        <div class="tag-list">${(a.roles||[]).map(r=>`<span class="tag">${h(r)}</span>`).join('')||'—'}</div></div>
-      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Fournisseurs</label>
-        <div class="tag-list">${(a.suppliers||[]).map(s=>`<span class="tag tag-orange">${h(s)}</span>`).join('')||'—'}</div></div>
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Spécifications techniques</label>
+        <div class="tag-list">${(a.specificationsTechniques||[]).map(s=>`<span class="tag">${h(s)}</span>`).join('')||'—'}</div></div>
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Fournisseurs RFQ</label>
+        <div class="tag-list">${(a.fournisseursRFQ||[]).map(s=>`<span class="tag tag-orange">${h(s)}</span>`).join('')||'—'}</div></div>
       <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Risques</label>
-        <div class="tag-list">${(a.risks||[]).map(r=>`<span class="tag" style="background:rgba(239,68,68,.08);color:#dc2626">${h(r)}</span>`).join('')||'—'}</div></div>
-      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Mitigations</label>
-        <div class="tag-list">${(a.mitigations||[]).map(m=>`<span class="tag" style="background:rgba(16,185,129,.08);color:#059669">${h(m)}</span>`).join('')||'—'}</div></div>
+        <div class="tag-list">${(a.risques||[]).map(r=>`<span class="tag" style="background:rgba(239,68,68,.08);color:#dc2626">${h(r)}</span>`).join('')||'—'}</div></div>
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Main d'œuvre</label>
+        <div class="tag-list">${(a.mainOeuvre||[]).map(m=>`<span class="tag">${h(m.role||'')} ×${m.nombre||1}</span>`).join('')||'—'}</div></div>
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Équipements</label>
+        <div class="tag-list">${(a.equipements||[]).map(e=>`<span class="tag">${h(e)}</span>`).join('')||'—'}</div></div>
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Informations manquantes</label>
+        <div class="tag-list">${(a.informationsManquantes||[]).map(i=>`<span class="tag" style="background:rgba(251,191,36,.1);color:#d97706">${h(i)}</span>`).join('')||'—'}</div></div>
     </div>
-    ${a.materials?.length ? `<div style="margin-top:16px"><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;display:block">Matériaux estimés</label>
+  </div>
+  ${(a.materiaux||[]).length ? `<div class="card" style="margin-bottom:14px">
+    <p style="font-size:13px;font-weight:600;margin-bottom:10px">Matériaux estimés</p>
     <table class="materials-table"><thead><tr><th>Matériau</th><th>Qté</th><th>Unité</th><th>Spécification</th></tr></thead>
-    <tbody>${a.materials.map(m=>`<tr><td>${h(m.name)}</td><td>${h(String(m.quantity||''))}</td><td>${h(m.unit||'')}</td><td style="color:var(--muted)">${h(m.specification||'')}</td></tr>`).join('')}</tbody></table></div>` : ''}
-    ${a.notes ? `<div style="margin-top:14px;padding:12px;background:#f8fafc;border-radius:8px;font-size:13px;color:var(--muted)">${h(a.notes)}</div>` : ''}
-  </div>`
+    <tbody>${a.materiaux.map(m=>`<tr><td>${h(m.nom||m.name||'')}</td><td>${h(String(m.quantite||m.quantity||''))}</td><td>${h(m.unite||m.unit||'')}</td><td style="color:var(--muted)">${h(m.specification||m.spec||'')}</td></tr>`).join('')}</tbody></table></div>` : ''}
+  ${(a.planExecution||[]).length ? `<div class="card">
+    <p style="font-size:13px;font-weight:600;margin-bottom:10px">Plan d'exécution</p>
+    <div class="tag-list">${a.planExecution.map((p,i)=>`<span class="tag" style="background:rgba(59,130,246,.08);color:#2563eb">${i+1}. ${h(p)}</span>`).join('')}</div></div>` : ''}
+  ${a.strategieOffre ? `<div class="card" style="margin-top:14px;border-left:3px solid var(--orange)">
+    <p style="font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px">Stratégie d'offre</p>
+    <p style="font-size:13px">${h(a.strategieOffre)}</p></div>` : ''}`
 }
 
 function renderChecklistHtml(cl, bonId) {
@@ -1050,23 +1186,30 @@ async function loadCandidatures() {
       document.getElementById('cand-table-wrap').innerHTML = `<div class="empty-state"><i class="bi bi-file-earmark-check"></i><p>Aucune candidature</p><small>Cliquez "Postuler" sur un bon de commande</small></div>`
       return
     }
-    const statuses = ['En préparation','Soumis','Accepté','Refusé']
+    const PROJECT_STATUSES = ['Nouveau','À analyser','Analyse IA terminée','Demande de prix fournisseurs','Bordereau préparé','Devis préparé','Offre soumise','En attente résultat','Gagné','Perdu','Abandonné']
+    const statusColors = {'Nouveau':'#64748b','À analyser':'#0284c7','Analyse IA terminée':'#7c3aed','Demande de prix fournisseurs':'#ea580c','Bordereau préparé':'#ca8a04','Devis préparé':'#d97706','Offre soumise':'#16a34a','En attente résultat':'#0891b2','Gagné':'#15803d','Perdu':'#dc2626','Abandonné':'#94a3b8'}
     document.getElementById('cand-table-wrap').innerHTML = `
-      <table class="cand-table"><thead><tr><th>Réf</th><th>Intitulé</th><th>Acheteur</th><th>Délai</th><th>Statut</th><th>Créé le</th><th></th></tr></thead>
-      <tbody>${list.map(c => `<tr>
-        <td style="font-size:11px;color:var(--muted)">${h(c.bonReference||c.id)}</td>
-        <td style="max-width:220px"><div style="font-weight:500;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${h(c.bonTitle||'')}">${h((c.bonTitle||'').substring(0,48))}${(c.bonTitle||'').length>48?'…':''}</div></td>
-        <td style="font-size:12px;color:var(--muted)">${h((c.bonBuyer||'').substring(0,30))}</td>
-        <td style="font-size:12px">${h(c.bonDeadline||'—')}</td>
-        <td><select class="status-select" onchange="updateCandStatus('${c.id}',this.value)">
-          ${statuses.map(s=>`<option value="${s}" ${c.status===s?'selected':''}>${s}</option>`).join('')}
-        </select></td>
-        <td style="font-size:12px;color:var(--muted)">${fd(c.createdAt)}</td>
-        <td>
-          <button style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:15px" title="Voir le bon" onclick="openProject('${c.bonId}')"><i class="bi bi-eye"></i></button>
-          <button style="background:none;border:none;cursor:pointer;color:var(--danger);font-size:15px;margin-left:4px" title="Supprimer" onclick="deleteCand('${c.id}')"><i class="bi bi-trash3"></i></button>
-        </td>
-      </tr>`).join('')}</tbody></table>`
+      <table class="cand-table"><thead><tr><th>Réf / Activité</th><th>Intitulé</th><th>Acheteur</th><th>Délai</th><th>Statut projet</th><th>Mis à jour</th><th></th></tr></thead>
+      <tbody>${list.map(c => {
+        const bon = allProjects.find(p => p.id === c.bonId) || {}
+        const ps  = bon.projectStatus || c.status || 'Nouveau'
+        const col = statusColors[ps] || '#64748b'
+        const act = bon.categoryMatched || ''
+        const actL= {A:'Aluminium',B:'Inox',C:'Métal',D:'Fourniture',E:'Connexes'}[act]||''
+        return `<tr>
+          <td style="font-size:11px"><div style="color:var(--muted)">${h(c.bonReference||c.id)}</div>${actL?`<div style="color:#0284c7;margin-top:2px;font-size:10px">${actL}</div>`:''}</td>
+          <td style="max-width:220px"><div style="font-weight:500;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${h(c.bonTitle||'')}">${h((c.bonTitle||'').substring(0,48))}${(c.bonTitle||'').length>48?'…':''}</div></td>
+          <td style="font-size:12px;color:var(--muted)">${h((c.bonBuyer||'').substring(0,30))}</td>
+          <td style="font-size:12px">${h(c.bonDeadline||'—')}</td>
+          <td><select class="status-select" style="color:${col};border-color:${col}40;font-weight:600" onchange="updateProjectStatus('${c.bonId}','${c.id}',this.value)">
+            ${PROJECT_STATUSES.map(s=>`<option value="${s}" ${ps===s?'selected':''}>${s}</option>`).join('')}
+          </select></td>
+          <td style="font-size:11px;color:var(--muted)">${fd(bon.updatedAt||c.updatedAt||c.createdAt)}</td>
+          <td>
+            <button style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:15px" title="Voir le bon" onclick="openProject('${c.bonId}')"><i class="bi bi-eye"></i></button>
+            <button style="background:none;border:none;cursor:pointer;color:var(--danger);font-size:15px;margin-left:4px" title="Supprimer" onclick="deleteCand('${c.id}')"><i class="bi bi-trash3"></i></button>
+          </td>
+        </tr>`}).join('')}</tbody></table>`
   } catch(e) { document.getElementById('cand-table-wrap').innerHTML = `<p style="color:var(--danger);padding:16px">Erreur: ${e.message}</p>` }
 }
 
@@ -1074,6 +1217,17 @@ async function updateCandStatus(id, status) {
   try {
     await fetch(`/api/candidatures/${id}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status})})
     showToast('Statut mis à jour')
+  } catch(e) { showToast(e.message,'err') }
+}
+
+async function updateProjectStatus(bonId, candId, status) {
+  try {
+    await Promise.all([
+      fetch(`/api/projects/${bonId}/status`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status})}),
+      fetch(`/api/candidatures/${candId}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status})}),
+    ])
+    showToast('Statut mis à jour')
+    fetchProjects()
   } catch(e) { showToast(e.message,'err') }
 }
 
@@ -1123,31 +1277,34 @@ async function loadAnalytics() {
   try {
     const d = await fetch('/api/analytics').then(r => r.json())
     const maxCity = d.byCity[0]?.[1]||1, maxCat = d.byCategory[0]?.[1]||1, maxKw = d.byKeyword[0]?.[1]||1
+    const byAct   = Object.entries(d.byActivity||{}).sort((a,b)=>b[1]-a[1])
+    const maxAct  = byAct[0]?.[1]||1
+    const actColors2 = {A:'#0284c7',B:'#7c3aed',C:'#ef4444',D:'#ea580c',E:'#10b981'}
     document.getElementById('analytics-content').innerHTML = `
-      <div class="kpi-grid" style="margin-bottom:22px">
+      <div class="kpi-grid" style="margin-bottom:22px;grid-template-columns:repeat(4,1fr)">
         <div class="kpi-card"><div class="kpi-icon" style="background:#f0f9ff;color:#0284c7"><i class="bi bi-cart3"></i></div>
           <div><div class="kpi-val">${d.totalBons}</div><div class="kpi-label">Bons totaux</div></div></div>
         <div class="kpi-card"><div class="kpi-icon" style="background:#fff7ed;color:#ea580c"><i class="bi bi-file-earmark-check"></i></div>
           <div><div class="kpi-val">${d.totalCands}</div><div class="kpi-label">Candidatures</div></div></div>
         <div class="kpi-card"><div class="kpi-icon" style="background:#f0fdf4;color:#16a34a"><i class="bi bi-cash-stack"></i></div>
-          <div><div class="kpi-val">${d.totalBudgetEstimate>0?fn(d.totalBudgetEstimate/1000000)+'M':'—'}</div><div class="kpi-label">Budget total MAD</div></div></div>
+          <div><div class="kpi-val">${d.totalBudgetEstimate>0?fn(d.totalBudgetEstimate/1000000)+'M MAD':'—'}</div><div class="kpi-label">Budget estimé</div></div></div>
         <div class="kpi-card"><div class="kpi-icon" style="background:#faf5ff;color:#9333ea"><i class="bi bi-geo-alt"></i></div>
           <div><div class="kpi-val">${d.byCity.length}</div><div class="kpi-label">Villes</div></div></div>
       </div>
       <div class="analytics-grid">
-        <div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px">Top villes</p>
+        ${byAct.length?`<div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px"><i class="bi bi-tags" style="color:var(--orange);margin-right:4px"></i>Par activité</p>
+          <div class="bar-chart">${byAct.map(([a,n])=>`<div class="bar-item"><div class="bar-label" title="${h(a)}">${h(a)}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/maxAct*100)}%;background:${actColors2[a]||'var(--orange)'}"></div></div>
+            <div class="bar-num">${n}</div></div>`).join('')}</div></div>`:''}
+        <div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px"><i class="bi bi-geo-alt" style="color:var(--orange);margin-right:4px"></i>Top villes</p>
           <div class="bar-chart">${d.byCity.map(([c,n])=>`<div class="bar-item"><div class="bar-label" title="${h(c)}">${h(c)}</div>
             <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/maxCity*100)}%"></div></div>
             <div class="bar-num">${n}</div></div>`).join('')||'<p style="color:var(--muted);font-size:13px">Aucune donnée</p>'}</div></div>
-        <div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px">Top catégories</p>
-          <div class="bar-chart">${d.byCategory.map(([c,n])=>`<div class="bar-item"><div class="bar-label" title="${h(c)}">${h(c)}</div>
-            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/maxCat*100)}%;background:var(--purple)"></div></div>
-            <div class="bar-num">${n}</div></div>`).join('')||'<p style="color:var(--muted);font-size:13px">Aucune donnée</p>'}</div></div>
-        <div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px">Mots-clés matchés</p>
+        <div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px"><i class="bi bi-search" style="color:var(--orange);margin-right:4px"></i>Mots-clés matchés</p>
           <div class="bar-chart">${d.byKeyword.map(([k,n])=>`<div class="bar-item"><div class="bar-label" title="${h(k)}">${h(k)}</div>
             <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/maxKw*100)}%;background:var(--success)"></div></div>
             <div class="bar-num">${n}</div></div>`).join('')||'<p style="color:var(--muted);font-size:13px">Aucune donnée</p>'}</div></div>
-        ${d.candsByStatus.length?`<div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px">Candidatures par statut</p>
+        ${d.candsByStatus.length?`<div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px"><i class="bi bi-diagram-3" style="color:var(--orange);margin-right:4px"></i>Candidatures par statut</p>
           <div class="bar-chart">${d.candsByStatus.map(([s,n])=>`<div class="bar-item"><div class="bar-label">${h(s)}</div>
             <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/(d.totalCands||1)*100)}%;background:var(--info)"></div></div>
             <div class="bar-num">${n}</div></div>`).join('')}</div></div>`:''}
@@ -1205,14 +1362,19 @@ async function sendChat() {
 }
 
 /* ── Settings ── */
+let settingsActivities    = []
+let settingsExclusions    = []
+
 function switchSettingsTab(name, btn) {
-  ['general','keywords','schedule'].forEach(t => {
+  ['general','keywords','schedule','activities','exclusions','telegram'].forEach(t => {
     const el = document.getElementById('stab-'+t)
     if (el) el.style.display = t===name?'block':'none'
   })
   document.querySelectorAll('.settings-tab-btn').forEach(b => b.classList.remove('active'))
   if (btn) btn.classList.add('active')
-  if (name==='keywords') loadKeywordsTab()
+  if (name==='keywords')    loadKeywordsTab()
+  if (name==='activities')  loadActivitiesTab()
+  if (name==='exclusions')  loadExclusionsTab()
 }
 
 async function loadSettings() {
@@ -1224,7 +1386,14 @@ async function loadSettings() {
     if (s.maxItems)        document.getElementById('s-maxitems').value = s.maxItems
     if (s.dailyTime)       document.getElementById('s-daily-time').value = s.dailyTime
     document.getElementById('s-daily-enabled').checked = s.dailyEnabled !== false
-    settingsKeywords = s.keywords || s.defaultKeywords || []
+    settingsKeywords   = s.keywords     || []
+    settingsActivities = s.activities   || []
+    settingsExclusions = s.exclusionKeywords || []
+    if (s.telegramBotToken && s.telegramBotToken !== '***configured***') document.getElementById('s-telegram-token').value = s.telegramBotToken
+    else if (s.telegramBotToken === '***configured***') document.getElementById('s-telegram-token').placeholder = '***configuré***'
+    if (s.telegramChatId   && s.telegramChatId   !== '***configured***') document.getElementById('s-telegram-chatid').value = s.telegramChatId
+    else if (s.telegramChatId   === '***configured***') document.getElementById('s-telegram-chatid').placeholder = '***configuré***'
+    document.getElementById('s-telegram-enabled').checked = s.telegramEnabled !== false
   } catch(e) {}
 }
 
@@ -1288,6 +1457,144 @@ function addKeyword() {
 
 function removeKeyword(kw) {
   settingsKeywords = settingsKeywords.filter(k => k !== kw); loadKeywordsTab()
+}
+
+/* ── Activities tab ── */
+function loadActivitiesTab() {
+  const el = document.getElementById('activities-editor')
+  if (!el) return
+  if (!settingsActivities.length) {
+    el.innerHTML = '<div class="loading"><span class="spinner"></span>Chargement...</div>'
+    loadSettings().then(() => renderActivitiesEditor())
+    return
+  }
+  renderActivitiesEditor()
+}
+
+function renderActivitiesEditor() {
+  const el = document.getElementById('activities-editor')
+  if (!el) return
+  el.innerHTML = settingsActivities.map((a, i) => `
+    <div style="background:#f8fafc;border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+        <span style="background:var(--orange);color:#fff;border-radius:6px;padding:2px 8px;font-size:12px;font-weight:700">${h(a.id)}</span>
+        <input type="text" class="form-control" value="${h(a.name)}" style="flex:1;max-width:300px" onchange="settingsActivities[${i}].name=this.value">
+        <label class="toggle-switch"><input type="checkbox" ${a.enabled!==false?'checked':''} onchange="settingsActivities[${i}].enabled=this.checked"><span class="toggle-slider"></span></label>
+      </div>
+      <div class="keywords-grid" id="act-kw-grid-${i}">
+        ${(a.keywords||[]).map((kw, ki) => `<div class="kw-item">
+          <span>${h(kw)}</span>
+          <button class="kw-remove" onclick="removeActivityKw(${i},${ki})"><i class="bi bi-x"></i></button>
+        </div>`).join('')}
+      </div>
+      <div style="display:flex;gap:8px;margin-top:8px">
+        <input type="text" class="form-control" id="new-act-kw-${i}" placeholder="Ajouter un mot-clé..." style="max-width:220px" onkeydown="if(event.key==='Enter')addActivityKw(${i})">
+        <button class="btn-save" style="padding:6px 10px" onclick="addActivityKw(${i})"><i class="bi bi-plus-lg"></i></button>
+      </div>
+    </div>`).join('')
+}
+
+function addActivityKw(actIdx) {
+  const inp = document.getElementById(`new-act-kw-${actIdx}`)
+  const val = inp.value.trim().toLowerCase()
+  if (!val) return
+  settingsActivities[actIdx].keywords = settingsActivities[actIdx].keywords || []
+  if (!settingsActivities[actIdx].keywords.includes(val)) {
+    settingsActivities[actIdx].keywords.push(val)
+    inp.value = ''
+    renderActivitiesEditor()
+  }
+}
+
+function removeActivityKw(actIdx, kwIdx) {
+  settingsActivities[actIdx].keywords.splice(kwIdx, 1)
+  renderActivitiesEditor()
+}
+
+async function saveActivities() {
+  try {
+    const d = await fetch('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({activities:settingsActivities})}).then(r=>r.json())
+    d.status==='ok' ? showToast('Activités sauvegardées !') : showToast(d.error||'Erreur','err')
+  } catch(e) { showToast(e.message,'err') }
+}
+
+async function testKeywords() {
+  const text = prompt('Entrez un texte de test (titre, description du bon):')
+  if (!text) return
+  try {
+    const d = await fetch('/api/settings/keywords/test',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text})}).then(r=>r.json())
+    const res = document.getElementById('kw-test-result')
+    res.style.display = 'block'
+    res.innerHTML = `<div class="settings-section" style="border-left:3px solid ${d.wouldKeep?'var(--success)':'var(--danger)'}">
+      <h3 style="color:${d.wouldKeep?'var(--success)':'var(--danger)'}">${d.wouldKeep?'✅ Ce bon serait conservé':'❌ Ce bon serait ignoré'}</h3>
+      ${d.matched.length?`<p style="font-size:13px;margin-top:8px"><b>Activités matchées:</b> ${d.matched.map(m=>`<span class="badge badge-cat">${h(m.keyword)} → ${m.activity}</span>`).join(' ')}` : '<p style="font-size:13px;color:var(--muted)">Aucune activité trouvée</p>'}
+      ${d.excluded.length?`<p style="font-size:13px;margin-top:6px;color:var(--danger)"><b>Exclusions trouvées:</b> ${d.excluded.map(e=>`<span class="badge" style="background:rgba(239,68,68,.1);color:#dc2626">${h(e)}</span>`).join(' ')}</p>` : ''}
+    </div>`
+  } catch(e) { showToast(e.message,'err') }
+}
+
+/* ── Exclusions tab ── */
+function loadExclusionsTab() {
+  const grid = document.getElementById('exclusions-grid')
+  if (!grid) return
+  if (!settingsExclusions.length && settingsActivities.length === 0) {
+    loadSettings().then(() => renderExclusionsGrid())
+    return
+  }
+  renderExclusionsGrid()
+}
+
+function renderExclusionsGrid() {
+  const grid = document.getElementById('exclusions-grid')
+  if (!grid) return
+  if (!settingsExclusions.length) { grid.innerHTML = '<p style="font-size:13px;color:var(--muted)">Aucun mot exclu</p>'; return }
+  grid.innerHTML = settingsExclusions.map((kw, i) =>
+    `<div class="kw-item" style="border-color:rgba(239,68,68,.3)">
+      <span style="color:#dc2626">${h(kw)}</span>
+      <button class="kw-remove" onclick="removeExclusion(${i})"><i class="bi bi-x"></i></button>
+    </div>`
+  ).join('')
+}
+
+function addExclusion() {
+  const inp = document.getElementById('new-excl-input')
+  const val = inp.value.trim().toLowerCase()
+  if (!val) return
+  if (!settingsExclusions.includes(val)) {
+    settingsExclusions.push(val); inp.value = ''; renderExclusionsGrid()
+  }
+}
+
+function removeExclusion(idx) { settingsExclusions.splice(idx, 1); renderExclusionsGrid() }
+
+async function saveExclusions() {
+  try {
+    const d = await fetch('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({exclusionKeywords:settingsExclusions})}).then(r=>r.json())
+    d.status==='ok' ? showToast('Exclusions sauvegardées !') : showToast(d.error||'Erreur','err')
+  } catch(e) { showToast(e.message,'err') }
+}
+
+/* ── Telegram ── */
+async function saveTelegram() {
+  const token   = document.getElementById('s-telegram-token').value.trim()
+  const chatId  = document.getElementById('s-telegram-chatid').value.trim()
+  const enabled = document.getElementById('s-telegram-enabled').checked
+  if (!token || !chatId) { showToast('Token et Chat ID requis','err'); return }
+  try {
+    // Save to .env via settings API (token & chatId go server-side only)
+    const d = await fetch('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({ telegramBotToken: token, telegramChatId: chatId, telegramEnabled: enabled })
+    }).then(r=>r.json())
+    if (d.status==='ok') {
+      showToast('Paramètres Telegram sauvegardés !')
+      document.getElementById('s-telegram-token').value = ''
+      document.getElementById('s-telegram-token').placeholder = '***configuré***'
+      document.getElementById('s-telegram-chatid').value = ''
+      document.getElementById('s-telegram-chatid').placeholder = '***configuré***'
+    } else {
+      showToast(d.error||'Erreur','err')
+    }
+  } catch(e) { showToast(e.message,'err') }
 }
 
 /* ── Helpers ── */

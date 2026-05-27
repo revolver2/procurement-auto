@@ -10,7 +10,8 @@ const aiAnalyzer        = require('./lib/ai-analyzer')
 const documentGenerator = require('./lib/document-generator')
 const db                = require('./lib/db')
 const scheduler         = require('./lib/scheduler')
-const { DEFAULT_KEYWORDS } = require('./lib/scraper')
+const telegram          = require('./lib/telegram')
+const { getActivities, getExclusionKeywords, bonMatchesKeywords } = require('./lib/scraper')
 
 const app  = express()
 const PORT = process.env.PORT || 3001
@@ -33,14 +34,47 @@ app.get('/api/stats', (req, res) => {
     const documents      = db.read('rfq-generated.json')        || []
     const candidatures   = db.read('candidatures.json')         || []
     const notifications  = db.read('notifications.json')        || []
-    const cities         = new Set(allBons.map(b => b.location).filter(Boolean)).size
-    const unreadNotifs   = notifications.filter(n => !n.read).length
+    const cities       = new Set(allBons.map(b => b.location).filter(Boolean)).size
+    const unreadNotifs = notifications.filter(n => !n.read).length
+
+    const today     = new Date().toISOString().split('T')[0]
+    const bonsToday = allBons.filter(b => (b.scrapedAt || '').startsWith(today)).length
+
+    // Urgent = deadline within 5 days
+    const nowMs = Date.now()
+    const urgent = allBons.filter(b => {
+      if (!b.deadline) return false
+      const [d, m, y] = b.deadline.includes('/') ? b.deadline.split('/') : [null, null, null]
+      const dl = y ? new Date(`${y}-${m}-${d}`) : new Date(b.deadline)
+      const diff = (dl - nowMs) / 86400000
+      return diff >= 0 && diff <= 5
+    }).length
+
+    const byActivity = {}
+    allBons.forEach(b => { const a = b.categoryMatched || b.activityMatched || 'Autre'; byActivity[a] = (byActivity[a] || 0) + 1 })
+
+    const cInProgress = candidatures.filter(c => !['Gagné','Perdu','Abandonné'].includes(c.status)).length
+    const won         = candidatures.filter(c => c.status === 'Gagné').length
+    const lost        = candidatures.filter(c => c.status === 'Perdu').length
+    const successRate = (won + lost) > 0 ? Math.round((won / (won + lost)) * 100) : 0
+
+    const totalEstimated = allBons.reduce((s, b) => {
+      const v = parseFloat((b.estimatedAmount || b.estimatedBudget || '0').replace(/[^\d.]/g, ''))
+      return s + (isNaN(v) ? 0 : v)
+    }, 0)
 
     res.json({
       totalBons:          allBons.length,
+      bonsToday,
+      urgent,
+      byActivity,
       analyzed:           analyses.length,
       documentsGenerated: documents.length,
       candidatures:       candidatures.length,
+      candidaturesInProgress: cInProgress,
+      offresSubmises:     candidatures.filter(c => ['Offre soumise','En attente résultat'].includes(c.status)).length,
+      won, lost, successRate,
+      totalEstimated,
       cities,
       unreadNotifs,
       lastScrape:         allBons[0]?.scrapedAt || null,
@@ -376,14 +410,20 @@ app.get('/api/settings', (req, res) => {
     dailyTime:     saved.dailyTime     || '06:00',
     maxItems:      saved.maxItems      || 50,
     // Keywords
-    keywords:      saved.keywords      || null,  // null = use defaults
-    defaultKeywords: require('./lib/scraper').DEFAULT_KEYWORDS,
+    activities:         saved.activities         || getActivities(),
+    exclusionKeywords:  saved.exclusionKeywords  || getExclusionKeywords(),
+    cities:             saved.cities             || [],
+    telegramBotToken:   process.env.TELEGRAM_BOT_TOKEN ? '***configured***' : '',
+    telegramChatId:     process.env.TELEGRAM_CHAT_ID   ? '***configured***' : '',
+    telegramEnabled:    saved.telegramEnabled !== false,
   })
 })
 
 app.post('/api/settings', (req, res) => {
   const { username, password, groqApiKey, openaiApiKey, scraperDelay,
-          dailyEnabled, dailyTime, maxItems, keywords } = req.body
+          dailyEnabled, dailyTime, maxItems, keywords,
+          activities, exclusionKeywords, cities, telegramEnabled,
+          telegramBotToken, telegramChatId } = req.body
   try {
     const envPath = path.join(__dirname, '.env')
     let content   = fs.existsSync(envPath) ? fs.readFileSync(envPath, 'utf-8') : ''
@@ -400,15 +440,21 @@ app.post('/api/settings', (req, res) => {
     setEnv('GROQ_API_KEY',            groqApiKey)
     setEnv('OPENAI_API_KEY',          openaiApiKey)
     setEnv('SCRAPER_DELAY',           scraperDelay)
+    setEnv('TELEGRAM_BOT_TOKEN',      telegramBotToken)
+    setEnv('TELEGRAM_CHAT_ID',        telegramChatId)
 
     fs.writeFileSync(envPath, content.trim() + '\n', 'utf-8')
 
     // Save schedule + keyword config to settings.json
     const saved = db.read('settings.json') || {}
-    if (dailyEnabled  !== undefined) saved.dailyEnabled  = dailyEnabled
-    if (dailyTime     !== undefined) saved.dailyTime     = dailyTime
-    if (maxItems      !== undefined) saved.maxItems      = parseInt(maxItems)
-    if (keywords      !== undefined) saved.keywords      = keywords
+    if (dailyEnabled       !== undefined) saved.dailyEnabled       = dailyEnabled
+    if (dailyTime          !== undefined) saved.dailyTime          = dailyTime
+    if (maxItems           !== undefined) saved.maxItems           = parseInt(maxItems)
+    if (keywords           !== undefined) saved.keywords           = keywords
+    if (activities         !== undefined) saved.activities         = activities
+    if (exclusionKeywords  !== undefined) saved.exclusionKeywords  = exclusionKeywords
+    if (cities             !== undefined) saved.cities             = cities
+    if (telegramEnabled    !== undefined) saved.telegramEnabled    = telegramEnabled
 
     db.write('settings.json', saved)
 
@@ -465,6 +511,66 @@ app.get('/api/analytics', (req, res) => {
       totalBudgetEstimate: totalBudget,
     })
   } catch (e) { res.status(500).json({ error: e.message }) }
+})
+
+/* ═══════════════════════════════════════════════════════════════
+   PROJECT STATUS (Tender Project Manager)
+══════════════════════════════════════════════════════════════════ */
+const PROJECT_STATUSES = [
+  'Nouveau', 'À analyser', 'Analyse IA terminée',
+  'Demande de prix fournisseurs', 'Bordereau préparé', 'Devis préparé',
+  'Offre soumise', 'En attente résultat', 'Gagné', 'Perdu', 'Abandonné',
+]
+
+app.patch('/api/projects/:id/status', (req, res) => {
+  const { status, note } = req.body
+  if (!status) return res.status(400).json({ error: 'status requis' })
+  if (!PROJECT_STATUSES.includes(status)) return res.status(400).json({ error: 'statut invalide', valid: PROJECT_STATUSES })
+
+  const bons = db.read('procurement-analysis.json') || []
+  const idx  = bons.findIndex(b => b.id === req.params.id)
+  if (idx < 0) return res.status(404).json({ error: 'Bon introuvable' })
+
+  bons[idx] = {
+    ...bons[idx],
+    projectStatus: status,
+    updatedAt:     new Date().toISOString(),
+    statusHistory: [...(bons[idx].statusHistory || []), { status, note: note || '', date: new Date().toISOString() }],
+  }
+  try {
+    db.write('procurement-analysis.json', bons)
+    res.json({ success: true, bon: bons[idx] })
+  } catch (e) {
+    res.status(500).json({ error: e.message })
+  }
+})
+
+app.get('/api/project-statuses', (_req, res) => res.json(PROJECT_STATUSES))
+
+/* ═══════════════════════════════════════════════════════════════
+   KEYWORD TEST
+══════════════════════════════════════════════════════════════════ */
+app.post('/api/settings/keywords/test', (req, res) => {
+  const { text } = req.body
+  if (!text) return res.status(400).json({ error: 'text requis' })
+
+  const activities      = getActivities()
+  const exclusionKws    = getExclusionKeywords()
+  const norm            = s => (s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
+  const h               = norm(text)
+
+  const matched   = []
+  const excluded  = []
+  for (const a of activities) {
+    for (const kw of (a.keywords || [])) {
+      if (h.includes(norm(kw))) matched.push({ keyword: kw, activity: a.name, activityId: a.id })
+    }
+  }
+  for (const kw of exclusionKws) {
+    if (h.includes(norm(kw))) excluded.push(kw)
+  }
+
+  res.json({ matched, excluded, wouldKeep: matched.length > 0 && excluded.length === 0 })
 })
 
 /* ═══════════════════════════════════════════════════════════════
