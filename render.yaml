@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: procurement-auto
+    env: node
+    plan: free
+    region: frankfurt
+    buildCommand: npm install
+    startCommand: node server.js
+    autoDeploy: true
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: SCRAPER_DELAY
+        value: 2000
+      - key: MARCHESPUBLICS_USERNAME
+        sync: false
+      - key: MARCHESPUBLICS_PASSWORD
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GITHUB_TOKEN
+        sync: false
+      - key: GITHUB_REPO
+        value: revolver2/procurement-auto

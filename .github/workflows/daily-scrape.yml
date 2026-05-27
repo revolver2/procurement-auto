@@ -1,0 +1,52 @@
+name: Daily Scrape
+
+on:
+  schedule:
+    # 05:00 UTC = 06:00 Morocco (UTC+1 year-round)
+    - cron: '0 5 * * *'
+  workflow_dispatch:
+    inputs:
+      max_items:
+        description: 'Max bons to scrape'
+        default: '50'
+        required: false
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install Playwright Chromium
+        run: npx playwright install chromium --with-deps
+
+      - name: Run scraper
+        env:
+          MARCHESPUBLICS_USERNAME: ${{ secrets.MARCHESPUBLICS_USERNAME }}
+          MARCHESPUBLICS_PASSWORD: ${{ secrets.MARCHESPUBLICS_PASSWORD }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          SCRAPER_DELAY: 2000
+          MAX_ITEMS: ${{ github.event.inputs.max_items || 50 }}
+        run: node scripts/run-scrape.js
+
+      - name: Commit scraped data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet && echo "No new data" || (git commit -m "scrape: $(date +'%Y-%m-%d %H:%M') UTC" && git push)

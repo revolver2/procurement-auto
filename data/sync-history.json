@@ -1,0 +1,13 @@
+[
+  {
+    "date": "26/05/2026",
+    "heure": "21:36",
+    "nouveaux": 0,
+    "total": 0,
+    "statut": "Échec",
+    "erreur": "page.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[name=\"login\"]')\u001b[22m\n",
+    "startedAt": "2026-05-26T19:36:10.753Z",
+    "finishedAt": "2026-05-26T19:36:42.391Z",
+    "triggeredBy": "manual"
+  }
+]

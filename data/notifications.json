@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1779824202402,
+    "type": "error",
+    "title": "Échec synchronisation",
+    "message": "page.fill: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('input[name=\"login\"]')\u001b[22m\n",
+    "createdAt": "2026-05-26T19:36:42.402Z",
+    "read": false
+  }
+]

@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marché Public — Automatisation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+:root{
+  --sidebar:#0d1b2e;
+  --sidebar-hover:rgba(255,255,255,.07);
+  --sidebar-active:rgba(249,115,22,.15);
+  --orange:#f97316;
+  --orange-light:rgba(249,115,22,.1);
+  --bg:#f1f5f9;
+  --card:#fff;
+  --border:#e2e8f0;
+  --text:#1e293b;
+  --muted:#64748b;
+  --success:#10b981;
+  --danger:#ef4444;
+  --info:#3b82f6;
+  --purple:#7c3aed;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);display:flex;height:100vh;overflow:hidden}
+
+/* ── Sidebar ── */
+#sidebar{width:252px;min-width:252px;background:var(--sidebar);display:flex;flex-direction:column;height:100vh;overflow-y:auto;overflow-x:hidden}
+.sb-logo{display:flex;align-items:center;gap:10px;padding:20px 18px 16px;border-bottom:1px solid rgba(255,255,255,.07)}
+.sb-logo-icon{width:36px;height:36px;background:var(--orange);border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0}
+.sb-logo-text{color:#fff;font-weight:700;font-size:15px;line-height:1.2}
+.sb-logo-sub{color:rgba(255,255,255,.45);font-size:11px}
+.sb-section{padding:16px 18px 6px;color:rgba(255,255,255,.35);font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.sb-item{display:flex;align-items:center;gap:10px;padding:9px 14px;margin:1px 8px;border-radius:8px;color:rgba(255,255,255,.65);font-size:13.5px;cursor:pointer;transition:all .15s;position:relative;border:none;background:none;width:calc(100% - 16px);text-align:left}
+.sb-item:hover{background:var(--sidebar-hover);color:#fff}
+.sb-item.active{background:var(--sidebar-active);color:#f97316;font-weight:600}
+.sb-item i{font-size:16px;width:20px;text-align:center;flex-shrink:0}
+.sb-badge{margin-left:auto;background:var(--orange);color:#fff;border-radius:10px;font-size:10px;font-weight:700;padding:2px 6px;min-width:18px;text-align:center}
+.sb-user{margin-top:auto;padding:14px 18px;border-top:1px solid rgba(255,255,255,.07);display:flex;align-items:center;gap:10px}
+.sb-avatar{width:32px;height:32px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:13px;flex-shrink:0}
+.sb-user-info{flex:1;min-width:0}
+.sb-user-name{color:#fff;font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sb-user-email{color:rgba(255,255,255,.4);font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ── Main ── */
+#main{flex:1;display:flex;flex-direction:column;height:100vh;overflow:hidden;min-width:0}
+#topbar{background:#fff;border-bottom:1px solid var(--border);padding:0 24px;height:56px;display:flex;align-items:center;gap:12px;flex-shrink:0}
+.tb-breadcrumb{color:var(--muted);font-size:13px;display:flex;align-items:center;gap:6px}
+.tb-breadcrumb i{font-size:14px}
+.tb-title{color:var(--text);font-weight:600}
+.tb-actions{margin-left:auto;display:flex;align-items:center;gap:8px}
+.btn-topbar{background:var(--sidebar);color:#fff;border:none;border-radius:8px;padding:7px 14px;font-size:13px;font-weight:500;cursor:pointer;display:flex;align-items:center;gap:6px;transition:opacity .15s}
+.btn-topbar:hover{opacity:.85}
+.btn-notif{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);background:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;font-size:16px;color:var(--muted)}
+.btn-notif .notif-dot{position:absolute;top:5px;right:5px;width:8px;height:8px;border-radius:50%;background:var(--orange);border:2px solid #fff}
+#content{flex:1;overflow-y:auto;padding:24px}
+
+/* ── Pages ── */
+.pi-page{display:none}
+.pi-page.active{display:block}
+
+/* ── Cards ── */
+.card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+
+/* ── KPI row ── */
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.kpi-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 20px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:box-shadow .15s}
+.kpi-card:hover{box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.kpi-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.kpi-val{font-size:26px;font-weight:700;line-height:1.1}
+.kpi-label{font-size:12px;color:var(--muted);margin-top:2px}
+.kpi-arrow{margin-left:auto;color:var(--border);font-size:18px}
+
+/* ── Sync bar ── */
+.sync-bar{background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:22px;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sync-bar label{font-size:13px;font-weight:500;white-space:nowrap}
+.sync-nb{width:70px;padding:6px 10px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit}
+.btn-sync{background:var(--sidebar);color:#fff;border:none;border-radius:8px;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
+.btn-sync:disabled{opacity:.5;cursor:not-allowed}
+.btn-orange{background:var(--orange);color:#fff;border:none;border-radius:8px;padding:7px 18px;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}
+#sync-progress{flex:1;font-size:12px;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.status-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.dot-ok{background:var(--success)}
+.dot-err{background:var(--danger)}
+.dot-spin{background:var(--orange);animation:pulse 1s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+/* ── Dashboard grid ── */
+.dash-grid{display:grid;grid-template-columns:1fr 300px;gap:18px}
+.dash-panel{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 20px}
+.dash-panel-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.dash-panel-hdr h3{font-size:14px;font-weight:600}
+.link-orange{color:var(--orange);font-size:12px;cursor:pointer;text-decoration:none;background:none;border:none;font-family:inherit}
+.link-orange:hover{text-decoration:underline}
+
+/* ── Sync history table ── */
+.hist-table{width:100%;border-collapse:collapse;font-size:13px}
+.hist-table th{padding:6px 10px;text-align:left;color:var(--muted);font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--border)}
+.hist-table td{padding:8px 10px;border-bottom:1px solid #f8fafc}
+.hist-table tr:last-child td{border-bottom:none}
+.badge-ok{background:rgba(16,185,129,.1);color:#059669;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+.badge-fail{background:rgba(239,68,68,.1);color:#dc2626;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:600}
+
+/* ── Recent mini-cards ── */
+.recent-item{display:flex;align-items:flex-start;gap:10px;padding:10px 0;border-bottom:1px solid var(--border);cursor:pointer}
+.recent-item:last-child{border-bottom:none}
+.recent-item:hover .recent-title{color:var(--orange)}
+.recent-dot{width:8px;height:8px;border-radius:50%;background:var(--success);margin-top:5px;flex-shrink:0}
+.recent-title{font-size:13px;font-weight:500;line-height:1.3;margin-bottom:2px}
+.recent-meta{font-size:11px;color:var(--muted)}
+
+/* ── Order cards ── */
+.orders-toolbar{display:flex;gap:10px;margin-bottom:18px;flex-wrap:wrap}
+.search-wrap{flex:1;min-width:200px;position:relative}
+.search-wrap i{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:15px}
+.search-input{width:100%;padding:8px 12px 8px 34px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;outline:none;background:#fff}
+.search-input:focus{border-color:var(--orange)}
+.filter-select{padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;background:#fff;cursor:pointer;outline:none}
+#orders-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.order-card{background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 20px;cursor:pointer;transition:box-shadow .15s,border-color .15s}
+.order-card:hover{box-shadow:0 4px 18px rgba(0,0,0,.08);border-color:#cbd5e1}
+.order-badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.badge{padding:3px 9px;border-radius:20px;font-size:11px;font-weight:600;white-space:nowrap}
+.badge-ref{background:#f1f5f9;color:#475569}
+.badge-cat{background:rgba(124,58,237,.1);color:#7c3aed}
+.badge-status-actif{background:rgba(16,185,129,.1);color:#059669}
+.badge-status-clos{background:rgba(239,68,68,.1);color:#dc2626}
+.badge-status-cand{background:rgba(249,115,22,.1);color:#ea580c}
+.order-title{font-size:14px;font-weight:600;line-height:1.35;margin-bottom:8px;color:var(--text)}
+.order-meta{display:flex;gap:14px;font-size:12px;color:var(--muted);margin-bottom:12px;flex-wrap:wrap}
+.order-meta span{display:flex;align-items:center;gap:4px}
+.order-footer{display:flex;align-items:center;justify-content:space-between}
+.order-deadline{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.btn-postuler{background:var(--orange);color:#fff;border:none;border-radius:7px;padding:6px 14px;font-size:12px;font-weight:600;cursor:pointer;transition:opacity .15s}
+.btn-postuler:hover{opacity:.85}
+.btn-postuler.done{background:var(--success)}
+.empty-state{text-align:center;padding:60px 20px;color:var(--muted)}
+.empty-state i{font-size:42px;margin-bottom:12px;display:block;opacity:.4}
+.empty-state p{font-size:14px;font-weight:500;margin-bottom:4px;color:#94a3b8}
+.empty-state small{font-size:12px}
+
+/* ── Detail page ── */
+.detail-back{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);cursor:pointer;margin-bottom:18px;background:none;border:none;font-family:inherit}
+.detail-back:hover{color:var(--orange)}
+.detail-header{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px 24px;margin-bottom:18px}
+.detail-header-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.detail-title{font-size:18px;font-weight:700;line-height:1.35;margin-bottom:10px}
+.detail-meta-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.detail-meta-item label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;display:block;margin-bottom:3px}
+.detail-meta-item span{font-size:13px;font-weight:500}
+.detail-nav{display:flex;gap:4px;margin-bottom:18px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:4px}
+.detail-nav-btn{flex:1;padding:8px 14px;border:none;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;background:none;color:var(--muted);transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px;font-family:inherit}
+.detail-nav-btn.active{background:var(--orange-light);color:var(--orange);font-weight:600}
+.detail-tab{display:none}
+.detail-tab.active{display:block}
+
+/* ── Articles table ── */
+.articles-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}
+.articles-table th{padding:8px 12px;background:#f8fafc;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--border)}
+.articles-table td{padding:9px 12px;border-bottom:1px solid #f8fafc;vertical-align:top}
+.articles-table tr:hover td{background:#fafcff}
+.total-row td{font-weight:700;background:#f8fafc;border-top:2px solid var(--border)}
+
+/* ── AI analysis ── */
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+.tag-list{display:flex;flex-wrap:wrap;gap:6px}
+.tag{background:#f1f5f9;color:#475569;padding:3px 10px;border-radius:20px;font-size:12px}
+.tag-orange{background:var(--orange-light);color:var(--orange)}
+.complexity-badge{padding:4px 12px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block}
+.complexity-Low{background:rgba(16,185,129,.1);color:#059669}
+.complexity-Medium{background:rgba(249,115,22,.1);color:#ea580c}
+.complexity-High{background:rgba(239,68,68,.1);color:#dc2626}
+.materials-table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}
+.materials-table th{padding:7px 10px;background:#f8fafc;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--border);text-align:left}
+.materials-table td{padding:7px 10px;border-bottom:1px solid #f8fafc}
+
+/* ── Document cards ── */
+.doc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:18px}
+.doc-card{border:1px solid var(--border);border-radius:10px;padding:16px;background:#fff;cursor:pointer;transition:all .15s;text-align:center}
+.doc-card:hover{border-color:var(--orange);box-shadow:0 2px 8px rgba(249,115,22,.12)}
+.doc-card.generated{border-color:rgba(16,185,129,.3);background:rgba(16,185,129,.03)}
+.doc-card i{font-size:28px;margin-bottom:8px;display:block}
+.doc-card-title{font-size:13px;font-weight:600;margin-bottom:3px}
+.doc-card-sub{font-size:11px;color:var(--muted)}
+#doc-preview{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;font-size:13px}
+
+/* ── Checklist ── */
+.checklist-section{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+.checklist-section h4{font-size:13px;font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.check-item{display:flex;align-items:flex-start;gap:10px;padding:5px 0;font-size:13px;cursor:pointer;user-select:none}
+.check-item input[type=checkbox]{width:16px;height:16px;cursor:pointer;flex-shrink:0;margin-top:1px;accent-color:var(--orange)}
+.check-item.done span{text-decoration:line-through;color:var(--muted)}
+
+/* ── Candidatures ── */
+.cand-table{width:100%;border-collapse:collapse;font-size:13px}
+.cand-table th{padding:9px 14px;background:#f8fafc;text-align:left;font-weight:600;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--border)}
+.cand-table td{padding:11px 14px;border-bottom:1px solid #f8fafc;vertical-align:middle}
+.cand-table tr:hover td{background:#fafcff}
+.status-select{padding:4px 8px;border:1px solid var(--border);border-radius:6px;font-size:12px;font-family:inherit;background:#fff;cursor:pointer}
+
+/* ── Copilot ── */
+#chat-messages{height:420px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;background:#f8fafc;border-radius:10px;margin-bottom:12px}
+.msg{max-width:78%;padding:10px 14px;border-radius:12px;font-size:13px;line-height:1.5;white-space:pre-wrap}
+.msg-user{background:var(--sidebar);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+.msg-ai{background:#fff;border:1px solid var(--border);align-self:flex-start;border-bottom-left-radius:3px}
+.msg-ai.typing{color:var(--muted);font-style:italic}
+.chat-input-row{display:flex;gap:8px}
+#chat-input{flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;outline:none;resize:none;background:#fff;height:44px}
+#chat-input:focus{border-color:var(--orange)}
+.btn-send{background:var(--orange);color:#fff;border:none;border-radius:8px;padding:0 16px;font-size:15px;cursor:pointer}
+
+/* ── Settings ── */
+.settings-tabs{display:flex;gap:4px;margin-bottom:22px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:4px;width:fit-content}
+.settings-tab-btn{padding:7px 18px;border:none;border-radius:7px;font-size:13px;font-weight:500;cursor:pointer;background:none;color:var(--muted);transition:all .15s;font-family:inherit;display:flex;align-items:center;gap:6px}
+.settings-tab-btn.active{background:var(--orange-light);color:var(--orange);font-weight:600}
+.settings-section{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.settings-section h3{font-size:14px;font-weight:600;margin-bottom:16px;display:flex;align-items:center;gap:7px;color:var(--text)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:12px}
+.form-group{margin-bottom:12px}
+.form-group label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:5px}
+.form-control{width:100%;padding:8px 12px;border:1px solid var(--border);border-radius:8px;font-size:13px;font-family:inherit;outline:none;background:#fff}
+.form-control:focus{border-color:var(--orange)}
+.pw-wrap{position:relative}
+.pw-wrap .form-control{padding-right:36px}
+.pw-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:var(--muted);font-size:16px}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--border)}
+.toggle-row:last-child{border-bottom:none}
+.toggle-label{font-size:13px;font-weight:500}
+.toggle-sub{font-size:12px;color:var(--muted);margin-top:1px}
+.toggle-switch{position:relative;width:42px;height:24px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0}
+.toggle-slider{position:absolute;inset:0;background:#cbd5e1;border-radius:24px;cursor:pointer;transition:.2s}
+.toggle-slider:before{content:'';position:absolute;height:18px;width:18px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:.2s}
+.toggle-switch input:checked + .toggle-slider{background:var(--sidebar)}
+.toggle-switch input:checked + .toggle-slider:before{transform:translateX(18px)}
+.btn-save{background:var(--orange);color:#fff;border:none;border-radius:8px;padding:9px 22px;font-size:13px;font-weight:600;cursor:pointer;transition:opacity .15s;display:flex;align-items:center;gap:6px}
+.btn-save:hover{opacity:.85}
+.keywords-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px;margin-top:10px}
+.kw-item{display:flex;align-items:center;gap:8px;padding:6px 10px;background:#f8fafc;border:1px solid var(--border);border-radius:7px;font-size:12px}
+.kw-check{accent-color:var(--orange);flex-shrink:0}
+.kw-remove{margin-left:auto;background:none;border:none;color:var(--muted);cursor:pointer;font-size:14px;padding:0}
+.kw-remove:hover{color:var(--danger)}
+
+/* ── Notifications ── */
+.notif-list{display:flex;flex-direction:column;gap:8px}
+.notif-item{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;gap:12px;cursor:pointer;transition:border-color .15s}
+.notif-item:hover{border-color:#cbd5e1}
+.notif-item.unread{border-left:3px solid var(--orange)}
+.notif-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.notif-type-new_bons .notif-icon{background:rgba(16,185,129,.1);color:var(--success)}
+.notif-type-error .notif-icon{background:rgba(239,68,68,.1);color:var(--danger)}
+.notif-type-candidature .notif-icon{background:var(--orange-light);color:var(--orange)}
+.notif-type-default .notif-icon{background:#f1f5f9;color:var(--muted)}
+.notif-title{font-size:13px;font-weight:600;margin-bottom:3px}
+.notif-msg{font-size:12px;color:var(--muted);line-height:1.4}
+.notif-time{font-size:11px;color:var(--muted);margin-top:4px}
+
+/* ── Analytics ── */
+.analytics-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.bar-chart{margin-top:10px}
+.bar-item{display:flex;align-items:center;gap:10px;margin-bottom:8px;font-size:12px}
+.bar-label{width:140px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--muted)}
+.bar-track{flex:1;background:#f1f5f9;border-radius:20px;height:8px;overflow:hidden}
+.bar-fill{height:100%;border-radius:20px;background:var(--orange);transition:width .4s}
+.bar-num{width:30px;text-align:right;font-weight:600;color:var(--text)}
+
+/* ── Toast ── */
+#toast{position:fixed;bottom:24px;right:24px;background:#1e293b;color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;font-weight:500;z-index:9999;display:none;align-items:center;gap:8px;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
+#toast.show{display:flex}
+#toast.toast-ok i{color:var(--success)}
+#toast.toast-err i{color:var(--danger)}
+
+/* ── Loading ── */
+.loading{text-align:center;padding:30px;color:var(--muted);font-size:13px}
+.spinner{display:inline-block;width:20px;height:20px;border:2px solid var(--border);border-top-color:var(--orange);border-radius:50%;animation:spin .7s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<!-- ═══ SIDEBAR ═══ -->
+<nav id="sidebar">
+  <div class="sb-logo">
+    <div class="sb-logo-icon"><i class="bi bi-basket2-fill"></i></div>
+    <div><div class="sb-logo-text">Marché Public</div><div class="sb-logo-sub">Automatisation IA</div></div>
+  </div>
+
+  <div class="sb-section">PRINCIPAL</div>
+  <button class="sb-item active" data-page="home"         onclick="navTo('home')">        <i class="bi bi-grid-1x2-fill"></i> Tableau de bord</button>
+  <button class="sb-item"        data-page="dashboard"    onclick="navTo('dashboard')">   <i class="bi bi-cart3"></i> Bons de commande</button>
+  <button class="sb-item"        data-page="candidatures" onclick="navTo('candidatures')"><i class="bi bi-file-earmark-check"></i> Candidatures <span class="sb-badge" id="sb-cand-count" style="display:none">0</span></button>
+
+  <div class="sb-section">GESTION</div>
+  <button class="sb-item" data-page="profil"    onclick="navTo('profil')">   <i class="bi bi-building"></i> Profil entreprise</button>
+  <button class="sb-item" data-page="documents" onclick="navTo('documents')"><i class="bi bi-folder2-open"></i> Documents</button>
+  <button class="sb-item" data-page="bordereau" onclick="navTo('bordereau')"><i class="bi bi-list-columns-reverse"></i> Bordereau de Prix</button>
+  <button class="sb-item" data-page="catalogue" onclick="navTo('catalogue')"><i class="bi bi-tags"></i> Catalogue de Prix</button>
+  <button class="sb-item" data-page="analytics" onclick="navTo('analytics')"><i class="bi bi-bar-chart-line"></i> Analytiques</button>
+
+  <div class="sb-section">SYSTÈME</div>
+  <button class="sb-item" data-page="copilot"  onclick="navTo('copilot')"> <i class="bi bi-stars"></i> Assistant IA</button>
+  <button class="sb-item" data-page="notifs"   onclick="navTo('notifs')">  <i class="bi bi-bell"></i> Notifications <span class="sb-badge" id="sb-notif-count" style="display:none">0</span></button>
+  <button class="sb-item" data-page="settings" onclick="navTo('settings')"><i class="bi bi-gear"></i> Paramètres</button>
+
+  <div class="sb-user">
+    <div class="sb-avatar">M</div>
+    <div class="sb-user-info">
+      <div class="sb-user-name">Mon Compte</div>
+      <div class="sb-user-email">marchespublics.gov.ma</div>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ MAIN ═══ -->
+<div id="main">
+  <div id="topbar">
+    <span class="tb-breadcrumb"><i class="bi bi-layout-sidebar"></i> <span id="tb-page-name" class="tb-title">Tableau de bord</span></span>
+    <div class="tb-actions">
+      <button class="btn-topbar" onclick="navTo('settings')"><i class="bi bi-gear"></i> Configuration</button>
+      <div class="btn-notif" onclick="navTo('notifs')" title="Notifications"><i class="bi bi-bell"></i><span class="notif-dot" id="notif-dot" style="display:none"></span></div>
+    </div>
+  </div>
+
+  <div id="content">
+
+    <!-- ══ DASHBOARD ══ -->
+    <div class="pi-page active" id="page-home">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;gap:16px">
+        <div><h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Tableau de bord</h1>
+        <p style="font-size:13px;color:var(--muted)">Portail Marocain des Marchés Publics — Automatisation</p></div>
+        <button class="btn-sync" onclick="triggerScrape()"><i class="bi bi-lightning-charge-fill"></i> Synchroniser</button>
+      </div>
+      <div class="kpi-grid">
+        <div class="kpi-card" onclick="navTo('dashboard')">
+          <div class="kpi-icon" style="background:#f0f9ff;color:#0284c7"><i class="bi bi-cart3"></i></div>
+          <div><div class="kpi-val" id="kpi-bons">0</div><div class="kpi-label">Bons de commande</div></div>
+          <i class="bi bi-chevron-right kpi-arrow"></i>
+        </div>
+        <div class="kpi-card" onclick="navTo('candidatures')">
+          <div class="kpi-icon" style="background:#fff7ed;color:#ea580c"><i class="bi bi-file-earmark-check"></i></div>
+          <div><div class="kpi-val" id="kpi-cands">0</div><div class="kpi-label">Candidatures</div></div>
+          <i class="bi bi-chevron-right kpi-arrow"></i>
+        </div>
+        <div class="kpi-card" onclick="navTo('analytics')">
+          <div class="kpi-icon" style="background:#f0fdf4;color:#16a34a"><i class="bi bi-graph-up-arrow"></i></div>
+          <div><div class="kpi-val" id="kpi-analyzed">0</div><div class="kpi-label">Analysés IA</div></div>
+          <i class="bi bi-chevron-right kpi-arrow"></i>
+        </div>
+        <div class="kpi-card" onclick="navTo('notifs')">
+          <div class="kpi-icon" style="background:#faf5ff;color:#9333ea"><i class="bi bi-bell"></i></div>
+          <div><div class="kpi-val" id="kpi-notifs">0</div><div class="kpi-label">Notifications</div></div>
+          <i class="bi bi-chevron-right kpi-arrow"></i>
+        </div>
+      </div>
+      <div class="sync-bar">
+        <div class="status-dot dot-ok" id="sync-dot"></div>
+        <label>Nb. bons:</label>
+        <input type="number" class="sync-nb" id="sync-nb-home" value="50" min="5" max="200">
+        <button class="btn-sync" onclick="triggerScrape()"><i class="bi bi-arrow-clockwise"></i> Lancer</button>
+        <span id="sync-progress">Prêt — scraping quotidien actif à 06:00</span>
+      </div>
+      <div class="dash-grid">
+        <div>
+          <div class="dash-panel" style="margin-bottom:18px">
+            <div class="dash-panel-hdr">
+              <h3><i class="bi bi-clock-history" style="color:var(--muted);margin-right:4px"></i> Historique des synchronisations</h3>
+              <button class="link-orange" onclick="navTo('settings')">Configurer <i class="bi bi-arrow-right"></i></button>
+            </div>
+            <table class="hist-table">
+              <thead><tr><th>Date</th><th>Heure</th><th>Nouveaux</th><th>Total</th><th>Statut</th></tr></thead>
+              <tbody id="hist-tbody"><tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Aucun historique</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <div class="dash-panel" style="margin-bottom:18px">
+            <div class="dash-panel-hdr"><h3>Bons récents</h3><button class="link-orange" onclick="navTo('dashboard')">Voir tout <i class="bi bi-arrow-right"></i></button></div>
+            <div id="dash-recent-list"><p class="loading">Chargement...</p></div>
+          </div>
+          <div class="dash-panel">
+            <div class="dash-panel-hdr"><h3>Candidatures</h3><button class="link-orange" onclick="navTo('candidatures')">Voir tout <i class="bi bi-arrow-right"></i></button></div>
+            <div id="dash-cands-list"><p style="font-size:13px;color:var(--muted);text-align:center;padding:12px 0">Aucune candidature</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══ ORDERS ══ -->
+    <div class="pi-page" id="page-dashboard">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:20px;gap:16px;flex-wrap:wrap">
+        <div><h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Bons de commande</h1>
+        <p style="font-size:13px;color:var(--muted)" id="orders-subtitle">0 résultats — marchespublics.gov.ma</p></div>
+        <button class="btn-sync" onclick="triggerScrape()"><i class="bi bi-lightning-charge-fill"></i> Synchroniser</button>
+      </div>
+      <div class="orders-toolbar">
+        <div class="search-wrap"><i class="bi bi-search"></i>
+          <input type="text" class="search-input" id="search-input" placeholder="Rechercher par objet, acheteur, référence..." oninput="filterProjects()"></div>
+        <select class="filter-select" id="filter-cat"    onchange="filterProjects()"><option value="">Toutes catégories</option></select>
+        <select class="filter-select" id="filter-city"   onchange="filterProjects()"><option value="">Toutes villes</option></select>
+        <select class="filter-select" id="filter-status" onchange="filterProjects()">
+          <option value="">Tous statuts</option><option value="en cours">En cours</option><option value="clos">Clos</option>
+        </select>
+      </div>
+      <div id="orders-grid"><div class="loading"><span class="spinner"></span>Chargement...</div></div>
+    </div>
+
+    <!-- ══ DETAIL ══ -->
+    <div class="pi-page" id="page-detail">
+      <button class="detail-back" onclick="navTo('dashboard')"><i class="bi bi-arrow-left"></i> Retour aux bons</button>
+      <div id="detail-content"><div class="loading"><span class="spinner"></span>Chargement...</div></div>
+    </div>
+
+    <!-- ══ CANDIDATURES ══ -->
+    <div class="pi-page" id="page-candidatures">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div><h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Candidatures</h1>
+        <p style="font-size:13px;color:var(--muted)">Suivi de vos soumissions aux marchés publics</p></div>
+      </div>
+      <div class="card" style="padding:0;overflow:hidden">
+        <div id="cand-table-wrap" style="padding:20px"><div class="loading"><span class="spinner"></span>Chargement...</div></div>
+      </div>
+    </div>
+
+    <!-- ══ COPILOT ══ -->
+    <div class="pi-page" id="page-copilot">
+      <div style="margin-bottom:20px">
+        <h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Assistant IA</h1>
+        <p style="font-size:13px;color:var(--muted)">Copilote Llama 3.3 70B — posez vos questions sur les marchés publics</p>
+      </div>
+      <div class="card">
+        <div id="chat-messages"></div>
+        <div class="chat-input-row">
+          <textarea id="chat-input" placeholder="Posez une question... (Entrée pour envoyer, Shift+Entrée pour nouvelle ligne)" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendChat()}"></textarea>
+          <button class="btn-send" onclick="sendChat()"><i class="bi bi-send-fill"></i></button>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:8px"><i class="bi bi-info-circle"></i> Ouvrez un bon et cliquez <em>Analyser avec IA</em> pour donner le contexte automatiquement.</p>
+      </div>
+    </div>
+
+    <!-- ══ SETTINGS ══ -->
+    <div class="pi-page" id="page-settings">
+      <div style="margin-bottom:20px">
+        <h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Paramètres</h1>
+        <p style="font-size:13px;color:var(--muted)">Configuration du système d'automatisation</p>
+      </div>
+      <div class="settings-tabs">
+        <button class="settings-tab-btn active" onclick="switchSettingsTab('general',this)"><i class="bi bi-sliders"></i> Général</button>
+        <button class="settings-tab-btn" onclick="switchSettingsTab('keywords',this)"><i class="bi bi-search"></i> Mots-clés scraping</button>
+        <button class="settings-tab-btn" onclick="switchSettingsTab('schedule',this)"><i class="bi bi-calendar-check"></i> Planification</button>
+      </div>
+
+      <div id="stab-general">
+        <div class="settings-section">
+          <h3><i class="bi bi-arrow-repeat" style="color:var(--orange)"></i> Synchronisation</h3>
+          <div class="form-row">
+            <div class="form-group"><label>Nb. bons max par scraping</label><input type="number" class="form-control" id="s-maxitems" value="50" min="5" max="200"></div>
+            <div class="form-group"><label>Délai entre requêtes (ms)</label><input type="number" class="form-control" id="s-delay" value="2000"></div>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3><i class="bi bi-stars" style="color:var(--orange)"></i> Automatisation IA</h3>
+          <div class="toggle-row"><div><div class="toggle-label">Analyse automatique</div><div class="toggle-sub">Analyser automatiquement les nouveaux bons</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="s-auto-analyze" checked><span class="toggle-slider"></span></label></div>
+          <div class="toggle-row"><div><div class="toggle-label">Alertes délais</div><div class="toggle-sub">Recevoir des alertes avant expiration des bons</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="s-alerts" checked><span class="toggle-slider"></span></label></div>
+        </div>
+        <div class="settings-section">
+          <h3><i class="bi bi-shield-lock" style="color:var(--orange)"></i> Identifiants marchespublics.gov.ma</h3>
+          <div class="form-group"><label>Identifiant ICE / Login</label><input type="text" class="form-control" id="s-username" placeholder="003XXXXXXXXX"></div>
+          <div class="form-group"><label>Mot de passe</label><div class="pw-wrap">
+            <input type="password" class="form-control" id="s-password" placeholder="••••••••">
+            <button class="pw-toggle" onclick="togglePw('s-password',this)" type="button"><i class="bi bi-eye"></i></button>
+          </div></div>
+        </div>
+        <div class="settings-section">
+          <h3><i class="bi bi-cpu" style="color:var(--orange)"></i> Clés API IA</h3>
+          <div class="form-group"><label>Groq API Key</label><div class="pw-wrap">
+            <input type="password" class="form-control" id="s-groq" placeholder="gsk_...">
+            <button class="pw-toggle" onclick="togglePw('s-groq',this)" type="button"><i class="bi bi-eye"></i></button>
+          </div></div>
+        </div>
+        <button class="btn-save" onclick="saveSettings()"><i class="bi bi-check-lg"></i> Sauvegarder</button>
+      </div>
+
+      <div id="stab-keywords" style="display:none">
+        <div class="settings-section">
+          <h3><i class="bi bi-tags" style="color:var(--orange)"></i> Mots-clés de filtrage</h3>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:14px">Seuls les bons dont le titre ou la description contient au moins un de ces mots-clés seront conservés lors du scraping.</p>
+          <div class="keywords-grid" id="keywords-grid"></div>
+          <div style="display:flex;gap:8px;margin-top:12px;align-items:center">
+            <input type="text" class="form-control" id="new-kw-input" placeholder="Ajouter un mot-clé..." style="max-width:280px" onkeydown="if(event.key==='Enter')addKeyword()">
+            <button class="btn-save" onclick="addKeyword()" style="padding:8px 14px"><i class="bi bi-plus-lg"></i> Ajouter</button>
+          </div>
+        </div>
+        <button class="btn-save" onclick="saveKeywords()"><i class="bi bi-check-lg"></i> Sauvegarder mots-clés</button>
+      </div>
+
+      <div id="stab-schedule" style="display:none">
+        <div class="settings-section">
+          <h3><i class="bi bi-calendar-check" style="color:var(--orange)"></i> Scraping automatique quotidien</h3>
+          <div class="toggle-row">
+            <div><div class="toggle-label">Activer le scraping quotidien</div><div class="toggle-sub">Récupérer automatiquement les bons chaque jour</div></div>
+            <label class="toggle-switch"><input type="checkbox" id="s-daily-enabled" checked><span class="toggle-slider"></span></label>
+          </div>
+          <div class="form-group" style="margin-top:14px">
+            <label>Heure d'exécution (Heure Maroc)</label>
+            <input type="time" class="form-control" id="s-daily-time" value="06:00" style="max-width:140px">
+          </div>
+          <p style="font-size:12px;color:var(--muted);margin-top:8px"><i class="bi bi-info-circle"></i> Le serveur doit être actif. Fuseau: Africa/Casablanca.</p>
+        </div>
+        <button class="btn-save" onclick="saveSchedule()"><i class="bi bi-check-lg"></i> Sauvegarder planification</button>
+      </div>
+    </div>
+
+    <!-- ══ NOTIFICATIONS ══ -->
+    <div class="pi-page" id="page-notifs">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
+        <div><h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Notifications</h1>
+        <p style="font-size:13px;color:var(--muted)">Alertes et événements du système</p></div>
+        <button class="btn-save" style="background:var(--sidebar)" onclick="markAllRead()"><i class="bi bi-check-all"></i> Tout marquer lu</button>
+      </div>
+      <div id="notifs-list"><div class="loading"><span class="spinner"></span>Chargement...</div></div>
+    </div>
+
+    <!-- ══ ANALYTICS ══ -->
+    <div class="pi-page" id="page-analytics">
+      <div style="margin-bottom:20px">
+        <h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Analytiques</h1>
+        <p style="font-size:13px;color:var(--muted)">Statistiques des bons de commande récupérés</p>
+      </div>
+      <div id="analytics-content"><div class="loading"><span class="spinner"></span>Chargement...</div></div>
+    </div>
+
+    <!-- ══ DOCUMENTS ══ -->
+    <div class="pi-page" id="page-documents">
+      <div style="margin-bottom:20px">
+        <h1 style="font-size:22px;font-weight:700;margin-bottom:3px">Documents</h1>
+        <p style="font-size:13px;color:var(--muted)">Documents générés par l'IA pour vos candidatures</p>
+      </div>
+      <div id="all-docs-list"><div class="loading"><span class="spinner"></span>Chargement...</div></div>
+    </div>
+
+    <!-- ══ STUBS ══ -->
+    <div class="pi-page" id="page-profil">
+      <h1 style="font-size:22px;font-weight:700;margin-bottom:20px">Profil entreprise</h1>
+      <div class="settings-section">
+        <h3><i class="bi bi-building" style="color:var(--orange)"></i> Informations générales</h3>
+        <div class="form-row">
+          <div class="form-group"><label>Raison sociale</label><input type="text" class="form-control" placeholder="SARL / SA..."></div>
+          <div class="form-group"><label>ICE</label><input type="text" class="form-control" placeholder="003674240000039"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>RC</label><input type="text" class="form-control" placeholder="Numéro RC"></div>
+          <div class="form-group"><label>Patente</label><input type="text" class="form-control" placeholder="Numéro patente"></div>
+        </div>
+        <div class="form-group"><label>Adresse</label><input type="text" class="form-control" placeholder="Adresse complète"></div>
+        <button class="btn-save" style="margin-top:6px"><i class="bi bi-check-lg"></i> Sauvegarder</button>
+      </div>
+    </div>
+    <div class="pi-page" id="page-bordereau">
+      <h1 style="font-size:22px;font-weight:700;margin-bottom:20px">Bordereau de Prix</h1>
+      <div style="text-align:center;padding:60px 20px">
+        <i class="bi bi-list-columns-reverse" style="font-size:48px;color:#cbd5e1;margin-bottom:14px;display:block"></i>
+        <p style="font-size:14px;font-weight:600;color:#94a3b8;margin-bottom:6px">Bordereau global</p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:16px">Ouvrez un bon de commande et générez son bordereau depuis l'onglet Documents.</p>
+        <button class="btn-save" onclick="navTo('dashboard')" style="margin:0 auto"><i class="bi bi-cart3"></i> Voir les bons</button>
+      </div>
+    </div>
+    <div class="pi-page" id="page-catalogue">
+      <h1 style="font-size:22px;font-weight:700;margin-bottom:20px">Catalogue de Prix</h1>
+      <div style="text-align:center;padding:60px 20px">
+        <i class="bi bi-tags" style="font-size:48px;color:#cbd5e1;margin-bottom:14px;display:block"></i>
+        <p style="font-size:14px;font-weight:600;color:#94a3b8">Catalogue en cours de construction</p>
+        <p style="font-size:13px;color:var(--muted)">Les prix seront extraits automatiquement de vos devis générés.</p>
+      </div>
+    </div>
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<div id="toast"><i class="bi bi-check-circle-fill"></i><span id="toast-msg"></span></div>
+
+<script>
+/* ── State ── */
+let allProjects = []
+let currentProject = null
+let chatHistory = []
+let currentDetailBonId = null
+let settingsKeywords = null
+let detailChecks = {}
+
+/* ── Boot ── */
+document.addEventListener('DOMContentLoaded', () => {
+  fetchStats()
+  fetchProjects()
+  loadSyncHistory()
+  loadSettings()
+  // Welcome message in chat
+  const msgs = document.getElementById('chat-messages')
+  if (msgs) {
+    const d = document.createElement('div')
+    d.className = 'msg msg-ai'
+    d.textContent = 'Bonjour ! Je suis votre Copilote IA pour les marchés publics marocains. Posez-moi vos questions sur les bons de commande, devis, stratégies de soumission, ou demandez-moi d\'analyser un projet spécifique.'
+    msgs.appendChild(d)
+  }
+})
+
+/* ── Navigation ── */
+const PAGE_TITLES = {
+  home:'Tableau de bord', dashboard:'Bons de commande', detail:'Détail du bon',
+  candidatures:'Candidatures', copilot:'Assistant IA', settings:'Paramètres',
+  notifs:'Notifications', analytics:'Analytiques', documents:'Documents',
+  profil:'Profil entreprise', bordereau:'Bordereau de Prix', catalogue:'Catalogue de Prix',
+}
+function navTo(name) {
+  document.querySelectorAll('.pi-page').forEach(p => p.classList.remove('active'))
+  const pg = document.getElementById('page-' + name)
+  if (pg) pg.classList.add('active')
+  document.querySelectorAll('.sb-item').forEach(b => b.classList.toggle('active', b.dataset.page === name))
+  document.getElementById('tb-page-name').textContent = PAGE_TITLES[name] || name
+  if (name === 'candidatures') loadCandidatures()
+  if (name === 'analytics')    loadAnalytics()
+  if (name === 'notifs')       loadNotifs()
+  if (name === 'documents')    loadAllDocs()
+}
+const showPage = navTo
+
+/* ── Stats ── */
+async function fetchStats() {
+  try {
+    const s = await fetch('/api/stats').then(r => r.json())
+    document.getElementById('kpi-bons').textContent     = s.totalBons     || 0
+    document.getElementById('kpi-cands').textContent    = s.candidatures  || 0
+    document.getElementById('kpi-analyzed').textContent = s.analyzed      || 0
+    document.getElementById('kpi-notifs').textContent   = s.unreadNotifs  || 0
+    if (s.candidatures > 0) { const b = document.getElementById('sb-cand-count'); b.textContent = s.candidatures; b.style.display = '' }
+    if (s.unreadNotifs > 0) {
+      const b = document.getElementById('sb-notif-count'); b.textContent = s.unreadNotifs; b.style.display = ''
+      document.getElementById('notif-dot').style.display = ''
+    }
+  } catch(e) {}
+}
+
+/* ── Projects ── */
+async function fetchProjects() {
+  try {
+    const d = await fetch('/api/projects?limit=1000').then(r => r.json())
+    allProjects = d.projects || []
+    renderProjects(allProjects)
+    renderDashboardRecent()
+    renderDashboardCands()
+    populateFilters()
+  } catch(e) {}
+}
+
+function populateFilters() {
+  const cats   = [...new Set(allProjects.map(p => p.category).filter(Boolean))].sort()
+  const cities = [...new Set(allProjects.map(p => p.location).filter(Boolean))].sort()
+  const catSel  = document.getElementById('filter-cat')
+  const citySel = document.getElementById('filter-city')
+  cats.forEach(c => { if (!catSel.querySelector(`option[value="${c}"]`)) catSel.appendChild(new Option(c,c)) })
+  cities.forEach(c => { if (!citySel.querySelector(`option[value="${c}"]`)) citySel.appendChild(new Option(c,c)) })
+}
+
+function filterProjects() {
+  const q    = document.getElementById('search-input').value.toLowerCase()
+  const cat  = document.getElementById('filter-cat').value.toLowerCase()
+  const city = document.getElementById('filter-city').value.toLowerCase()
+  const st   = document.getElementById('filter-status').value.toLowerCase()
+  const res  = allProjects.filter(p => {
+    const hay = [p.title, p.buyer, p.reference, p.description].join(' ').toLowerCase()
+    return (!q    || hay.includes(q))
+        && (!cat  || (p.category||'').toLowerCase().includes(cat))
+        && (!city || (p.location||'').toLowerCase().includes(city))
+        && (!st   || (p.resultStatus||'').toLowerCase().includes(st))
+  })
+  renderProjects(res)
+}
+
+function renderProjects(list) {
+  const el = document.getElementById('orders-grid')
+  document.getElementById('orders-subtitle').textContent = `${list.length} résultat${list.length!==1?'s':''} — marchespublics.gov.ma`
+  if (!list.length) {
+    el.innerHTML = `<div class="empty-state"><i class="bi bi-cart-x"></i><p>Aucun bon de commande</p><small>Lancez une synchronisation pour récupérer les données</small></div>`
+    return
+  }
+  el.innerHTML = list.map(p => `<div class="order-card" onclick="openProject('${p.id}')">
+    <div class="order-badges">
+      ${p.reference ? `<span class="badge badge-ref">${h(p.reference)}</span>` : ''}
+      ${p.category  ? `<span class="badge badge-cat">${h(p.category)}</span>`  : ''}
+      <span class="badge ${p.candidatureStatus ? 'badge-status-cand' : p.resultStatus?.toLowerCase().includes('clos') ? 'badge-status-clos' : 'badge-status-actif'}">${h(p.candidatureStatus || p.resultStatus || 'Actif')}</span>
+    </div>
+    <div class="order-title">${h(p.title)}</div>
+    <div class="order-meta">
+      ${p.buyer    ? `<span><i class="bi bi-building"></i>${h(p.buyer.substring(0,40))}</span>` : ''}
+      ${p.location ? `<span><i class="bi bi-geo-alt"></i>${h(p.location)}</span>` : ''}
+      ${p.estimatedBudget ? `<span><i class="bi bi-currency-exchange"></i>${h(p.estimatedBudget)}</span>` : ''}
+    </div>
+    <div class="order-footer">
+      ${p.deadline ? `<span class="order-deadline"><i class="bi bi-calendar3"></i>${h(p.deadline)}</span>` : '<span></span>'}
+      <button class="btn-postuler ${p.candidatureStatus?'done':''}" onclick="event.stopPropagation();postuler('${p.id}')">
+        ${p.candidatureStatus ? '<i class="bi bi-check-lg"></i> Postulé' : 'Postuler'}
+      </button>
+    </div>
+  </div>`).join('')
+}
+
+function renderDashboardRecent() {
+  const el = document.getElementById('dash-recent-list')
+  const list = allProjects.slice(0, 6)
+  if (!list.length) { el.innerHTML = '<p style="font-size:13px;color:var(--muted);text-align:center;padding:12px 0">Aucun bon chargé</p>'; return }
+  el.innerHTML = list.map(p => `<div class="recent-item" onclick="openProject('${p.id}')">
+    <div class="recent-dot"></div>
+    <div><div class="recent-title">${h(p.title.substring(0,60))}</div>
+    <div class="recent-meta">${h(p.buyer||'')}${p.location?' · '+h(p.location):''}</div></div>
+  </div>`).join('')
+}
+
+function renderDashboardCands() {
+  fetch('/api/candidatures').then(r => r.json()).then(list => {
+    const el = document.getElementById('dash-cands-list')
+    if (!list.length) { el.innerHTML = '<p style="font-size:13px;color:var(--muted);text-align:center;padding:12px 0">Aucune candidature</p>'; return }
+    el.innerHTML = list.slice(0,4).map(c => `<div class="recent-item" onclick="navTo('candidatures')">
+      <div class="recent-dot" style="background:var(--orange)"></div>
+      <div><div class="recent-title">${h((c.bonTitle||'').substring(0,55))}</div>
+      <div class="recent-meta">${h(c.status||'')} · ${h(c.bonDeadline||'')}</div></div>
+    </div>`).join('')
+  }).catch(()=>{})
+}
+
+/* ── Open detail ── */
+async function openProject(id) {
+  currentDetailBonId = id
+  navTo('detail')
+  document.getElementById('detail-content').innerHTML = '<div class="loading"><span class="spinner"></span>Chargement...</div>'
+  try {
+    const bon = await fetch(`/api/projects/${id}`).then(r => r.json())
+    currentProject = bon
+    renderDetail(bon)
+  } catch(e) { document.getElementById('detail-content').innerHTML = `<p style="color:var(--danger)">Erreur: ${e.message}</p>` }
+}
+
+function renderDetail(bon) {
+  const hasDocs = bon.documents && Object.keys(bon.documents).length > 0
+  document.getElementById('detail-content').innerHTML = `
+    <div class="detail-header">
+      <div class="detail-header-top">
+        <div style="flex:1">
+          <div class="order-badges" style="margin-bottom:10px">
+            ${bon.reference ? `<span class="badge badge-ref">${h(bon.reference)}</span>` : ''}
+            ${bon.category  ? `<span class="badge badge-cat">${h(bon.category)}</span>`  : ''}
+            <span class="badge badge-status-actif">${h(bon.resultStatus||'Actif')}</span>
+          </div>
+          <div class="detail-title">${h(bon.title)}</div>
+        </div>
+        <div style="display:flex;gap:8px;flex-shrink:0">
+          ${bon.candidature
+            ? `<span class="badge badge-status-cand" style="font-size:12px;padding:6px 12px"><i class="bi bi-check-circle"></i> ${h(bon.candidature.status)}</span>`
+            : `<button class="btn-postuler" onclick="postuler('${bon.id}')"><i class="bi bi-send"></i> Postuler</button>`}
+        </div>
+      </div>
+      <div class="detail-meta-grid">
+        ${bon.buyer          ? mi('Acheteur',     bon.buyer)          : ''}
+        ${bon.location       ? mi('Lieu',          bon.location)       : ''}
+        ${bon.deadline       ? mi('Délai',         bon.deadline)       : ''}
+        ${bon.estimatedBudget? mi('Budget estimé', bon.estimatedBudget+' MAD') : ''}
+        ${bon.caution        ? mi('Caution',       bon.caution)        : ''}
+        ${bon.contact        ? mi('Contact',       bon.contact)        : ''}
+        ${bon.publicationDate? mi('Publication',   bon.publicationDate): ''}
+        ${bon.sourceUrl ? `<div class="detail-meta-item"><label>Source</label><span><a href="${h(bon.sourceUrl)}" target="_blank" style="color:var(--orange)">Voir sur marchespublics <i class="bi bi-box-arrow-up-right" style="font-size:11px"></i></a></span></div>` : ''}
+      </div>
+    </div>
+
+    <div class="detail-nav">
+      <button class="detail-nav-btn active" onclick="switchDetailTab('info',this)"><i class="bi bi-info-circle"></i> Informations</button>
+      <button class="detail-nav-btn" onclick="switchDetailTab('analyse',this)"><i class="bi bi-stars"></i> Analyse IA</button>
+      <button class="detail-nav-btn" onclick="switchDetailTab('docs',this)"><i class="bi bi-file-earmark-text"></i> Documents</button>
+      <button class="detail-nav-btn" onclick="switchDetailTab('checklist',this)"><i class="bi bi-check2-square"></i> Checklist</button>
+    </div>
+
+    <div class="detail-tab active" id="dtab-info">
+      ${bon.description ? `<div class="card" style="margin-bottom:16px"><p style="font-size:13px;font-weight:600;margin-bottom:8px">Description</p><p style="font-size:13px;color:var(--muted);line-height:1.6">${h(bon.description)}</p></div>` : ''}
+      <div class="card">
+        <p style="font-size:13px;font-weight:600;margin-bottom:14px">Articles du marché</p>
+        ${bon.articles?.length ? `
+          <table class="articles-table">
+            <thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Qté</th><th>P.U HT</th><th>Montant HT</th></tr></thead>
+            <tbody>${bon.articles.map(a => `<tr>
+              <td>${a.num||''}</td><td>${h(a.designation)}</td><td>${h(a.unite||'U')}</td>
+              <td>${fn(a.quantite)}</td><td>${fn(a.prixUnitaireHT)} MAD</td><td>${fn(a.montantHT)} MAD</td>
+            </tr>`).join('')}</tbody>
+            ${bon.totalHT > 0 ? `<tfoot>
+              <tr class="total-row"><td colspan="5" style="text-align:right">Total HT</td><td>${fn(bon.totalHT)} MAD</td></tr>
+              <tr class="total-row"><td colspan="5" style="text-align:right">TVA 20%</td><td>${fn(bon.tva)} MAD</td></tr>
+              <tr class="total-row"><td colspan="5" style="text-align:right">Total TTC</td><td>${fn(bon.totalTTC)} MAD</td></tr>
+            </tfoot>` : ''}
+          </table>` : '<p style="font-size:13px;color:var(--muted);text-align:center;padding:20px">Aucun article détaillé disponible</p>'}
+      </div>
+    </div>
+
+    <div class="detail-tab" id="dtab-analyse">
+      ${bon.analysis ? renderAnalysisHtml(bon.analysis) : `
+        <div class="card" style="text-align:center;padding:36px">
+          <i class="bi bi-stars" style="font-size:40px;color:var(--orange);margin-bottom:12px;display:block"></i>
+          <p style="font-size:14px;font-weight:600;margin-bottom:6px">Analyse IA non effectuée</p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:20px">L'IA va analyser ce bon: complexité, équipe, matériaux, risques, fournisseurs.</p>
+          <button class="btn-save" id="btn-run-analysis" onclick="runAnalysis('${bon.id}')"><i class="bi bi-stars"></i> Analyser avec l'IA</button>
+        </div>`}
+    </div>
+
+    <div class="detail-tab" id="dtab-docs">
+      <div class="doc-grid">
+        ${['bordereau','devis','rfq','plan','checklist'].map(t => {
+          const has = hasDocs && bon.documents[t]
+          return `<div class="doc-card ${has?'generated':''}" onclick="generateDoc('${bon.id}','${t}')">
+            <i class="bi ${docIcon(t)}" style="color:${has?'var(--success)':'var(--muted)'}"></i>
+            <div class="doc-card-title">${docLabel(t)}</div>
+            <div class="doc-card-sub">${has ? '<span style="color:var(--success)">✓ Généré — cliquer pour voir</span>' : 'Cliquer pour générer'}</div>
+          </div>`
+        }).join('')}
+        <div class="doc-card" onclick="generateAllDocs('${bon.id}')">
+          <i class="bi bi-collection" style="color:var(--orange)"></i>
+          <div class="doc-card-title">Tout générer</div>
+          <div class="doc-card-sub">5 documents IA en une fois</div>
+        </div>
+      </div>
+      <div id="doc-preview" style="display:none"></div>
+    </div>
+
+    <div class="detail-tab" id="dtab-checklist">
+      ${bon.documents?.checklist ? renderChecklistHtml(bon.documents.checklist, bon.id) : `
+        <div class="card" style="text-align:center;padding:36px">
+          <i class="bi bi-check2-square" style="font-size:40px;color:var(--orange);margin-bottom:12px;display:block"></i>
+          <p style="font-size:14px;font-weight:600;margin-bottom:6px">Checklist non générée</p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Générez la checklist de soumission IA pour ce bon.</p>
+          <button class="btn-save" onclick="generateDoc('${bon.id}','checklist')"><i class="bi bi-check2-square"></i> Générer la checklist</button>
+        </div>`}
+    </div>`
+}
+
+function mi(label, val) {
+  return `<div class="detail-meta-item"><label>${label}</label><span>${h(val)}</span></div>`
+}
+
+function renderAnalysisHtml(a) {
+  return `<div class="card">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px">
+      <span class="complexity-badge complexity-${a.complexity||'Medium'}">${a.complexity||'Medium'}</span>
+      <span style="font-size:13px;color:var(--muted)">${a.durationDays||'?'} jours · ${a.teamSize||'?'} personnes · Marge: ${a.marginOpportunity||'?'}</span>
+    </div>
+    <div class="analysis-grid">
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Rôles requis</label>
+        <div class="tag-list">${(a.roles||[]).map(r=>`<span class="tag">${h(r)}</span>`).join('')||'—'}</div></div>
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Fournisseurs</label>
+        <div class="tag-list">${(a.suppliers||[]).map(s=>`<span class="tag tag-orange">${h(s)}</span>`).join('')||'—'}</div></div>
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Risques</label>
+        <div class="tag-list">${(a.risks||[]).map(r=>`<span class="tag" style="background:rgba(239,68,68,.08);color:#dc2626">${h(r)}</span>`).join('')||'—'}</div></div>
+      <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px;display:block">Mitigations</label>
+        <div class="tag-list">${(a.mitigations||[]).map(m=>`<span class="tag" style="background:rgba(16,185,129,.08);color:#059669">${h(m)}</span>`).join('')||'—'}</div></div>
+    </div>
+    ${a.materials?.length ? `<div style="margin-top:16px"><label style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:8px;display:block">Matériaux estimés</label>
+    <table class="materials-table"><thead><tr><th>Matériau</th><th>Qté</th><th>Unité</th><th>Spécification</th></tr></thead>
+    <tbody>${a.materials.map(m=>`<tr><td>${h(m.name)}</td><td>${h(String(m.quantity||''))}</td><td>${h(m.unit||'')}</td><td style="color:var(--muted)">${h(m.specification||'')}</td></tr>`).join('')}</tbody></table></div>` : ''}
+    ${a.notes ? `<div style="margin-top:14px;padding:12px;background:#f8fafc;border-radius:8px;font-size:13px;color:var(--muted)">${h(a.notes)}</div>` : ''}
+  </div>`
+}
+
+function renderChecklistHtml(cl, bonId) {
+  if (!detailChecks[bonId]) detailChecks[bonId] = {}
+  const sections = [
+    {key:'submission',     icon:'bi-send',         title:'Documents de soumission'},
+    {key:'technical',      icon:'bi-tools',         title:'Dossier technique'},
+    {key:'administrative', icon:'bi-card-list',     title:'Dossier administratif'},
+    {key:'financial',      icon:'bi-cash-stack',    title:'Dossier financier'},
+  ]
+  return sections.filter(s => cl[s.key]?.length).map(s => `
+    <div class="checklist-section"><h4><i class="bi ${s.icon}" style="color:var(--orange)"></i> ${s.title}</h4>
+    ${cl[s.key].map((item,i) => {
+      const ckId = `ck-${s.key}-${i}`
+      const chk  = detailChecks[bonId][ckId]
+      return `<div class="check-item ${chk?'done':''}" onclick="toggleCheck('${ckId}','${bonId}',this)">
+        <input type="checkbox" id="${ckId}" ${chk?'checked':''}><span>${h(item)}</span></div>`
+    }).join('')}</div>`
+  ).join('') + `<div class="card" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px">
+    <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase">Date limite</label><div style="font-weight:600;margin-top:3px">${h(cl.deadline||'À vérifier')}</div></div>
+    <div><label style="font-size:11px;color:var(--muted);text-transform:uppercase">Caution provisoire</label><div style="font-weight:600;margin-top:3px">${h(cl.caution||'À vérifier')}</div></div>
+  </div>`
+}
+
+function toggleCheck(ckId, bonId, container) {
+  if (!detailChecks[bonId]) detailChecks[bonId] = {}
+  detailChecks[bonId][ckId] = !detailChecks[bonId][ckId]
+  const cb = document.getElementById(ckId)
+  if (cb) cb.checked = detailChecks[bonId][ckId]
+  container.classList.toggle('done', detailChecks[bonId][ckId])
+}
+
+function switchDetailTab(name, btn) {
+  document.querySelectorAll('.detail-tab').forEach(t => t.classList.remove('active'))
+  document.querySelectorAll('.detail-nav-btn').forEach(b => b.classList.remove('active'))
+  const tab = document.getElementById('dtab-' + name)
+  if (tab) tab.classList.add('active')
+  if (btn) btn.classList.add('active')
+}
+
+/* ── Postuler ── */
+async function postuler(bonId) {
+  try {
+    const r = await fetch('/api/candidatures', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ bonId })
+    })
+    const d = await r.json()
+    if (r.status === 409) { showToast('Candidature déjà créée pour ce bon','err'); return }
+    if (!d.success)       { showToast(d.error||'Erreur','err'); return }
+    showToast('Candidature créée !')
+    fetchProjects(); fetchStats()
+    if (currentDetailBonId === bonId) openProject(bonId)
+  } catch(e) { showToast(e.message,'err') }
+}
+
+/* ── Scrape ── */
+async function triggerScrape() {
+  const nb = parseInt(document.getElementById('sync-nb-home')?.value || '50')
+  setSync('running','Démarrage du scraping...')
+  document.querySelectorAll('.btn-sync').forEach(b => b.disabled = true)
+  try {
+    const d = await fetch('/api/scrape',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({maxItems:nb})}).then(r=>r.json())
+    if (!d.success) { setSync('err', d.error||'Échec'); showToast(d.error||'Échec','err') }
+    else {
+      setSync('ok', `✅ ${d.newSaved} nouveaux bons — total: ${(d.log||[]).length}`)
+      showToast(`${d.newSaved} nouveau(x) bon(s) trouvé(s) !`)
+      fetchProjects(); fetchStats(); loadSyncHistory()
+    }
+  } catch(e) { setSync('err',e.message); showToast(e.message,'err') }
+  finally { document.querySelectorAll('.btn-sync').forEach(b => b.disabled = false) }
+}
+
+function setSync(state, msg) {
+  const dot = document.getElementById('sync-dot')
+  const prog = document.getElementById('sync-progress')
+  if (dot)  dot.className = 'status-dot ' + (state==='running'?'dot-spin':state==='ok'?'dot-ok':'dot-err')
+  if (prog) prog.textContent = msg
+}
+
+async function loadSyncHistory() {
+  try {
+    const list = await fetch('/api/sync-history').then(r => r.json())
+    const tbody = document.getElementById('hist-tbody')
+    if (!tbody) return
+    if (!list.length) { tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px">Aucun historique</td></tr>'; return }
+    tbody.innerHTML = list.slice(0,8).map(entry => `<tr>
+      <td>${h(entry.date||'')}</td><td>${h(entry.heure||'')}</td>
+      <td style="font-weight:600;color:var(--success)">+${entry.nouveaux||0}</td>
+      <td>${entry.total||0}</td>
+      <td><span class="${entry.statut==='Succès'?'badge-ok':'badge-fail'}">${h(entry.statut||'')}</span></td>
+    </tr>`).join('')
+  } catch(e) {}
+}
+
+/* ── AI Analysis ── */
+async function runAnalysis(bonId) {
+  const btn = document.getElementById('btn-run-analysis')
+  if (btn) { btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Analyse en cours...' }
+  try {
+    const d = await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({projectId:bonId})}).then(r=>r.json())
+    if (!d.success) { showToast(d.error||'Erreur','err'); return }
+    showToast('Analyse terminée !'); openProject(bonId)
+  } catch(e) { showToast(e.message,'err') }
+  finally { if (btn) { btn.disabled=false; btn.innerHTML='<i class="bi bi-stars"></i> Analyser avec l\'IA' } }
+}
+
+/* ── Document generation ── */
+async function generateDoc(bonId, type) {
+  showToast(`Génération ${docLabel(type)} en cours...`)
+  try {
+    const d = await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({projectId:bonId,documentType:type})}).then(r=>r.json())
+    if (!d.success) { showToast(d.error||'Erreur','err'); return }
+    showToast(`${docLabel(type)} généré !`)
+    openProject(bonId)
+    setTimeout(() => {
+      const btn = document.querySelector('.detail-nav-btn:nth-child(3)')
+      switchDetailTab('docs', btn)
+      if (d.documents?.[type]) previewDoc(type, d.documents[type])
+    }, 600)
+  } catch(e) { showToast(e.message,'err') }
+}
+
+async function generateAllDocs(bonId) {
+  showToast('Génération de tous les documents IA...')
+  try {
+    const d = await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({projectId:bonId,documentType:'all'})}).then(r=>r.json())
+    if (!d.success) { showToast(d.error||'Erreur','err'); return }
+    showToast('Tous les documents générés !'); openProject(bonId)
+  } catch(e) { showToast(e.message,'err') }
+}
+
+function previewDoc(type, data) {
+  const el = document.getElementById('doc-preview')
+  if (!el || !data) return
+  el.style.display = 'block'
+  el.scrollIntoView({behavior:'smooth',block:'nearest'})
+  let html = `<h4 style="font-size:14px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:6px"><i class="bi ${docIcon(type)}" style="color:var(--orange)"></i> ${docLabel(type)}</h4>`
+  if (type==='bordereau' && Array.isArray(data)) {
+    html += `<table class="articles-table"><thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Qté</th><th>P.U HT</th><th>Montant HT</th><th>Notes</th></tr></thead>
+    <tbody>${data.map(a=>`<tr><td>${a.num}</td><td>${h(a.designation)}</td><td>${h(a.unite)}</td><td>${fn(a.quantite)}</td><td>${fn(a.prixUnitaireHT)}</td><td>${fn(a.montantHT)}</td><td style="color:var(--muted)">${h(a.notes||'')}</td></tr>`).join('')}</tbody></table>`
+  } else if (type==='devis' && data.items) {
+    html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;font-size:13px">
+      <div><b>Réf:</b> ${h(data.reference||'')}</div><div><b>Date:</b> ${h(data.date||'')}</div>
+      <div><b>Client:</b> ${h(data.client||'')}</div><div><b>Validité:</b> ${h(data.validite||'')}</div></div>
+    <table class="articles-table"><thead><tr><th>Désignation</th><th>Unité</th><th>Qté</th><th>P.U</th><th>Total</th></tr></thead>
+    <tbody>${(data.items||[]).map(i=>`<tr><td>${h(i.designation)}</td><td>${h(i.unite)}</td><td>${fn(i.quantite)}</td><td>${fn(i.prixUnitaire)}</td><td>${fn(i.total)}</td></tr>`).join('')}</tbody>
+    <tfoot><tr class="total-row"><td colspan="4" style="text-align:right">Total HT</td><td>${fn(data.totalHT)}</td></tr>
+    <tr class="total-row"><td colspan="4" style="text-align:right">TVA</td><td>${fn(data.tva)}</td></tr>
+    <tr class="total-row"><td colspan="4" style="text-align:right">Total TTC</td><td>${fn(data.totalTTC)}</td></tr></tfoot></table>`
+  } else if (type==='rfq') {
+    html += `<p style="font-size:14px;font-weight:600;margin-bottom:10px">${h(data.subject||'')}</p>`
+    ;(data.suppliers||[]).forEach(s => {
+      html += `<div style="margin-bottom:12px"><b style="font-size:13px">${h(s.category||'')}</b>
+      <table class="articles-table" style="margin-top:6px"><thead><tr><th>Désignation</th><th>Spec</th><th>Qté</th><th>Unité</th></tr></thead>
+      <tbody>${(s.items||[]).map(i=>`<tr><td>${h(i.designation)}</td><td>${h(i.specification||'')}</td><td>${h(String(i.quantite||''))}</td><td>${h(i.unite||'')}</td></tr>`).join('')}</tbody></table></div>`
+    })
+    html += `<p style="font-size:12px;color:var(--muted)"><b>Délai:</b> ${h(data.deadline||'')} · <b>Paiement:</b> ${h(data.paymentTerms||'')}</p>`
+  } else if (type==='plan') {
+    html += `<table class="articles-table"><thead><tr><th>#</th><th>Phase</th><th>Description</th><th>Durée</th><th>Ressources</th></tr></thead>
+    <tbody>${(data.phases||[]).map(p=>`<tr><td>${p.phase}</td><td>${h(p.name)}</td><td>${h(p.description)}</td><td>${h(p.duration)}</td><td>${h((p.resources||[]).join(', '))}</td></tr>`).join('')}</tbody></table>
+    <p style="font-size:13px;margin-top:10px"><b>Durée totale:</b> ${h(data.totalDuration||'')}</p>`
+  } else {
+    html += `<pre style="font-size:12px;color:var(--muted);white-space:pre-wrap;word-break:break-word">${h(JSON.stringify(data,null,2))}</pre>`
+  }
+  el.innerHTML = html
+}
+
+function docIcon(t) {
+  return {bordereau:'bi-list-columns-reverse',devis:'bi-file-earmark-text',rfq:'bi-envelope',plan:'bi-diagram-3',checklist:'bi-check2-square'}[t]||'bi-file'
+}
+function docLabel(t) {
+  return {bordereau:'Bordereau',devis:'Devis',rfq:'RFQ',plan:"Plan d'exéc.",checklist:'Checklist'}[t]||t
+}
+
+/* ── Candidatures ── */
+async function loadCandidatures() {
+  document.getElementById('cand-table-wrap').innerHTML = '<div class="loading"><span class="spinner"></span>Chargement...</div>'
+  try {
+    const list = await fetch('/api/candidatures').then(r => r.json())
+    if (!list.length) {
+      document.getElementById('cand-table-wrap').innerHTML = `<div class="empty-state"><i class="bi bi-file-earmark-check"></i><p>Aucune candidature</p><small>Cliquez "Postuler" sur un bon de commande</small></div>`
+      return
+    }
+    const statuses = ['En préparation','Soumis','Accepté','Refusé']
+    document.getElementById('cand-table-wrap').innerHTML = `
+      <table class="cand-table"><thead><tr><th>Réf</th><th>Intitulé</th><th>Acheteur</th><th>Délai</th><th>Statut</th><th>Créé le</th><th></th></tr></thead>
+      <tbody>${list.map(c => `<tr>
+        <td style="font-size:11px;color:var(--muted)">${h(c.bonReference||c.id)}</td>
+        <td style="max-width:220px"><div style="font-weight:500;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${h(c.bonTitle||'')}">${h((c.bonTitle||'').substring(0,48))}${(c.bonTitle||'').length>48?'…':''}</div></td>
+        <td style="font-size:12px;color:var(--muted)">${h((c.bonBuyer||'').substring(0,30))}</td>
+        <td style="font-size:12px">${h(c.bonDeadline||'—')}</td>
+        <td><select class="status-select" onchange="updateCandStatus('${c.id}',this.value)">
+          ${statuses.map(s=>`<option value="${s}" ${c.status===s?'selected':''}>${s}</option>`).join('')}
+        </select></td>
+        <td style="font-size:12px;color:var(--muted)">${fd(c.createdAt)}</td>
+        <td>
+          <button style="background:none;border:none;cursor:pointer;color:var(--muted);font-size:15px" title="Voir le bon" onclick="openProject('${c.bonId}')"><i class="bi bi-eye"></i></button>
+          <button style="background:none;border:none;cursor:pointer;color:var(--danger);font-size:15px;margin-left:4px" title="Supprimer" onclick="deleteCand('${c.id}')"><i class="bi bi-trash3"></i></button>
+        </td>
+      </tr>`).join('')}</tbody></table>`
+  } catch(e) { document.getElementById('cand-table-wrap').innerHTML = `<p style="color:var(--danger);padding:16px">Erreur: ${e.message}</p>` }
+}
+
+async function updateCandStatus(id, status) {
+  try {
+    await fetch(`/api/candidatures/${id}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({status})})
+    showToast('Statut mis à jour')
+  } catch(e) { showToast(e.message,'err') }
+}
+
+async function deleteCand(id) {
+  if (!confirm('Supprimer cette candidature ?')) return
+  try {
+    await fetch(`/api/candidatures/${id}`,{method:'DELETE'})
+    showToast('Candidature supprimée'); loadCandidatures(); fetchStats()
+  } catch(e) { showToast(e.message,'err') }
+}
+
+/* ── Notifications ── */
+async function loadNotifs() {
+  document.getElementById('notifs-list').innerHTML = '<div class="loading"><span class="spinner"></span>Chargement...</div>'
+  try {
+    const list = await fetch('/api/notifications').then(r => r.json())
+    if (!list.length) { document.getElementById('notifs-list').innerHTML = `<div class="empty-state"><i class="bi bi-bell-slash"></i><p>Aucune notification</p></div>`; return }
+    const iconMap = {new_bons:'bi-bell-fill',error:'bi-exclamation-triangle',candidature:'bi-file-earmark-check'}
+    document.getElementById('notifs-list').innerHTML = `<div class="notif-list">${list.map(n => `
+      <div class="notif-item ${n.read?'':'unread'} notif-type-${n.type||'default'}" onclick="readNotif(${n.id},this)">
+        <div class="notif-icon"><i class="bi ${iconMap[n.type]||'bi-info-circle'}"></i></div>
+        <div style="flex:1"><div class="notif-title">${h(n.title||'')}</div>
+        <div class="notif-msg">${h(n.message||'')}</div>
+        <div class="notif-time">${fd(n.createdAt)}</div></div>
+        ${!n.read ? '<div style="width:8px;height:8px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:6px"></div>' : ''}
+      </div>`).join('')}</div>`
+  } catch(e) { document.getElementById('notifs-list').innerHTML = `<p style="color:var(--danger)">Erreur: ${e.message}</p>` }
+}
+
+async function readNotif(id, el) {
+  try { await fetch(`/api/notifications/${id}/read`,{method:'PATCH'}); el.classList.remove('unread') } catch(e) {}
+}
+
+async function markAllRead() {
+  try {
+    await fetch('/api/notifications/read-all',{method:'POST'})
+    loadNotifs()
+    document.getElementById('notif-dot').style.display = 'none'
+    document.getElementById('sb-notif-count').style.display = 'none'
+    showToast('Toutes les notifications marquées comme lues')
+  } catch(e) { showToast(e.message,'err') }
+}
+
+/* ── Analytics ── */
+async function loadAnalytics() {
+  document.getElementById('analytics-content').innerHTML = '<div class="loading"><span class="spinner"></span>Chargement...</div>'
+  try {
+    const d = await fetch('/api/analytics').then(r => r.json())
+    const maxCity = d.byCity[0]?.[1]||1, maxCat = d.byCategory[0]?.[1]||1, maxKw = d.byKeyword[0]?.[1]||1
+    document.getElementById('analytics-content').innerHTML = `
+      <div class="kpi-grid" style="margin-bottom:22px">
+        <div class="kpi-card"><div class="kpi-icon" style="background:#f0f9ff;color:#0284c7"><i class="bi bi-cart3"></i></div>
+          <div><div class="kpi-val">${d.totalBons}</div><div class="kpi-label">Bons totaux</div></div></div>
+        <div class="kpi-card"><div class="kpi-icon" style="background:#fff7ed;color:#ea580c"><i class="bi bi-file-earmark-check"></i></div>
+          <div><div class="kpi-val">${d.totalCands}</div><div class="kpi-label">Candidatures</div></div></div>
+        <div class="kpi-card"><div class="kpi-icon" style="background:#f0fdf4;color:#16a34a"><i class="bi bi-cash-stack"></i></div>
+          <div><div class="kpi-val">${d.totalBudgetEstimate>0?fn(d.totalBudgetEstimate/1000000)+'M':'—'}</div><div class="kpi-label">Budget total MAD</div></div></div>
+        <div class="kpi-card"><div class="kpi-icon" style="background:#faf5ff;color:#9333ea"><i class="bi bi-geo-alt"></i></div>
+          <div><div class="kpi-val">${d.byCity.length}</div><div class="kpi-label">Villes</div></div></div>
+      </div>
+      <div class="analytics-grid">
+        <div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px">Top villes</p>
+          <div class="bar-chart">${d.byCity.map(([c,n])=>`<div class="bar-item"><div class="bar-label" title="${h(c)}">${h(c)}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/maxCity*100)}%"></div></div>
+            <div class="bar-num">${n}</div></div>`).join('')||'<p style="color:var(--muted);font-size:13px">Aucune donnée</p>'}</div></div>
+        <div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px">Top catégories</p>
+          <div class="bar-chart">${d.byCategory.map(([c,n])=>`<div class="bar-item"><div class="bar-label" title="${h(c)}">${h(c)}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/maxCat*100)}%;background:var(--purple)"></div></div>
+            <div class="bar-num">${n}</div></div>`).join('')||'<p style="color:var(--muted);font-size:13px">Aucune donnée</p>'}</div></div>
+        <div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px">Mots-clés matchés</p>
+          <div class="bar-chart">${d.byKeyword.map(([k,n])=>`<div class="bar-item"><div class="bar-label" title="${h(k)}">${h(k)}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/maxKw*100)}%;background:var(--success)"></div></div>
+            <div class="bar-num">${n}</div></div>`).join('')||'<p style="color:var(--muted);font-size:13px">Aucune donnée</p>'}</div></div>
+        ${d.candsByStatus.length?`<div class="card"><p style="font-size:13px;font-weight:600;margin-bottom:12px">Candidatures par statut</p>
+          <div class="bar-chart">${d.candsByStatus.map(([s,n])=>`<div class="bar-item"><div class="bar-label">${h(s)}</div>
+            <div class="bar-track"><div class="bar-fill" style="width:${Math.round(n/(d.totalCands||1)*100)}%;background:var(--info)"></div></div>
+            <div class="bar-num">${n}</div></div>`).join('')}</div></div>`:''}
+      </div>`
+  } catch(e) { document.getElementById('analytics-content').innerHTML = `<p style="color:var(--danger)">Erreur: ${e.message}</p>` }
+}
+
+/* ── Documents page ── */
+async function loadAllDocs() {
+  const el = document.getElementById('all-docs-list')
+  try {
+    const { projects } = await fetch('/api/projects?limit=1000').then(r => r.json())
+    if (!projects.length) {
+      el.innerHTML = `<div class="empty-state"><i class="bi bi-folder2-open"></i><p>Aucun document généré</p><small>Ouvrez un bon de commande et générez ses documents</small></div>`; return
+    }
+    el.innerHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px">
+    ${projects.slice(0,30).map(p=>`<div class="order-card" onclick="openProject('${p.id}')">
+      <div class="order-badges">${p.reference?`<span class="badge badge-ref">${h(p.reference)}</span>`:''}</div>
+      <div class="order-title" style="font-size:13px">${h(p.title.substring(0,70))}</div>
+      <div style="display:flex;gap:6px;margin-top:10px;flex-wrap:wrap">
+        ${['bordereau','devis','rfq','plan','checklist'].map(t=>`<span class="badge badge-ref"><i class="bi ${docIcon(t)}"></i> ${docLabel(t)}</span>`).join('')}
+      </div>
+      <p style="font-size:11px;color:var(--muted);margin-top:8px">Cliquer pour générer les documents IA</p>
+    </div>`).join('')}</div>`
+  } catch(e) { el.innerHTML = `<p style="color:var(--danger)">Erreur: ${e.message}</p>` }
+}
+
+/* ── Chat ── */
+function appendMsg(role, text) {
+  const el = document.getElementById('chat-messages')
+  const d  = document.createElement('div')
+  d.className = `msg msg-${role}`
+  d.textContent = text
+  el.appendChild(d)
+  el.scrollTop = el.scrollHeight
+  return d
+}
+
+async function sendChat() {
+  const inp = document.getElementById('chat-input')
+  const msg = inp.value.trim()
+  if (!msg) return
+  inp.value = ''
+  chatHistory.push({role:'user',content:msg})
+  appendMsg('user', msg)
+  const typing = appendMsg('ai','...')
+  typing.classList.add('typing')
+  try {
+    const d = await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({messages:chatHistory, projectId:currentDetailBonId})}).then(r=>r.json())
+    const reply = d.reply||d.response||'Erreur de réponse'
+    typing.classList.remove('typing'); typing.textContent = reply
+    chatHistory.push({role:'assistant',content:reply})
+  } catch(e) { typing.textContent='Erreur: '+e.message; typing.classList.remove('typing') }
+}
+
+/* ── Settings ── */
+function switchSettingsTab(name, btn) {
+  ['general','keywords','schedule'].forEach(t => {
+    const el = document.getElementById('stab-'+t)
+    if (el) el.style.display = t===name?'block':'none'
+  })
+  document.querySelectorAll('.settings-tab-btn').forEach(b => b.classList.remove('active'))
+  if (btn) btn.classList.add('active')
+  if (name==='keywords') loadKeywordsTab()
+}
+
+async function loadSettings() {
+  try {
+    const s = await fetch('/api/settings').then(r => r.json())
+    if (s.hasCredentials) { document.getElementById('s-username').placeholder='***configuré***'; document.getElementById('s-password').placeholder='***configuré***' }
+    if (s.hasAI)           document.getElementById('s-groq').placeholder='***configuré***'
+    if (s.scraperDelay)    document.getElementById('s-delay').value   = s.scraperDelay
+    if (s.maxItems)        document.getElementById('s-maxitems').value = s.maxItems
+    if (s.dailyTime)       document.getElementById('s-daily-time').value = s.dailyTime
+    document.getElementById('s-daily-enabled').checked = s.dailyEnabled !== false
+    settingsKeywords = s.keywords || s.defaultKeywords || []
+  } catch(e) {}
+}
+
+async function saveSettings() {
+  const body = {
+    username:    document.getElementById('s-username').value||undefined,
+    password:    document.getElementById('s-password').value||undefined,
+    groqApiKey:  document.getElementById('s-groq').value||undefined,
+    scraperDelay:document.getElementById('s-delay').value,
+    maxItems:    document.getElementById('s-maxitems').value,
+  }
+  try {
+    const d = await fetch('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(r=>r.json())
+    d.status==='ok' ? showToast('Paramètres sauvegardés !') : showToast(d.error||'Erreur','err')
+  } catch(e) { showToast(e.message,'err') }
+}
+
+async function saveSchedule() {
+  try {
+    const d = await fetch('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({
+      dailyEnabled: document.getElementById('s-daily-enabled').checked,
+      dailyTime:    document.getElementById('s-daily-time').value,
+    })}).then(r=>r.json())
+    d.status==='ok' ? showToast('Planification sauvegardée !') : showToast(d.error||'Erreur','err')
+  } catch(e) { showToast(e.message,'err') }
+}
+
+async function saveKeywords() {
+  const checked = [...document.querySelectorAll('.kw-check:checked')].map(cb => cb.dataset.kw)
+  try {
+    const d = await fetch('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({keywords:checked})}).then(r=>r.json())
+    if (d.status==='ok') { settingsKeywords=checked; showToast('Mots-clés sauvegardés !') }
+    else showToast(d.error||'Erreur','err')
+  } catch(e) { showToast(e.message,'err') }
+}
+
+async function loadKeywordsTab() {
+  const grid = document.getElementById('keywords-grid')
+  if (!grid) return
+  if (!settingsKeywords) {
+    grid.innerHTML = '<div class="loading"><span class="spinner"></span>Chargement...</div>'
+    await loadSettings()
+  }
+  if (!settingsKeywords?.length) { grid.innerHTML = '<p style="font-size:13px;color:var(--muted)">Aucun mot-clé — ajoutez-en ci-dessous</p>'; return }
+  grid.innerHTML = settingsKeywords.map(kw =>
+    `<div class="kw-item">
+      <input type="checkbox" class="kw-check" data-kw="${h(kw)}" checked>
+      <span>${h(kw)}</span>
+      <button class="kw-remove" onclick="removeKeyword('${h(kw)}')" title="Supprimer"><i class="bi bi-x"></i></button>
+    </div>`
+  ).join('')
+}
+
+function addKeyword() {
+  const inp = document.getElementById('new-kw-input')
+  const val = inp.value.trim().toLowerCase()
+  if (!val) return
+  if (settingsKeywords.includes(val)) { showToast('Mot-clé déjà présent','err'); return }
+  settingsKeywords.push(val); inp.value = ''; loadKeywordsTab()
+}
+
+function removeKeyword(kw) {
+  settingsKeywords = settingsKeywords.filter(k => k !== kw); loadKeywordsTab()
+}
+
+/* ── Helpers ── */
+function togglePw(id, btn) {
+  const inp = document.getElementById(id)
+  const show = inp.type==='password'
+  inp.type = show?'text':'password'
+  btn.innerHTML = show?'<i class="bi bi-eye-slash"></i>':'<i class="bi bi-eye"></i>'
+}
+
+function showToast(msg, type='ok') {
+  const t = document.getElementById('toast')
+  document.getElementById('toast-msg').textContent = msg
+  t.className = `show toast-${type}`
+  t.querySelector('i').className = type==='ok'?'bi bi-check-circle-fill':'bi bi-exclamation-circle-fill'
+  clearTimeout(t._timer)
+  t._timer = setTimeout(() => t.classList.remove('show'), 3500)
+}
+
+function h(s) {
+  return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')
+}
+
+function fn(n) {
+  const num = parseFloat(n)
+  if (isNaN(num)) return String(n||'0')
+  return num%1===0 ? num.toLocaleString('fr-MA') : num.toLocaleString('fr-MA',{minimumFractionDigits:2,maximumFractionDigits:2})
+}
+
+function fd(iso) {
+  if (!iso) return '—'
+  try { return new Date(iso).toLocaleDateString('fr-MA',{day:'2-digit',month:'short',year:'numeric'}) } catch { return iso }
+}
+</script>
+</body>
+</html>
