@@ -11,6 +11,7 @@ const documentGenerator = require('./lib/document-generator')
 const db                = require('./lib/db')
 const scheduler         = require('./lib/scheduler')
 const telegram          = require('./lib/telegram')
+const orchestrator      = require('./lib/ai-orchestrator')
 const { getActivities, getExclusionKeywords, bonMatchesKeywords } = require('./lib/scraper')
 
 const app  = express()
@@ -371,26 +372,8 @@ app.post('/api/notifications/read-all', (req, res) => {
 })
 
 /* ═══════════════════════════════════════════════════════════════
-   COPILOTE IA (chat)
+   COPILOTE IA — handled above in orchestrator section
 ══════════════════════════════════════════════════════════════════ */
-app.post('/api/chat', async (req, res) => {
-  const { message, messages = [], projectId } = req.body
-  const userMessage = message || messages[messages.length - 1]?.content
-  if (!userMessage) return res.status(400).json({ error: 'message requis' })
-
-  let context = ''
-  if (projectId) {
-    const bons = db.read('procurement-analysis.json') || []
-    const bon  = bons.find(b => b.id === projectId)
-    if (bon) context = `\nCONTEXTE PROJET:\nTitre: ${bon.title}\nAcheteur: ${bon.buyer}\nLieu: ${bon.location}\nEstimation: ${bon.estimatedBudget}\nDescription: ${(bon.description||'').substring(0, 300)}`
-  }
-
-  try {
-    const history = messages.slice(0, -1).map(m => ({ role: m.role, content: m.content }))
-    const reply   = await aiAnalyzer.chatWithCopilot(userMessage, history, context)
-    res.json({ reply, response: reply })
-  } catch (e) { res.json({ reply: `Erreur IA: ${e.message}` }) }
-})
 
 /* ═══════════════════════════════════════════════════════════════
    SETTINGS
@@ -514,6 +497,56 @@ app.get('/api/analytics', (req, res) => {
 })
 
 /* ═══════════════════════════════════════════════════════════════
+   AI ORCHESTRATOR
+══════════════════════════════════════════════════════════════════ */
+
+// Run full AI pipeline for a bon
+app.post('/api/orchestrate/:id', async (req, res) => {
+  const { generateDocuments = false, forceRefresh = false } = req.body || {}
+  try {
+    const result = await orchestrator.orchestrate(req.params.id, { generateDocuments, forceRefresh })
+    res.json(result)
+  } catch (e) {
+    res.status(500).json({ success: false, error: e.message })
+  }
+})
+
+// Get cached orchestration result
+app.get('/api/orchestrate/:id', (req, res) => {
+  const result = orchestrator.getOrchestration(req.params.id)
+  if (!result) return res.status(404).json({ error: 'Pas d\'analyse orchestrée pour ce bon' })
+  res.json(result)
+})
+
+// Company memory
+app.get('/api/company-memory', (req, res) => {
+  res.json(orchestrator.getMemory())
+})
+
+app.put('/api/company-memory', (req, res) => {
+  try {
+    const current = orchestrator.getMemory()
+    const updated = deepMerge(current, req.body)
+    updated.lastUpdated = new Date().toISOString()
+    db.write('company-memory.json', updated)
+    res.json({ success: true, memory: updated })
+  } catch (e) { res.status(500).json({ error: e.message }) }
+})
+
+// AI Chat (upgraded — uses orchestrator context)
+app.post('/api/chat', async (req, res) => {
+  const { message, messages = [], projectId } = req.body
+  const userMessage = message || messages[messages.length - 1]?.content
+  if (!userMessage) return res.status(400).json({ error: 'message requis' })
+
+  try {
+    const history = messages.slice(0, -1).map(m => ({ role: m.role, content: m.content }))
+    const { reply } = await orchestrator.chat(userMessage, projectId, history)
+    res.json({ reply, response: reply })
+  } catch (e) { res.json({ reply: `Erreur IA: ${e.message}` }) }
+})
+
+/* ═══════════════════════════════════════════════════════════════
    PROJECT STATUS (Tender Project Manager)
 ══════════════════════════════════════════════════════════════════ */
 const PROJECT_STATUSES = [
@@ -581,6 +614,18 @@ app.get('*', (req, res) => {
 })
 
 /* ─────────────────────────────────────────────────────────────── */
+function deepMerge(target, source) {
+  const out = { ...target }
+  for (const key of Object.keys(source)) {
+    if (source[key] && typeof source[key] === 'object' && !Array.isArray(source[key])) {
+      out[key] = deepMerge(target[key] || {}, source[key])
+    } else {
+      out[key] = source[key]
+    }
+  }
+  return out
+}
+
 app.listen(PORT, () => {
   console.log(`\n🚀 Procurement Intelligence Server`)
   console.log(`   http://localhost:${PORT}`)

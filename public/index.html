@@ -869,7 +869,8 @@ function renderDetail(bon) {
 
     <div class="detail-nav">
       <button class="detail-nav-btn active" onclick="switchDetailTab('info',this)"><i class="bi bi-info-circle"></i> Informations</button>
-      <button class="detail-nav-btn" onclick="switchDetailTab('analyse',this)"><i class="bi bi-stars"></i> Analyse IA</button>
+      <button class="detail-nav-btn" onclick="switchDetailTab('skills',this)"><i class="bi bi-cpu"></i> Skills IA</button>
+      <button class="detail-nav-btn" onclick="switchDetailTab('analyse',this)"><i class="bi bi-stars"></i> Analyse</button>
       <button class="detail-nav-btn" onclick="switchDetailTab('docs',this)"><i class="bi bi-file-earmark-text"></i> Documents</button>
       <button class="detail-nav-btn" onclick="switchDetailTab('checklist',this)"><i class="bi bi-check2-square"></i> Checklist</button>
     </div>
@@ -891,6 +892,17 @@ function renderDetail(bon) {
               <tr class="total-row"><td colspan="5" style="text-align:right">Total TTC</td><td>${fn(bon.totalTTC)} MAD</td></tr>
             </tfoot>` : ''}
           </table>` : '<p style="font-size:13px;color:var(--muted);text-align:center;padding:20px">Aucun article détaillé disponible</p>'}
+      </div>
+    </div>
+
+    <div class="detail-tab" id="dtab-skills">
+      <div id="skills-panel">
+        <div style="text-align:center;padding:40px 20px">
+          <i class="bi bi-cpu" style="font-size:40px;color:var(--orange);margin-bottom:12px;display:block"></i>
+          <p style="font-size:14px;font-weight:600;margin-bottom:6px">Pipeline Skills IA</p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Détection activité · Analyse technique · Rentabilité · Risques · Probabilité de succès</p>
+          <button class="btn-save" onclick="runOrchestration('${bon.id}')"><i class="bi bi-play-circle"></i> Lancer l'analyse complète</button>
+        </div>
       </div>
     </div>
 
@@ -1040,6 +1052,7 @@ function switchDetailTab(name, btn) {
   const tab = document.getElementById('dtab-' + name)
   if (tab) tab.classList.add('active')
   if (btn) btn.classList.add('active')
+  if (name === 'skills' && currentDetailBonId) loadSkillsTab(currentDetailBonId)
 }
 
 /* ── Postuler ── */
@@ -1107,6 +1120,166 @@ async function runAnalysis(bonId) {
     showToast('Analyse terminée !'); openProject(bonId)
   } catch(e) { showToast(e.message,'err') }
   finally { if (btn) { btn.disabled=false; btn.innerHTML='<i class="bi bi-stars"></i> Analyser avec l\'IA' } }
+}
+
+/* ── Skills IA ── */
+async function loadSkillsTab(bonId) {
+  const panel = document.getElementById('skills-panel')
+  if (!panel) return
+  panel.innerHTML = '<div style="text-align:center;padding:32px"><span class="spinner" style="width:28px;height:28px;border-width:3px;display:inline-block"></span><p style="margin-top:12px;color:var(--muted);font-size:13px">Chargement analyse...</p></div>'
+  try {
+    const d = await fetch('/api/orchestrate/' + bonId).then(r => r.json())
+    if (d && d.success) {
+      panel.innerHTML = renderSkillsHtml(d, bonId)
+    } else {
+      panel.innerHTML = `<div style="text-align:center;padding:40px 20px">
+        <i class="bi bi-cpu" style="font-size:40px;color:var(--orange);margin-bottom:12px;display:block"></i>
+        <p style="font-size:14px;font-weight:600;margin-bottom:6px">Pipeline Skills IA</p>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Détection activité · Analyse technique · Rentabilité · Risques · Probabilité de succès</p>
+        <button class="btn-save" onclick="runOrchestration('${bonId}')"><i class="bi bi-play-circle"></i> Lancer l'analyse complète</button>
+      </div>`
+    }
+  } catch(e) {
+    panel.innerHTML = `<div style="text-align:center;padding:32px"><p style="color:var(--danger);font-size:13px">Erreur: ${h(e.message)}</p><button class="btn-save" style="margin-top:12px" onclick="runOrchestration('${bonId}')">Réessayer</button></div>`
+  }
+}
+
+async function runOrchestration(bonId) {
+  const panel = document.getElementById('skills-panel')
+  if (panel) panel.innerHTML = '<div style="text-align:center;padding:32px"><span class="spinner" style="width:28px;height:28px;border-width:3px;display:inline-block"></span><p style="margin-top:12px;color:var(--muted);font-size:13px">Pipeline IA en cours (30-60s)...</p></div>'
+  try {
+    const d = await fetch('/api/orchestrate/' + bonId, {method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({generateDocuments:false,forceRefresh:true})}).then(r => r.json())
+    if (!d.success) { showToast(d.error||'Erreur pipeline','err'); loadSkillsTab(bonId); return }
+    showToast('Analyse Skills IA terminée !')
+    if (panel) panel.innerHTML = renderSkillsHtml(d, bonId)
+  } catch(e) { showToast(e.message,'err'); loadSkillsTab(bonId) }
+}
+
+function renderSkillsHtml(data, bonId) {
+  const det = data.detection || {}
+  const pro = data.profitability || {}
+  const ris = data.risk || {}
+  const win = data.winProbability || {}
+  const act = data.activity || {}
+  const sup = data.supplier || {}
+
+  const urgColor = det.urgencyLevel==='CRITIQUE'?'var(--danger)':det.urgencyLevel==='ÉLEVÉE'?'#f59e0b':'var(--success)'
+  const attColor = (pro.attractivenessScore||5) >= 7 ? 'var(--success)' : (pro.attractivenessScore||5) >= 4 ? '#f59e0b' : 'var(--danger)'
+  const riskColor = (ris.overallRiskScore||5) >= 7 ? 'var(--danger)' : (ris.overallRiskScore||5) >= 4 ? '#f59e0b' : 'var(--success)'
+  const winColor = (win.winProbabilityPercent||50) >= 60 ? 'var(--success)' : (win.winProbabilityPercent||50) >= 35 ? '#f59e0b' : 'var(--danger)'
+
+  const gng = ris.goNoGo || 'N/A'
+  const gngStyle = gng==='GO' ? 'background:rgba(16,185,129,.12);color:#059669;border:2px solid #10b981'
+    : gng==='NO-GO' ? 'background:rgba(239,68,68,.12);color:#dc2626;border:2px solid #ef4444'
+    : 'background:rgba(245,158,11,.12);color:#b45309;border:2px solid #f59e0b'
+
+  const materials = act.materials || []
+  const risks = ris.risks || []
+  const missing = act.missingInfo || []
+  const suppliers = sup.categories || []
+
+  let html = `
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
+    <div style="display:flex;align-items:center;gap:8px">
+      <i class="bi bi-cpu" style="color:var(--orange);font-size:18px"></i>
+      <span style="font-size:15px;font-weight:700">Skills IA — Résultats</span>
+      <span style="font-size:11px;color:var(--muted)">${data.orchestratedAt ? new Date(data.orchestratedAt).toLocaleString('fr-FR') : ''}</span>
+    </div>
+    <button onclick="runOrchestration('${bonId}')" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Relancer</button>
+  </div>
+
+  <div class="card" style="margin-bottom:14px;padding:16px">
+    <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px">Détection activité</p>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:13px">
+      <div><span style="color:var(--muted)">Activité</span><br><b>${h(det.primaryLabel||'—')}</b></div>
+      <div><span style="color:var(--muted)">Urgence</span><br><b style="color:${urgColor}">${h(det.urgencyLevel||'—')} ${det.urgencyDays!=null?`(${det.urgencyDays}j)`:''}</b></div>
+      <div><span style="color:var(--muted)">Pertinence</span><br>
+        <div style="display:flex;align-items:center;gap:8px;margin-top:4px">
+          <div style="flex:1;background:#f1f5f9;border-radius:20px;height:8px"><div style="width:${det.relevanceScore||0}%;height:100%;border-radius:20px;background:var(--orange)"></div></div>
+          <b style="color:var(--orange)">${det.relevanceScore||0}/100</b>
+        </div>
+      </div>
+      <div><span style="color:var(--muted)">Mots-clés</span><br><span style="font-size:11px;color:var(--info)">${(det.matchedKeywords||[]).slice(0,4).join(' · ')||'—'}</span></div>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px">
+    <div class="card" style="padding:16px;text-align:center">
+      <p style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Attractivité</p>
+      <div style="font-size:28px;font-weight:800;color:${attColor}">${pro.attractivenessScore||'—'}<span style="font-size:14px;font-weight:500">/10</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px">${pro.attractivenessLabel||'—'}</p>
+      <p style="font-size:12px;font-weight:600;color:${attColor};margin-top:4px">Marge ~${pro.estimatedMarginPercent||'?'}%</p>
+    </div>
+    <div class="card" style="padding:16px;text-align:center">
+      <p style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Niveau Risque</p>
+      <div style="font-size:28px;font-weight:800;color:${riskColor}">${ris.overallRiskScore||'—'}<span style="font-size:14px;font-weight:500">/10</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px">${ris.overallRiskLevel||'—'}</p>
+    </div>
+    <div class="card" style="padding:16px;text-align:center">
+      <p style="font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-bottom:8px">Probabilité succès</p>
+      <div style="font-size:28px;font-weight:800;color:${winColor}">${win.winProbabilityPercent||'?'}<span style="font-size:14px;font-weight:500">%</span></div>
+      <p style="font-size:12px;color:var(--muted);margin-top:4px">${win.confidenceLevel||'—'}</p>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:14px;padding:16px;text-align:center">
+    <div style="display:inline-flex;align-items:center;gap:12px;padding:10px 24px;border-radius:10px;${gngStyle}">
+      <i class="bi ${gng==='GO'?'bi-check-circle-fill':gng==='NO-GO'?'bi-x-circle-fill':'bi-dash-circle-fill'}" style="font-size:22px"></i>
+      <div style="text-align:left">
+        <div style="font-size:20px;font-weight:800;letter-spacing:.04em">${gng}</div>
+        <div style="font-size:12px;opacity:.85">${h(ris.goNoGoReason||win.recommendationReason||'—')}</div>
+      </div>
+    </div>
+    ${win.recommendation ? `<p style="font-size:13px;margin-top:10px"><b>Recommandation:</b> ${h(win.recommendation)}</p>` : ''}
+  </div>
+
+  ${materials.length ? `
+  <div class="card" style="margin-bottom:14px;padding:16px">
+    <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px">Matériaux détectés</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px">
+      ${materials.slice(0,8).map(m => `<div style="background:#f8fafc;border-radius:8px;padding:8px 10px;font-size:12px">
+        <b>${h(m.name||m.nom||m.designation||'—')}</b>
+        ${m.quantite||m.quantity ? `<br><span style="color:var(--muted)">${h(String(m.quantite||m.quantity||''))} ${h(m.unite||m.unit||'')}</span>` : ''}
+      </div>`).join('')}
+    </div>
+  </div>` : ''}
+
+  ${risks.length ? `
+  <div class="card" style="margin-bottom:14px;padding:16px">
+    <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px">Top Risques</p>
+    ${risks.slice(0,4).map(r => {
+      const sc = r.severity==='Critique'||r.severity==='Élevée' ? 'var(--danger)' : r.severity==='Modérée' ? '#f59e0b' : 'var(--muted)'
+      return `<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)">
+        <i class="bi bi-exclamation-triangle-fill" style="color:${sc};font-size:13px;margin-top:2px;flex-shrink:0"></i>
+        <div style="flex:1;min-width:0">
+          <span style="font-size:13px">${h(r.description||r.risk||'')}</span>
+          ${r.mitigation ? `<br><span style="font-size:11px;color:var(--muted)">Mitigation: ${h(r.mitigation)}</span>` : ''}
+        </div>
+        <span style="font-size:11px;font-weight:600;color:${sc};flex-shrink:0">${h(r.severity||'')}</span>
+      </div>`
+    }).join('')}
+  </div>` : ''}
+
+  ${missing.length ? `
+  <div class="card" style="margin-bottom:14px;padding:16px">
+    <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px">Informations manquantes</p>
+    <ul style="list-style:none;display:flex;flex-direction:column;gap:6px">
+      ${missing.slice(0,5).map(m => `<li style="display:flex;align-items:flex-start;gap:8px;font-size:13px"><i class="bi bi-question-circle" style="color:#f59e0b;flex-shrink:0;margin-top:1px"></i>${h(m)}</li>`).join('')}
+    </ul>
+  </div>` : ''}
+
+  ${suppliers.length ? `
+  <div class="card" style="padding:16px">
+    <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px">Stratégie approvisionnement</p>
+    ${sup.procurementStrategy ? `<p style="font-size:13px;margin-bottom:10px;color:var(--text)">${h(sup.procurementStrategy)}</p>` : ''}
+    ${suppliers.slice(0,3).map(cat => `<div style="margin-bottom:10px">
+      <b style="font-size:13px">${h(cat.category||'')}</b>
+      ${cat.procurementAdvice ? `<p style="font-size:12px;color:var(--muted);margin-top:3px">${h(cat.procurementAdvice)}</p>` : ''}
+      ${cat.suggestedSuppliers?.length ? `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">${cat.suggestedSuppliers.slice(0,3).map(s => `<span style="background:#f1f5f9;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500">${h(s.name||s||'')}</span>`).join('')}</div>` : ''}
+    </div>`).join('')}
+  </div>` : ''}
+  `
+  return html
 }
 
 /* ── Document generation ── */

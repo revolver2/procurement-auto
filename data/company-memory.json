@@ -1,0 +1,62 @@
+{
+  "company": {
+    "name": "",
+    "activities": ["aluminium", "inox", "metal", "fourniture_et_pose", "vitrage"],
+    "cities": ["Casablanca", "Rabat", "Kénitra", "El Jadida", "Settat", "Mohammedia"],
+    "teamSize": 10,
+    "yearsExperience": 0,
+    "certifications": []
+  },
+  "pricesCatalog": {
+    "aluminium": [
+      { "designation": "Profilé TB 60x40 naturel",        "unitPrice": 150,  "unit": "ml" },
+      { "designation": "Profilé TB 60x40 laqué RAL",      "unitPrice": 180,  "unit": "ml" },
+      { "designation": "Profilé façade 50mm",              "unitPrice": 280,  "unit": "ml" },
+      { "designation": "Alucobond 4mm",                    "unitPrice": 350,  "unit": "m2" },
+      { "designation": "Vitrage simple 6mm",               "unitPrice": 180,  "unit": "m2" },
+      { "designation": "Vitrage double 4+4 feuilleté",     "unitPrice": 420,  "unit": "m2" },
+      { "designation": "Porte aluminium 1 vantail",        "unitPrice": 3500, "unit": "u"  },
+      { "designation": "Fenêtre ouvrante 100x120",         "unitPrice": 1800, "unit": "u"  }
+    ],
+    "inox": [
+      { "designation": "Tube inox 40x40 AISI 304",         "unitPrice": 320,  "unit": "ml" },
+      { "designation": "Tube inox rond 38mm AISI 316",     "unitPrice": 280,  "unit": "ml" },
+      { "designation": "Tôle inox 1.5mm AISI 304",         "unitPrice": 420,  "unit": "m2" },
+      { "designation": "Main courante inox brossée",       "unitPrice": 450,  "unit": "ml" },
+      { "designation": "Garde-corps inox H1.2m ml",        "unitPrice": 1800, "unit": "ml" }
+    ],
+    "metal": [
+      { "designation": "Cornière 40x40x4 S235",            "unitPrice": 90,   "unit": "ml" },
+      { "designation": "IPE 160 S275",                     "unitPrice": 350,  "unit": "ml" },
+      { "designation": "HEA 160 S275",                     "unitPrice": 420,  "unit": "ml" },
+      { "designation": "Tôle galvanisée 2mm",              "unitPrice": 180,  "unit": "m2" },
+      { "designation": "Tube carré 40x40x3",               "unitPrice": 110,  "unit": "ml" }
+    ],
+    "vitrage": [
+      { "designation": "Vitrage simple 6mm clair",         "unitPrice": 180,  "unit": "m2" },
+      { "designation": "Vitrage réfléchissant",            "unitPrice": 320,  "unit": "m2" },
+      { "designation": "Double vitrage 24mm",              "unitPrice": 480,  "unit": "m2" }
+    ],
+    "main_oeuvre": [
+      { "designation": "Technicien aluminium",             "unitPrice": 350,  "unit": "jour" },
+      { "designation": "Soudeur inox TIG",                 "unitPrice": 450,  "unit": "jour" },
+      { "designation": "Monteur charpente",                "unitPrice": 400,  "unit": "jour" },
+      { "designation": "Chef chantier",                    "unitPrice": 600,  "unit": "jour" }
+    ]
+  },
+  "supplierCatalog": [
+    { "name": "OSOLEM Aluminium",     "activity": "aluminium",   "city": "Casablanca", "contact": "", "rating": 4 },
+    { "name": "PROFIMEX",             "activity": "aluminium",   "city": "Casablanca", "contact": "", "rating": 4 },
+    { "name": "Vitrocasa",            "activity": "vitrage",     "city": "Casablanca", "contact": "", "rating": 4 },
+    { "name": "Maroc Inox",           "activity": "inox",        "city": "Casablanca", "contact": "", "rating": 3 },
+    { "name": "ARCELOR Maroc",        "activity": "metal",       "city": "Casablanca", "contact": "", "rating": 5 },
+    { "name": "Quincaillerie Atlas",  "activity": "quincaillerie","city": "Casablanca","contact": "", "rating": 3 }
+  ],
+  "preferredBuyers": [],
+  "projectHistory": [],
+  "averageMargin": 25,
+  "winRate": 0,
+  "totalProjectsWon": 0,
+  "totalProjectsLost": 0,
+  "lastUpdated": ""
+}
