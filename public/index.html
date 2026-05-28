@@ -1067,12 +1067,12 @@ function renderDetail(bon) {
                 <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:5px">
                   <span style="background:${att.type==='avis'?'rgba(249,115,22,.1)':'#f1f5f9'};color:${att.type==='avis'?'var(--orange)':'var(--muted)'};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700">${h((att.type||'autre').toUpperCase())}</span>
                   <span style="background:${att.downloaded?'rgba(16,185,129,.08)':'rgba(239,68,68,.08)'};color:${att.downloaded?'#059669':'#dc2626'};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700">${att.downloaded?'Téléchargé':'Non téléchargé'}</span>
-                  <span style="background:${att.textExtracted?'rgba(59,130,246,.1)':att.requiresOCR?'rgba(245,158,11,.1)':'#f1f5f9'};color:${att.textExtracted?'var(--info)':att.requiresOCR?'#b45309':'var(--muted)'};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700">${att.textExtracted?`✓ Texte (${att.textLength||0} chars)`:att.requiresOCR?'⚠ OCR requis':'Non extrait'}</span>
+                  <span style="background:${att.textExtracted?(att.ocrUsed?'rgba(124,58,237,.1)':'rgba(59,130,246,.1)'):att.requiresOCR?'rgba(245,158,11,.1)':'#f1f5f9'};color:${att.textExtracted?(att.ocrUsed?'#7c3aed':'var(--info)'):att.requiresOCR?'#b45309':'var(--muted)'};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700">${att.textExtracted?(att.ocrUsed?`✓ OCR Gemini (${att.textLength||0} chars)`:`✓ Texte (${att.textLength||0} chars)`):att.requiresOCR?'⚠ OCR requis':'Non extrait'}</span>
                 </div>
                 <table style="width:100%;font-size:11px;border-collapse:collapse">
                   <tr><td style="color:var(--muted);width:140px;padding:1px 0">Fichier source</td><td>${h(att.sourceFile||att.name||'—')}</td></tr>
                   <tr><td style="color:var(--muted)">Longueur texte</td><td>${att.textLength||0} caractères</td></tr>
-                  <tr><td style="color:var(--muted)">Nécessite OCR</td><td>${att.requiresOCR?'<span style="color:#d97706">Oui — PDF scanné</span>':'Non'}</td></tr>
+                  <tr><td style="color:var(--muted)">OCR</td><td>${att.ocrUsed?'<span style="color:#7c3aed">✓ Gemini OCR utilisé</span>':att.requiresOCR?'<span style="color:#d97706">⚠ Requis — PDF scanné</span>':'Non requis'}</td></tr>
                   ${att.error?`<tr><td style="color:var(--muted)">Erreur</td><td style="color:var(--danger)">${h(att.error)}</td></tr>`:''}
                 </table>
                 ${att.url?`<a href="${h(att.url)}" target="_blank" style="font-size:11px;color:var(--info);margin-top:4px;display:inline-block"><i class="bi bi-box-arrow-up-right"></i> Ouvrir URL</a>`:''}
@@ -1090,9 +1090,12 @@ function renderDetail(bon) {
           <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Relancez un scrape complet pour capturer les pièces jointes avec le contexte authentifié du portail.</p>
         </div>`)}
 
-        ${bon.attachments?.some(a=>a.requiresOCR)?`
+        ${bon.attachments?.some(a=>a.requiresOCR&&!a.ocrUsed)?`
         <div style="padding:10px 14px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:8px;font-size:12px;color:#b45309;margin-top:4px">
-          <i class="bi bi-exclamation-triangle-fill"></i> <b>PDF scanné détecté</b> — OCR requis pour extraire le texte. Sur Render Free, l'OCR n'est pas disponible sans configuration supplémentaire.
+          <i class="bi bi-exclamation-triangle-fill"></i> <b>PDF scanné</b> — Le texte ne peut pas être extrait automatiquement. Cliquez <b style="color:#1e3a5f">Valider PDF AVIS</b> pour tenter l'OCR via Gemini.
+        </div>` : bon.attachments?.some(a=>a.ocrUsed)?`
+        <div style="padding:10px 14px;background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.25);border-radius:8px;font-size:12px;color:#7c3aed;margin-top:4px">
+          <i class="bi bi-stars"></i> <b>OCR Gemini utilisé</b> — Le texte a été extrait automatiquement depuis un PDF scanné.
         </div>` : ''}
       </div>
     </div>
@@ -2804,10 +2807,10 @@ async function validateAvisPdf(bonId) {
     const d = await fetch(`/api/projects/${bonId}/validate-avis-pdf`, { method: 'POST', headers: {'Content-Type':'application/json'} }).then(r=>r.json())
     if (panel) panel.style.opacity = ''
     if (d.success) {
-      showToast(`✓ PDF validé: "${d.selectedPdf}" — ${d.textLength.toLocaleString()} chars — CrewAI débloqué !`)
+      showToast(`✓ PDF validé: "${d.selectedPdf}" — ${(d.textLength||0).toLocaleString()} chars — CrewAI débloqué !`)
       openProject(bonId)
     } else if (d.requiresOCR) {
-      showToast('PDF trouvé mais scanné — OCR requis pour extraire le texte', 'warn')
+      showToast('PDF scanné — Gemini OCR tenté mais échoué. Vérifiez la clé GEMINI_API_KEY dans .env', 'err')
       openProject(bonId)
     } else if (d.pdfsFound === 0) {
       showToast('Aucun PDF trouvé — utilisez Force téléchargement d\'abord', 'warn')
@@ -2854,8 +2857,9 @@ async function reExtractAvis(bonId, forceDownload) {
     if (panel) panel.style.opacity = ''
     if (d.success) {
       const spec = d.spec || {}
-      if (spec.hasText) showToast(`✓ Texte AVIS extrait: ${spec.textLength} chars — "${spec.primaryAvisName||'fichier'}"`)
-      else if (spec.attachments?.some(a=>a.requiresOCR)) showToast('PDF scanné — OCR requis, extraction impossible automatiquement','warn')
+      const ocrUsed = spec.attachments?.some(a=>a.ocrUsed)
+      if (spec.hasText) showToast(`✓ ${ocrUsed?'OCR Gemini':'Texte'} extrait: ${spec.textLength} chars — "${spec.primaryAvisName||'fichier'}"`)
+      else if (spec.attachments?.some(a=>a.requiresOCR)) showToast('PDF scanné — Gemini OCR tenté mais échoué. Vérifiez la clé GEMINI_API_KEY','warn')
       else if (d.dirExists===false||spec.noAttachmentFound) showToast('Aucun fichier en cache — utilisez Force téléchargement','warn')
       else showToast('Extraction terminée — aucun texte lisible trouvé','warn')
       openProject(bonId)
