@@ -22,6 +22,7 @@
     "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "tweetsodium": "^0.0.4"
   }
 }
