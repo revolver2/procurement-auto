@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server.js"
+    "dev": "nodemon --ignore 'data/*' --ignore 'public/*' server.js"
   },
   "dependencies": {
     "adm-zip": "^0.5.17",

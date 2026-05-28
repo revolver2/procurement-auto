@@ -12,7 +12,15 @@ const db                = require('./lib/db')
 const scheduler         = require('./lib/scheduler')
 const telegram          = require('./lib/telegram')
 const orchestrator      = require('./lib/ai-orchestrator')
+const githubPersist     = require('./lib/github-persist')
 const { getActivities, getExclusionKeywords, bonMatchesKeywords } = require('./lib/scraper')
+
+// Fire-and-forget candidature sync to GitHub (keeps data alive across Render deploys)
+function syncCandidatures() {
+  githubPersist.pushFile('candidatures.json')
+    .then(r => { if (!r?.skipped) console.log('[GitHubSync] candidatures.json pushed') })
+    .catch(e => console.error('[GitHubSync] push failed:', e.message))
+}
 
 const app  = express()
 const PORT = process.env.PORT || 3001
@@ -264,6 +272,11 @@ app.post('/api/generate', async (req, res) => {
 /* ═══════════════════════════════════════════════════════════════
    CANDIDATURES
 ══════════════════════════════════════════════════════════════════ */
+// Raw endpoint used by GitHub Actions backup — returns persisted array as-is
+app.get('/api/candidatures/raw', (req, res) => {
+  res.json(db.read('candidatures.json') || [])
+})
+
 app.get('/api/candidatures', (req, res) => {
   const cands = db.read('candidatures.json') || []
   // Enrich with bon title
@@ -304,6 +317,7 @@ app.post('/api/candidatures', (req, res) => {
   }
   cands.push(cand)
   db.write('candidatures.json', cands)
+  syncCandidatures()
 
   // Notification
   const notifs = db.read('notifications.json') || []
@@ -336,6 +350,7 @@ app.patch('/api/candidatures/:id', (req, res) => {
     }],
   }
   db.write('candidatures.json', cands)
+  syncCandidatures()
   res.json({ success: true, candidature: cands[idx] })
 })
 
@@ -345,6 +360,7 @@ app.delete('/api/candidatures/:id', (req, res) => {
   if (idx < 0) return res.status(404).json({ error: 'Candidature introuvable' })
   cands.splice(idx, 1)
   db.write('candidatures.json', cands)
+  syncCandidatures()
   res.json({ success: true })
 })
 

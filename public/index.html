@@ -1112,18 +1112,35 @@ function switchDetailTab(name, btn) {
 
 /* ── Postuler ── */
 async function postuler(bonId) {
+  const btn = document.querySelector(`.btn-postuler[onclick*="${bonId}"]`)
+  if (btn) { btn.disabled = true; btn.textContent = '…' }
   try {
     const r = await fetch('/api/candidatures', {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({ bonId })
     })
     const d = await r.json()
-    if (r.status === 409) { showToast('Candidature déjà créée pour ce bon','err'); return }
-    if (!d.success)       { showToast(d.error||'Erreur','err'); return }
+    if (r.status === 409) {
+      showToast('Candidature déjà créée pour ce bon')
+      // Still navigate to candidatures so user sees it
+      fetchProjects(); fetchStats()
+      navTo('candidatures')
+      return
+    }
+    if (!d.success) {
+      showToast(d.error || 'Impossible d\'enregistrer la candidature', 'err')
+      return
+    }
     showToast('Candidature créée !')
     fetchProjects(); fetchStats()
     if (currentDetailBonId === bonId) openProject(bonId)
-  } catch(e) { showToast(e.message,'err') }
+    // Navigate to candidatures tab so user sees it persisted
+    navTo('candidatures')
+  } catch(e) {
+    showToast('Impossible d\'enregistrer la candidature: ' + e.message, 'err')
+  } finally {
+    if (btn) { btn.disabled = false }
+  }
 }
 
 /* ── Scrape ── */

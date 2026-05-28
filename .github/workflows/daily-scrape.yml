@@ -44,6 +44,19 @@ jobs:
           MAX_ITEMS: ${{ github.event.inputs.max_items || 50 }}
         run: node scripts/run-scrape.js
 
+      - name: Pull candidatures from production server (backup before commit)
+        run: |
+          if [ -n "$RENDER_APP_URL" ]; then
+            echo "Pulling candidatures from $RENDER_APP_URL..."
+            curl -sf --max-time 15 "$RENDER_APP_URL/api/candidatures/raw" -o data/candidatures.json 2>/dev/null \
+              && echo "Candidatures backup pulled" \
+              || echo "Could not reach production server — keeping existing candidatures.json"
+          else
+            echo "RENDER_APP_URL not set — skipping candidatures backup"
+          fi
+        env:
+          RENDER_APP_URL: ${{ secrets.RENDER_APP_URL }}
+
       - name: Commit scraped data
         run: |
           git config user.name "github-actions[bot]"
