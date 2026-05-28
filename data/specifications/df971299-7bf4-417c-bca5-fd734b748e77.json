@@ -1,0 +1,27 @@
+{
+  "bonId": "df971299-7bf4-417c-bca5-fd734b748e77",
+  "bonReference": "24/POTEAUGUIDAGE/SRRPH/2026",
+  "attachments": [
+    {
+      "name": "Fiche technique potelet11.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/342914/48588894",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/df971299-7bf4-417c-bca5-fd734b748e77/Fiche_technique_potelet11.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "Fiche technique potelet11.pdf",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T19:12:59.335Z"
+}
