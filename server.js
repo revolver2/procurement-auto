@@ -731,7 +731,17 @@ app.post('/api/projects/:id/extract-avis', async (req, res) => {
       if (spec.attachments?.length) bons[idx].attachments = spec.attachments
       db.write('procurement-analysis.json', bons)
     }
-    res.json({ success: true, spec })
+
+    // Include files-on-disk listing in response for UI debug
+    const { ATTACHMENTS_DIR: AD } = require('./lib/attachments/attachment-downloader')
+    const safeId = req.params.id.replace(/[^a-zA-Z0-9\-]/g, '_')
+    const dir = path.join(AD, safeId)
+    let filesOnDisk = []
+    if (fs.existsSync(dir)) {
+      try { filesOnDisk = fs.readdirSync(dir).map(f => ({ name: f, size: fs.statSync(path.join(dir,f)).size })) } catch {}
+    }
+
+    res.json({ success: true, spec, filesOnDisk, dirExists: fs.existsSync(dir) })
   } catch (e) { res.status(500).json({ success: false, error: e.message }) }
 })
 
@@ -905,6 +915,59 @@ app.get('/api/projects/:id/attachments', (req, res) => {
   const spec = loadSpec(req.params.id)
   if (!spec) return res.status(404).json({ error: 'Aucune spec pour ce bon' })
   res.json(spec)
+})
+
+/* ── Files actually on disk for this project ───────────────────── */
+app.get('/api/projects/:id/files-on-disk', (req, res) => {
+  const { ATTACHMENTS_DIR } = require('./lib/attachments/attachment-downloader')
+  const safeId = req.params.id.replace(/[^a-zA-Z0-9\-]/g, '_')
+  const dir    = path.join(ATTACHMENTS_DIR, safeId)
+
+  if (!fs.existsSync(dir)) return res.json({ dirExists: false, files: [], dir })
+
+  function scanDir(d, depth = 0) {
+    const items = []
+    if (depth > 3) return items
+    try {
+      for (const f of fs.readdirSync(d)) {
+        const fp = path.join(d, f)
+        try {
+          const st = fs.statSync(fp)
+          if (st.isDirectory()) {
+            items.push(...scanDir(fp, depth + 1))
+          } else {
+            items.push({ name: path.relative(dir, fp).replace(/\\/g, '/'), size: st.size, ext: path.extname(f).toLowerCase() })
+          }
+        } catch {}
+      }
+    } catch {}
+    return items
+  }
+
+  const files = scanDir(dir)
+  res.json({ dirExists: true, files, dir })
+})
+
+/* ── Save / update document edits ─────────────────────────────── */
+app.patch('/api/documents/:bonId/:type', (req, res) => {
+  const { bonId, type } = req.params
+  if (!['bordereau','devis','rfq','plan','checklist'].includes(type))
+    return res.status(400).json({ error: 'Type invalide' })
+
+  const data = req.body
+  const rfqs = db.read('rfq-generated.json') || []
+  const idx  = rfqs.findIndex(d => d.bonId === bonId)
+
+  if (idx >= 0) {
+    rfqs[idx].documents       = rfqs[idx].documents || {}
+    rfqs[idx].documents[type] = data
+    rfqs[idx].updatedAt       = new Date().toISOString()
+  } else {
+    rfqs.push({ bonId, documents: { [type]: data }, generatedAt: new Date().toISOString(), updatedAt: new Date().toISOString() })
+  }
+
+  db.write('rfq-generated.json', rfqs)
+  res.json({ success: true })
 })
 
 /* ═══════════════════════════════════════════════════════════════

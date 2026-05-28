@@ -198,11 +198,55 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
 .doc-modal-btn:hover{background:#e2e8f0}
 .doc-modal-btn.orange{background:var(--orange-light);color:var(--orange)}
 .doc-modal-btn.close-btn{background:none;font-size:18px;padding:4px 8px;color:var(--muted);line-height:1}
-.doc-modal-body{flex:1;overflow:hidden;position:relative}
-.doc-modal-pane{display:none;height:100%;width:100%}
+.doc-modal-body{flex:1;overflow:hidden;position:relative;min-height:0}
+.doc-modal-pane{display:none;height:100%;width:100%;overflow-y:auto}
 .doc-modal-pane.active{display:block}
-#doc-iframe{width:100%;height:100%;border:none}
+#doc-form-pane{padding:20px 24px;min-height:400px;background:#f8fafc}
 #doc-json-pane{padding:16px;overflow:auto;height:100%;font-size:12px;font-family:monospace;white-space:pre-wrap;color:#1e293b;background:#f8fafc}
+/* Form renderer styles */
+.dform-header{text-align:center;padding:14px 0 10px;border-bottom:3px solid #1e3a5f;margin-bottom:16px}
+.dform-badge{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:#64748b;font-weight:700;margin-bottom:4px}
+.dform-title{font-size:20px;font-weight:800;color:#1e3a5f;letter-spacing:.02em}
+.dform-subtitle{font-size:12px;color:#64748b;margin-top:3px}
+.dform-meta{display:grid;grid-template-columns:1fr 1fr;gap:6px 16px;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:12px 16px;margin-bottom:14px;font-size:12px}
+.dform-meta-row{display:flex;gap:6px;align-items:baseline}
+.dform-meta-label{color:#64748b;font-weight:600;white-space:nowrap;min-width:90px}
+.dform-meta-val{color:#1e293b;font-weight:500}
+.dform-section{background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:12px;overflow:hidden}
+.dform-section-head{background:#1e3a5f;color:#fff;padding:8px 14px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;display:flex;align-items:center;gap:8px}
+.dform-section-body{padding:14px 16px}
+.dform-table{width:100%;border-collapse:collapse;font-size:12px}
+.dform-table th{padding:8px 10px;background:#f1f5f9;text-align:left;font-weight:700;font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#475569;border-bottom:2px solid #e2e8f0}
+.dform-table td{padding:7px 8px;border-bottom:1px solid #f1f5f9;vertical-align:middle}
+.dform-table tr:last-child td{border-bottom:none}
+.dform-table tfoot td{background:#f8fafc;font-weight:700;border-top:2px solid #e2e8f0;padding:8px 10px}
+.dform-table tfoot tr:last-child td{color:#1e3a5f;font-size:13px;background:#1e3a5f1a}
+.dform-input{border:1px solid #e2e8f0;border-radius:5px;padding:5px 8px;font-size:12px;font-family:inherit;width:100%;background:#fff;color:#1e293b;transition:border-color .15s}
+.dform-input:focus{outline:none;border-color:#f97316;box-shadow:0 0 0 2px rgba(249,115,22,.15)}
+.dform-input.num{text-align:right;font-family:monospace}
+.dform-check-item{display:flex;align-items:flex-start;gap:10px;padding:7px 0;border-bottom:1px solid #f1f5f9;cursor:pointer}
+.dform-check-item:last-child{border-bottom:none}
+.dform-check-item input[type=checkbox]{width:16px;height:16px;accent-color:#f97316;cursor:pointer;flex-shrink:0;margin-top:1px}
+.dform-check-item span{font-size:13px;color:#1e293b;line-height:1.4}
+.dform-check-item.done span{text-decoration:line-through;color:#94a3b8}
+.dform-phase-card{background:#fff;border:1px solid #e2e8f0;border-radius:8px;margin-bottom:10px;overflow:hidden}
+.dform-phase-head{display:flex;align-items:center;gap:10px;padding:10px 14px;cursor:pointer;user-select:none}
+.dform-phase-num{width:28px;height:28px;border-radius:50%;background:#1e3a5f;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
+.dform-phase-name{font-size:13px;font-weight:700;color:#1e293b;flex:1}
+.dform-phase-body{padding:0 14px 12px;border-top:1px solid #f1f5f9;display:none}
+.dform-phase-body.open{display:block}
+.dform-phase-row{display:grid;grid-template-columns:120px 1fr;gap:4px;padding:4px 0;font-size:12px;border-bottom:1px solid #f8fafc}
+.dform-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.dform-btn{display:flex;align-items:center;gap:6px;padding:8px 16px;border:none;border-radius:7px;font-size:12px;font-weight:700;cursor:pointer;transition:opacity .15s}
+.dform-btn:hover{opacity:.85}
+.dform-btn-save{background:#1e3a5f;color:#fff}
+.dform-btn-print{background:#f97316;color:#fff}
+.dform-btn-excel{background:#16a34a;color:#fff}
+.dform-supplier-head{display:flex;align-items:center;justify-content:space-between;padding:8px 14px;background:#f97316;color:#fff;font-size:12px;font-weight:700;border-radius:7px 7px 0 0;margin:-1px -1px 0}
+.dform-status-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px}
+.dform-status-ok{background:#22c55e}
+.dform-status-warn{background:#f59e0b}
+.dform-status-err{background:#ef4444}
 
 /* ── Checklist ── */
 .checklist-section{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
@@ -977,16 +1021,21 @@ function renderDetail(bon) {
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
           <span style="font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px"><i class="bi bi-paperclip" style="color:var(--orange)"></i> Pièces jointes &amp; Extraction AVIS</span>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button onclick="reExtractAvis('${bon.id}',false)" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-cpu"></i> Re-extraire</button>
-            <button onclick="reExtractAvis('${bon.id}',true)" style="background:#f1f5f9;color:var(--muted);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-cloud-download"></i> Force téléchargement</button>
+            <button onclick="reExtractAvis('${bon.id}',false)" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px" title="Re-scanner les fichiers déjà téléchargés — aucun download requis"><i class="bi bi-cpu"></i> Re-extraire</button>
+            <button onclick="reExtractAvis('${bon.id}',true)" style="background:#f1f5f9;color:var(--muted);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px" title="Supprimer et re-télécharger les pièces jointes"><i class="bi bi-cloud-download"></i> Force téléchargement</button>
+            <button onclick="viewCachedFiles('${bon.id}')" style="background:#f1f5f9;color:var(--muted);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px" title="Voir les fichiers téléchargés en cache"><i class="bi bi-folder2-open"></i> Voir fichiers</button>
             ${bon.attachmentHasText ? `<button onclick="viewAvisText('${bon.id}')" style="background:rgba(16,185,129,.1);color:#059669;border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-eye"></i> Voir texte AVIS</button>` : ''}
           </div>
         </div>
 
         <!-- Status summary -->
         ${bon.attachmentHasText
-          ? `<div style="padding:10px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:8px;font-size:13px;color:#059669;margin-bottom:12px;display:flex;align-items:center;gap:8px"><i class="bi bi-check-circle-fill"></i> <span><b>Texte AVIS extrait avec succès</b> — CrewAI peut analyser ce bon.</span></div>`
-          : `<div style="padding:10px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:8px;font-size:13px;color:#dc2626;margin-bottom:12px"><i class="bi bi-x-circle-fill"></i> <b>AVIS non extrait</b> — Cliquez <b>Re-extraire</b> pour réessayer depuis les fichiers déjà téléchargés, ou <b>Force téléchargement</b> pour re-télécharger.</div>`}
+          ? `<div style="padding:10px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:8px;font-size:13px;color:#059669;margin-bottom:12px;display:flex;align-items:center;gap:8px"><i class="bi bi-check-circle-fill"></i> <div><b>Texte AVIS extrait avec succès</b> — CrewAI peut analyser ce bon.<br><span style="font-size:11px;opacity:.8">${bon.attachments?.find(a=>a.textExtracted)?.sourceFile||bon.attachments?.find(a=>a.textExtracted)?.name||''} · ${(bon.attachments?.find(a=>a.textExtracted)?.textLength||0).toLocaleString()} chars</span></div></div>`
+          : bon.attachments?.some(a=>a.requiresOCR)
+            ? `<div style="padding:10px 14px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.3);border-radius:8px;font-size:13px;color:#b45309;margin-bottom:12px"><i class="bi bi-exclamation-triangle-fill"></i> <b>PDF scanné détecté (OCR requis)</b> — Le fichier AVIS est une image scannée. L'extraction automatique n'est pas possible sans OCR.<br><span style="font-size:11px;opacity:.8;margin-top:4px;display:block">Fichier: ${bon.attachments?.find(a=>a.requiresOCR)?.name||'—'}</span></div>`
+            : bon.attachments?.length
+              ? `<div style="padding:10px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:8px;font-size:13px;color:#dc2626;margin-bottom:12px"><i class="bi bi-x-circle-fill"></i> <b>Extraction échouée</b> — Fichiers téléchargés mais aucun texte extrait.<br><span style="font-size:11px;margin-top:4px;display:block;color:#64748b">Cliquez <b style="color:#dc2626">Re-extraire</b> pour réessayer. Si le problème persiste, utilisez <b style="color:#64748b">Force téléchargement</b>.</span></div>`
+              : `<div style="padding:10px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:8px;font-size:13px;color:#dc2626;margin-bottom:12px"><i class="bi bi-cloud-slash-fill"></i> <b>Aucun fichier téléchargé</b> — Cliquez <b>Force téléchargement</b> pour télécharger les pièces jointes, puis <b>Re-extraire</b>.</div>`}
 
         <!-- Debug table per attachment -->
         ${(bon.attachments?.length) ? `
@@ -2232,7 +2281,7 @@ function fd(iso) {
 
 
 /* ══════════════════════════════════════════════════════
-   DOCUMENT MODAL
+   DOCUMENT MODAL — Inline form renderers (no iframe)
 ══════════════════════════════════════════════════════ */
 
 let _docModal = { bonId: null, type: null, data: null }
@@ -2242,36 +2291,30 @@ function openDocModal(bonId, type, data) {
   const modal = document.getElementById('doc-modal')
   if (!modal) return
   modal.classList.add('open')
+  document.body.style.overflow = 'hidden'
   const title = document.getElementById('doc-modal-title')
   if (title) title.textContent = docLabelFull(type)
-  // Load preview iframe
-  switchDocTab('preview')
-  document.body.style.overflow = 'hidden'
+  document.querySelectorAll('.doc-modal-tab').forEach(b => b.classList.remove('active'))
+  document.querySelectorAll('.doc-modal-pane').forEach(p => p.classList.remove('active'))
+  document.getElementById('dtab-btn-preview')?.classList.add('active')
+  document.getElementById('dtab-pane-preview')?.classList.add('active')
+  renderDocFormInPage(type, data, bonId)
 }
 
 function closeDocModal() {
-  const modal = document.getElementById('doc-modal')
-  if (modal) modal.classList.remove('open')
+  document.getElementById('doc-modal')?.classList.remove('open')
   document.body.style.overflow = ''
-  // Clear iframe to stop loading
-  const iframe = document.getElementById('doc-iframe')
-  if (iframe) iframe.src = ''
+  const pane = document.getElementById('doc-form-pane')
+  if (pane) pane.innerHTML = ''
 }
 
 function switchDocTab(name) {
   document.querySelectorAll('.doc-modal-tab').forEach(b => b.classList.remove('active'))
   document.querySelectorAll('.doc-modal-pane').forEach(p => p.classList.remove('active'))
-  const btn  = document.getElementById(`dtab-btn-${name}`)
-  const pane = document.getElementById(`dtab-pane-${name}`)
-  if (btn)  btn.classList.add('active')
-  if (pane) pane.classList.add('active')
-
-  if (name === 'preview') {
-    const iframe = document.getElementById('doc-iframe')
-    if (iframe && _docModal.bonId && _docModal.type) {
-      iframe.src = `/api/documents/${_docModal.bonId}/${_docModal.type}/html?t=${Date.now()}`
-    }
-  }
+  document.getElementById(`dtab-btn-${name}`)?.classList.add('active')
+  document.getElementById(`dtab-pane-${name}`)?.classList.add('active')
+  if (name === 'preview' && _docModal.type && _docModal.type[0] !== '_')
+    renderDocFormInPage(_docModal.type, _docModal.data, _docModal.bonId)
   if (name === 'json') {
     const el = document.getElementById('doc-json-pane')
     if (el) el.textContent = _docModal.data ? JSON.stringify(_docModal.data, null, 2) : '// Données non disponibles'
@@ -2279,19 +2322,27 @@ function switchDocTab(name) {
 }
 
 function printDoc() {
-  const iframe = document.getElementById('doc-iframe')
-  if (iframe?.contentWindow) iframe.contentWindow.print()
+  const pane = document.getElementById('doc-form-pane')
+  if (!pane) return
+  const w = window.open('', '_blank')
+  w.document.write(`<!DOCTYPE html><html><head><meta charset="utf-8"><title>Document</title>
+  <style>body{font-family:Arial,sans-serif;font-size:12px;color:#1e293b;margin:24px}
+  table{width:100%;border-collapse:collapse}th{padding:7px 9px;background:#1e3a5f;color:#fff;text-align:left;font-size:11px}
+  td{padding:6px 8px;border-bottom:1px solid #e2e8f0}input,textarea,select{border:none;background:transparent;font-size:12px;font-family:inherit;width:100%}
+  @media print{button,.dform-actions{display:none}}</style></head><body>${pane.innerHTML}</body></html>`)
+  w.document.close()
+  setTimeout(() => { w.focus(); w.print(); }, 500)
 }
 
 async function exportDocHtml() {
-  if (!_docModal.bonId || !_docModal.type) return
+  if (!_docModal.bonId || !_docModal.type || _docModal.type[0]==='_') return
   try {
     const res = await fetch(`/api/documents/${_docModal.bonId}/${_docModal.type}/html`)
     const txt = await res.text()
     const blob = new Blob([txt], { type: 'text/html;charset=utf-8' })
     const url  = URL.createObjectURL(blob)
-    const a    = Object.assign(document.createElement('a'), { href: url, download: `${_docModal.type}-${_docModal.bonId}.html` })
-    a.click(); URL.revokeObjectURL(url)
+    Object.assign(document.createElement('a'), { href: url, download: `${_docModal.type}-${_docModal.bonId}.html` }).click()
+    URL.revokeObjectURL(url)
   } catch(e) { showToast('Export HTML échoué: '+e.message,'err') }
 }
 
@@ -2303,7 +2354,7 @@ function exportDocCsv() {
   if (type === 'bordereau') {
     const rows = Array.isArray(d) ? d : (d.bordereauDraft||[])
     csv  = 'N°,Désignation,Unité,Quantité,P.U. HT,Total HT,TVA,Total TTC\n'
-    csv += rows.map(r => [r.num,`"${(r.designation||'').replace(/"/g,'""')}"`,r.unite||'',r.quantite||'',r.prixUnitaireHT||'',r.totalHT||r.montantHT||'',r.tva||'20%',r.totalTTC||''].join(',')).join('\n')
+    csv += rows.map(r => [r.num,`"${(r.designation||'').replace(/"/g,'""')}"`,r.unite||'',r.quantite||'',r.prixUnitaireHT||r.prixUnitaire||'',r.totalHT||r.montantHT||'',r.tva||'20%',r.totalTTC||''].join(',')).join('\n')
   } else if (type === 'devis') {
     csv  = 'Désignation,Unité,Quantité,P.U.,Total\n'
     csv += (d.items||[]).map(r => [`"${(r.designation||'').replace(/"/g,'""')}"`,r.unite||'',r.quantite||'',r.prixUnitaire||'',r.total||''].join(',')).join('\n')
@@ -2312,75 +2363,433 @@ function exportDocCsv() {
     ;(d.suppliers||d.supplierRFQ||[]).forEach(s => {
       ;(s.items||[]).forEach(it => {
         const item = typeof it==='string' ? it : (it.designation||'')
-        const spec = typeof it==='string' ? '' : (it.specification||'')
+        const spec = typeof it==='string' ? '' : (it.specification||it.spec||'')
         csv += [`"${(s.category||'').replace(/"/g,'""')}"`,`"${item.replace(/"/g,'""')}"`,`"${spec.replace(/"/g,'""')}"`,typeof it==='string'?'':it.quantite||'',typeof it==='string'?'':it.unite||''].join(',') + '\n'
       })
     })
   } else if (type === 'checklist') {
     csv  = 'Catégorie,Item\n'
-    const cats = {Soumission:d.submission,Technique:d.technical,Administratif:d.administrative,Financier:d.financial}
-    Object.entries(cats).forEach(([cat,items]) => {
-      ;(items||[]).forEach(item => { csv += `"${cat}","${String(item).replace(/"/g,'""')}"\n` })
+    const items = d.submissionChecklist || (Array.isArray(d) ? d : []) || d.submission || []
+    items.forEach(item => { csv += `"Soumission","${String(item).replace(/"/g,'""')}"\n` })
+    ;['technical','administrative','financial'].forEach(k => {
+      ;(d[k]||[]).forEach(item => { csv += `"${k}","${String(item).replace(/"/g,'""')}"\n` })
     })
-    if (d.submissionChecklist) d.submissionChecklist.forEach(item => { csv += `"Soumission","${String(item).replace(/"/g,'""')}"\n` })
-  } else {
-    csv = JSON.stringify(d, null, 2)
-  }
+  } else { csv = JSON.stringify(d, null, 2) }
   const blob = new Blob(['﻿'+csv], { type: 'text/csv;charset=utf-8' })
   const url  = URL.createObjectURL(blob)
-  const a    = Object.assign(document.createElement('a'), { href: url, download: `${_docModal.type}-${_docModal.bonId}.csv` })
-  a.click(); URL.revokeObjectURL(url)
+  Object.assign(document.createElement('a'), { href: url, download: `${_docModal.type}-${_docModal.bonId}.csv` }).click()
+  URL.revokeObjectURL(url)
 }
 
 function docLabelFull(t) {
   return {bordereau:'Bordereau de Prix',devis:'Devis Commercial',rfq:'Demande de Prix Fournisseur',plan:"Plan d'Exécution",checklist:'Checklist de Soumission'}[t]||t
 }
 
-/* ── AVIS text viewer ── */
+/* ── Dispatch to inline form renderer ───────────────── */
+function renderDocFormInPage(type, data, bonId) {
+  const pane = document.getElementById('doc-form-pane')
+  if (!pane) return
+  if (!data) { pane.innerHTML = '<div style="padding:40px;text-align:center;color:#64748b">Données non disponibles.</div>'; return }
+  const bon = currentProject || {}
+  const renderers = { bordereau: renderBordereauForm, devis: renderDevisForm, rfq: renderRfqForm, plan: renderPlanForm, checklist: renderChecklistForm }
+  const fn = renderers[type]
+  pane.innerHTML = fn ? fn(data, bon, bonId) : `<pre style="padding:16px;font-size:12px;font-family:monospace">${JSON.stringify(data, null, 2)}</pre>`
+}
+
+/* helpers */
+function _esc(s) { return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;') }
+function _fmtN(n) { const v=parseFloat(n); return isNaN(v)?'—':v.toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2})+' MAD' }
+
+/* ── Bordereau ─────────────────────────────────────── */
+function renderBordereauForm(data, bon, bonId) {
+  const rows = Array.isArray(data) ? data : (data.bordereauDraft||[])
+  let totalHT=0,totalTVA=0,totalTTC=0
+  const rHtml = rows.map((r,i) => {
+    const pu=parseFloat(r.prixUnitaireHT||r.prixUnitaire||0), qty=parseFloat(r.quantite||0)
+    const tvaP=parseFloat((r.tva||'20').toString().replace(/[^0-9.]/g,'')||20)
+    const ht=pu&&qty?pu*qty:parseFloat(r.totalHT||r.montantHT||0)
+    const ttc=ht*(1+tvaP/100)
+    totalHT+=ht; totalTVA+=ht*tvaP/100; totalTTC+=ttc
+    return `<tr>
+      <td style="text-align:center;color:#64748b;font-size:11px">${r.num||(i+1)}</td>
+      <td><input class="dform-input" data-row="${i}" data-field="designation" value="${_esc(r.designation||'')}"></td>
+      <td><input class="dform-input" style="width:55px" data-row="${i}" data-field="unite" value="${_esc(r.unite||'U')}"></td>
+      <td><input class="dform-input num" style="width:68px" type="number" step="any" data-row="${i}" data-field="quantite" value="${qty||''}" oninput="calcBordRow(this,${i})"></td>
+      <td><input class="dform-input num" style="width:88px" type="number" step="any" data-row="${i}" data-field="prixUnitaireHT" value="${pu||''}" oninput="calcBordRow(this,${i})"></td>
+      <td id="bht-${i}" style="text-align:right;font-weight:600">${ht?_fmtN(ht):'—'}</td>
+      <td style="white-space:nowrap"><input class="dform-input num" style="width:45px" type="number" step="any" data-row="${i}" data-field="tva" value="${tvaP}" oninput="calcBordRow(this,${i})">%</td>
+      <td id="bttc-${i}" style="text-align:right;font-weight:700;color:#1e3a5f">${ttc?_fmtN(ttc):'—'}</td>
+      <td><input class="dform-input" data-row="${i}" data-field="observations" value="${_esc(r.observations||r.observation||'')}"></td>
+    </tr>`
+  }).join('')
+  return `<div><div class="dform-header"><div class="dform-badge">Document Commercial</div><div class="dform-title">BORDEREAU DE PRIX</div><div class="dform-subtitle">${_esc(bon.reference||'')} · ${_esc(bon.buyer||bon.acheteur||'')}</div></div>
+  <div class="dform-meta">
+    <div class="dform-meta-row"><span class="dform-meta-label">Acheteur</span><span class="dform-meta-val">${_esc(bon.buyer||bon.acheteur||'—')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Objet</span><span class="dform-meta-val">${_esc(bon.title||'—')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Référence BC</span><span class="dform-meta-val">${_esc(bon.reference||bon.id||'—')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Date limite</span><span class="dform-meta-val" style="color:#dc2626;font-weight:700">${_esc(bon.deadline||'—')}</span></div>
+  </div>
+  <div class="dform-section"><div class="dform-section-head"><i class="bi bi-list-columns-reverse"></i> Détail des prix</div>
+  <div style="overflow-x:auto"><table class="dform-table">
+    <thead><tr><th style="width:36px">N°</th><th>Désignation</th><th style="width:60px">Unité</th><th style="width:72px">Quantité</th><th style="width:95px">P.U. HT</th><th style="width:100px">Total HT</th><th style="width:65px">TVA%</th><th style="width:100px">Total TTC</th><th>Observations</th></tr></thead>
+    <tbody id="bord-rows">${rHtml}</tbody>
+    <tfoot>
+      <tr><td colspan="5" style="text-align:right;color:#64748b;font-weight:600">Total HT</td><td colspan="4" id="b-ht" style="text-align:right;font-weight:600">${totalHT?_fmtN(totalHT):''}</td></tr>
+      <tr><td colspan="5" style="text-align:right;color:#64748b">TVA</td><td colspan="4" id="b-tva" style="text-align:right">${totalTVA?_fmtN(totalTVA):''}</td></tr>
+      <tr><td colspan="5" style="text-align:right;color:#1e3a5f;font-weight:800">TOTAL TTC</td><td colspan="4" id="b-ttc" style="text-align:right;color:#1e3a5f;font-weight:800">${totalTTC?_fmtN(totalTTC):''}</td></tr>
+    </tfoot>
+  </table></div></div>
+  <div class="dform-actions">
+    <button class="dform-btn dform-btn-save" onclick="saveDocForm('${bonId}','bordereau')"><i class="bi bi-floppy"></i> Sauvegarder</button>
+    <button class="dform-btn dform-btn-print" onclick="printDoc()"><i class="bi bi-printer"></i> Imprimer</button>
+    <button class="dform-btn dform-btn-excel" onclick="exportDocCsv()"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
+  </div>
+  <div id="dform-save-msg" style="display:none;font-size:12px;color:#16a34a;margin-top:8px;padding:8px 12px;background:rgba(22,163,74,.08);border-radius:6px"><i class="bi bi-check-circle"></i> Sauvegardé</div></div>`
+}
+
+function calcBordRow(inp, rowIdx) {
+  const tr = inp.closest('tr'); if (!tr) return
+  const qty=parseFloat(tr.querySelector('[data-field="quantite"]')?.value||0)
+  const pu=parseFloat(tr.querySelector('[data-field="prixUnitaireHT"]')?.value||0)
+  const tvP=parseFloat(tr.querySelector('[data-field="tva"]')?.value||20)
+  const ht=qty*pu, ttc=ht*(1+tvP/100)
+  const htEl=document.getElementById(`bht-${rowIdx}`), ttcEl=document.getElementById(`bttc-${rowIdx}`)
+  if (htEl)  htEl.textContent  = ht?_fmtN(ht):'—'
+  if (ttcEl) ttcEl.textContent = ttc?_fmtN(ttc):'—'
+  let tHT=0,tTVA=0,tTTC=0
+  document.querySelectorAll('#bord-rows tr').forEach(r2 => {
+    const q=parseFloat(r2.querySelector('[data-field="quantite"]')?.value||0)
+    const p=parseFloat(r2.querySelector('[data-field="prixUnitaireHT"]')?.value||0)
+    const tv=parseFloat(r2.querySelector('[data-field="tva"]')?.value||20)
+    const h=q*p; tHT+=h; tTVA+=h*tv/100; tTTC+=h*(1+tv/100)
+  })
+  const eHT=document.getElementById('b-ht'),eTVA=document.getElementById('b-tva'),eTTC=document.getElementById('b-ttc')
+  if(eHT)  eHT.textContent=_fmtN(tHT)
+  if(eTVA) eTVA.textContent=_fmtN(tTVA)
+  if(eTTC) eTTC.textContent=_fmtN(tTTC)
+}
+
+/* ── Devis ──────────────────────────────────────────── */
+function renderDevisForm(data, bon, bonId) {
+  const items=data.items||data.prestations||[]
+  const totalHT=parseFloat(data.totalHT||data.montantHT||0)
+  const tva=parseFloat(data.tva||data.TVA||totalHT*.2||0)
+  const totalTTC=parseFloat(data.totalTTC||data.montantTTC||0)
+  const rows=items.map((r,i)=>{
+    const pu=parseFloat(r.prixUnitaire||r.prix||0),qty=parseFloat(r.quantite||1)
+    const ttl=pu&&qty?pu*qty:parseFloat(r.total||r.montant||0)
+    return `<tr>
+      <td><input class="dform-input" data-row="${i}" data-field="designation" value="${_esc(r.designation||'')}"></td>
+      <td><input class="dform-input" style="width:55px" data-row="${i}" data-field="unite" value="${_esc(r.unite||'Ens')}"></td>
+      <td><input class="dform-input num" style="width:68px" type="number" step="any" data-row="${i}" data-field="quantite" value="${qty||''}"></td>
+      <td><input class="dform-input num" style="width:88px" type="number" step="any" data-row="${i}" data-field="prixUnitaire" value="${pu||''}"></td>
+      <td style="text-align:right;font-weight:600">${ttl?_fmtN(ttl):'—'}</td>
+    </tr>`
+  }).join('')
+  return `<div><div class="dform-header"><div class="dform-badge">Offre Commerciale</div><div class="dform-title">DEVIS COMMERCIAL</div><div class="dform-subtitle">Réf. ${_esc(bon.reference||data.reference||'')} · ${_esc(bon.buyer||data.client||'')}</div></div>
+  <div class="dform-meta">
+    <div class="dform-meta-row"><span class="dform-meta-label">Client / Acheteur</span><span class="dform-meta-val">${_esc(bon.buyer||data.client||'—')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Objet</span><span class="dform-meta-val">${_esc(data.objet||bon.title||'—')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Validité</span><span class="dform-meta-val">${_esc(data.validite||data.validity||'30 jours')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Date limite dépôt</span><span class="dform-meta-val" style="color:#dc2626;font-weight:700">${_esc(bon.deadline||'—')}</span></div>
+  </div>
+  <div class="dform-section"><div class="dform-section-head"><i class="bi bi-list-task"></i> Détail des prestations</div>
+  <div style="overflow-x:auto"><table class="dform-table">
+    <thead><tr><th>Désignation</th><th style="width:60px">Unité</th><th style="width:72px">Quantité</th><th style="width:95px">Prix Unit.</th><th style="width:100px">Total</th></tr></thead>
+    <tbody>${rows}</tbody>
+    <tfoot>${totalHT?`
+      <tr><td colspan="4" style="text-align:right">Montant HT</td><td style="text-align:right;font-weight:600">${_fmtN(totalHT)}</td></tr>
+      <tr><td colspan="4" style="text-align:right">TVA 20%</td><td style="text-align:right">${_fmtN(tva)}</td></tr>
+      <tr><td colspan="4" style="text-align:right;color:#1e3a5f;font-weight:800">TOTAL TTC</td><td style="text-align:right;color:#1e3a5f;font-weight:800">${_fmtN(totalTTC||totalHT+tva)}</td></tr>`:''}</tfoot>
+  </table></div></div>
+  ${data.conditions?`<div class="dform-section"><div class="dform-section-head"><i class="bi bi-file-text"></i> Conditions</div><div class="dform-section-body" style="font-size:13px;line-height:1.6">${_esc(data.conditions)}</div></div>`:''}
+  <div class="dform-section"><div class="dform-section-head"><i class="bi bi-pen"></i> Signature</div>
+  <div class="dform-section-body"><div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;padding-top:8px">
+    <div><div style="font-size:11px;color:#94a3b8;margin-bottom:4px">Préparé par</div><div style="border-bottom:1px solid #94a3b8;height:40px"></div></div>
+    <div><div style="font-size:11px;color:#94a3b8;margin-bottom:4px">Approuvé par</div><div style="border-bottom:1px solid #94a3b8;height:40px"></div></div>
+  </div></div></div>
+  <div class="dform-actions">
+    <button class="dform-btn dform-btn-save" onclick="saveDocForm('${bonId}','devis')"><i class="bi bi-floppy"></i> Sauvegarder</button>
+    <button class="dform-btn dform-btn-print" onclick="printDoc()"><i class="bi bi-printer"></i> Imprimer</button>
+    <button class="dform-btn dform-btn-excel" onclick="exportDocCsv()"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
+  </div>
+  <div id="dform-save-msg" style="display:none;font-size:12px;color:#16a34a;margin-top:8px;padding:8px 12px;background:rgba(22,163,74,.08);border-radius:6px"><i class="bi bi-check-circle"></i> Sauvegardé</div></div>`
+}
+
+/* ── RFQ ────────────────────────────────────────────── */
+function renderRfqForm(data, bon, bonId) {
+  const sups=data.suppliers||data.supplierRFQ||data.groups||[]
+  const suppHtml=sups.map((s,si)=>{
+    const cat=typeof s==='string'?s:(s.category||s.name||`Groupe ${si+1}`)
+    const items=typeof s==='string'?[]:(s.items||s.articles||[])
+    const rowsH=items.map((it,ii)=>{
+      if(typeof it==='string') return `<tr><td>${_esc(it)}</td><td></td><td></td><td></td><td><input class="dform-input" data-sup="${si}" data-row="${ii}" data-field="fournisseur" placeholder="Fournisseur"></td><td><input class="dform-input" data-sup="${si}" data-row="${ii}" data-field="observation" placeholder="Obs."></td></tr>`
+      return `<tr>
+        <td><input class="dform-input" data-sup="${si}" data-row="${ii}" data-field="designation" value="${_esc(it.designation||it.article||'')}"></td>
+        <td><input class="dform-input" data-sup="${si}" data-row="${ii}" data-field="specification" value="${_esc(it.specification||it.spec||'')}"></td>
+        <td><input class="dform-input num" style="width:60px" type="number" step="any" data-sup="${si}" data-row="${ii}" data-field="quantite" value="${it.quantite||''}"></td>
+        <td><input class="dform-input" style="width:55px" data-sup="${si}" data-row="${ii}" data-field="unite" value="${_esc(it.unite||'')}"></td>
+        <td><input class="dform-input" data-sup="${si}" data-row="${ii}" data-field="fournisseur" value="${_esc(it.fournisseur||'')}"></td>
+        <td><input class="dform-input" data-sup="${si}" data-row="${ii}" data-field="observation" value="${_esc(it.observation||'')}"></td>
+      </tr>`
+    }).join('')
+    return `<div class="dform-section"><div class="dform-section-head" style="background:#f97316"><i class="bi bi-box-seam"></i> ${_esc(cat)}</div>
+    <div style="overflow-x:auto"><table class="dform-table"><thead><tr><th>Article</th><th>Spécification</th><th style="width:65px">Qté</th><th style="width:55px">Unité</th><th>Fournisseur</th><th>Observation</th></tr></thead>
+    <tbody>${rowsH}</tbody></table></div></div>`
+  }).join('')
+  return `<div><div class="dform-header"><div class="dform-badge">Approvisionnement</div><div class="dform-title">DEMANDE DE PRIX FOURNISSEUR</div><div class="dform-subtitle">${_esc(bon.title||'')}</div></div>
+  <div class="dform-meta">
+    <div class="dform-meta-row"><span class="dform-meta-label">Projet</span><span class="dform-meta-val">${_esc(bon.title||'—')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Date limite dépôt</span><span class="dform-meta-val" style="color:#dc2626;font-weight:700">${_esc(bon.deadline||data.deadline||'—')}</span></div>
+    ${data.paymentTerms?`<div class="dform-meta-row"><span class="dform-meta-label">Conditions paiement</span><span class="dform-meta-val">${_esc(data.paymentTerms)}</span></div>`:''}
+    ${data.deliveryDelay?`<div class="dform-meta-row"><span class="dform-meta-label">Délai livraison</span><span class="dform-meta-val">${_esc(data.deliveryDelay)}</span></div>`:''}
+  </div>
+  ${suppHtml}
+  <div class="dform-section"><div class="dform-section-head"><i class="bi bi-pencil-square"></i> À remplir par le fournisseur</div>
+  <div class="dform-section-body"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;padding-top:6px">
+    <div><div style="font-size:11px;color:#94a3b8;margin-bottom:4px">Prix proposé (HT)</div><div style="border-bottom:1px solid #94a3b8;height:36px"></div></div>
+    <div><div style="font-size:11px;color:#94a3b8;margin-bottom:4px">Délai livraison</div><div style="border-bottom:1px solid #94a3b8;height:36px"></div></div>
+    <div><div style="font-size:11px;color:#94a3b8;margin-bottom:4px">Signature / Cachet</div><div style="border-bottom:1px solid #94a3b8;height:36px"></div></div>
+  </div></div></div>
+  <div class="dform-actions">
+    <button class="dform-btn dform-btn-save" onclick="saveDocForm('${bonId}','rfq')"><i class="bi bi-floppy"></i> Sauvegarder</button>
+    <button class="dform-btn dform-btn-print" onclick="printDoc()"><i class="bi bi-printer"></i> Imprimer</button>
+    <button class="dform-btn dform-btn-excel" onclick="exportDocCsv()"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
+  </div>
+  <div id="dform-save-msg" style="display:none;font-size:12px;color:#16a34a;margin-top:8px;padding:8px 12px;background:rgba(22,163,74,.08);border-radius:6px"><i class="bi bi-check-circle"></i> Sauvegardé</div></div>`
+}
+
+/* ── Plan d'exécution ───────────────────────────────── */
+function renderPlanForm(data, bon, bonId) {
+  let phases=data.phases||[]
+  if(!phases.length&&Array.isArray(data.executionPlan)){
+    phases=data.executionPlan.map((line,i)=>{
+      const m=String(line).match(/^(?:Phase\s*(\d+)[:\s—-]+)?([^:—]+?)(?:[:\s—-]+(.+))?$/)
+      return{num:m?.[1]||i+1,name:m?.[2]?.trim()||`Phase ${i+1}`,description:m?.[3]?.trim()||String(line),duration:'',resources:'',notes:''}
+    })
+  }
+  if(!phases.length)phases=[
+    {num:1,name:'Préparation',description:'Étude du dossier, planification',duration:'',notes:''},
+    {num:2,name:'Relevé mesures',description:'Mesures sur site',duration:'',notes:''},
+    {num:3,name:'Approvisionnement',description:'Commande matériaux',duration:'',notes:''},
+    {num:4,name:'Fabrication',description:'Fabrication en atelier',duration:'',notes:''},
+    {num:5,name:'Livraison / Pose',description:'Transport et installation',duration:'',notes:''},
+    {num:6,name:'Contrôle qualité',description:'Vérifications et corrections',duration:'',notes:''},
+    {num:7,name:'Réception',description:'Réception provisoire et PV',duration:'',notes:''},
+  ]
+  const pHtml=phases.map((p,i)=>{
+    const num=p.num||p.phase||(i+1),name=p.name||p.phaseName||`Phase ${num}`
+    const desc=p.description||p.desc||(Array.isArray(p.tasks)?p.tasks.join(', '):'')||''
+    const dur=p.duration||p.duree||''
+    const res=Array.isArray(p.resources)?p.resources.join(', '):(p.resources||'')
+    const statusColors={pending:'#94a3b8',in_progress:'#f97316',done:'#22c55e'}
+    const sc=statusColors[p.status||'pending']||'#94a3b8'
+    return `<div class="dform-phase-card">
+      <div class="dform-phase-head" onclick="this.nextElementSibling.classList.toggle('open');this.querySelector('.bi-chevron-down').style.transform=this.nextElementSibling.classList.contains('open')?'rotate(180deg)':''">
+        <div class="dform-phase-num">${num}</div>
+        <div class="dform-phase-name">${_esc(name)}</div>
+        ${dur?`<span style="font-size:11px;color:#64748b;background:#f1f5f9;padding:2px 8px;border-radius:10px">${_esc(dur)}</span>`:''}
+        <div class="dform-status-dot" style="background:${sc}"></div>
+        <i class="bi bi-chevron-down" style="color:#64748b;font-size:11px;transition:transform .2s"></i>
+      </div>
+      <div class="dform-phase-body">
+        ${desc?`<div style="font-size:12px;color:#64748b;padding:6px 0 4px;border-bottom:1px solid #f1f5f9;margin-bottom:6px">${_esc(desc)}</div>`:''}
+        ${res?`<div style="font-size:12px;padding:4px 0"><b style="color:#64748b">Ressources:</b> ${_esc(res)}</div>`:''}
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:6px">
+          <div><label style="font-size:11px;color:#64748b;font-weight:600">Durée estimée</label>
+            <input class="dform-input" data-phase="${i}" data-field="duration" value="${_esc(dur)}" placeholder="ex: 3 jours" style="margin-top:2px"></div>
+          <div><label style="font-size:11px;color:#64748b;font-weight:600">Statut</label>
+            <select class="dform-input" data-phase="${i}" data-field="status" style="margin-top:2px">
+              <option value="pending" ${(p.status||'pending')==='pending'?'selected':''}>En attente</option>
+              <option value="in_progress" ${p.status==='in_progress'?'selected':''}>En cours</option>
+              <option value="done" ${p.status==='done'?'selected':''}>Terminé</option>
+            </select></div>
+        </div>
+        <div style="margin-top:6px"><label style="font-size:11px;color:#64748b;font-weight:600">Notes</label>
+          <textarea class="dform-input" data-phase="${i}" data-field="notes" rows="2" style="margin-top:2px;resize:vertical">${_esc(p.notes||p.remarks||'')}</textarea></div>
+      </div>
+    </div>`
+  }).join('')
+  return `<div><div class="dform-header"><div class="dform-badge">Gestion de projet</div><div class="dform-title">PLAN D'EXÉCUTION</div><div class="dform-subtitle">${_esc(bon.title||'')} · ${phases.length} phases</div></div>
+  <div class="dform-meta">
+    <div class="dform-meta-row"><span class="dform-meta-label">Projet</span><span class="dform-meta-val">${_esc(bon.title||'—')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Durée totale estimée</span><span class="dform-meta-val">${_esc(data.totalDuration||data.duration||'—')}</span></div>
+    <div class="dform-meta-row"><span class="dform-meta-label">Date limite dépôt</span><span class="dform-meta-val" style="color:#dc2626;font-weight:700">${_esc(bon.deadline||'—')}</span></div>
+  </div>
+  <div style="font-size:12px;color:#64748b;margin-bottom:10px;padding:8px 12px;background:#fff;border:1px solid #e2e8f0;border-radius:6px"><i class="bi bi-info-circle" style="color:#f97316"></i> Cliquez sur chaque phase pour modifier les détails.</div>
+  ${pHtml}
+  <div class="dform-actions">
+    <button class="dform-btn dform-btn-save" onclick="saveDocForm('${bonId}','plan')"><i class="bi bi-floppy"></i> Sauvegarder</button>
+    <button class="dform-btn dform-btn-print" onclick="printDoc()"><i class="bi bi-printer"></i> Imprimer</button>
+  </div>
+  <div id="dform-save-msg" style="display:none;font-size:12px;color:#16a34a;margin-top:8px;padding:8px 12px;background:rgba(22,163,74,.08);border-radius:6px"><i class="bi bi-check-circle"></i> Sauvegardé</div></div>`
+}
+
+/* ── Checklist ──────────────────────────────────────── */
+function renderChecklistForm(data, bon, bonId) {
+  const cats=[]
+  const main=data.submissionChecklist||(Array.isArray(data)?data:null)||data.submission||[]
+  if(main.length) cats.push({label:'Pièces de soumission',key:'submission',items:main})
+  if(data.technical?.length)      cats.push({label:'Documents techniques',    key:'technical',     items:data.technical})
+  if(data.administrative?.length) cats.push({label:'Documents administratifs',key:'administrative',items:data.administrative})
+  if(data.financial?.length)      cats.push({label:'Documents financiers',    key:'financial',     items:data.financial})
+  if(!cats.length) cats.push({label:'Checklist de soumission',key:'submission',items:[
+    'AVIS analysé et compris','Spécifications techniques vérifiées','Quantités et métrés vérifiés',
+    'Prix fournisseurs demandés','Bordereau de prix complété','Devis commercial préparé',
+    'Documents administratifs prêts','Offre soumise avant le délai',
+  ]})
+  let gi=0
+  const cHtml=cats.map(cat=>{
+    const iHtml=cat.items.map(item=>{
+      const txt=String(item||'').replace(/^[☐✓□✗]\s*/,'')
+      const idx=gi++
+      return `<label class="dform-check-item" id="chk-${idx}" style="cursor:pointer;user-select:none">
+        <input type="checkbox" data-check-idx="${idx}" data-cat="${cat.key}" style="width:16px;height:16px;accent-color:#f97316;flex-shrink:0;cursor:pointer" onclick="this.closest('label').classList.toggle('done')">
+        <span style="font-size:13px;color:#1e293b;line-height:1.4">${_esc(txt)}</span>
+      </label>`
+    }).join('')
+    return `<div class="dform-section"><div class="dform-section-head"><i class="bi bi-list-check"></i> ${_esc(cat.label)}</div><div class="dform-section-body">${iHtml}</div></div>`
+  }).join('')
+  return `<div><div class="dform-header"><div class="dform-badge">Soumission</div><div class="dform-title">CHECKLIST DE SOUMISSION</div><div class="dform-subtitle">${_esc(bon.reference||'')} · Délai: ${_esc(bon.deadline||'—')}</div></div>
+  ${bon.deadline?`<div style="padding:8px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:6px;margin-bottom:12px;font-size:12px"><i class="bi bi-alarm" style="color:#dc2626"></i> <b>Date limite de dépôt:</b> <span style="color:#dc2626;font-weight:700">${_esc(bon.deadline)}</span></div>`:''}
+  ${cHtml}
+  <div style="margin-top:4px;padding:10px 14px;background:#fffbeb;border:1px solid #fde68a;border-radius:6px;font-size:12px;color:#92400e"><i class="bi bi-exclamation-triangle" style="color:#f97316"></i> Checklist générée depuis l'AVIS officiel. Vérifier les exigences spécifiques dans le CPS avant soumission.</div>
+  <div class="dform-actions">
+    <button class="dform-btn dform-btn-save" onclick="saveDocForm('${bonId}','checklist')"><i class="bi bi-floppy"></i> Sauvegarder progression</button>
+    <button class="dform-btn dform-btn-print" onclick="printDoc()"><i class="bi bi-printer"></i> Imprimer</button>
+  </div>
+  <div id="dform-save-msg" style="display:none;font-size:12px;color:#16a34a;margin-top:8px;padding:8px 12px;background:rgba(22,163,74,.08);border-radius:6px"><i class="bi bi-check-circle"></i> Sauvegardé</div></div>`
+}
+
+/* ── Save to server ─────────────────────────────────── */
+async function saveDocForm(bonId, type) {
+  const pane = document.getElementById('doc-form-pane')
+  if (!pane) return
+  let updated = JSON.parse(JSON.stringify(_docModal.data || {}))
+  if (type === 'bordereau') {
+    const rows = Array.isArray(updated) ? updated : (updated.bordereauDraft || [])
+    pane.querySelectorAll('#bord-rows tr').forEach((tr, i) => {
+      if (!rows[i]) rows[i] = {}
+      tr.querySelectorAll('[data-field]').forEach(inp => { rows[i][inp.dataset.field] = inp.value })
+    })
+    if (Array.isArray(updated)) updated = rows; else updated.bordereauDraft = rows
+  } else if (type === 'devis') {
+    const items = updated.items || updated.prestations || []
+    pane.querySelectorAll('[data-row]').forEach(inp => {
+      const i = parseInt(inp.dataset.row); if (!items[i]) items[i] = {}
+      items[i][inp.dataset.field] = inp.value
+    })
+    updated.items = items
+  } else if (type === 'rfq') {
+    const sups = updated.suppliers || updated.supplierRFQ || []
+    pane.querySelectorAll('[data-sup]').forEach(inp => {
+      const si=parseInt(inp.dataset.sup), ri=parseInt(inp.dataset.row)
+      if (!sups[si]) sups[si] = { items: [] }
+      if (!sups[si].items[ri]) sups[si].items[ri] = {}
+      if (typeof sups[si].items[ri] === 'string') sups[si].items[ri] = { designation: sups[si].items[ri] }
+      sups[si].items[ri][inp.dataset.field] = inp.value
+    })
+    if (updated.suppliers) updated.suppliers = sups; else updated.supplierRFQ = sups
+  } else if (type === 'plan') {
+    const phases = updated.phases || updated.executionPlan || []
+    pane.querySelectorAll('[data-phase]').forEach(inp => {
+      const pi=parseInt(inp.dataset.phase); if (!phases[pi]) phases[pi] = {}
+      if (typeof phases[pi] === 'string') phases[pi] = { description: phases[pi] }
+      phases[pi][inp.dataset.field] = inp.value
+    })
+    if (updated.phases) updated.phases = phases; else updated.executionPlan = phases
+  } else if (type === 'checklist') {
+    const checked = []
+    pane.querySelectorAll('[data-check-idx]').forEach(inp => {
+      if (inp.checked) { const lbl=inp.closest('label'); checked.push(lbl?.querySelector('span')?.textContent||'') }
+    })
+    updated._checkedItems = checked
+  }
+  try {
+    const r = await fetch(`/api/documents/${bonId}/${type}`, { method:'PATCH', headers:{'Content-Type':'application/json'}, body:JSON.stringify(updated) })
+    const d = await r.json()
+    if (d.success) {
+      _docModal.data = updated
+      const msg=document.getElementById('dform-save-msg')
+      if (msg) { msg.style.display='block'; setTimeout(()=>msg.style.display='none',3000) }
+    } else showToast('Erreur sauvegarde: '+(d.error||''),'err')
+  } catch(e) { showToast('Erreur: '+e.message,'err') }
+}
+
+/* ── AVIS text viewer ─────────────────────────────── */
 async function viewAvisText(bonId) {
   try {
     const d = await fetch(`/api/projects/${bonId}/avis-text`).then(r=>r.json())
-    if (!d.hasText) return showToast("Aucun texte AVIS disponible pour ce bon", 'err')
+    if (!d.hasText) return showToast("Aucun texte AVIS disponible", 'err')
     _docModal = { bonId, type: '_avis', data: d }
     const modal = document.getElementById('doc-modal')
     if (!modal) return
     modal.classList.add('open')
     document.body.style.overflow = 'hidden'
-    const title = document.getElementById('doc-modal-title')
-    if (title) title.textContent = `Texte AVIS — ${d.primaryAvisName||bonId}`
-    // Show JSON pane with the text
-    document.querySelectorAll('.doc-modal-tab').forEach(b => b.classList.remove('active'))
-    document.querySelectorAll('.doc-modal-pane').forEach(p => p.classList.remove('active'))
-    const jsonBtn  = document.getElementById('dtab-btn-json')
-    const jsonPane = document.getElementById('dtab-pane-json')
-    if (jsonBtn)  jsonBtn.classList.add('active')
-    if (jsonPane) jsonPane.classList.add('active')
+    document.getElementById('doc-modal-title').textContent = `Texte AVIS — ${d.primaryAvisName||bonId}`
+    document.querySelectorAll('.doc-modal-tab').forEach(b=>b.classList.remove('active'))
+    document.querySelectorAll('.doc-modal-pane').forEach(p=>p.classList.remove('active'))
+    document.getElementById('dtab-btn-json')?.classList.add('active')
+    document.getElementById('dtab-pane-json')?.classList.add('active')
     const el = document.getElementById('doc-json-pane')
     if (el) el.textContent = d.text || '(vide)'
   } catch(e) { showToast('Erreur: '+e.message,'err') }
 }
 
-/* ── Attachment re-extract ── */
+/* ── View files on disk ──────────────────────────── */
+async function viewCachedFiles(bonId) {
+  try {
+    const d = await fetch(`/api/projects/${bonId}/files-on-disk`).then(r=>r.json())
+    _docModal = { bonId, type: '_files', data: d }
+    const modal = document.getElementById('doc-modal')
+    if (!modal) return
+    modal.classList.add('open')
+    document.body.style.overflow = 'hidden'
+    document.getElementById('doc-modal-title').textContent = `Fichiers en cache`
+    document.querySelectorAll('.doc-modal-tab').forEach(b=>b.classList.remove('active'))
+    document.querySelectorAll('.doc-modal-pane').forEach(p=>p.classList.remove('active'))
+    document.getElementById('dtab-btn-preview')?.classList.add('active')
+    document.getElementById('dtab-pane-preview')?.classList.add('active')
+    const pane = document.getElementById('doc-form-pane')
+    if (!pane) return
+    if (!d.dirExists) {
+      pane.innerHTML=`<div style="padding:32px;text-align:center;color:#64748b"><i class="bi bi-folder-x" style="font-size:40px;display:block;margin-bottom:12px;opacity:.4"></i><b>Aucun dossier de cache</b><br><span style="font-size:13px">Lancez Force téléchargement pour créer le dossier.</span></div>`
+      return
+    }
+    const fHtml=(d.files||[]).map(f=>{
+      const ext=f.ext||''
+      const icon={'.pdf':'bi-file-pdf','.zip':'bi-file-zip','.docx':'bi-file-word','.doc':'bi-file-word','.txt':'bi-file-text'}[ext]||'bi-file-earmark'
+      const col={'.pdf':'#dc2626','.zip':'#f97316','.docx':'#2563eb','.doc':'#2563eb'}[ext]||'#64748b'
+      return `<div style="display:flex;align-items:center;gap:10px;padding:9px 14px;border-bottom:1px solid #f1f5f9">
+        <i class="bi ${icon}" style="font-size:20px;color:${col}"></i>
+        <div style="flex:1"><div style="font-size:13px;font-weight:600">${_esc(f.name)}</div>
+        <div style="font-size:11px;color:#94a3b8">${(f.size/1024).toFixed(1)} KB · ${ext.toUpperCase()}</div></div>
+      </div>`
+    }).join('')
+    pane.innerHTML=`<div style="padding:16px"><div style="font-size:14px;font-weight:700;margin-bottom:12px;color:#1e3a5f"><i class="bi bi-folder-open" style="color:#f97316"></i> ${d.files?.length||0} fichier(s) en cache</div>
+    <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden">${fHtml||'<div style="padding:20px;text-align:center;color:#94a3b8">Aucun fichier</div>'}</div></div>`
+  } catch(e) { showToast('Erreur: '+e.message,'err') }
+}
+
+/* ── Attachment re-extract ─────────────────────────── */
 async function reExtractAvis(bonId, forceDownload) {
   const panel = document.getElementById('attachments-panel')
   if (panel) panel.style.opacity = '.5'
   showToast(forceDownload ? 'Re-téléchargement et extraction...' : 'Re-extraction depuis fichiers en cache...')
   try {
     const d = await fetch(`/api/projects/${bonId}/extract-avis`, {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ forceDownload })
+      method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({forceDownload})
     }).then(r=>r.json())
     if (panel) panel.style.opacity = ''
     if (d.success) {
-      showToast(d.spec?.hasText ? `✓ Texte extrait: ${d.spec.textLength} chars` : 'Extraction terminée — aucun texte trouvé')
+      const spec = d.spec || {}
+      if (spec.hasText) showToast(`✓ Texte AVIS extrait: ${spec.textLength} chars — "${spec.primaryAvisName||'fichier'}"`)
+      else if (spec.attachments?.some(a=>a.requiresOCR)) showToast('PDF scanné — OCR requis, extraction impossible automatiquement','warn')
+      else if (d.dirExists===false||spec.noAttachmentFound) showToast('Aucun fichier en cache — utilisez Force téléchargement','warn')
+      else showToast('Extraction terminée — aucun texte lisible trouvé','warn')
       openProject(bonId)
-    } else {
-      showToast(d.error||'Extraction échouée','err')
-    }
-  } catch(e) {
-    if (panel) panel.style.opacity = ''
-    showToast(e.message,'err')
-  }
+    } else showToast(d.error||'Extraction échouée','err')
+  } catch(e) { if (panel) panel.style.opacity=''; showToast(e.message,'err') }
 }
 
 </script>
@@ -2407,7 +2816,7 @@ async function reExtractAvis(bonId, forceDownload) {
     </div>
     <div class="doc-modal-body">
       <div class="doc-modal-pane active" id="dtab-pane-preview">
-        <iframe id="doc-iframe" src="" title="Aperçu document"></iframe>
+        <div id="doc-form-pane"></div>
       </div>
       <div class="doc-modal-pane" id="dtab-pane-json">
         <pre id="doc-json-pane"></pre>
