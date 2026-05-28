@@ -1,0 +1,27 @@
+{
+  "bonId": "78cd0da4-8624-4685-a672-cfbad627a2f8",
+  "bonReference": "07/BP/2026",
+  "attachments": [
+    {
+      "name": "AVIS D'ACHAT BLOC SANITAIR20260526_12344709_0086.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344503/48595765",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/78cd0da4-8624-4685-a672-cfbad627a2f8/AVIS_D_ACHAT_BLOC_SANITAIR20260526_12344709_0086.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "AVIS D'ACHAT BLOC SANITAIR20260526_12344709_0086.pdf",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T19:17:54.673Z"
+}

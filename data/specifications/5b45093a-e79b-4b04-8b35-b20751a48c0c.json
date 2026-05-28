@@ -1,0 +1,27 @@
+{
+  "bonId": "5b45093a-e79b-4b04-8b35-b20751a48c0c",
+  "bonReference": "57/2026/INRH/DGMN",
+  "attachments": [
+    {
+      "name": "AA N°57-2026-INRH-DGMN.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343531/48454158",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/5b45093a-e79b-4b04-8b35-b20751a48c0c/AA_N_57-2026-INRH-DGMN.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "AA N°57-2026-INRH-DGMN.pdf",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T19:19:15.509Z"
+}

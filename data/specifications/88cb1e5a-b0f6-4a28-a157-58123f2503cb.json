@@ -1,0 +1,27 @@
+{
+  "bonId": "88cb1e5a-b0f6-4a28-a157-58123f2503cb",
+  "bonReference": "6/2026",
+  "attachments": [
+    {
+      "name": "Télécharger",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/annulation/316430/45130008",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/88cb1e5a-b0f6-4a28-a157-58123f2503cb/T_l_charger.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "DECION ANNUL_20260317_0001.pdf",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T19:18:18.534Z"
+}

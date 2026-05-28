@@ -1,0 +1,27 @@
+{
+  "bonId": "d753d779-cfcb-4ea7-915f-c0cd408f25d9",
+  "bonReference": "12/2026/ANCFCC/DLAG",
+  "attachments": [
+    {
+      "name": "Avis d'achat 12 et cahier des charges.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343032/48399178",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/d753d779-cfcb-4ea7-915f-c0cd408f25d9/Avis_d_achat_12_et_cahier_des_charges.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "Cahier des charges.pdf",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T19:18:38.000Z"
+}

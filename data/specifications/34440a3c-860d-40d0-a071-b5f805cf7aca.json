@@ -1,0 +1,27 @@
+{
+  "bonId": "34440a3c-860d-40d0-a071-b5f805cf7aca",
+  "bonReference": "28/FNC/2026",
+  "attachments": [
+    {
+      "name": "descriptif abris fsjp.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344585/48605899",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/34440a3c-860d-40d0-a071-b5f805cf7aca/descriptif_abris_fsjp.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "__MACOSX/._descriptif abris fsjp.pdf",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T19:18:50.150Z"
+}
