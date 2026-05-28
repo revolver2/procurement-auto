@@ -1,0 +1,27 @@
+{
+  "bonId": "46856041-f8f0-4ba2-ba99-389e337cca97",
+  "bonReference": "88/FONC/2026/UIT",
+  "attachments": [
+    {
+      "name": "Avis d'achat 88-FONC-2026-UIT.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344349/48566196",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/46856041-f8f0-4ba2-ba99-389e337cca97/Avis_d_achat_88-FONC-2026-UIT.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "Avis d'achat 88-FONC-2026-UIT.pdf",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T10:54:27.622Z"
+}

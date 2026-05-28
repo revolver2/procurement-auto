@@ -1,0 +1,27 @@
+{
+  "bonId": "dfdf865e-92c2-4e76-9143-f93215f3b1d4",
+  "bonReference": "40/2026",
+  "attachments": [
+    {
+      "name": "avis d'achat fenetres_005.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/339896/48603385",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/dfdf865e-92c2-4e76-9143-f93215f3b1d4/avis_d_achat_fenetres_005.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "avis d'achat fenetres_005.pdf",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T10:54:13.860Z"
+}
