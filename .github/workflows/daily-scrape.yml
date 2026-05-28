@@ -48,9 +48,15 @@ jobs:
         run: |
           if [ -n "$RENDER_APP_URL" ]; then
             echo "Pulling candidatures from $RENDER_APP_URL..."
-            curl -sf --max-time 15 "$RENDER_APP_URL/api/candidatures/raw" -o data/candidatures.json 2>/dev/null \
-              && echo "Candidatures backup pulled" \
-              || echo "Could not reach production server — keeping existing candidatures.json"
+            tmp_file="data/candidatures.remote.json"
+            curl -f --max-time 15 "$RENDER_APP_URL/api/candidatures/raw" -o "$tmp_file" 2>/dev/null
+            if [ -s "$tmp_file" ]; then
+              mv "$tmp_file" data/candidatures.json
+              echo "Candidatures backup pulled from Render successfully."
+            else
+              echo "Remote candidatures backup empty or failed. Keeping existing file."
+              rm -f "$tmp_file"
+            fi
           else
             echo "RENDER_APP_URL not set — skipping candidatures backup"
           fi
