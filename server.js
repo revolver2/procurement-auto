@@ -717,56 +717,59 @@ app.post('/api/projects/:id/analyze-from-avis', async (req, res) => {
   const bon  = bons.find(b => b.id === bonId)
   if (!bon) return res.status(404).json({ success: false, error: 'BC introuvable' })
 
-  // Load AVIS text
-  const { loadSpec } = require('./lib/attachments/attachment-analyzer')
-  const spec  = loadSpec(bonId)
-  const avisText = spec?.primaryAvisText || spec?.avisText || null
+  // Load AVIS text — loadSpec is in scope from module-level require (line ~574)
+  const spec     = loadSpec(bonId)
+  const avisText = spec?.primaryAvisText || null
 
-  // Block if no AVIS text
+  // Block if no AVIS text extracted
   if (!avisText || avisText.trim().length < 50) {
     return res.status(400).json({
       success: false,
-      error: 'Analyse bloquée: AVIS officiel non extrait. Allez dans "Pièces Jointes" et cliquez "Re-télécharger".',
+      error:   'Analyse bloquée: AVIS officiel non extrait. Allez dans "Pièces Jointes" et cliquez "Re-télécharger".',
       blocked: true,
     })
   }
 
   const crewaiUrl = process.env.CREWAI_SERVICE_URL
+
+  // No CrewAI service configured → fall back to Gemini orchestrator silently
   if (!crewaiUrl) {
-    // Fallback: existing orchestrator when no Python service configured
     try {
       const result = await orchestrator.orchestrate(bonId, { generateDocuments: false, forceRefresh: true })
       return res.json(result)
     } catch (e) { return res.status(500).json({ success: false, error: e.message }) }
   }
 
-  // Check Node-side AI cache (same file used by orchestrator)
-  const crypto = require('crypto')
-  const fs     = require('fs')
-  const AI_CACHE_DIR = require('path').resolve(__dirname, 'data/ai-analysis')
-  const cachePath    = require('path').join(AI_CACHE_DIR, `${bonId}.json`)
+  // Check Node-side AI cache (avoids calling AI twice for same AVIS)
+  const crypto       = require('crypto')
+  const sourceHash   = crypto.createHash('sha256').update(`${bonId}:${avisText.substring(0, 2000)}`).digest('hex').substring(0, 16)
+  const AI_CACHE_DIR = path.resolve(__dirname, 'data/ai-analysis')
+  const cachePath    = path.join(AI_CACHE_DIR, `${bonId}.json`)
+
   if (!forceRefresh && fs.existsSync(cachePath)) {
     try {
       const cached = JSON.parse(fs.readFileSync(cachePath, 'utf8'))
-      const newHash = crypto.createHash('sha256').update(`${bonId}:${avisText.substring(0, 2000)}`).digest('hex').substring(0, 16)
-      if (cached.sourceHash === newHash) {
-        cached.cached = true
+      if (cached.sourceHash === sourceHash) {
         return res.json({ success: true, cached: true, ...cached })
       }
     } catch {}
   }
 
+  // Build request payload for Python service
+  const payload = {
+    projectId:    bonId,
+    projectTitle: bon.title    || '',
+    buyer:        bon.buyer    || '',
+    city:         bon.location || bon.city || '',
+    deadline:     bon.deadline || '',
+    officialUrl:  bon.sourceUrl || '',
+    avisText,
+  }
+
+  let analysis = null
+
   // Call CrewAI microservice
   try {
-    const payload = {
-      projectId:    bonId,
-      projectTitle: bon.title || '',
-      buyer:        bon.buyer || '',
-      city:         bon.location || bon.city || '',
-      deadline:     bon.deadline || '',
-      officialUrl:  bon.sourceUrl || '',
-      avisText,
-    }
     const crewRes = await fetch(`${crewaiUrl}/analyze-tender`, {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -775,36 +778,53 @@ app.post('/api/projects/:id/analyze-from-avis', async (req, res) => {
     })
     if (!crewRes.ok) {
       const errBody = await crewRes.text()
-      return res.status(crewRes.status).json({ success: false, error: `CrewAI service: ${errBody}` })
+      let detail = errBody
+      try { detail = JSON.parse(errBody)?.detail || errBody } catch {}
+      // 400 from Python = AVIS blocked — propagate directly
+      if (crewRes.status === 400) return res.status(400).json({ success: false, error: detail, blocked: true })
+      throw new Error(`CrewAI HTTP ${crewRes.status}: ${String(detail).substring(0, 200)}`)
     }
-    const analysis = await crewRes.json()
-
-    // Save to ai-analysis cache
-    if (!fs.existsSync(AI_CACHE_DIR)) fs.mkdirSync(AI_CACHE_DIR, { recursive: true })
-    fs.writeFileSync(cachePath, JSON.stringify({ ...analysis, cachedAt: new Date().toISOString() }, null, 2))
-
-    // Update bon metadata
-    const bonIdx = bons.findIndex(b => b.id === bonId)
-    if (bonIdx >= 0) {
-      bons[bonIdx] = {
-        ...bons[bonIdx],
-        analysisSource: 'official_avis_attachment_only',
-        aiEngine:       'crewai',
-        analyzedAt:     new Date().toISOString(),
-      }
-      db.write('procurement-analysis.json', bons)
-    }
-
-    return res.json({ success: true, ...analysis })
+    analysis = await crewRes.json()
   } catch (e) {
-    return res.status(500).json({ success: false, error: `CrewAI service unreachable: ${e.message}` })
+    // Network error (service down) → fall back to Gemini orchestrator, no crash
+    console.warn(`[CrewAI] Service unreachable (${e.message}), falling back to orchestrator`)
+    try {
+      const result = await orchestrator.orchestrate(bonId, { generateDocuments: false, forceRefresh: true })
+      return res.json({ ...result, crewAiFallback: true, crewAiError: e.message })
+    } catch (e2) {
+      return res.status(500).json({ success: false, error: `CrewAI unreachable + orchestrator failed: ${e2.message}` })
+    }
   }
+
+  // Persist to ai-analysis cache
+  if (!fs.existsSync(AI_CACHE_DIR)) fs.mkdirSync(AI_CACHE_DIR, { recursive: true })
+  fs.writeFileSync(cachePath, JSON.stringify({ ...analysis, cachedAt: new Date().toISOString() }, null, 2))
+
+  // Update bon metadata in DB
+  const bonIdx = bons.findIndex(b => b.id === bonId)
+  if (bonIdx >= 0) {
+    bons[bonIdx] = {
+      ...bons[bonIdx],
+      analysisSource: 'official_avis_attachment_only',
+      aiEngine:       'crewai',
+      analyzedAt:     new Date().toISOString(),
+    }
+    db.write('procurement-analysis.json', bons)
+  }
+
+  // Telegram notification (fire-and-forget — never blocks the response)
+  const settings = db.read('settings.json') || {}
+  if (settings.telegramEnabled !== false) {
+    const tgMsg = telegram.formatCrewAiSummary(bon, analysis)
+    telegram.sendMessage(process.env.TELEGRAM_BOT_TOKEN, process.env.TELEGRAM_CHAT_ID, tgMsg)
+      .catch(e => console.warn('[Telegram] CrewAI notify failed:', e.message))
+  }
+
+  return res.json({ success: true, ...analysis })
 })
 
 app.get('/api/projects/:id/crewai-analysis', (req, res) => {
-  const fs   = require('fs')
-  const path = require('path')
-  const p    = path.resolve(__dirname, 'data/ai-analysis', `${req.params.id}.json`)
+  const p = path.resolve(__dirname, 'data/ai-analysis', `${req.params.id}.json`)
   if (!fs.existsSync(p)) return res.status(404).json({ error: 'Aucune analyse CrewAI pour ce bon' })
   try {
     const data = JSON.parse(fs.readFileSync(p, 'utf8'))
