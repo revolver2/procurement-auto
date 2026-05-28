@@ -22,6 +22,20 @@ function syncCandidatures() {
     .catch(e => console.error('[GitHubSync] push failed:', e.message))
 }
 
+// On startup: if local candidatures.json is empty, pull from GitHub
+;(async () => {
+  const local = db.read('candidatures.json') || []
+  if (local.length === 0) {
+    try {
+      const remote = await githubPersist.pullFile('candidatures.json')
+      if (Array.isArray(remote) && remote.length > 0) {
+        db.write('candidatures.json', remote)
+        console.log(`[Startup] Hydrated ${remote.length} candidatures from GitHub`)
+      }
+    } catch (e) { console.log('[Startup] GitHub hydration skipped:', e.message) }
+  }
+})()
+
 const app  = express()
 const PORT = process.env.PORT || 3001
 
@@ -397,13 +411,16 @@ app.post('/api/notifications/read-all', (req, res) => {
 app.get('/api/settings', (req, res) => {
   const saved = db.read('settings.json') || {}
   res.json({
-    username:     process.env.MARCHESPUBLICS_USERNAME ? '***configured***' : '',
-    password:     process.env.MARCHESPUBLICS_PASSWORD ? '***configured***' : '',
-    groqApiKey:   process.env.GROQ_API_KEY   ? '***configured***' : '',
-    openaiApiKey: process.env.OPENAI_API_KEY ? '***configured***' : '',
-    scraperDelay: process.env.SCRAPER_DELAY  || '2000',
+    username:       process.env.MARCHESPUBLICS_USERNAME ? '***configured***' : '',
+    password:       process.env.MARCHESPUBLICS_PASSWORD ? '***configured***' : '',
+    geminiApiKey:   process.env.GEMINI_API_KEY ? '***configured***' : '',
+    groqApiKey:     process.env.GROQ_API_KEY   ? '***configured***' : '',
+    openaiApiKey:   process.env.OPENAI_API_KEY ? '***configured***' : '',
+    scraperDelay:   process.env.SCRAPER_DELAY  || '2000',
     hasCredentials: !!(process.env.MARCHESPUBLICS_USERNAME && process.env.MARCHESPUBLICS_PASSWORD),
-    hasAI:          !!(process.env.GROQ_API_KEY || process.env.OPENAI_API_KEY),
+    hasGemini:      !!process.env.GEMINI_API_KEY,
+    hasAI:          !!(process.env.GEMINI_API_KEY || process.env.GROQ_API_KEY || process.env.OPENAI_API_KEY),
+    aiProvider:     process.env.GEMINI_API_KEY ? 'gemini' : 'local-rulebased',
     // Schedule config
     dailyEnabled:  saved.dailyEnabled  !== false,
     dailyTime:     saved.dailyTime     || '06:00',
@@ -434,8 +451,10 @@ app.post('/api/settings', (req, res) => {
       content  = re.test(content) ? content.replace(re, `${key}=${val}`) : content + `\n${key}=${val}`
     }
 
+    const { geminiApiKey } = req.body
     setEnv('MARCHESPUBLICS_USERNAME', username)
     setEnv('MARCHESPUBLICS_PASSWORD', password)
+    setEnv('GEMINI_API_KEY',          geminiApiKey)
     setEnv('GROQ_API_KEY',            groqApiKey)
     setEnv('OPENAI_API_KEY',          openaiApiKey)
     setEnv('SCRAPER_DELAY',           scraperDelay)
@@ -663,6 +682,66 @@ app.post('/api/settings/keywords/test', (req, res) => {
   }
 
   res.json({ matched, excluded, wouldKeep: matched.length > 0 && excluded.length === 0 })
+})
+
+/* ═══════════════════════════════════════════════════════════════
+   PROJECT ATTACHMENT SHORTCUTS
+══════════════════════════════════════════════════════════════════ */
+app.post('/api/projects/:id/extract-avis', async (req, res) => {
+  try {
+    const bons = db.read('procurement-analysis.json') || []
+    const bon  = bons.find(b => b.id === req.params.id)
+    if (!bon) return res.status(404).json({ success: false, error: 'BC introuvable' })
+    const rawDocs = bon.attachments?.length
+      ? bon.attachments.map(a => ({ url: a.url, name: a.name }))
+      : (bon.documents || [])
+    if (!rawDocs.length) return res.json({ success: false, error: 'Aucun lien de pièce jointe connu' })
+    const spec = await processFromUrls(bon, rawDocs, null, true)
+    const idx = bons.findIndex(b => b.id === req.params.id)
+    if (idx >= 0) {
+      bons[idx].attachmentHasText = spec.hasText
+      bons[idx].attachmentFound   = !spec.noAttachmentFound
+      bons[idx].attachments       = spec.attachments
+      db.write('procurement-analysis.json', bons)
+    }
+    res.json({ success: true, spec })
+  } catch (e) { res.status(500).json({ success: false, error: e.message }) }
+})
+
+app.post('/api/projects/:id/analyze-from-avis', async (req, res) => {
+  try {
+    const result = await orchestrator.orchestrate(req.params.id, { generateDocuments: false, forceRefresh: true })
+    res.json(result)
+  } catch (e) { res.status(500).json({ success: false, error: e.message }) }
+})
+
+app.get('/api/projects/:id/attachments', (req, res) => {
+  const spec = loadSpec(req.params.id)
+  if (!spec) return res.status(404).json({ error: 'Aucune spec pour ce bon' })
+  res.json(spec)
+})
+
+/* ═══════════════════════════════════════════════════════════════
+   AI PROVIDER TEST
+══════════════════════════════════════════════════════════════════ */
+app.post('/api/ai/test', async (req, res) => {
+  try {
+    const { complete } = require('./lib/ai-providers/gemini')
+    const text = await complete({
+      messages: [{ role: 'user', content: 'Réponds uniquement: {"ok":true,"provider":"gemini"}' }],
+      temperature: 0,
+      maxTokens: 50,
+    })
+    const cleaned = text.replace(/```json\n?/g,'').replace(/```\n?/g,'').trim()
+    try {
+      const parsed = JSON.parse(cleaned)
+      res.json({ success: true, provider: 'gemini', response: parsed })
+    } catch {
+      res.json({ success: true, provider: 'gemini', response: cleaned })
+    }
+  } catch (e) {
+    res.json({ success: false, provider: process.env.GEMINI_API_KEY ? 'gemini' : 'local-rulebased', error: e.message })
+  }
 })
 
 /* ═══════════════════════════════════════════════════════════════

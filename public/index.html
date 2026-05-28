@@ -455,6 +455,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
         <button class="settings-tab-btn" onclick="switchSettingsTab('keywords',this)"><i class="bi bi-search"></i> Mots-clés</button>
         <button class="settings-tab-btn" onclick="switchSettingsTab('schedule',this)"><i class="bi bi-calendar-check"></i> Planification</button>
         <button class="settings-tab-btn" onclick="switchSettingsTab('telegram',this)"><i class="bi bi-telegram"></i> Telegram</button>
+        <button class="settings-tab-btn" onclick="switchSettingsTab('ai',this)"><i class="bi bi-cpu"></i> IA</button>
       </div>
 
       <div id="stab-general">
@@ -481,10 +482,10 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
           </div></div>
         </div>
         <div class="settings-section">
-          <h3><i class="bi bi-cpu" style="color:var(--orange)"></i> Clés API IA</h3>
-          <div class="form-group"><label>Groq API Key</label><div class="pw-wrap">
-            <input type="password" class="form-control" id="s-groq" placeholder="gsk_...">
-            <button class="pw-toggle" onclick="togglePw('s-groq',this)" type="button"><i class="bi bi-eye"></i></button>
+          <h3><i class="bi bi-cpu" style="color:var(--orange)"></i> Clé API Gemini</h3>
+          <div class="form-group"><label>Gemini API Key</label><div class="pw-wrap">
+            <input type="password" class="form-control" id="s-gemini" placeholder="AQ.xxxx... ou AIzaSy...">
+            <button class="pw-toggle" onclick="togglePw('s-gemini',this)" type="button"><i class="bi bi-eye"></i></button>
           </div></div>
         </div>
         <button class="btn-save" onclick="saveSettings()"><i class="bi bi-check-lg"></i> Sauvegarder</button>
@@ -517,6 +518,42 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
           <p style="font-size:12px;color:var(--muted);margin-top:8px"><i class="bi bi-info-circle"></i> Le serveur doit être actif. Fuseau: Africa/Casablanca.</p>
         </div>
         <button class="btn-save" onclick="saveSchedule()"><i class="bi bi-check-lg"></i> Sauvegarder planification</button>
+      </div>
+
+      <!-- ── AI Provider tab ── -->
+      <div id="stab-ai" style="display:none">
+        <div class="settings-section">
+          <h3><i class="bi bi-cpu" style="color:var(--orange)"></i> Fournisseur IA</h3>
+          <div id="ai-provider-status" style="margin-bottom:16px">
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+              <div style="flex:1;min-width:200px;padding:12px 16px;border-radius:10px;border:1px solid rgba(249,115,22,.3);background:rgba(249,115,22,.06)">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                  <span id="ai-gemini-dot" style="width:8px;height:8px;border-radius:50%;background:#d1d5db;flex-shrink:0"></span>
+                  <span style="font-size:13px;font-weight:700">Gemini 2.5 Flash</span>
+                  <span style="font-size:10px;background:var(--orange-light);color:var(--orange);padding:1px 6px;border-radius:10px;font-weight:600">Principal</span>
+                </div>
+                <div style="font-size:12px;color:var(--muted)" id="ai-gemini-status">Vérification...</div>
+              </div>
+              <div style="flex:1;min-width:200px;padding:12px 16px;border-radius:10px;border:1px solid #e2e8f0;background:#f8fafc">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+                  <span style="width:8px;height:8px;border-radius:50%;background:#10b981;flex-shrink:0"></span>
+                  <span style="font-size:13px;font-weight:700">Local (règles)</span>
+                  <span style="font-size:10px;background:rgba(16,185,129,.1);color:#059669;padding:1px 6px;border-radius:10px;font-weight:600">Secours</span>
+                </div>
+                <div style="font-size:12px;color:var(--muted)">Toujours actif — aucune clé requise</div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group"><label>Gemini API Key</label><div class="pw-wrap">
+            <input type="password" class="form-control" id="s-gemini-ai" placeholder="AQ.xxxx... ou AIzaSy...">
+            <button class="pw-toggle" onclick="togglePw('s-gemini-ai',this)" type="button"><i class="bi bi-eye"></i></button>
+          </div></div>
+          <div style="display:flex;gap:10px;margin-top:12px">
+            <button class="btn-save" onclick="saveGeminiKey()"><i class="bi bi-check-lg"></i> Enregistrer clé</button>
+            <button class="btn-save" style="background:var(--sidebar)" onclick="testGemini()"><i class="bi bi-play-circle"></i> Tester Gemini</button>
+          </div>
+          <div id="gemini-test-result" style="margin-top:10px;font-size:13px;display:none"></div>
+        </div>
       </div>
 
       <!-- ── Activities tab ── -->
@@ -1275,7 +1312,10 @@ function renderSkillsHtml(data, bonId) {
       <span style="font-size:15px;font-weight:700">Skills IA — Résultats</span>
       <span style="font-size:11px;color:var(--muted)">${data.orchestratedAt ? new Date(data.orchestratedAt).toLocaleString('fr-FR') : ''}</span>
     </div>
-    <button onclick="runOrchestration('${bonId}')" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Relancer</button>
+    <div style="display:flex;gap:8px">
+      ${data.cached ? `<span style="background:rgba(59,130,246,.1);color:#2563eb;padding:4px 10px;border-radius:20px;font-size:11px;font-weight:600;display:flex;align-items:center;gap:4px"><i class="bi bi-lightning-charge-fill"></i> Mis en cache</span>` : ''}
+      <button onclick="runOrchestration('${bonId}')" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Relancer</button>
+    </div>
   </div>
   ${data.analysisSource === 'official_attachment_only' && data.attachmentSpec?.primaryAvisName ? `
   <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:8px;margin-bottom:14px;font-size:12px">
@@ -1638,7 +1678,7 @@ let settingsActivities    = []
 let settingsExclusions    = []
 
 function switchSettingsTab(name, btn) {
-  ['general','keywords','schedule','activities','exclusions','telegram'].forEach(t => {
+  ['general','keywords','schedule','activities','exclusions','telegram','ai'].forEach(t => {
     const el = document.getElementById('stab-'+t)
     if (el) el.style.display = t===name?'block':'none'
   })
@@ -1647,13 +1687,14 @@ function switchSettingsTab(name, btn) {
   if (name==='keywords')    loadKeywordsTab()
   if (name==='activities')  loadActivitiesTab()
   if (name==='exclusions')  loadExclusionsTab()
+  if (name==='ai')          loadAiStatus()
 }
 
 async function loadSettings() {
   try {
     const s = await fetch('/api/settings').then(r => r.json())
     if (s.hasCredentials) { document.getElementById('s-username').placeholder='***configuré***'; document.getElementById('s-password').placeholder='***configuré***' }
-    if (s.hasAI)           document.getElementById('s-groq').placeholder='***configuré***'
+    if (s.hasGemini)       { document.getElementById('s-gemini').placeholder='***configuré***'; const el2=document.getElementById('s-gemini-ai'); if(el2) el2.placeholder='***configuré***' }
     if (s.scraperDelay)    document.getElementById('s-delay').value   = s.scraperDelay
     if (s.maxItems)        document.getElementById('s-maxitems').value = s.maxItems
     if (s.dailyTime)       document.getElementById('s-daily-time').value = s.dailyTime
@@ -1669,13 +1710,50 @@ async function loadSettings() {
   } catch(e) {}
 }
 
+async function saveGeminiKey() {
+  const key = document.getElementById('s-gemini-ai')?.value || document.getElementById('s-gemini')?.value || ''
+  if (!key) { showToast('Entrez la clé Gemini', 'err'); return }
+  try {
+    const d = await fetch('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({geminiApiKey:key})}).then(r=>r.json())
+    d.status==='ok' ? showToast('Clé Gemini enregistrée !') : showToast(d.error||'Erreur','err')
+    loadAiStatus()
+  } catch(e) { showToast(e.message,'err') }
+}
+
+async function testGemini() {
+  const btn = document.querySelector('#stab-ai button[onclick="testGemini()"]')
+  if (btn) { btn.disabled=true; btn.textContent='Test...' }
+  const res = document.getElementById('gemini-test-result')
+  if (res) res.style.display='none'
+  try {
+    const d = await fetch('/api/ai/test',{method:'POST'}).then(r=>r.json())
+    if (res) {
+      res.style.display = 'block'
+      res.innerHTML = d.success
+        ? `<span style="color:#059669"><i class="bi bi-check-circle-fill"></i> Gemini répond correctement ✓</span>`
+        : `<span style="color:#dc2626"><i class="bi bi-x-circle-fill"></i> Erreur: ${h(d.error||'Echec')}</span>`
+    }
+  } catch(e) { if(res){res.style.display='block';res.textContent='Erreur: '+e.message} }
+  finally { if (btn) { btn.disabled=false; btn.innerHTML='<i class="bi bi-play-circle"></i> Tester Gemini' } }
+}
+
+async function loadAiStatus() {
+  try {
+    const s = await fetch('/api/settings').then(r=>r.json())
+    const dot = document.getElementById('ai-gemini-dot')
+    const status = document.getElementById('ai-gemini-status')
+    if (dot)    dot.style.background = s.hasGemini ? '#10b981' : '#d1d5db'
+    if (status) status.textContent   = s.hasGemini ? 'Clé configurée — prêt' : 'Clé non configurée — fallback local actif'
+  } catch(e) {}
+}
+
 async function saveSettings() {
   const body = {
-    username:    document.getElementById('s-username').value||undefined,
-    password:    document.getElementById('s-password').value||undefined,
-    groqApiKey:  document.getElementById('s-groq').value||undefined,
-    scraperDelay:document.getElementById('s-delay').value,
-    maxItems:    document.getElementById('s-maxitems').value,
+    username:     document.getElementById('s-username').value||undefined,
+    password:     document.getElementById('s-password').value||undefined,
+    geminiApiKey: document.getElementById('s-gemini').value||undefined,
+    scraperDelay: document.getElementById('s-delay').value,
+    maxItems:     document.getElementById('s-maxitems').value,
   }
   try {
     const d = await fetch('/api/settings',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(r=>r.json())

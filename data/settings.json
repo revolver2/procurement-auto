@@ -8,10 +8,19 @@
       "name": "Aluminium / Menuiserie aluminium",
       "enabled": true,
       "keywords": [
-        "aluminium", "aluminum", "menuiserie aluminium",
-        "façade aluminium", "facade aluminium", "habillage aluminium",
-        "alucobond", "portes aluminium", "fenêtres aluminium", "fenetres aluminium",
-        "garde-corps", "garde corps", "main courante"
+        "aluminium",
+        "aluminum",
+        "menuiserie aluminium",
+        "façade aluminium",
+        "facade aluminium",
+        "habillage aluminium",
+        "alucobond",
+        "portes aluminium",
+        "fenêtres aluminium",
+        "fenetres aluminium",
+        "garde-corps",
+        "garde corps",
+        "main courante"
       ]
     },
     {
@@ -19,7 +28,10 @@
       "name": "Inox",
       "enabled": true,
       "keywords": [
-        "inox", "acier inoxydable", "grille inox", "main courante inox"
+        "inox",
+        "acier inoxydable",
+        "grille inox",
+        "main courante inox"
       ]
     },
     {
@@ -27,14 +39,24 @@
       "name": "Métal / Métallique",
       "enabled": true,
       "keywords": [
-        "métallique", "metallique", "métal", "metal",
-        "charpente métallique", "charpente metallique",
-        "structure métallique", "structure metallique",
-        "construction métallique", "construction metallique",
-        "escalier métallique", "escalier metallique",
-        "rideau métallique", "rideau metallique",
-        "faux plafond métallique", "faux plafond metallique",
-        "ferronnerie", "serrurerie"
+        "métallique",
+        "metallique",
+        "métal",
+        "metal",
+        "charpente métallique",
+        "charpente metallique",
+        "structure métallique",
+        "structure metallique",
+        "construction métallique",
+        "construction metallique",
+        "escalier métallique",
+        "escalier metallique",
+        "rideau métallique",
+        "rideau metallique",
+        "faux plafond métallique",
+        "faux plafond metallique",
+        "ferronnerie",
+        "serrurerie"
       ]
     },
     {
@@ -42,7 +64,9 @@
       "name": "Fourniture et pose",
       "enabled": true,
       "keywords": [
-        "fourniture et pose", "fourniture et installation", "fourniture et montage"
+        "fourniture et pose",
+        "fourniture et installation",
+        "fourniture et montage"
       ]
     },
     {
@@ -50,26 +74,83 @@
       "name": "Travaux connexes",
       "enabled": true,
       "keywords": [
-        "cloison", "panneaux sandwich", "vitrage", "abri", "pergola"
+        "cloison",
+        "panneaux sandwich",
+        "vitrage",
+        "abri",
+        "pergola"
       ]
     }
   ],
   "cities": [
-    "Casablanca", "Rabat", "Kénitra", "Kenitra",
-    "El Jadida", "Settat", "Mohammedia", "Témara", "Temara",
-    "Salé", "Sale", "Bouskoura", "Berrechid", "Nouaceur",
-    "Marrakech", "Fès", "Fes", "Meknès", "Meknes", "Agadir",
-    "Tanger", "Oujda", "Béni Mellal", "Beni Mellal"
+    "Casablanca",
+    "Rabat",
+    "Kénitra",
+    "Kenitra",
+    "El Jadida",
+    "Settat",
+    "Mohammedia",
+    "Témara",
+    "Temara",
+    "Salé",
+    "Sale",
+    "Bouskoura",
+    "Berrechid",
+    "Nouaceur",
+    "Marrakech",
+    "Fès",
+    "Fes",
+    "Meknès",
+    "Meknes",
+    "Agadir",
+    "Tanger",
+    "Oujda",
+    "Béni Mellal",
+    "Beni Mellal"
   ],
   "exclusionKeywords": [
-    "informatique", "logiciel", "software", "hardware", "ordinateur",
-    "réseau informatique", "réseau informatique",
-    "assurance", "formation professionnelle", "nettoyage", "gardiennage",
-    "restauration", "fourniture repas", "transport scolaire",
-    "fourniture de bureau", "mobilier de bureau",
-    "matériel médical", "materiel medical",
-    "consommables médicaux", "consommables medicaux",
-    "papeterie", "imprimerie", "photocopie",
-    "téléphonie", "telephonie", "sonorisation", "audiovisuel"
-  ]
+    "informatique",
+    "logiciel",
+    "software",
+    "hardware",
+    "ordinateur",
+    "réseau informatique",
+    "réseau informatique",
+    "assurance",
+    "formation professionnelle",
+    "nettoyage",
+    "gardiennage",
+    "restauration",
+    "fourniture repas",
+    "transport scolaire",
+    "fourniture de bureau",
+    "mobilier de bureau",
+    "matériel médical",
+    "materiel medical",
+    "consommables médicaux",
+    "consommables medicaux",
+    "papeterie",
+    "imprimerie",
+    "photocopie",
+    "téléphonie",
+    "telephonie",
+    "sonorisation",
+    "audiovisuel"
+  ],
+  "ai": {
+    "provider": "gemini",
+    "fallbackProvider": "local-rulebased",
+    "providers": {
+      "gemini": {
+        "enabled": true,
+        "model": "gemini-2.5-flash"
+      },
+      "local-rulebased": {
+        "enabled": true
+      },
+      "groq": {
+        "enabled": false
+      }
+    }
+  }
 }
