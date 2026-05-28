@@ -894,6 +894,102 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
   })
 })
 
+/* ── Upload AVIS PDF directly (drag-and-drop from browser) ── */
+app.post('/api/projects/:id/upload-avis',
+  express.raw({ type: '*/*', limit: '50mb' }),
+  async (req, res) => {
+    const bonId    = req.params.id
+    const safeId   = bonId.replace(/[^a-zA-Z0-9\-]/g, '_')
+    const rawName  = (req.query.filename || req.headers['x-filename'] || 'upload.pdf')
+      .replace(/[^a-zA-Z0-9._\- ]/g, '_').trim() || 'upload.pdf'
+
+    const bons = db.read('procurement-analysis.json') || []
+    const bon  = bons.find(b => b.id === bonId)
+    if (!bon) return res.status(404).json({ success: false, error: 'BC introuvable' })
+
+    if (!req.body || !req.body.length) {
+      return res.status(400).json({ success: false, error: 'Corps de requête vide' })
+    }
+
+    // Validate PDF magic bytes
+    const magic = req.body.slice(0, 5).toString('ascii')
+    if (!magic.startsWith('%PDF-')) {
+      return res.status(400).json({ success: false, error: 'Le fichier ne semble pas être un PDF valide' })
+    }
+
+    const dir      = path.join(ATTACHMENTS_DIR, safeId)
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true })
+
+    const savePath = path.join(dir, rawName)
+    fs.writeFileSync(savePath, req.body)
+
+    let result
+    try { result = await extractPdfText(savePath) }
+    catch (e) { result = { textExtracted: false, error: e.message, requiresOCR: false } }
+
+    if (!result.textExtracted || !result.text || result.text.length < 50) {
+      return res.json({
+        success: false,
+        savedAs: rawName,
+        requiresOCR: result.requiresOCR || false,
+        error: result.error || 'Aucun texte extractible — essayez un PDF avec une couche texte',
+        crewaiUnlocked: false,
+      })
+    }
+
+    const bestText = result.text
+    const bestName = rawName + (result.sourceFile ? ` / ${result.sourceFile}` : '')
+    const ocrUsed  = result.ocrUsed || false
+
+    const spec = {
+      bonId,
+      bonReference:    bon.reference || '',
+      attachments: [{
+        name:          rawName,
+        type:          /avis/i.test(rawName) ? 'avis' : 'uploaded',
+        downloaded:    true,
+        textExtracted: true,
+        textLength:    bestText.length,
+        localPath:     savePath,
+        ocrUsed,
+      }],
+      primaryAvisText:   bestText,
+      primaryAvisName:   bestName,
+      hasText:           true,
+      textLength:        bestText.length,
+      noAttachmentFound: false,
+      analysisSource:    'uploaded_pdf',
+      extractedAt:       new Date().toISOString(),
+    }
+    saveSpec(bonId, spec)
+
+    const idx = bons.findIndex(b => b.id === bonId)
+    if (idx >= 0) {
+      bons[idx].attachmentHasText = true
+      bons[idx].attachmentFound   = true
+      bons[idx].avisDocument = {
+        selectedPdf:   bestName,
+        textLength:    bestText.length,
+        textExtracted: true,
+        validated:     true,
+        uploadedAt:    new Date().toISOString(),
+        ocrUsed,
+      }
+      db.write('procurement-analysis.json', bons)
+    }
+
+    res.json({
+      success:          true,
+      savedAs:          rawName,
+      selectedPdf:      bestName,
+      textLength:       bestText.length,
+      ocrUsed,
+      attachmentHasText: true,
+      crewaiUnlocked:   true,
+    })
+  }
+)
+
 app.post('/api/projects/:id/analyze-from-avis', async (req, res) => {
   const bonId = req.params.id
   const { forceRefresh = false } = req.body || {}

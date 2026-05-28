@@ -337,6 +337,16 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
 .crewai-tag.risk{background:rgba(239,68,68,.08);color:#dc2626}
 .crewai-tag.missing{background:rgba(251,191,36,.1);color:#d97706}
 .crewai-tag.plan{background:rgba(59,130,246,.08);color:#2563eb}
+/* ── Drag-and-drop PDF upload ── */
+.avis-dropzone{border:2px dashed #cbd5e1;border-radius:12px;padding:28px 20px;text-align:center;cursor:pointer;transition:all .2s;background:#fafbfd;margin-top:16px}
+.avis-dropzone:hover,.avis-dropzone.drag-over{border-color:#7c3aed;background:rgba(124,58,237,.04)}
+.avis-dropzone.drag-over{border-style:solid;box-shadow:0 0 0 3px rgba(124,58,237,.15)}
+.avis-dropzone-icon{font-size:32px;margin-bottom:8px;display:block;color:#94a3b8;transition:color .2s}
+.avis-dropzone:hover .avis-dropzone-icon,.avis-dropzone.drag-over .avis-dropzone-icon{color:#7c3aed}
+.avis-dropzone-label{font-size:13px;color:#475569;font-weight:500}
+.avis-dropzone-sub{font-size:11px;color:#94a3b8;margin-top:4px}
+.avis-upload-progress{display:none;margin-top:12px;font-size:13px;color:#7c3aed;align-items:center;gap:8px;justify-content:center}
+.avis-upload-progress.show{display:flex}
 .bordereau-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
 .bordereau-table th{padding:6px 8px;background:#f8fafc;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--border);text-align:left}
 .bordereau-table td{padding:6px 8px;border-bottom:1px solid #f8fafc;vertical-align:top}
@@ -1170,20 +1180,36 @@ function renderDetail(bon) {
             <p style="font-size:12px;margin-top:6px">Le pipeline analyse uniquement l'AVIS officiel extrait.</p>
           </div>
         </div>` : `
-        <div style="text-align:center;padding:36px 20px">
-          <i class="bi bi-robot" style="font-size:42px;color:#cbd5e1;margin-bottom:14px;display:block"></i>
-          <span class="crewai-badge" style="margin-bottom:12px;display:inline-flex;opacity:.6"><i class="bi bi-lock"></i> CrewAI bloqué</span>
-          <p style="font-size:14px;font-weight:600;margin-bottom:6px">AVIS officiel non extrait</p>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:18px">Le pipeline CrewAI requiert un texte AVIS d'au moins 50 caractères.<br>Si des fichiers sont déjà téléchargés, cliquez <b>Valider PDF</b> ci-dessous.</p>
-          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
-            <button class="btn-save" onclick="validateAvisPdfAndRefresh('${bon.id}')">
-              <i class="bi bi-shield-check"></i> Valider PDF AVIS
-            </button>
-            <button class="btn-save" style="background:var(--sidebar)" onclick="switchDetailTab('attachments',document.querySelector('.detail-nav-btn[onclick*=attachments]'))">
-              <i class="bi bi-paperclip"></i> Pièces Jointes
-            </button>
+        <div style="padding:28px 20px">
+          <div style="text-align:center;margin-bottom:20px">
+            <i class="bi bi-robot" style="font-size:42px;color:#cbd5e1;margin-bottom:14px;display:block"></i>
+            <span class="crewai-badge" style="margin-bottom:12px;display:inline-flex;opacity:.6"><i class="bi bi-lock"></i> CrewAI bloqué</span>
+            <p style="font-size:14px;font-weight:600;margin-bottom:6px">AVIS officiel non extrait</p>
+            <p style="font-size:13px;color:var(--muted);margin-bottom:18px">Glissez-déposez le PDF AVIS ci-dessous, ou cliquez pour sélectionner.<br>Le texte sera extrait automatiquement pour débloquer CrewAI.</p>
+            <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+              <button class="btn-save" onclick="validateAvisPdfAndRefresh('${bon.id}')">
+                <i class="bi bi-shield-check"></i> Valider fichiers téléchargés
+              </button>
+              <button class="btn-save" style="background:var(--sidebar)" onclick="switchDetailTab('attachments',document.querySelector('.detail-nav-btn[onclick*=attachments]'))">
+                <i class="bi bi-paperclip"></i> Pièces Jointes
+              </button>
+            </div>
           </div>
-          <div id="crewai-validate-status" style="margin-top:12px;font-size:13px"></div>
+          <input type="file" id="avis-file-input-${bon.id}" accept=".pdf,.zip,.docx,.doc" style="display:none" onchange="handleAvisFileSelect(event,'${bon.id}')">
+          <div class="avis-dropzone" id="avis-dropzone-${bon.id}"
+            ondragover="event.preventDefault();this.classList.add('drag-over')"
+            ondragleave="this.classList.remove('drag-over')"
+            ondrop="handleAvisDrop(event,'${bon.id}')"
+            onclick="document.getElementById('avis-file-input-${bon.id}').click()">
+            <i class="bi bi-cloud-arrow-up avis-dropzone-icon"></i>
+            <div class="avis-dropzone-label">Glissez le PDF AVIS ici ou cliquez pour parcourir</div>
+            <div class="avis-dropzone-sub">PDF, ZIP, DOCX · max 50 MB · OCR Gemini disponible pour PDFs scannés</div>
+          </div>
+          <div class="avis-upload-progress" id="avis-upload-progress-${bon.id}">
+            <span style="display:inline-block;width:16px;height:16px;border:2px solid #7c3aed;border-top-color:transparent;border-radius:50%;animation:spin .7s linear infinite"></span>
+            <span id="avis-upload-label-${bon.id}">Envoi en cours…</span>
+          </div>
+          <div id="crewai-validate-status" style="margin-top:12px;font-size:13px;text-align:center"></div>
         </div>`}
       </div>
     </div>`
@@ -2842,6 +2868,75 @@ async function validateAvisPdfAndRefresh(bonId) {
   } catch(e) {
     if (statusEl) statusEl.innerHTML = `<span style="color:#dc2626">${e.message}</span>`
     showToast('Erreur: ' + e.message, 'err')
+  }
+}
+
+/* ── AVIS PDF drag-and-drop upload ─────────────────── */
+function handleAvisDrop(event, bonId) {
+  event.preventDefault()
+  const dz = document.getElementById('avis-dropzone-' + bonId)
+  if (dz) dz.classList.remove('drag-over')
+  const file = event.dataTransfer.files[0]
+  if (!file) return
+  uploadAvisPdf(bonId, file)
+}
+
+function handleAvisFileSelect(event, bonId) {
+  const file = event.target.files[0]
+  if (!file) return
+  uploadAvisPdf(bonId, file)
+  event.target.value = ''
+}
+
+async function uploadAvisPdf(bonId, file) {
+  const allowed = ['application/pdf', 'application/zip', 'application/x-zip-compressed',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/msword', '']
+  const ext = file.name.split('.').pop().toLowerCase()
+  if (!['pdf','zip','docx','doc'].includes(ext)) {
+    showToast('Format non supporté — PDF, ZIP ou DOCX uniquement', 'err')
+    return
+  }
+
+  const progressEl = document.getElementById('avis-upload-progress-' + bonId)
+  const labelEl    = document.getElementById('avis-upload-label-' + bonId)
+  const statusEl   = document.getElementById('crewai-validate-status')
+  const dz         = document.getElementById('avis-dropzone-' + bonId)
+
+  if (progressEl) progressEl.classList.add('show')
+  if (labelEl)    labelEl.textContent = `Envoi de "${file.name}" (${(file.size/1024).toFixed(0)} KB)…`
+  if (statusEl)   statusEl.innerHTML  = ''
+  if (dz)         dz.style.opacity    = '.5'
+
+  try {
+    const arrayBuf = await file.arrayBuffer()
+    const url = `/api/projects/${bonId}/upload-avis?filename=${encodeURIComponent(file.name)}`
+    const resp = await fetch(url, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/octet-stream', 'x-filename': file.name },
+      body:    arrayBuf,
+    })
+    const d = await resp.json()
+
+    if (d.success) {
+      const ocrNote = d.ocrUsed ? ' (OCR Gemini)' : ''
+      showToast(`✓ "${d.savedAs}" importé — ${(d.textLength||0).toLocaleString()} chars${ocrNote} — CrewAI débloqué !`)
+      openProject(bonId)
+      setTimeout(() => switchDetailTab('crewai', document.querySelector('.detail-nav-btn[onclick*=crewai]')), 800)
+    } else {
+      if (progressEl) progressEl.classList.remove('show')
+      if (dz)         dz.style.opacity = ''
+      const msg = d.requiresOCR
+        ? '⚠ PDF scanné sans texte — configurez GEMINI_API_KEY pour activer l\'OCR'
+        : (d.error || 'Échec extraction — essayez un autre fichier')
+      if (statusEl) statusEl.innerHTML = `<span style="color:${d.requiresOCR?'#b45309':'#dc2626'}"><i class="bi bi-exclamation-triangle"></i> ${_esc(msg)}</span>`
+      showToast(msg, d.requiresOCR ? 'warn' : 'err')
+    }
+  } catch(e) {
+    if (progressEl) progressEl.classList.remove('show')
+    if (dz)         dz.style.opacity = ''
+    if (statusEl)   statusEl.innerHTML = `<span style="color:#dc2626">${e.message}</span>`
+    showToast('Erreur upload: ' + e.message, 'err')
   }
 }
 
