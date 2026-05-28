@@ -759,12 +759,13 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
     return res.json({ success: false, error: 'Aucun fichier téléchargé — utilisez Force téléchargement', crewaiUnlocked: false, pdfsFound: 0 })
   }
 
-  /* recursive scan: returns every file with .pdf extension > 1 KB */
+  /* recursive scan: returns every file > 1 KB, skipping macOS resource forks */
   function scanAllFiles(d, depth = 0) {
     const out = []
     if (depth > 4) return out
     try {
       for (const f of fs.readdirSync(d)) {
+        if (f === '__MACOSX' || f.startsWith('._')) continue  // skip macOS metadata
         const fp = path.join(d, f)
         try {
           const st = fs.statSync(fp)
@@ -1077,6 +1078,7 @@ app.get('/api/projects/:id/files-on-disk', (req, res) => {
     if (depth > 3) return items
     try {
       for (const f of fs.readdirSync(d)) {
+        if (f === '__MACOSX' || f.startsWith('._')) continue
         const fp = path.join(d, f)
         try {
           const st = fs.statSync(fp)
