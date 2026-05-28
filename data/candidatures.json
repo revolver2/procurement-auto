@@ -55,5 +55,24 @@
         "note": "Candidature créée"
       }
     ]
+  },
+  {
+    "id": "CAND-1780001359114",
+    "bonId": "88cb1e5a-b0f6-4a28-a157-58123f2503cb",
+    "bonTitle": "Objet TRAVAUX D'INSTALLATION D'UN ABRIS A LA STATION DU TAXIS",
+    "bonBuyer": "Commune IZEMMOUREN",
+    "bonDeadline": "16/03/2027 14:00",
+    "bonReference": "6/2026",
+    "status": "En préparation",
+    "notes": "",
+    "createdAt": "2026-05-28T20:49:19.114Z",
+    "updatedAt": "2026-05-28T20:49:19.114Z",
+    "history": [
+      {
+        "status": "En préparation",
+        "date": "2026-05-28T20:49:19.114Z",
+        "note": "Candidature créée"
+      }
+    ]
   }
 ]
