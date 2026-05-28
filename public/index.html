@@ -267,6 +267,19 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
 .bar-fill{height:100%;border-radius:20px;background:var(--orange);transition:width .4s}
 .bar-num{width:30px;text-align:right;font-weight:600;color:var(--text)}
 
+/* ── CrewAI sections ── */
+.crewai-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(124,58,237,.1);color:#7c3aed;border:1px solid rgba(124,58,237,.25);border-radius:20px;font-size:11px;font-weight:700;padding:4px 12px;letter-spacing:.03em}
+.crewai-section{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
+.crewai-section h4{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.crewai-tag{background:#f1f5f9;color:#475569;padding:3px 9px;border-radius:14px;font-size:12px;display:inline-block;margin:2px}
+.crewai-tag.mat{background:rgba(124,58,237,.08);color:#7c3aed}
+.crewai-tag.risk{background:rgba(239,68,68,.08);color:#dc2626}
+.crewai-tag.missing{background:rgba(251,191,36,.1);color:#d97706}
+.crewai-tag.plan{background:rgba(59,130,246,.08);color:#2563eb}
+.bordereau-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:8px}
+.bordereau-table th{padding:6px 8px;background:#f8fafc;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--border);text-align:left}
+.bordereau-table td{padding:6px 8px;border-bottom:1px solid #f8fafc;vertical-align:top}
+
 /* ── Toast ── */
 #toast{position:fixed;bottom:24px;right:24px;background:#1e293b;color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;font-weight:500;z-index:9999;display:none;align-items:center;gap:8px;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
 #toast.show{display:flex}
@@ -911,6 +924,7 @@ function renderDetail(bon) {
       <button class="detail-nav-btn" onclick="switchDetailTab('analyse',this)"><i class="bi bi-stars"></i> Analyse</button>
       <button class="detail-nav-btn" onclick="switchDetailTab('docs',this)"><i class="bi bi-file-earmark-text"></i> Documents</button>
       <button class="detail-nav-btn" onclick="switchDetailTab('checklist',this)"><i class="bi bi-check2-square"></i> Checklist</button>
+      <button class="detail-nav-btn" onclick="switchDetailTab('crewai',this)"><i class="bi bi-robot"></i> CrewAI</button>
     </div>
 
     <div class="detail-tab active" id="dtab-info">
@@ -1017,6 +1031,38 @@ function renderDetail(bon) {
           <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Générez la checklist de soumission IA pour ce bon.</p>
           <button class="btn-save" onclick="generateDoc('${bon.id}','checklist')"><i class="bi bi-check2-square"></i> Générer la checklist</button>
         </div>`}
+    </div>
+
+    <div class="detail-tab" id="dtab-crewai">
+      <div id="crewai-panel">
+        ${bon.attachmentHasText ? `
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px">
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+            <span class="crewai-badge"><i class="bi bi-robot"></i> CrewAI Multi-Agent</span>
+            <span style="font-size:12px;color:var(--muted)">Analyse basée sur l'AVIS officiel uniquement</span>
+          </div>
+          <div style="display:flex;gap:8px">
+            <button class="btn-save" onclick="runCrewAiAnalysis('${bon.id}',false)"><i class="bi bi-play-circle"></i> Run CrewAI Analysis</button>
+            <button class="btn-save" style="background:var(--sidebar)" onclick="runCrewAiAnalysis('${bon.id}',true)"><i class="bi bi-arrow-clockwise"></i> Re-analyze from AVIS</button>
+          </div>
+        </div>
+        <div id="crewai-result-panel">
+          <div style="text-align:center;padding:32px;color:var(--muted)">
+            <i class="bi bi-robot" style="font-size:36px;display:block;margin-bottom:10px;opacity:.4"></i>
+            <p style="font-size:13px">Cliquez <b>Run CrewAI Analysis</b> pour lancer le pipeline 8-agents.</p>
+            <p style="font-size:12px;margin-top:6px">Le pipeline analyse uniquement l'AVIS officiel extrait.</p>
+          </div>
+        </div>` : `
+        <div style="text-align:center;padding:40px 20px">
+          <i class="bi bi-robot" style="font-size:42px;color:#cbd5e1;margin-bottom:14px;display:block"></i>
+          <span class="crewai-badge" style="margin-bottom:14px;display:inline-flex;opacity:.6"><i class="bi bi-lock"></i> CrewAI bloqué</span>
+          <p style="font-size:14px;font-weight:600;margin-bottom:6px">Avis officiel non extrait. Analyse CrewAI bloquée.</p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Allez dans <b>Pièces Jointes</b> et cliquez <b>Re-télécharger</b> pour extraire l'AVIS officiel.</p>
+          <button class="btn-save" style="background:var(--sidebar);margin:0 auto" onclick="switchDetailTab('attachments',null);document.querySelectorAll('.detail-nav-btn').forEach(b=>{if(b.onclick&&b.onclick.toString().includes('attachments'))b.classList.add('active');else b.classList.remove('active')})">
+            <i class="bi bi-paperclip"></i> Aller aux Pièces Jointes
+          </button>
+        </div>`}
+      </div>
     </div>`
 }
 
@@ -1144,7 +1190,8 @@ function switchDetailTab(name, btn) {
   const tab = document.getElementById('dtab-' + name)
   if (tab) tab.classList.add('active')
   if (btn) btn.classList.add('active')
-  if (name === 'skills' && currentDetailBonId) loadSkillsTab(currentDetailBonId)
+  if (name === 'skills'  && currentDetailBonId) loadSkillsTab(currentDetailBonId)
+  if (name === 'crewai' && currentDetailBonId) loadCrewAiTab(currentDetailBonId)
 }
 
 /* ── Postuler ── */
@@ -1416,6 +1463,170 @@ function renderSkillsHtml(data, bonId) {
       ${cat.procurementAdvice ? `<p style="font-size:12px;color:var(--muted);margin-top:3px">${h(cat.procurementAdvice)}</p>` : ''}
       ${cat.suggestedSuppliers?.length ? `<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:6px">${cat.suggestedSuppliers.slice(0,3).map(s => `<span style="background:#f1f5f9;border-radius:6px;padding:3px 8px;font-size:11px;font-weight:500">${h(s.name||s||'')}</span>`).join('')}</div>` : ''}
     </div>`).join('')}
+  </div>` : ''}
+  `
+  return html
+}
+
+/* ── CrewAI Multi-Agent Analysis ── */
+async function runCrewAiAnalysis(bonId, forceRefresh) {
+  const panel = document.getElementById('crewai-result-panel')
+  if (panel) panel.innerHTML = `<div style="text-align:center;padding:40px 20px">
+    <span class="spinner" style="width:28px;height:28px;border-width:3px;display:inline-block"></span>
+    <p style="margin-top:14px;color:var(--muted);font-size:13px">Pipeline CrewAI en cours (8 agents • 60-90s)...</p>
+    <p style="font-size:12px;color:var(--muted);margin-top:6px">TenderReader → TechnicalSpec → Materials → RFQ → Bordereau → ExecutionPlan → Risk → TenderManager</p>
+  </div>`
+  try {
+    const r = await fetch(`/api/projects/${bonId}/analyze-from-avis`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ forceRefresh: !!forceRefresh }),
+    })
+    const d = await r.json()
+    if (!r.ok || d.blocked) {
+      const msg = d.error || 'Analyse bloquée: AVIS non extrait.'
+      if (panel) panel.innerHTML = `<div style="padding:20px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.3);border-radius:10px;font-size:13px;color:#b45309">
+        <i class="bi bi-exclamation-triangle-fill"></i> <b>${h(msg)}</b></div>`
+      showToast(msg, 'err')
+      return
+    }
+    if (!d.success && d.error) {
+      if (panel) panel.innerHTML = `<div style="padding:16px;color:var(--danger);font-size:13px"><i class="bi bi-x-circle"></i> ${h(d.error)}</div>`
+      showToast(d.error, 'err')
+      return
+    }
+    showToast(d.cached ? 'Analyse créwAI (cache)' : 'Analyse CrewAI terminée !')
+    if (panel) panel.innerHTML = renderCrewAiHtml(d, bonId)
+  } catch(e) {
+    if (panel) panel.innerHTML = `<div style="padding:16px;color:var(--danger);font-size:13px"><i class="bi bi-x-circle"></i> Service CrewAI inaccessible: ${h(e.message)}</div>`
+    showToast('Service CrewAI inaccessible: ' + e.message, 'err')
+  }
+}
+
+async function loadCrewAiTab(bonId) {
+  const panel = document.getElementById('crewai-result-panel')
+  if (!panel) return
+  try {
+    const r = await fetch(`/api/projects/${bonId}/crewai-analysis`)
+    if (!r.ok) return
+    const d = await r.json()
+    if (d && (d.summary || d.materials?.length)) {
+      panel.innerHTML = renderCrewAiHtml(d, bonId)
+    }
+  } catch {}
+}
+
+function renderCrewAiHtml(d, bonId) {
+  const specs  = d.specifications      || []
+  const mats   = d.materials           || []
+  const qtys   = d.quantities          || []
+  const dims   = d.dimensions          || []
+  const rfq    = d.supplierRFQ         || []
+  const plan   = d.executionPlan       || []
+  const risks  = d.risks               || []
+  const miss   = d.missingInformation  || []
+  const bord   = d.bordereauDraft      || []
+  const checklist = d.submissionChecklist || []
+
+  const providerBadge = d.provider === 'gemini'
+    ? `<span style="font-size:10px;background:rgba(16,185,129,.1);color:#059669;padding:1px 8px;border-radius:10px;font-weight:700">Gemini</span>`
+    : `<span style="font-size:10px;background:#f1f5f9;color:var(--muted);padding:1px 8px;border-radius:10px;font-weight:600">Règles locales</span>`
+
+  let html = `
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+      <span class="crewai-badge"><i class="bi bi-robot"></i> CrewAI — 8 agents</span>
+      ${providerBadge}
+      ${d.cached ? `<span style="font-size:10px;background:rgba(59,130,246,.1);color:#2563eb;padding:1px 8px;border-radius:10px;font-weight:600"><i class="bi bi-lightning-charge-fill"></i> Mis en cache</span>` : ''}
+      <span style="font-size:11px;color:var(--muted)">${d.analyzedAt ? new Date(d.analyzedAt).toLocaleString('fr-FR') : ''}</span>
+    </div>
+    <button onclick="runCrewAiAnalysis('${bonId}',true)" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Re-analyze from AVIS</button>
+  </div>
+
+  <div style="padding:10px 14px;background:rgba(124,58,237,.06);border:1px solid rgba(124,58,237,.2);border-radius:8px;margin-bottom:14px;font-size:12px">
+    <i class="bi bi-patch-check-fill" style="color:#7c3aed"></i>
+    <span style="margin-left:6px"><b style="color:#7c3aed">CrewAI — analyse basée sur AVIS officiel</b> — source: ${h(d.source||'')}</span>
+  </div>
+
+  ${d.summary ? `<div class="crewai-section"><h4><i class="bi bi-blockquote-left" style="color:var(--orange)"></i> Résumé</h4><p style="font-size:13px;line-height:1.6;color:var(--text)">${h(d.summary)}</p></div>` : ''}
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
+    <div class="crewai-section" style="text-align:center;padding:14px">
+      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Rentabilité</p>
+      <div style="font-size:24px;font-weight:800;color:${(d.profitabilityScore||0)>=60?'var(--success)':(d.profitabilityScore||0)>=35?'#f59e0b':'var(--danger)'}">${d.profitabilityScore||'?'}<span style="font-size:12px">/100</span></div>
+    </div>
+    <div class="crewai-section" style="text-align:center;padding:14px">
+      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Urgence</p>
+      <div style="font-size:24px;font-weight:800;color:${(d.urgencyScore||0)>=70?'var(--danger)':(d.urgencyScore||0)>=40?'#f59e0b':'var(--success)'}">${d.urgencyScore||'?'}<span style="font-size:12px">/100</span></div>
+    </div>
+    <div class="crewai-section" style="text-align:center;padding:14px">
+      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Prob. succès</p>
+      <div style="font-size:18px;font-weight:800;color:${d.winningProbability==='Élevée'?'var(--success)':d.winningProbability==='Faible'?'var(--danger)':'#f59e0b'}">${h(d.winningProbability||'?')}</div>
+    </div>
+  </div>
+
+  ${d.destination && d.destination !== 'Non précisé dans l\'avis joint.' ? `<div class="crewai-section"><h4><i class="bi bi-geo-alt" style="color:var(--orange)"></i> Destination</h4><p style="font-size:13px">${h(d.destination)}</p></div>` : ''}
+
+  ${specs.length ? `<div class="crewai-section"><h4><i class="bi bi-tools" style="color:var(--orange)"></i> Spécifications techniques</h4><div style="display:flex;flex-wrap:wrap;gap:6px">${specs.map(s=>`<span class="crewai-tag">${h(String(s))}</span>`).join('')}</div></div>` : ''}
+
+  ${mats.length ? `<div class="crewai-section"><h4><i class="bi bi-boxes" style="color:var(--purple)"></i> Matériaux</h4><div style="display:flex;flex-wrap:wrap;gap:6px">${mats.map(m=>`<span class="crewai-tag mat">${h(String(m))}</span>`).join('')}</div>
+  ${(qtys.length||dims.length) ? `<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px">
+    ${qtys.map(q=>`<span class="crewai-tag" style="background:rgba(2,132,199,.08);color:#0284c7">${h(String(q))}</span>`).join('')}
+    ${dims.map(d2=>`<span class="crewai-tag" style="background:rgba(16,185,129,.08);color:#059669">${h(String(d2))}</span>`).join('')}
+  </div>` : ''}</div>` : ''}
+
+  ${rfq.length ? `<div class="crewai-section"><h4><i class="bi bi-envelope-open" style="color:var(--orange)"></i> RFQ Fournisseurs</h4>
+    ${rfq.map(r2 => `<div style="margin-bottom:12px">
+      <div style="font-size:13px;font-weight:600;margin-bottom:6px">${h(r2.category||'')}</div>
+      <div style="display:flex;flex-wrap:wrap;gap:5px">${(r2.items||[]).map(it=>`<span class="crewai-tag">${h(String(it))}</span>`).join('')}</div>
+      ${r2.specification ? `<p style="font-size:12px;color:var(--muted);margin-top:5px">${h(r2.specification)}</p>` : ''}
+    </div>`).join('')}
+  </div>` : ''}
+
+  ${bord.length ? `<div class="crewai-section"><h4><i class="bi bi-list-columns-reverse" style="color:var(--orange)"></i> Bordereau (projet)</h4>
+    <table class="bordereau-table"><thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Qté</th><th>PU HT</th><th>Total HT</th><th>TVA</th><th>TTC</th></tr></thead>
+    <tbody>${bord.map(b2=>`<tr>
+      <td>${b2.num||''}</td>
+      <td>${h(String(b2.designation||''))}</td>
+      <td>${h(String(b2.unite||''))}</td>
+      <td>${h(String(b2.quantite||''))}</td>
+      <td style="color:var(--muted);font-style:italic">${h(String(b2.prixUnitaireHT||'— à compléter'))}</td>
+      <td style="color:var(--muted);font-style:italic">${h(String(b2.totalHT||''))}</td>
+      <td>${h(String(b2.tva||'20%'))}</td>
+      <td style="color:var(--muted);font-style:italic">${h(String(b2.totalTTC||''))}</td>
+    </tr>`).join('')}</tbody></table>
+  </div>` : ''}
+
+  ${plan.length ? `<div class="crewai-section"><h4><i class="bi bi-diagram-3" style="color:var(--info)"></i> Plan d'exécution</h4>
+    <div style="display:flex;flex-direction:column;gap:8px">${plan.map((p2,i)=>`
+    <div style="display:flex;align-items:flex-start;gap:10px">
+      <div style="width:22px;height:22px;border-radius:50%;background:rgba(59,130,246,.1);color:#2563eb;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">${i+1}</div>
+      <span class="crewai-tag plan" style="flex:1;border-radius:8px;padding:5px 10px">${h(String(p2))}</span>
+    </div>`).join('')}</div>
+  </div>` : ''}
+
+  ${risks.length ? `<div class="crewai-section"><h4><i class="bi bi-exclamation-triangle" style="color:var(--danger)"></i> Risques</h4>
+    <div style="display:flex;flex-direction:column;gap:6px">${risks.map(r3=>`
+    <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px">
+      <i class="bi bi-exclamation-circle-fill" style="color:var(--danger);flex-shrink:0;margin-top:2px;font-size:12px"></i>
+      <span class="crewai-tag risk" style="flex:1;border-radius:8px;padding:4px 10px">${h(String(r3))}</span>
+    </div>`).join('')}</div>
+  </div>` : ''}
+
+  ${miss.length ? `<div class="crewai-section"><h4><i class="bi bi-question-circle" style="color:#d97706"></i> Informations manquantes</h4>
+    <div style="display:flex;flex-wrap:wrap;gap:6px">${miss.map(m2=>`<span class="crewai-tag missing">${h(String(m2))}</span>`).join('')}</div>
+  </div>` : ''}
+
+  ${checklist.length ? `<div class="crewai-section"><h4><i class="bi bi-check2-square" style="color:var(--success)"></i> Checklist de soumission</h4>
+    <div style="display:flex;flex-direction:column;gap:5px">${checklist.map(c2=>`
+    <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px">
+      <i class="bi bi-square" style="color:var(--muted);flex-shrink:0;margin-top:2px"></i>
+      <span>${h(String(c2))}</span>
+    </div>`).join('')}</div>
+  </div>` : ''}
+
+  ${d.recommendedNextAction ? `<div style="margin-top:4px;padding:12px 16px;background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:10px;font-size:13px">
+    <b style="color:var(--orange)">Action recommandée:</b> ${h(d.recommendedNextAction)}
   </div>` : ''}
   `
   return html

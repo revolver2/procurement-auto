@@ -709,10 +709,107 @@ app.post('/api/projects/:id/extract-avis', async (req, res) => {
 })
 
 app.post('/api/projects/:id/analyze-from-avis', async (req, res) => {
+  const bonId = req.params.id
+  const { forceRefresh = false } = req.body || {}
+
+  // Load bon
+  const bons = db.read('procurement-analysis.json') || []
+  const bon  = bons.find(b => b.id === bonId)
+  if (!bon) return res.status(404).json({ success: false, error: 'BC introuvable' })
+
+  // Load AVIS text
+  const { loadSpec } = require('./lib/attachments/attachment-analyzer')
+  const spec  = loadSpec(bonId)
+  const avisText = spec?.primaryAvisText || spec?.avisText || null
+
+  // Block if no AVIS text
+  if (!avisText || avisText.trim().length < 50) {
+    return res.status(400).json({
+      success: false,
+      error: 'Analyse bloquée: AVIS officiel non extrait. Allez dans "Pièces Jointes" et cliquez "Re-télécharger".',
+      blocked: true,
+    })
+  }
+
+  const crewaiUrl = process.env.CREWAI_SERVICE_URL
+  if (!crewaiUrl) {
+    // Fallback: existing orchestrator when no Python service configured
+    try {
+      const result = await orchestrator.orchestrate(bonId, { generateDocuments: false, forceRefresh: true })
+      return res.json(result)
+    } catch (e) { return res.status(500).json({ success: false, error: e.message }) }
+  }
+
+  // Check Node-side AI cache (same file used by orchestrator)
+  const crypto = require('crypto')
+  const fs     = require('fs')
+  const AI_CACHE_DIR = require('path').resolve(__dirname, 'data/ai-analysis')
+  const cachePath    = require('path').join(AI_CACHE_DIR, `${bonId}.json`)
+  if (!forceRefresh && fs.existsSync(cachePath)) {
+    try {
+      const cached = JSON.parse(fs.readFileSync(cachePath, 'utf8'))
+      const newHash = crypto.createHash('sha256').update(`${bonId}:${avisText.substring(0, 2000)}`).digest('hex').substring(0, 16)
+      if (cached.sourceHash === newHash) {
+        cached.cached = true
+        return res.json({ success: true, cached: true, ...cached })
+      }
+    } catch {}
+  }
+
+  // Call CrewAI microservice
   try {
-    const result = await orchestrator.orchestrate(req.params.id, { generateDocuments: false, forceRefresh: true })
-    res.json(result)
-  } catch (e) { res.status(500).json({ success: false, error: e.message }) }
+    const payload = {
+      projectId:    bonId,
+      projectTitle: bon.title || '',
+      buyer:        bon.buyer || '',
+      city:         bon.location || bon.city || '',
+      deadline:     bon.deadline || '',
+      officialUrl:  bon.sourceUrl || '',
+      avisText,
+    }
+    const crewRes = await fetch(`${crewaiUrl}/analyze-tender`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
+      signal:  AbortSignal.timeout(150000),
+    })
+    if (!crewRes.ok) {
+      const errBody = await crewRes.text()
+      return res.status(crewRes.status).json({ success: false, error: `CrewAI service: ${errBody}` })
+    }
+    const analysis = await crewRes.json()
+
+    // Save to ai-analysis cache
+    if (!fs.existsSync(AI_CACHE_DIR)) fs.mkdirSync(AI_CACHE_DIR, { recursive: true })
+    fs.writeFileSync(cachePath, JSON.stringify({ ...analysis, cachedAt: new Date().toISOString() }, null, 2))
+
+    // Update bon metadata
+    const bonIdx = bons.findIndex(b => b.id === bonId)
+    if (bonIdx >= 0) {
+      bons[bonIdx] = {
+        ...bons[bonIdx],
+        analysisSource: 'official_avis_attachment_only',
+        aiEngine:       'crewai',
+        analyzedAt:     new Date().toISOString(),
+      }
+      db.write('procurement-analysis.json', bons)
+    }
+
+    return res.json({ success: true, ...analysis })
+  } catch (e) {
+    return res.status(500).json({ success: false, error: `CrewAI service unreachable: ${e.message}` })
+  }
+})
+
+app.get('/api/projects/:id/crewai-analysis', (req, res) => {
+  const fs   = require('fs')
+  const path = require('path')
+  const p    = path.resolve(__dirname, 'data/ai-analysis', `${req.params.id}.json`)
+  if (!fs.existsSync(p)) return res.status(404).json({ error: 'Aucune analyse CrewAI pour ce bon' })
+  try {
+    const data = JSON.parse(fs.readFileSync(p, 'utf8'))
+    res.json({ success: true, ...data })
+  } catch (e) { res.status(500).json({ error: e.message }) }
 })
 
 app.get('/api/projects/:id/attachments', (req, res) => {
