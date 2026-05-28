@@ -1021,21 +1021,39 @@ function renderDetail(bon) {
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
           <span style="font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px"><i class="bi bi-paperclip" style="color:var(--orange)"></i> Pièces jointes &amp; Extraction AVIS</span>
           <div style="display:flex;gap:6px;flex-wrap:wrap">
-            <button onclick="reExtractAvis('${bon.id}',false)" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px" title="Re-scanner les fichiers déjà téléchargés — aucun download requis"><i class="bi bi-cpu"></i> Re-extraire</button>
+            <button onclick="validateAvisPdf('${bon.id}')" style="background:#1e3a5f;color:#fff;border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px" title="Scanner tous les PDFs et valider le meilleur — débloque CrewAI"><i class="bi bi-shield-check"></i> Valider PDF AVIS</button>
+            <button onclick="reExtractAvis('${bon.id}',false)" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px" title="Re-scanner les fichiers déjà téléchargés"><i class="bi bi-cpu"></i> Re-extraire</button>
             <button onclick="reExtractAvis('${bon.id}',true)" style="background:#f1f5f9;color:var(--muted);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px" title="Supprimer et re-télécharger les pièces jointes"><i class="bi bi-cloud-download"></i> Force téléchargement</button>
-            <button onclick="viewCachedFiles('${bon.id}')" style="background:#f1f5f9;color:var(--muted);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px" title="Voir les fichiers téléchargés en cache"><i class="bi bi-folder2-open"></i> Voir fichiers</button>
+            <button onclick="viewCachedFiles('${bon.id}')" style="background:#f1f5f9;color:var(--muted);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-folder2-open"></i> Voir fichiers</button>
             ${bon.attachmentHasText ? `<button onclick="viewAvisText('${bon.id}')" style="background:rgba(16,185,129,.1);color:#059669;border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-eye"></i> Voir texte AVIS</button>` : ''}
           </div>
         </div>
 
         <!-- Status summary -->
         ${bon.attachmentHasText
-          ? `<div style="padding:10px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:8px;font-size:13px;color:#059669;margin-bottom:12px;display:flex;align-items:center;gap:8px"><i class="bi bi-check-circle-fill"></i> <div><b>Texte AVIS extrait avec succès</b> — CrewAI peut analyser ce bon.<br><span style="font-size:11px;opacity:.8">${bon.attachments?.find(a=>a.textExtracted)?.sourceFile||bon.attachments?.find(a=>a.textExtracted)?.name||''} · ${(bon.attachments?.find(a=>a.textExtracted)?.textLength||0).toLocaleString()} chars</span></div></div>`
+          ? `<div style="padding:10px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:8px;font-size:13px;color:#059669;margin-bottom:12px">
+              <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><i class="bi bi-check-circle-fill"></i><b>Texte AVIS extrait — CrewAI débloqué</b></div>
+              <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;font-size:11px;margin-top:6px">
+                <div style="background:rgba(16,185,129,.1);padding:5px 8px;border-radius:5px"><div style="color:#64748b;font-weight:600;margin-bottom:2px">Fichier sélectionné</div><div style="color:#059669;font-weight:700;word-break:break-all">${h(bon.avisDocument?.selectedPdf||bon.attachments?.find(a=>a.textExtracted)?.name||'—')}</div></div>
+                <div style="background:rgba(16,185,129,.1);padding:5px 8px;border-radius:5px"><div style="color:#64748b;font-weight:600;margin-bottom:2px">Longueur texte</div><div style="color:#059669;font-weight:700">${(bon.avisDocument?.textLength||bon.attachments?.find(a=>a.textExtracted)?.textLength||0).toLocaleString()} chars</div></div>
+                <div style="background:rgba(16,185,129,.1);padding:5px 8px;border-radius:5px"><div style="color:#64748b;font-weight:600;margin-bottom:2px">Validé</div><div style="color:#059669;font-weight:700">${bon.avisDocument?.validated?'✓ Oui':'✓ Extrait'}</div></div>
+              </div>
+            </div>`
           : bon.attachments?.some(a=>a.requiresOCR)
-            ? `<div style="padding:10px 14px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.3);border-radius:8px;font-size:13px;color:#b45309;margin-bottom:12px"><i class="bi bi-exclamation-triangle-fill"></i> <b>PDF scanné détecté (OCR requis)</b> — Le fichier AVIS est une image scannée. L'extraction automatique n'est pas possible sans OCR.<br><span style="font-size:11px;opacity:.8;margin-top:4px;display:block">Fichier: ${bon.attachments?.find(a=>a.requiresOCR)?.name||'—'}</span></div>`
+            ? `<div style="padding:10px 14px;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.3);border-radius:8px;font-size:13px;color:#b45309;margin-bottom:12px">
+                <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><i class="bi bi-exclamation-triangle-fill"></i><b>PDF scanné détecté — OCR requis</b></div>
+                <div style="font-size:12px;color:#64748b">Le PDF est une image scannée. L'extraction automatique n'est pas possible. Fichier: <b>${h(bon.attachments?.find(a=>a.requiresOCR)?.name||'—')}</b></div>
+                <div style="margin-top:8px;font-size:12px"><i class="bi bi-lightbulb" style="color:#f97316"></i> Cliquez <b>Valider PDF AVIS</b> pour tenter quand même une extraction — si d'autres fichiers existent.</div>
+              </div>`
             : bon.attachments?.length
-              ? `<div style="padding:10px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:8px;font-size:13px;color:#dc2626;margin-bottom:12px"><i class="bi bi-x-circle-fill"></i> <b>Extraction échouée</b> — Fichiers téléchargés mais aucun texte extrait.<br><span style="font-size:11px;margin-top:4px;display:block;color:#64748b">Cliquez <b style="color:#dc2626">Re-extraire</b> pour réessayer. Si le problème persiste, utilisez <b style="color:#64748b">Force téléchargement</b>.</span></div>`
-              : `<div style="padding:10px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:8px;font-size:13px;color:#dc2626;margin-bottom:12px"><i class="bi bi-cloud-slash-fill"></i> <b>Aucun fichier téléchargé</b> — Cliquez <b>Force téléchargement</b> pour télécharger les pièces jointes, puis <b>Re-extraire</b>.</div>`}
+              ? `<div style="padding:10px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:8px;font-size:13px;color:#dc2626;margin-bottom:12px">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><i class="bi bi-x-circle-fill"></i><b>Texte non extrait — ${bon.attachments.length} fichier(s) téléchargé(s)</b></div>
+                  <div style="font-size:12px;color:#64748b">Cliquez <b style="color:#1e3a5f">Valider PDF AVIS</b> pour forcer l'extraction de tous les PDFs disponibles.</div>
+                </div>`
+              : `<div style="padding:10px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:8px;font-size:13px;color:#dc2626;margin-bottom:12px">
+                  <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><i class="bi bi-cloud-slash-fill"></i><b>Aucun fichier téléchargé</b></div>
+                  <div style="font-size:12px;color:#64748b">Cliquez <b>Force téléchargement</b> pour télécharger les pièces jointes, puis <b>Valider PDF AVIS</b>.</div>
+                </div>`}
 
         <!-- Debug table per attachment -->
         ${(bon.attachments?.length) ? `
@@ -1149,14 +1167,20 @@ function renderDetail(bon) {
             <p style="font-size:12px;margin-top:6px">Le pipeline analyse uniquement l'AVIS officiel extrait.</p>
           </div>
         </div>` : `
-        <div style="text-align:center;padding:40px 20px">
+        <div style="text-align:center;padding:36px 20px">
           <i class="bi bi-robot" style="font-size:42px;color:#cbd5e1;margin-bottom:14px;display:block"></i>
-          <span class="crewai-badge" style="margin-bottom:14px;display:inline-flex;opacity:.6"><i class="bi bi-lock"></i> CrewAI bloqué</span>
-          <p style="font-size:14px;font-weight:600;margin-bottom:6px">Avis officiel non extrait. Analyse CrewAI bloquée.</p>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Allez dans <b>Pièces Jointes</b> et cliquez <b>Re-télécharger</b> pour extraire l'AVIS officiel.</p>
-          <button class="btn-save" style="background:var(--sidebar);margin:0 auto" onclick="switchDetailTab('attachments',null);document.querySelectorAll('.detail-nav-btn').forEach(b=>{if(b.onclick&&b.onclick.toString().includes('attachments'))b.classList.add('active');else b.classList.remove('active')})">
-            <i class="bi bi-paperclip"></i> Aller aux Pièces Jointes
-          </button>
+          <span class="crewai-badge" style="margin-bottom:12px;display:inline-flex;opacity:.6"><i class="bi bi-lock"></i> CrewAI bloqué</span>
+          <p style="font-size:14px;font-weight:600;margin-bottom:6px">AVIS officiel non extrait</p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:18px">Le pipeline CrewAI requiert un texte AVIS d'au moins 50 caractères.<br>Si des fichiers sont déjà téléchargés, cliquez <b>Valider PDF</b> ci-dessous.</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <button class="btn-save" onclick="validateAvisPdfAndRefresh('${bon.id}')">
+              <i class="bi bi-shield-check"></i> Valider PDF AVIS
+            </button>
+            <button class="btn-save" style="background:var(--sidebar)" onclick="switchDetailTab('attachments',document.querySelector('.detail-nav-btn[onclick*=attachments]'))">
+              <i class="bi bi-paperclip"></i> Pièces Jointes
+            </button>
+          </div>
+          <div id="crewai-validate-status" style="margin-top:12px;font-size:13px"></div>
         </div>`}
       </div>
     </div>`
@@ -2769,6 +2793,53 @@ async function viewCachedFiles(bonId) {
     pane.innerHTML=`<div style="padding:16px"><div style="font-size:14px;font-weight:700;margin-bottom:12px;color:#1e3a5f"><i class="bi bi-folder-open" style="color:#f97316"></i> ${d.files?.length||0} fichier(s) en cache</div>
     <div style="background:#fff;border:1px solid #e2e8f0;border-radius:8px;overflow:hidden">${fHtml||'<div style="padding:20px;text-align:center;color:#94a3b8">Aucun fichier</div>'}</div></div>`
   } catch(e) { showToast('Erreur: '+e.message,'err') }
+}
+
+/* ── Validate any readable PDF → unlock CrewAI ──────── */
+async function validateAvisPdf(bonId) {
+  const panel = document.getElementById('attachments-panel')
+  if (panel) panel.style.opacity = '.5'
+  showToast('Validation PDF en cours — scan récursif de tous les fichiers...')
+  try {
+    const d = await fetch(`/api/projects/${bonId}/validate-avis-pdf`, { method: 'POST', headers: {'Content-Type':'application/json'} }).then(r=>r.json())
+    if (panel) panel.style.opacity = ''
+    if (d.success) {
+      showToast(`✓ PDF validé: "${d.selectedPdf}" — ${d.textLength.toLocaleString()} chars — CrewAI débloqué !`)
+      openProject(bonId)
+    } else if (d.requiresOCR) {
+      showToast('PDF trouvé mais scanné — OCR requis pour extraire le texte', 'warn')
+      openProject(bonId)
+    } else if (d.pdfsFound === 0) {
+      showToast('Aucun PDF trouvé — utilisez Force téléchargement d\'abord', 'warn')
+    } else {
+      showToast(d.error || 'Validation échouée — aucun texte lisible', 'err')
+    }
+  } catch(e) {
+    if (panel) panel.style.opacity = ''
+    showToast('Erreur: ' + e.message, 'err')
+  }
+}
+
+async function validateAvisPdfAndRefresh(bonId) {
+  const statusEl = document.getElementById('crewai-validate-status')
+  if (statusEl) statusEl.innerHTML = '<span style="color:#64748b"><i class="bi bi-hourglass-split"></i> Validation en cours...</span>'
+  try {
+    const d = await fetch(`/api/projects/${bonId}/validate-avis-pdf`, { method: 'POST', headers: {'Content-Type':'application/json'} }).then(r=>r.json())
+    if (d.success) {
+      showToast(`✓ PDF validé — ${d.textLength.toLocaleString()} chars — CrewAI débloqué !`)
+      openProject(bonId)
+      setTimeout(() => switchDetailTab('crewai', document.querySelector('.detail-nav-btn[onclick*=crewai]')), 800)
+    } else if (d.requiresOCR) {
+      if (statusEl) statusEl.innerHTML = '<span style="color:#b45309"><i class="bi bi-exclamation-triangle"></i> PDF scanné — OCR requis</span>'
+      showToast('PDF trouvé mais texte non lisible — OCR requis', 'warn')
+    } else {
+      if (statusEl) statusEl.innerHTML = `<span style="color:#dc2626"><i class="bi bi-x-circle"></i> ${d.error||'Aucun PDF lisible trouvé'}</span>`
+      showToast(d.error || 'Aucun PDF lisible', 'err')
+    }
+  } catch(e) {
+    if (statusEl) statusEl.innerHTML = `<span style="color:#dc2626">${e.message}</span>`
+    showToast('Erreur: ' + e.message, 'err')
+  }
 }
 
 /* ── Attachment re-extract ─────────────────────────── */

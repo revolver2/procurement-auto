@@ -579,7 +579,8 @@ app.put('/api/company-memory', (req, res) => {
 /* ═══════════════════════════════════════════════════════════════
    ATTACHMENT PIPELINE
 ══════════════════════════════════════════════════════════════════ */
-const { processFromUrls, reExtractFromCache, loadSpec } = require('./lib/attachments/attachment-analyzer')
+const { processFromUrls, reExtractFromCache, loadSpec, saveSpec, ATTACHMENTS_DIR } = require('./lib/attachments/attachment-analyzer')
+const { extractText: extractPdfText } = require('./lib/attachments/pdf-text-extractor')
 
 // Get specification (extracted attachment text)
 app.get('/api/specifications/:id', (req, res) => {
@@ -733,9 +734,8 @@ app.post('/api/projects/:id/extract-avis', async (req, res) => {
     }
 
     // Include files-on-disk listing in response for UI debug
-    const { ATTACHMENTS_DIR: AD } = require('./lib/attachments/attachment-downloader')
-    const safeId = req.params.id.replace(/[^a-zA-Z0-9\-]/g, '_')
-    const dir = path.join(AD, safeId)
+    const safeId2 = req.params.id.replace(/[^a-zA-Z0-9\-]/g, '_')
+    const dir = path.join(ATTACHMENTS_DIR, safeId2)
     let filesOnDisk = []
     if (fs.existsSync(dir)) {
       try { filesOnDisk = fs.readdirSync(dir).map(f => ({ name: f, size: fs.statSync(path.join(dir,f)).size })) } catch {}
@@ -743,6 +743,154 @@ app.post('/api/projects/:id/extract-avis', async (req, res) => {
 
     res.json({ success: true, spec, filesOnDisk, dirExists: fs.existsSync(dir) })
   } catch (e) { res.status(500).json({ success: false, error: e.message }) }
+})
+
+/* ── Validate any readable PDF and unlock CrewAI ───────────────── */
+app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
+  const bonId  = req.params.id
+  const safeId = bonId.replace(/[^a-zA-Z0-9\-]/g, '_')
+  const dir    = path.join(ATTACHMENTS_DIR, safeId)
+
+  const bons = db.read('procurement-analysis.json') || []
+  const bon  = bons.find(b => b.id === bonId)
+  if (!bon) return res.status(404).json({ success: false, error: 'BC introuvable' })
+
+  if (!fs.existsSync(dir)) {
+    return res.json({ success: false, error: 'Aucun fichier téléchargé — utilisez Force téléchargement', crewaiUnlocked: false, pdfsFound: 0 })
+  }
+
+  /* recursive scan: returns every file with .pdf extension > 1 KB */
+  function scanAllFiles(d, depth = 0) {
+    const out = []
+    if (depth > 4) return out
+    try {
+      for (const f of fs.readdirSync(d)) {
+        const fp = path.join(d, f)
+        try {
+          const st = fs.statSync(fp)
+          if (st.isDirectory()) out.push(...scanAllFiles(fp, depth + 1))
+          else out.push({ path: fp, name: f, size: st.size, ext: path.extname(f).toLowerCase() })
+        } catch {}
+      }
+    } catch {}
+    return out
+  }
+
+  const allFiles = scanAllFiles(dir)
+
+  /* score: lower = higher priority */
+  function score(name) {
+    const n = name.toLowerCase()
+    if (/avis/i.test(n)         && n.endsWith('.pdf'))  return 0
+    if (/consultation/i.test(n) && n.endsWith('.pdf'))  return 1
+    if (/bon.*commande/i.test(n)&& n.endsWith('.pdf'))  return 2
+    if (n.endsWith('.pdf'))                              return 3
+    if (n.endsWith('.docx') || n.endsWith('.doc'))      return 4
+    if (n.endsWith('.txt'))                              return 5
+    return 99
+  }
+
+  /* select candidates: PDFs + DOCX + TXT with size > 1 KB */
+  const candidates = allFiles
+    .filter(f => ['.pdf','.docx','.doc','.txt'].includes(f.ext) && f.size > 1024)
+    .sort((a, b) => {
+      const sa = score(a.name), sb = score(b.name)
+      if (sa !== sb) return sa - sb
+      return b.size - a.size
+    })
+
+  /* also try top-level ZIPs (extractText handles recursion internally) */
+  const zips = allFiles.filter(f => f.ext === '.zip' && f.size > 1024)
+
+  if (!candidates.length && !zips.length) {
+    return res.json({ success: false, error: 'Aucun fichier valide trouvé dans le cache', crewaiUnlocked: false, pdfsFound: 0, filesFound: allFiles.length })
+  }
+
+  let bestText = '', bestName = null, requiresOCR = false
+
+  /* try scored candidates first */
+  for (const cand of candidates) {
+    let result
+    try { result = await extractPdfText(cand.path) } catch { continue }
+    if (result.requiresOCR) requiresOCR = true
+    if (result.textExtracted && result.text && result.text.length >= 50) {
+      if (!bestText || result.text.length > bestText.length) {
+        bestText = result.text
+        bestName = cand.name + (result.sourceFile ? ` / ${result.sourceFile}` : '')
+      }
+      if (score(cand.name) <= 2) break  // AVIS/consultation found — stop
+    }
+  }
+
+  /* fallback: try ZIPs if no text yet */
+  if (!bestText) {
+    for (const z of zips) {
+      let result
+      try { result = await extractPdfText(z.path) } catch { continue }
+      if (result.requiresOCR) requiresOCR = true
+      if (result.textExtracted && result.text && result.text.length >= 50) {
+        bestText = result.text
+        bestName = z.name + (result.sourceFile ? ` / ${result.sourceFile}` : '')
+        break
+      }
+    }
+  }
+
+  if (!bestText) {
+    return res.json({
+      success: false,
+      error:   requiresOCR ? 'PDF trouvé mais texte non lisible — OCR requis' : 'Aucun texte extractible dans les fichiers téléchargés',
+      requiresOCR,
+      crewaiUnlocked: false,
+      pdfsFound: candidates.filter(c=>c.ext==='.pdf').length,
+      filesFound: allFiles.length,
+    })
+  }
+
+  /* ── Success: save spec + update bon ── */
+  const spec = {
+    bonId,
+    bonReference:    bon.reference || '',
+    attachments:     candidates.map(c => ({
+      name:          c.name,
+      type:          /avis/i.test(c.name) ? 'avis' : 'other',
+      downloaded:    true,
+      textExtracted: c.name === (bestName||'').split(' / ')[0],
+      textLength:    c.name === (bestName||'').split(' / ')[0] ? bestText.length : 0,
+      localPath:     c.path,
+    })),
+    primaryAvisText:   bestText,
+    primaryAvisName:   bestName,
+    hasText:           true,
+    textLength:        bestText.length,
+    noAttachmentFound: false,
+    analysisSource:    'official_attachment_only',
+    extractedAt:       new Date().toISOString(),
+  }
+  saveSpec(bonId, spec)
+
+  const idx = bons.findIndex(b => b.id === bonId)
+  if (idx >= 0) {
+    bons[idx].attachmentHasText = true
+    bons[idx].attachmentFound   = true
+    bons[idx].avisDocument = {
+      selectedPdf:   bestName,
+      textLength:    bestText.length,
+      textExtracted: true,
+      validated:     true,
+      validatedAt:   new Date().toISOString(),
+    }
+    db.write('procurement-analysis.json', bons)
+  }
+
+  res.json({
+    success:          true,
+    selectedPdf:      bestName,
+    textLength:       bestText.length,
+    attachmentHasText: true,
+    crewaiUnlocked:   true,
+    pdfsFound:        candidates.filter(c=>c.ext==='.pdf').length,
+  })
 })
 
 app.post('/api/projects/:id/analyze-from-avis', async (req, res) => {
@@ -919,7 +1067,6 @@ app.get('/api/projects/:id/attachments', (req, res) => {
 
 /* ── Files actually on disk for this project ───────────────────── */
 app.get('/api/projects/:id/files-on-disk', (req, res) => {
-  const { ATTACHMENTS_DIR } = require('./lib/attachments/attachment-downloader')
   const safeId = req.params.id.replace(/[^a-zA-Z0-9\-]/g, '_')
   const dir    = path.join(ATTACHMENTS_DIR, safeId)
 
