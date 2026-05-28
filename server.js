@@ -796,6 +796,11 @@ app.post('/api/projects/:id/analyze-from-avis', async (req, res) => {
     }
   }
 
+  // Enrich sourceTraceability with attachment name known only by Node (Python doesn't have it)
+  if (analysis.sourceTraceability) {
+    analysis.sourceTraceability.attachmentAnalyzed = spec?.primaryAvisName || 'AVIS officiel'
+  }
+
   // Persist to ai-analysis cache
   if (!fs.existsSync(AI_CACHE_DIR)) fs.mkdirSync(AI_CACHE_DIR, { recursive: true })
   fs.writeFileSync(cachePath, JSON.stringify({ ...analysis, cachedAt: new Date().toISOString() }, null, 2))

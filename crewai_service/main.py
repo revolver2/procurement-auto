@@ -289,9 +289,22 @@ Compile tout en un JSON final STRICT. Retourne UNIQUEMENT le JSON:
   "profitabilityScore": 65,
   "urgencyScore": 70,
   "winningProbability": "Moyenne",
-  "recommendedNextAction": "action recommandée"
+  "recommendedNextAction": "action recommandée",
+  "confidence": {{
+    "specifications": ["Confirmé dans l'AVIS ou Non précisé dans l'AVIS — une entrée par spec"],
+    "materials": ["Confirmé dans l'AVIS ou Non précisé dans l'AVIS — une entrée par matériau"],
+    "quantities": ["Confirmé dans l'AVIS ou Non précisé dans l'AVIS — une entrée par quantité"],
+    "dimensions": ["Confirmé dans l'AVIS ou Non précisé dans l'AVIS — une entrée par dimension"],
+    "executionPlan": ["À vérifier avant soumission — une entrée par phase"],
+    "bordereauDraft": ["À vérifier avant soumission — une entrée par ligne"],
+    "submissionChecklist": ["À vérifier avant soumission — une entrée par item"],
+    "risks": ["À vérifier avant soumission — une entrée par risque"],
+    "missingInformation": ["Non précisé dans l'AVIS — une entrée par info"]
+  }}
 }}
 RÈGLES ABSOLUES: tous les champs liste = arrays. Info absente = "{MISSING}".
+Chaque label confidence DOIT être exactement: "Confirmé dans l'AVIS", "Non précisé dans l'AVIS", ou "À vérifier avant soumission".
+Chaque confidence array doit avoir la même longueur que le champ correspondant.
 """
     )
     r8 = await _gemini_complete(aggregation_prompt)
@@ -409,6 +422,27 @@ def _local_analyze(req: TenderAnalysisRequest) -> dict:
         bordereau.append({"num": i, "designation": mat, "unite": MISSING,
                           "quantite": MISSING, "prixUnitaireHT": "", "totalHT": "", "tva": "20%", "totalTTC": ""})
 
+    _confirmed  = "Confirmé dans l'AVIS"
+    _missing_lbl = "Non précisé dans l'AVIS"
+    _verify     = "À vérifier avant soumission"
+
+    mat_labels  = [_confirmed if m != MISSING else _missing_lbl for m in (detected if detected else [MISSING])]
+    qty_labels  = [_confirmed if q != MISSING else _missing_lbl for q in (qtys if qtys else [MISSING])]
+    dim_labels  = [_confirmed if d != MISSING else _missing_lbl for d in (dims if dims else [MISSING])]
+    spec_labels = [_confirmed if s != MISSING else _missing_lbl for s in specs]
+
+    confidence = {
+        "specifications":     spec_labels,
+        "materials":          mat_labels,
+        "quantities":         qty_labels,
+        "dimensions":         dim_labels,
+        "executionPlan":      [_verify] * len(plan),
+        "bordereauDraft":     [_verify] * len(bordereau),
+        "submissionChecklist":[_verify] * len(_CHECKLIST),
+        "risks":              [_verify] * len(risks),
+        "missingInformation": [_missing_lbl] * len(missing),
+    }
+
     return {
         "source": "official_avis_attachment_only",
         "summary": f"Analyse locale du marché: {req.projectTitle}. Acheteur: {req.buyer or MISSING}. Lieu: {req.city or MISSING}.",
@@ -427,6 +461,7 @@ def _local_analyze(req: TenderAnalysisRequest) -> dict:
         "urgencyScore": 50,
         "winningProbability": "Moyenne",
         "recommendedNextAction": "Compléter l'analyse avec les pièces jointes officielles",
+        "confidence": confidence,
     }
 
 
@@ -493,6 +528,19 @@ async def analyze_tender(req: TenderAnalysisRequest):
     result_data["sourceHash"] = source_hash
     result_data["analyzedAt"] = datetime.utcnow().isoformat() + "Z"
     result_data["agentsUsed"] = AGENT_NAMES
+
+    ai_engine_label = "Gemini 2.5 Flash — 8 agents CrewAI" if provider == "gemini" else "Règles locales (sans IA)"
+    result_data["sourceTraceability"] = {
+        "bcId": req.projectId,
+        "buyer": req.buyer or MISSING,
+        "attachmentAnalyzed": "",  # enriched by Node.js server from spec.primaryAvisName
+        "analysisDate": datetime.utcnow().strftime("%Y-%m-%d"),
+        "aiEngine": ai_engine_label,
+        "statement": (
+            "Analyse basée uniquement sur l'AVIS joint officiel. "
+            "Toute information absente est signalée explicitement."
+        ),
+    }
 
     _save_cache(req.projectId, result_data)
     _log_run(req.projectId, "success", source_hash, started_at)

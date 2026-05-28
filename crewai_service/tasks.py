@@ -216,7 +216,18 @@ Retourne UNIQUEMENT un JSON valide (pas de markdown, pas de texte autour):
   "profitabilityScore": 0,
   "urgencyScore": 0,
   "winningProbability": "Faible / Moyenne / Élevée",
-  "recommendedNextAction": "action recommandée"
+  "recommendedNextAction": "action recommandée",
+  "confidence": {{
+    "specifications": ["Confirmé dans l'AVIS ou Non précisé dans l'AVIS — une entrée par spec"],
+    "materials": ["Confirmé dans l'AVIS ou Non précisé dans l'AVIS — une entrée par matériau"],
+    "quantities": ["Confirmé dans l'AVIS ou Non précisé dans l'AVIS — une entrée par quantité"],
+    "dimensions": ["Confirmé dans l'AVIS ou Non précisé dans l'AVIS — une entrée par dimension"],
+    "executionPlan": ["À vérifier avant soumission — une entrée par phase"],
+    "bordereauDraft": ["À vérifier avant soumission — une entrée par ligne bordereau"],
+    "submissionChecklist": ["À vérifier avant soumission — une entrée par item"],
+    "risks": ["À vérifier avant soumission — une entrée par risque"],
+    "missingInformation": ["Non précisé dans l'AVIS — une entrée par info manquante"]
+  }}
 }}
 
 RÈGLES FINALES:
@@ -225,6 +236,8 @@ RÈGLES FINALES:
 - profitabilityScore: 0-100 (basé sur budget, complexité, compétition estimée)
 - urgencyScore: 0-100 (basé sur délai de soumission)
 - winningProbability: "Faible" / "Moyenne" / "Élevée"
+- confidence: chaque label DOIT être exactement "Confirmé dans l'AVIS", "Non précisé dans l'AVIS", ou "À vérifier avant soumission"
+- confidence arrays DOIVENT avoir la même longueur que le champ correspondant
 """,
         expected_output='Complete tender analysis JSON following the exact schema',
         agent=agents["manager"],
