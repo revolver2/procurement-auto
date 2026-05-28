@@ -533,6 +533,49 @@ app.put('/api/company-memory', (req, res) => {
   } catch (e) { res.status(500).json({ error: e.message }) }
 })
 
+/* ═══════════════════════════════════════════════════════════════
+   ATTACHMENT PIPELINE
+══════════════════════════════════════════════════════════════════ */
+const { processFromUrls, loadSpec } = require('./lib/attachments/attachment-analyzer')
+
+// Get specification (extracted attachment text)
+app.get('/api/specifications/:id', (req, res) => {
+  const spec = loadSpec(req.params.id)
+  if (!spec) return res.status(404).json({ error: 'Aucune spécification extraite pour ce bon' })
+  res.json(spec)
+})
+
+// Re-run attachment pipeline on existing BC (re-download + re-extract)
+app.post('/api/attachments/:id/process', async (req, res) => {
+  try {
+    const { forceRefresh = true } = req.body || {}
+    const bons = db.read('procurement-analysis.json') || []
+    const bon  = bons.find(b => b.id === req.params.id)
+    if (!bon) return res.status(404).json({ success: false, error: 'BC introuvable' })
+
+    const rawDocs = bon.attachments?.length
+      ? bon.attachments.map(a => ({ url: a.url, name: a.name }))
+      : (bon.documents || [])
+
+    if (!rawDocs.length) return res.json({ success: false, error: 'Aucun lien de pièce jointe connu pour ce BC' })
+
+    const spec = await processFromUrls(bon, rawDocs, null, forceRefresh)
+
+    // Update bon in DB
+    const idx = bons.findIndex(b => b.id === req.params.id)
+    if (idx >= 0) {
+      bons[idx].attachmentHasText          = spec.hasText
+      bons[idx].attachmentFound            = !spec.noAttachmentFound
+      bons[idx].officialAttachmentTextPath = spec.hasText ? `data/specifications/${bon.id}.json` : null
+      bons[idx].analysisSource             = spec.analysisSource
+      bons[idx].attachments                = spec.attachments
+      db.write('procurement-analysis.json', bons)
+    }
+
+    res.json({ success: true, spec })
+  } catch (e) { res.status(500).json({ success: false, error: e.message }) }
+})
+
 // AI Chat (upgraded — uses orchestrator context)
 app.post('/api/chat', async (req, res) => {
   const { message, messages = [], projectId } = req.body

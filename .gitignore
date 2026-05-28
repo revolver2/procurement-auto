@@ -4,3 +4,8 @@ data/cookies.json
 *.log
 .DS_Store
 Thumbs.db
+# Downloaded PDF/ZIP attachments (large binaries — extracted text is in data/specifications/)
+data/attachments/
+# Temp extraction dirs
+data/attachments/
+**/*.tmp

@@ -869,6 +869,7 @@ function renderDetail(bon) {
 
     <div class="detail-nav">
       <button class="detail-nav-btn active" onclick="switchDetailTab('info',this)"><i class="bi bi-info-circle"></i> Informations</button>
+      <button class="detail-nav-btn" onclick="switchDetailTab('attachments',this)"><i class="bi bi-paperclip"></i> Pièces Jointes</button>
       <button class="detail-nav-btn" onclick="switchDetailTab('skills',this)"><i class="bi bi-cpu"></i> Skills IA</button>
       <button class="detail-nav-btn" onclick="switchDetailTab('analyse',this)"><i class="bi bi-stars"></i> Analyse</button>
       <button class="detail-nav-btn" onclick="switchDetailTab('docs',this)"><i class="bi bi-file-earmark-text"></i> Documents</button>
@@ -892,6 +893,42 @@ function renderDetail(bon) {
               <tr class="total-row"><td colspan="5" style="text-align:right">Total TTC</td><td>${fn(bon.totalTTC)} MAD</td></tr>
             </tfoot>` : ''}
           </table>` : '<p style="font-size:13px;color:var(--muted);text-align:center;padding:20px">Aucun article détaillé disponible</p>'}
+      </div>
+    </div>
+
+    <div class="detail-tab" id="dtab-attachments">
+      <div id="attachments-panel">
+        ${(bon.attachments?.length || bon.documents?.length) ? `
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
+          <span style="font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px"><i class="bi bi-paperclip" style="color:var(--orange)"></i> Pièces jointes officielles</span>
+          <button onclick="processAttachments('${bon.id}')" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Re-télécharger</button>
+        </div>
+        ${(bon.attachments?.length ? bon.attachments : (bon.documents||[]).map(d=>({...d,downloaded:false,textExtracted:false}))).map(att => `
+        <div class="card" style="margin-bottom:10px;padding:14px">
+          <div style="display:flex;align-items:flex-start;gap:12px">
+            <i class="bi bi-file-earmark-zip" style="font-size:24px;color:${att.textExtracted?'var(--success)':att.requiresOCR?'#f59e0b':'var(--muted)'}"></i>
+            <div style="flex:1;min-width:0">
+              <div style="font-size:13px;font-weight:600;margin-bottom:6px">${h(att.name||'Pièce jointe')}</div>
+              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+                <span style="background:${att.type==='avis'?'rgba(249,115,22,.1)':'#f1f5f9'};color:${att.type==='avis'?'var(--orange)':'var(--muted)'};padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600">${h(att.type||'autre').toUpperCase()}</span>
+                <span style="background:${att.downloaded?'rgba(16,185,129,.1)':'rgba(239,68,68,.1)'};color:${att.downloaded?'#059669':'#dc2626'};padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600">${att.downloaded?'Téléchargé':'Non téléchargé'}</span>
+                <span style="background:${att.textExtracted?'rgba(59,130,246,.1)':att.requiresOCR?'rgba(245,158,11,.1)':'#f1f5f9'};color:${att.textExtracted?'var(--info)':att.requiresOCR?'#b45309':'var(--muted)'};padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600">${att.textExtracted?`Texte extrait (${att.textLength||0} chars)`:att.requiresOCR?'OCR requis':'Non extrait'}</span>
+              </div>
+              ${att.error ? `<p style="font-size:11px;color:var(--danger)">${h(att.error)}</p>` : ''}
+              ${att.sourceFile ? `<p style="font-size:11px;color:var(--muted)">Fichier: ${h(att.sourceFile)}</p>` : ''}
+              <a href="${h(att.url||'#')}" target="_blank" style="font-size:11px;color:var(--info)"><i class="bi bi-box-arrow-up-right"></i> Ouvrir URL</a>
+            </div>
+          </div>
+        </div>`).join('')}
+        ${bon.attachmentHasText ? `<div style="margin-top:12px;padding:12px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:10px;font-size:13px;color:#059669"><i class="bi bi-check-circle-fill"></i> <b>Texte AVIS extrait avec succès</b> — l'analyse IA utilisera uniquement ce document officiel.</div>`
+        : `<div style="margin-top:12px;padding:12px 16px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:10px;font-size:13px;color:#b45309"><i class="bi bi-exclamation-triangle-fill"></i> <b>Texte non disponible</b> — cliquez "Re-télécharger" pour extraire l'avis joint.</div>`}
+        ` : `
+        <div style="text-align:center;padding:40px 20px">
+          <i class="bi bi-paperclip" style="font-size:36px;color:var(--muted);margin-bottom:12px;display:block;opacity:.4"></i>
+          <p style="font-size:14px;font-weight:600;margin-bottom:6px">Aucune pièce jointe détectée</p>
+          <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Les pièces jointes sont extraites lors du scraping. Relancez un scrape pour récupérer l'AVIS joint.</p>
+          <button onclick="processAttachments('${bon.id}')" class="btn-save"><i class="bi bi-download"></i> Tenter le téléchargement</button>
+        </div>`}
       </div>
     </div>
 
@@ -1140,6 +1177,24 @@ async function runAnalysis(bonId) {
   finally { if (btn) { btn.disabled=false; btn.innerHTML='<i class="bi bi-stars"></i> Analyser avec l\'IA' } }
 }
 
+/* ── Pièces Jointes ── */
+async function processAttachments(bonId) {
+  const panel = document.getElementById('attachments-panel')
+  if (panel) panel.innerHTML = '<div style="text-align:center;padding:32px"><span class="spinner" style="width:24px;height:24px;border-width:3px;display:inline-block"></span><p style="margin-top:12px;color:var(--muted);font-size:13px">Téléchargement en cours...</p></div>'
+  try {
+    const d = await fetch('/api/attachments/' + bonId + '/process', {
+      method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({ forceRefresh: true })
+    }).then(r => r.json())
+    if (!d.success) { showToast(d.error || 'Erreur téléchargement','err'); return }
+    showToast('Pièces jointes traitées !')
+    openProject(bonId)
+    setTimeout(() => {
+      const btn = document.querySelector('.detail-nav-btn[onclick*="attachments"]')
+      switchDetailTab('attachments', btn)
+    }, 500)
+  } catch(e) { showToast(e.message,'err') }
+}
+
 /* ── Skills IA ── */
 async function loadSkillsTab(bonId) {
   const panel = document.getElementById('skills-panel')
@@ -1197,14 +1252,23 @@ function renderSkillsHtml(data, bonId) {
   const suppliers = sup.categories || []
 
   let html = `
-  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
-    <div style="display:flex;align-items:center;gap:8px">
+  <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
       <i class="bi bi-cpu" style="color:var(--orange);font-size:18px"></i>
       <span style="font-size:15px;font-weight:700">Skills IA — Résultats</span>
       <span style="font-size:11px;color:var(--muted)">${data.orchestratedAt ? new Date(data.orchestratedAt).toLocaleString('fr-FR') : ''}</span>
     </div>
     <button onclick="runOrchestration('${bonId}')" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Relancer</button>
   </div>
+  ${data.analysisSource === 'official_attachment_only' && data.attachmentSpec?.primaryAvisName ? `
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.25);border-radius:8px;margin-bottom:14px;font-size:12px">
+    <i class="bi bi-patch-check-fill" style="color:#059669"></i>
+    <span><b style="color:#059669">Analyse basée sur l'AVIS joint officiel</b> — ${h(data.attachmentSpec.primaryAvisName)} (${(data.attachmentSpec.textLength||0).toLocaleString()} chars)</span>
+  </div>` : `
+  <div style="display:flex;align-items:center;gap:8px;padding:8px 14px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.25);border-radius:8px;margin-bottom:14px;font-size:12px">
+    <i class="bi bi-exclamation-triangle-fill" style="color:#b45309"></i>
+    <span style="color:#b45309"><b>AVIS joint non disponible</b> — analyse sur métadonnées uniquement. Allez dans "Pièces Jointes" pour télécharger l'avis officiel.</span>
+  </div>`}
 
   <div class="card" style="margin-bottom:14px;padding:16px">
     <p style="font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px">Détection activité</p>
