@@ -1,0 +1,27 @@
+{
+  "bonId": "83bf5772-ac03-47a5-9bd6-3eea93424806",
+  "bonReference": "21/2026",
+  "attachments": [
+    {
+      "name": "BC-21-2026.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344530/48599663",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/83bf5772-ac03-47a5-9bd6-3eea93424806/BC-21-2026.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "sourceFile": "BC-21-2026.PDF",
+      "textLength": 0,
+      "error": "Extraction PDF échouée: pdfParse is not a function"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-28T11:00:00.579Z"
+}
