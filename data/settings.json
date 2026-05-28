@@ -11,16 +11,20 @@
         "aluminium",
         "aluminum",
         "menuiserie aluminium",
-        "façade aluminium",
         "facade aluminium",
         "habillage aluminium",
         "alucobond",
         "portes aluminium",
+        "porte aluminium",
         "fenêtres aluminium",
         "fenetres aluminium",
+        "fenetre aluminium",
+        "chassis aluminium",
         "garde-corps",
-        "garde corps",
-        "main courante"
+        "main courante",
+        "pergola aluminium",
+        "volet aluminium",
+        "portail aluminium"
       ]
     },
     {
@@ -31,7 +35,10 @@
         "inox",
         "acier inoxydable",
         "grille inox",
-        "main courante inox"
+        "main courante inox",
+        "garde-corps inox",
+        "portail inox",
+        "escalier inox"
       ]
     },
     {
@@ -47,16 +54,19 @@
         "charpente metallique",
         "structure métallique",
         "structure metallique",
-        "construction métallique",
-        "construction metallique",
         "escalier métallique",
         "escalier metallique",
         "rideau métallique",
         "rideau metallique",
-        "faux plafond métallique",
-        "faux plafond metallique",
         "ferronnerie",
-        "serrurerie"
+        "serrurerie",
+        "porte metallique",
+        "portail metallique",
+        "chassis metallique",
+        "grille metallique",
+        "menuiserie metallique",
+        "hangar metallique",
+        "abri metallique"
       ]
     },
     {
@@ -66,7 +76,9 @@
       "keywords": [
         "fourniture et pose",
         "fourniture et installation",
-        "fourniture et montage"
+        "fourniture et montage",
+        "fourniture pose",
+        "fourniture menuiserie"
       ]
     },
     {
@@ -78,7 +90,14 @@
         "panneaux sandwich",
         "vitrage",
         "abri",
-        "pergola"
+        "pergola",
+        "volet roulant",
+        "miroiterie",
+        "vitrerie",
+        "double vitrage",
+        "bardage",
+        "faux plafond metallique",
+        "serrurerie batiment"
       ]
     }
   ],
