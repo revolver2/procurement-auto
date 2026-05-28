@@ -15,6 +15,14 @@ const orchestrator      = require('./lib/ai-orchestrator')
 const githubPersist     = require('./lib/github-persist')
 const { getActivities, getExclusionKeywords, bonMatchesKeywords } = require('./lib/scraper')
 
+const docRenderers = {
+  bordereau: require('./lib/document-renderers/bordereau-renderer'),
+  devis:     require('./lib/document-renderers/devis-renderer'),
+  rfq:       require('./lib/document-renderers/rfq-renderer'),
+  plan:      require('./lib/document-renderers/execution-plan-renderer'),
+  checklist: require('./lib/document-renderers/checklist-renderer'),
+}
+
 // Fire-and-forget candidature sync to GitHub (keeps data alive across Render deploys)
 function syncCandidatures() {
   githubPersist.pushFile('candidatures.json')
@@ -571,7 +579,7 @@ app.put('/api/company-memory', (req, res) => {
 /* ═══════════════════════════════════════════════════════════════
    ATTACHMENT PIPELINE
 ══════════════════════════════════════════════════════════════════ */
-const { processFromUrls, loadSpec } = require('./lib/attachments/attachment-analyzer')
+const { processFromUrls, reExtractFromCache, loadSpec } = require('./lib/attachments/attachment-analyzer')
 
 // Get specification (extracted attachment text)
 app.get('/api/specifications/:id', (req, res) => {
@@ -689,19 +697,38 @@ app.post('/api/settings/keywords/test', (req, res) => {
 ══════════════════════════════════════════════════════════════════ */
 app.post('/api/projects/:id/extract-avis', async (req, res) => {
   try {
+    const { forceDownload = false } = req.body || {}
     const bons = db.read('procurement-analysis.json') || []
     const bon  = bons.find(b => b.id === req.params.id)
     if (!bon) return res.status(404).json({ success: false, error: 'BC introuvable' })
-    const rawDocs = bon.attachments?.length
-      ? bon.attachments.map(a => ({ url: a.url, name: a.name }))
-      : (bon.documents || [])
-    if (!rawDocs.length) return res.json({ success: false, error: 'Aucun lien de pièce jointe connu' })
-    const spec = await processFromUrls(bon, rawDocs, null, true)
+
+    let spec
+    if (forceDownload) {
+      // Re-download from URLs (requires auth for some portals — may fail)
+      const rawDocs = bon.attachments?.length
+        ? bon.attachments.map(a => ({ url: a.url, name: a.name }))
+        : (bon.documents || [])
+      if (!rawDocs.length) return res.json({ success: false, error: 'Aucun lien de pièce jointe connu', hint: 'Lancez un scrape complet pour capturer les pièces jointes.' })
+      spec = await processFromUrls(bon, rawDocs, null, { forceRefresh: true, forceDownload: true })
+    } else {
+      // Re-extract from already-downloaded files (no HTTP needed, works offline)
+      spec = await reExtractFromCache(bon)
+      // If no cached files found, fall back to downloading
+      if (spec.noAttachmentFound && !spec.hasText) {
+        const rawDocs = bon.attachments?.length
+          ? bon.attachments.map(a => ({ url: a.url, name: a.name }))
+          : (bon.documents || [])
+        if (rawDocs.length) {
+          spec = await processFromUrls(bon, rawDocs, null, { forceRefresh: true, forceDownload: false })
+        }
+      }
+    }
+
     const idx = bons.findIndex(b => b.id === req.params.id)
     if (idx >= 0) {
       bons[idx].attachmentHasText = spec.hasText
       bons[idx].attachmentFound   = !spec.noAttachmentFound
-      bons[idx].attachments       = spec.attachments
+      if (spec.attachments?.length) bons[idx].attachments = spec.attachments
       db.write('procurement-analysis.json', bons)
     }
     res.json({ success: true, spec })
@@ -835,6 +862,43 @@ app.get('/api/projects/:id/crewai-analysis', (req, res) => {
     const data = JSON.parse(fs.readFileSync(p, 'utf8'))
     res.json({ success: true, ...data })
   } catch (e) { res.status(500).json({ error: e.message }) }
+})
+
+/* ── Rendered document HTML ────────────────────────────────────── */
+app.get('/api/documents/:bonId/:type/html', (req, res) => {
+  const { bonId, type } = req.params
+  const renderer = docRenderers[type]
+  if (!renderer) return res.status(400).send(`<h3>Type non supporté: ${type}</h3>`)
+
+  const bons = db.read('procurement-analysis.json') || []
+  const bon  = bons.find(b => b.id === bonId)
+  if (!bon) return res.status(404).send('<h3>Bon introuvable</h3>')
+
+  const rfqs    = db.read('rfq-generated.json') || []
+  const docData = rfqs.find(d => d.bonId === bonId)?.documents?.[type] || null
+  if (!docData) return res.status(404).send(`<h3>Document "${type}" non encore généré pour ce BC.</h3>`)
+
+  try {
+    const spec = loadSpec(bonId)
+    const html = renderer.render(bon, docData, { attachmentAnalyzed: spec?.primaryAvisName })
+    res.setHeader('Content-Type', 'text/html; charset=utf-8')
+    res.send(html)
+  } catch (e) { res.status(500).send(`<h3>Erreur rendu: ${e.message}</h3>`) }
+})
+
+/* ── AVIS extracted text ───────────────────────────────────────── */
+app.get('/api/projects/:id/avis-text', (req, res) => {
+  const spec = loadSpec(req.params.id)
+  if (!spec) return res.status(404).json({ hasText: false, error: 'Aucune spec pour ce bon' })
+  res.json({
+    hasText:         spec.hasText     || false,
+    textLength:      spec.textLength  || 0,
+    primaryAvisName: spec.primaryAvisName || null,
+    text:            spec.primaryAvisText || '',
+    attachments:     spec.attachments     || [],
+    extractedAt:     spec.extractedAt     || null,
+    noAttachmentFound: spec.noAttachmentFound || false,
+  })
 })
 
 app.get('/api/projects/:id/attachments', (req, res) => {

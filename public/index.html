@@ -185,7 +185,24 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
 .doc-card i{font-size:28px;margin-bottom:8px;display:block}
 .doc-card-title{font-size:13px;font-weight:600;margin-bottom:3px}
 .doc-card-sub{font-size:11px;color:var(--muted)}
-#doc-preview{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px;margin-top:16px;font-size:13px}
+/* ── Document viewer modal ── */
+#doc-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:8000;align-items:flex-start;justify-content:center;padding:20px}
+#doc-modal.open{display:flex}
+.doc-modal-inner{background:#fff;border-radius:12px;width:100%;max-width:900px;max-height:calc(100vh - 40px);display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.doc-modal-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border-bottom:1px solid var(--border);flex-shrink:0;gap:10px;flex-wrap:wrap}
+.doc-modal-tabs{display:flex;gap:2px;background:#f1f5f9;border-radius:7px;padding:2px}
+.doc-modal-tab{background:none;border:none;padding:5px 14px;border-radius:5px;font-size:12px;font-weight:600;cursor:pointer;color:var(--muted)}
+.doc-modal-tab.active{background:#fff;color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+.doc-modal-actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.doc-modal-btn{background:#f1f5f9;border:none;border-radius:6px;padding:5px 10px;font-size:12px;font-weight:600;cursor:pointer;color:var(--text);display:flex;align-items:center;gap:4px}
+.doc-modal-btn:hover{background:#e2e8f0}
+.doc-modal-btn.orange{background:var(--orange-light);color:var(--orange)}
+.doc-modal-btn.close-btn{background:none;font-size:18px;padding:4px 8px;color:var(--muted);line-height:1}
+.doc-modal-body{flex:1;overflow:hidden;position:relative}
+.doc-modal-pane{display:none;height:100%;width:100%}
+.doc-modal-pane.active{display:block}
+#doc-iframe{width:100%;height:100%;border:none}
+#doc-json-pane{padding:16px;overflow:auto;height:100%;font-size:12px;font-family:monospace;white-space:pre-wrap;color:#1e293b;background:#f8fafc}
 
 /* ── Checklist ── */
 .checklist-section{background:#fff;border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:12px}
@@ -956,37 +973,60 @@ function renderDetail(bon) {
 
     <div class="detail-tab" id="dtab-attachments">
       <div id="attachments-panel">
-        ${(bon.attachments?.length || bon.documents?.length) ? `
-        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-          <span style="font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px"><i class="bi bi-paperclip" style="color:var(--orange)"></i> Pièces jointes officielles</span>
-          <button onclick="processAttachments('${bon.id}')" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Re-télécharger</button>
-        </div>
-        ${(bon.attachments?.length ? bon.attachments : (bon.documents||[]).map(d=>({...d,downloaded:false,textExtracted:false}))).map(att => `
-        <div class="card" style="margin-bottom:10px;padding:14px">
-          <div style="display:flex;align-items:flex-start;gap:12px">
-            <i class="bi bi-file-earmark-zip" style="font-size:24px;color:${att.textExtracted?'var(--success)':att.requiresOCR?'#f59e0b':'var(--muted)'}"></i>
-            <div style="flex:1;min-width:0">
-              <div style="font-size:13px;font-weight:600;margin-bottom:6px">${h(att.name||'Pièce jointe')}</div>
-              <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px">
-                <span style="background:${att.type==='avis'?'rgba(249,115,22,.1)':'#f1f5f9'};color:${att.type==='avis'?'var(--orange)':'var(--muted)'};padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600">${h(att.type||'autre').toUpperCase()}</span>
-                <span style="background:${att.downloaded?'rgba(16,185,129,.1)':'rgba(239,68,68,.1)'};color:${att.downloaded?'#059669':'#dc2626'};padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600">${att.downloaded?'Téléchargé':'Non téléchargé'}</span>
-                <span style="background:${att.textExtracted?'rgba(59,130,246,.1)':att.requiresOCR?'rgba(245,158,11,.1)':'#f1f5f9'};color:${att.textExtracted?'var(--info)':att.requiresOCR?'#b45309':'var(--muted)'};padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600">${att.textExtracted?`Texte extrait (${att.textLength||0} chars)`:att.requiresOCR?'OCR requis':'Non extrait'}</span>
-              </div>
-              ${att.error ? `<p style="font-size:11px;color:var(--danger)">${h(att.error)}</p>` : ''}
-              ${att.sourceFile ? `<p style="font-size:11px;color:var(--muted)">Fichier: ${h(att.sourceFile)}</p>` : ''}
-              <a href="${h(att.url||'#')}" target="_blank" style="font-size:11px;color:var(--info)"><i class="bi bi-box-arrow-up-right"></i> Ouvrir URL</a>
-            </div>
+        <!-- Action bar -->
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px">
+          <span style="font-size:14px;font-weight:700;display:flex;align-items:center;gap:8px"><i class="bi bi-paperclip" style="color:var(--orange)"></i> Pièces jointes &amp; Extraction AVIS</span>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <button onclick="reExtractAvis('${bon.id}',false)" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-cpu"></i> Re-extraire</button>
+            <button onclick="reExtractAvis('${bon.id}',true)" style="background:#f1f5f9;color:var(--muted);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-cloud-download"></i> Force téléchargement</button>
+            ${bon.attachmentHasText ? `<button onclick="viewAvisText('${bon.id}')" style="background:rgba(16,185,129,.1);color:#059669;border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-eye"></i> Voir texte AVIS</button>` : ''}
           </div>
-        </div>`).join('')}
-        ${bon.attachmentHasText ? `<div style="margin-top:12px;padding:12px 16px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:10px;font-size:13px;color:#059669"><i class="bi bi-check-circle-fill"></i> <b>Texte AVIS extrait avec succès</b> — l'analyse IA utilisera uniquement ce document officiel.</div>`
-        : `<div style="margin-top:12px;padding:12px 16px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:10px;font-size:13px;color:#b45309"><i class="bi bi-exclamation-triangle-fill"></i> <b>Texte non disponible</b> — cliquez "Re-télécharger" pour extraire l'avis joint.</div>`}
-        ` : `
+        </div>
+
+        <!-- Status summary -->
+        ${bon.attachmentHasText
+          ? `<div style="padding:10px 14px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.3);border-radius:8px;font-size:13px;color:#059669;margin-bottom:12px;display:flex;align-items:center;gap:8px"><i class="bi bi-check-circle-fill"></i> <span><b>Texte AVIS extrait avec succès</b> — CrewAI peut analyser ce bon.</span></div>`
+          : `<div style="padding:10px 14px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.25);border-radius:8px;font-size:13px;color:#dc2626;margin-bottom:12px"><i class="bi bi-x-circle-fill"></i> <b>AVIS non extrait</b> — Cliquez <b>Re-extraire</b> pour réessayer depuis les fichiers déjà téléchargés, ou <b>Force téléchargement</b> pour re-télécharger.</div>`}
+
+        <!-- Debug table per attachment -->
+        ${(bon.attachments?.length) ? `
+        <div style="margin-bottom:14px">
+          ${bon.attachments.map(att => `
+          <div class="card" style="margin-bottom:8px;padding:12px 14px">
+            <div style="display:flex;align-items:flex-start;gap:10px">
+              <i class="bi ${att.textExtracted?'bi-file-earmark-check':'bi-file-earmark-zip'}" style="font-size:22px;color:${att.textExtracted?'var(--success)':att.requiresOCR?'#f59e0b':'var(--muted)'}"></i>
+              <div style="flex:1;min-width:0">
+                <div style="font-size:13px;font-weight:600;margin-bottom:5px">${h(att.name||'Pièce jointe')}</div>
+                <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:5px">
+                  <span style="background:${att.type==='avis'?'rgba(249,115,22,.1)':'#f1f5f9'};color:${att.type==='avis'?'var(--orange)':'var(--muted)'};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700">${h((att.type||'autre').toUpperCase())}</span>
+                  <span style="background:${att.downloaded?'rgba(16,185,129,.08)':'rgba(239,68,68,.08)'};color:${att.downloaded?'#059669':'#dc2626'};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700">${att.downloaded?'Téléchargé':'Non téléchargé'}</span>
+                  <span style="background:${att.textExtracted?'rgba(59,130,246,.1)':att.requiresOCR?'rgba(245,158,11,.1)':'#f1f5f9'};color:${att.textExtracted?'var(--info)':att.requiresOCR?'#b45309':'var(--muted)'};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700">${att.textExtracted?`✓ Texte (${att.textLength||0} chars)`:att.requiresOCR?'⚠ OCR requis':'Non extrait'}</span>
+                </div>
+                <table style="width:100%;font-size:11px;border-collapse:collapse">
+                  <tr><td style="color:var(--muted);width:140px;padding:1px 0">Fichier source</td><td>${h(att.sourceFile||att.name||'—')}</td></tr>
+                  <tr><td style="color:var(--muted)">Longueur texte</td><td>${att.textLength||0} caractères</td></tr>
+                  <tr><td style="color:var(--muted)">Nécessite OCR</td><td>${att.requiresOCR?'<span style="color:#d97706">Oui — PDF scanné</span>':'Non'}</td></tr>
+                  ${att.error?`<tr><td style="color:var(--muted)">Erreur</td><td style="color:var(--danger)">${h(att.error)}</td></tr>`:''}
+                </table>
+                ${att.url?`<a href="${h(att.url)}" target="_blank" style="font-size:11px;color:var(--info);margin-top:4px;display:inline-block"><i class="bi bi-box-arrow-up-right"></i> Ouvrir URL</a>`:''}
+              </div>
+            </div>
+          </div>`).join('')}
+        </div>` : (bon.documents?.length ? `
+        <div class="card" style="padding:14px;margin-bottom:12px">
+          <div style="font-size:13px;font-weight:600;margin-bottom:8px"><i class="bi bi-link-45deg" style="color:var(--orange)"></i> URLs pièces jointes détectées (non encore téléchargées)</div>
+          ${bon.documents.map(d=>`<div style="font-size:12px;padding:4px 0;border-bottom:1px solid var(--border)"><a href="${h(d.url||'#')}" target="_blank" style="color:var(--info)">${h(d.name||d.url||'—')}</a></div>`).join('')}
+        </div>` : `
         <div style="text-align:center;padding:40px 20px">
           <i class="bi bi-paperclip" style="font-size:36px;color:var(--muted);margin-bottom:12px;display:block;opacity:.4"></i>
           <p style="font-size:14px;font-weight:600;margin-bottom:6px">Aucune pièce jointe détectée</p>
-          <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Les pièces jointes sont extraites lors du scraping. Relancez un scrape pour récupérer l'AVIS joint.</p>
-          <button onclick="processAttachments('${bon.id}')" class="btn-save"><i class="bi bi-download"></i> Tenter le téléchargement</button>
-        </div>`}
+          <p style="font-size:13px;color:var(--muted);margin-bottom:20px">Relancez un scrape complet pour capturer les pièces jointes avec le contexte authentifié du portail.</p>
+        </div>`)}
+
+        ${bon.attachments?.some(a=>a.requiresOCR)?`
+        <div style="padding:10px 14px;background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.3);border-radius:8px;font-size:12px;color:#b45309;margin-top:4px">
+          <i class="bi bi-exclamation-triangle-fill"></i> <b>PDF scanné détecté</b> — OCR requis pour extraire le texte. Sur Render Free, l'OCR n'est pas disponible sans configuration supplémentaire.
+        </div>` : ''}
       </div>
     </div>
 
@@ -1015,10 +1055,11 @@ function renderDetail(bon) {
       <div class="doc-grid">
         ${['bordereau','devis','rfq','plan','checklist'].map(t => {
           const has = hasDocs && bon.documents[t]
-          return `<div class="doc-card ${has?'generated':''}" onclick="generateDoc('${bon.id}','${t}')">
+          return `<div class="doc-card ${has?'generated':''}" onclick="${has ? `openDocModal('${bon.id}','${t}')` : `generateDoc('${bon.id}','${t}')`}">
             <i class="bi ${docIcon(t)}" style="color:${has?'var(--success)':'var(--muted)'}"></i>
             <div class="doc-card-title">${docLabel(t)}</div>
-            <div class="doc-card-sub">${has ? '<span style="color:var(--success)">✓ Généré — cliquer pour voir</span>' : 'Cliquer pour générer'}</div>
+            <div class="doc-card-sub">${has ? '<span style="color:var(--success)">✓ Généré — aperçu</span>' : 'Cliquer pour générer'}</div>
+            ${has ? `<div style="margin-top:8px"><button onclick="event.stopPropagation();generateDoc('${bon.id}','${t}')" style="background:none;border:1px solid var(--border);border-radius:5px;font-size:10px;padding:2px 7px;cursor:pointer;color:var(--muted)"><i class="bi bi-arrow-clockwise"></i> Regénérer</button></div>` : ''}
           </div>`
         }).join('')}
         <div class="doc-card" onclick="generateAllDocs('${bon.id}')">
@@ -1027,7 +1068,6 @@ function renderDetail(bon) {
           <div class="doc-card-sub">5 documents IA en une fois</div>
         </div>
       </div>
-      <div id="doc-preview" style="display:none"></div>
     </div>
 
     <div class="detail-tab" id="dtab-checklist">
@@ -1674,7 +1714,7 @@ async function generateDoc(bonId, type) {
     setTimeout(() => {
       const btn = document.querySelector('.detail-nav-btn:nth-child(3)')
       switchDetailTab('docs', btn)
-      if (d.documents?.[type]) previewDoc(type, d.documents[type])
+      if (d.documents?.[type]) openDocModal(bonId, type, d.documents[type])
     }, 600)
   } catch(e) { showToast(e.message,'err') }
 }
@@ -1689,39 +1729,8 @@ async function generateAllDocs(bonId) {
 }
 
 function previewDoc(type, data) {
-  const el = document.getElementById('doc-preview')
-  if (!el || !data) return
-  el.style.display = 'block'
-  el.scrollIntoView({behavior:'smooth',block:'nearest'})
-  let html = `<h4 style="font-size:14px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:6px"><i class="bi ${docIcon(type)}" style="color:var(--orange)"></i> ${docLabel(type)}</h4>`
-  if (type==='bordereau' && Array.isArray(data)) {
-    html += `<table class="articles-table"><thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Qté</th><th>P.U HT</th><th>Montant HT</th><th>Notes</th></tr></thead>
-    <tbody>${data.map(a=>`<tr><td>${a.num}</td><td>${h(a.designation)}</td><td>${h(a.unite)}</td><td>${fn(a.quantite)}</td><td>${fn(a.prixUnitaireHT)}</td><td>${fn(a.montantHT)}</td><td style="color:var(--muted)">${h(a.notes||'')}</td></tr>`).join('')}</tbody></table>`
-  } else if (type==='devis' && data.items) {
-    html += `<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:14px;font-size:13px">
-      <div><b>Réf:</b> ${h(data.reference||'')}</div><div><b>Date:</b> ${h(data.date||'')}</div>
-      <div><b>Client:</b> ${h(data.client||'')}</div><div><b>Validité:</b> ${h(data.validite||'')}</div></div>
-    <table class="articles-table"><thead><tr><th>Désignation</th><th>Unité</th><th>Qté</th><th>P.U</th><th>Total</th></tr></thead>
-    <tbody>${(data.items||[]).map(i=>`<tr><td>${h(i.designation)}</td><td>${h(i.unite)}</td><td>${fn(i.quantite)}</td><td>${fn(i.prixUnitaire)}</td><td>${fn(i.total)}</td></tr>`).join('')}</tbody>
-    <tfoot><tr class="total-row"><td colspan="4" style="text-align:right">Total HT</td><td>${fn(data.totalHT)}</td></tr>
-    <tr class="total-row"><td colspan="4" style="text-align:right">TVA</td><td>${fn(data.tva)}</td></tr>
-    <tr class="total-row"><td colspan="4" style="text-align:right">Total TTC</td><td>${fn(data.totalTTC)}</td></tr></tfoot></table>`
-  } else if (type==='rfq') {
-    html += `<p style="font-size:14px;font-weight:600;margin-bottom:10px">${h(data.subject||'')}</p>`
-    ;(data.suppliers||[]).forEach(s => {
-      html += `<div style="margin-bottom:12px"><b style="font-size:13px">${h(s.category||'')}</b>
-      <table class="articles-table" style="margin-top:6px"><thead><tr><th>Désignation</th><th>Spec</th><th>Qté</th><th>Unité</th></tr></thead>
-      <tbody>${(s.items||[]).map(i=>`<tr><td>${h(i.designation)}</td><td>${h(i.specification||'')}</td><td>${h(String(i.quantite||''))}</td><td>${h(i.unite||'')}</td></tr>`).join('')}</tbody></table></div>`
-    })
-    html += `<p style="font-size:12px;color:var(--muted)"><b>Délai:</b> ${h(data.deadline||'')} · <b>Paiement:</b> ${h(data.paymentTerms||'')}</p>`
-  } else if (type==='plan') {
-    html += `<table class="articles-table"><thead><tr><th>#</th><th>Phase</th><th>Description</th><th>Durée</th><th>Ressources</th></tr></thead>
-    <tbody>${(data.phases||[]).map(p=>`<tr><td>${p.phase}</td><td>${h(p.name)}</td><td>${h(p.description)}</td><td>${h(p.duration)}</td><td>${h((p.resources||[]).join(', '))}</td></tr>`).join('')}</tbody></table>
-    <p style="font-size:13px;margin-top:10px"><b>Durée totale:</b> ${h(data.totalDuration||'')}</p>`
-  } else {
-    html += `<pre style="font-size:12px;color:var(--muted);white-space:pre-wrap;word-break:break-word">${h(JSON.stringify(data,null,2))}</pre>`
-  }
-  el.innerHTML = html
+  // Legacy shim — redirect to new modal
+  if (_docModal !== undefined) openDocModal(currentDetailBonId || '', type, data)
 }
 
 function docIcon(t) {
@@ -2220,6 +2229,192 @@ function fd(iso) {
   if (!iso) return '—'
   try { return new Date(iso).toLocaleDateString('fr-MA',{day:'2-digit',month:'short',year:'numeric'}) } catch { return iso }
 }
+
+
+/* ══════════════════════════════════════════════════════
+   DOCUMENT MODAL
+══════════════════════════════════════════════════════ */
+
+let _docModal = { bonId: null, type: null, data: null }
+
+function openDocModal(bonId, type, data) {
+  _docModal = { bonId, type, data }
+  const modal = document.getElementById('doc-modal')
+  if (!modal) return
+  modal.classList.add('open')
+  const title = document.getElementById('doc-modal-title')
+  if (title) title.textContent = docLabelFull(type)
+  // Load preview iframe
+  switchDocTab('preview')
+  document.body.style.overflow = 'hidden'
+}
+
+function closeDocModal() {
+  const modal = document.getElementById('doc-modal')
+  if (modal) modal.classList.remove('open')
+  document.body.style.overflow = ''
+  // Clear iframe to stop loading
+  const iframe = document.getElementById('doc-iframe')
+  if (iframe) iframe.src = ''
+}
+
+function switchDocTab(name) {
+  document.querySelectorAll('.doc-modal-tab').forEach(b => b.classList.remove('active'))
+  document.querySelectorAll('.doc-modal-pane').forEach(p => p.classList.remove('active'))
+  const btn  = document.getElementById(`dtab-btn-${name}`)
+  const pane = document.getElementById(`dtab-pane-${name}`)
+  if (btn)  btn.classList.add('active')
+  if (pane) pane.classList.add('active')
+
+  if (name === 'preview') {
+    const iframe = document.getElementById('doc-iframe')
+    if (iframe && _docModal.bonId && _docModal.type) {
+      iframe.src = `/api/documents/${_docModal.bonId}/${_docModal.type}/html?t=${Date.now()}`
+    }
+  }
+  if (name === 'json') {
+    const el = document.getElementById('doc-json-pane')
+    if (el) el.textContent = _docModal.data ? JSON.stringify(_docModal.data, null, 2) : '// Données non disponibles'
+  }
+}
+
+function printDoc() {
+  const iframe = document.getElementById('doc-iframe')
+  if (iframe?.contentWindow) iframe.contentWindow.print()
+}
+
+async function exportDocHtml() {
+  if (!_docModal.bonId || !_docModal.type) return
+  try {
+    const res = await fetch(`/api/documents/${_docModal.bonId}/${_docModal.type}/html`)
+    const txt = await res.text()
+    const blob = new Blob([txt], { type: 'text/html;charset=utf-8' })
+    const url  = URL.createObjectURL(blob)
+    const a    = Object.assign(document.createElement('a'), { href: url, download: `${_docModal.type}-${_docModal.bonId}.html` })
+    a.click(); URL.revokeObjectURL(url)
+  } catch(e) { showToast('Export HTML échoué: '+e.message,'err') }
+}
+
+function exportDocCsv() {
+  const d = _docModal.data
+  if (!d) return showToast('Aucune donnée','err')
+  let csv = ''
+  const type = _docModal.type
+  if (type === 'bordereau') {
+    const rows = Array.isArray(d) ? d : (d.bordereauDraft||[])
+    csv  = 'N°,Désignation,Unité,Quantité,P.U. HT,Total HT,TVA,Total TTC\n'
+    csv += rows.map(r => [r.num,`"${(r.designation||'').replace(/"/g,'""')}"`,r.unite||'',r.quantite||'',r.prixUnitaireHT||'',r.totalHT||r.montantHT||'',r.tva||'20%',r.totalTTC||''].join(',')).join('\n')
+  } else if (type === 'devis') {
+    csv  = 'Désignation,Unité,Quantité,P.U.,Total\n'
+    csv += (d.items||[]).map(r => [`"${(r.designation||'').replace(/"/g,'""')}"`,r.unite||'',r.quantite||'',r.prixUnitaire||'',r.total||''].join(',')).join('\n')
+  } else if (type === 'rfq') {
+    csv  = 'Catégorie,Article,Spécification,Quantité,Unité\n'
+    ;(d.suppliers||d.supplierRFQ||[]).forEach(s => {
+      ;(s.items||[]).forEach(it => {
+        const item = typeof it==='string' ? it : (it.designation||'')
+        const spec = typeof it==='string' ? '' : (it.specification||'')
+        csv += [`"${(s.category||'').replace(/"/g,'""')}"`,`"${item.replace(/"/g,'""')}"`,`"${spec.replace(/"/g,'""')}"`,typeof it==='string'?'':it.quantite||'',typeof it==='string'?'':it.unite||''].join(',') + '\n'
+      })
+    })
+  } else if (type === 'checklist') {
+    csv  = 'Catégorie,Item\n'
+    const cats = {Soumission:d.submission,Technique:d.technical,Administratif:d.administrative,Financier:d.financial}
+    Object.entries(cats).forEach(([cat,items]) => {
+      ;(items||[]).forEach(item => { csv += `"${cat}","${String(item).replace(/"/g,'""')}"\n` })
+    })
+    if (d.submissionChecklist) d.submissionChecklist.forEach(item => { csv += `"Soumission","${String(item).replace(/"/g,'""')}"\n` })
+  } else {
+    csv = JSON.stringify(d, null, 2)
+  }
+  const blob = new Blob(['﻿'+csv], { type: 'text/csv;charset=utf-8' })
+  const url  = URL.createObjectURL(blob)
+  const a    = Object.assign(document.createElement('a'), { href: url, download: `${_docModal.type}-${_docModal.bonId}.csv` })
+  a.click(); URL.revokeObjectURL(url)
+}
+
+function docLabelFull(t) {
+  return {bordereau:'Bordereau de Prix',devis:'Devis Commercial',rfq:'Demande de Prix Fournisseur',plan:"Plan d'Exécution",checklist:'Checklist de Soumission'}[t]||t
+}
+
+/* ── AVIS text viewer ── */
+async function viewAvisText(bonId) {
+  try {
+    const d = await fetch(`/api/projects/${bonId}/avis-text`).then(r=>r.json())
+    if (!d.hasText) return showToast("Aucun texte AVIS disponible pour ce bon", 'err')
+    _docModal = { bonId, type: '_avis', data: d }
+    const modal = document.getElementById('doc-modal')
+    if (!modal) return
+    modal.classList.add('open')
+    document.body.style.overflow = 'hidden'
+    const title = document.getElementById('doc-modal-title')
+    if (title) title.textContent = `Texte AVIS — ${d.primaryAvisName||bonId}`
+    // Show JSON pane with the text
+    document.querySelectorAll('.doc-modal-tab').forEach(b => b.classList.remove('active'))
+    document.querySelectorAll('.doc-modal-pane').forEach(p => p.classList.remove('active'))
+    const jsonBtn  = document.getElementById('dtab-btn-json')
+    const jsonPane = document.getElementById('dtab-pane-json')
+    if (jsonBtn)  jsonBtn.classList.add('active')
+    if (jsonPane) jsonPane.classList.add('active')
+    const el = document.getElementById('doc-json-pane')
+    if (el) el.textContent = d.text || '(vide)'
+  } catch(e) { showToast('Erreur: '+e.message,'err') }
+}
+
+/* ── Attachment re-extract ── */
+async function reExtractAvis(bonId, forceDownload) {
+  const panel = document.getElementById('attachments-panel')
+  if (panel) panel.style.opacity = '.5'
+  showToast(forceDownload ? 'Re-téléchargement et extraction...' : 'Re-extraction depuis fichiers en cache...')
+  try {
+    const d = await fetch(`/api/projects/${bonId}/extract-avis`, {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ forceDownload })
+    }).then(r=>r.json())
+    if (panel) panel.style.opacity = ''
+    if (d.success) {
+      showToast(d.spec?.hasText ? `✓ Texte extrait: ${d.spec.textLength} chars` : 'Extraction terminée — aucun texte trouvé')
+      openProject(bonId)
+    } else {
+      showToast(d.error||'Extraction échouée','err')
+    }
+  } catch(e) {
+    if (panel) panel.style.opacity = ''
+    showToast(e.message,'err')
+  }
+}
+
 </script>
+
+<!-- ════════════════════════════════════════════════════
+     DOCUMENT VIEWER MODAL
+════════════════════════════════════════════════════ -->
+<div id="doc-modal">
+  <div class="doc-modal-inner">
+    <div class="doc-modal-header">
+      <div style="display:flex;align-items:center;gap:10px;flex:1;min-width:0">
+        <span id="doc-modal-title" style="font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis"></span>
+        <div class="doc-modal-tabs">
+          <button class="doc-modal-tab active" id="dtab-btn-preview" onclick="switchDocTab('preview')"><i class="bi bi-eye"></i> Aperçu</button>
+          <button class="doc-modal-tab" id="dtab-btn-json" onclick="switchDocTab('json')"><i class="bi bi-braces"></i> JSON</button>
+        </div>
+      </div>
+      <div class="doc-modal-actions">
+        <button class="doc-modal-btn orange" onclick="printDoc()" title="Imprimer / PDF"><i class="bi bi-printer"></i> Imprimer</button>
+        <button class="doc-modal-btn" onclick="exportDocHtml()" title="Télécharger HTML"><i class="bi bi-filetype-html"></i> HTML</button>
+        <button class="doc-modal-btn" onclick="exportDocCsv()" title="Télécharger CSV/Excel"><i class="bi bi-file-earmark-spreadsheet"></i> Excel</button>
+        <button class="doc-modal-btn close-btn" onclick="closeDocModal()" title="Fermer">✕</button>
+      </div>
+    </div>
+    <div class="doc-modal-body">
+      <div class="doc-modal-pane active" id="dtab-pane-preview">
+        <iframe id="doc-iframe" src="" title="Aperçu document"></iframe>
+      </div>
+      <div class="doc-modal-pane" id="dtab-pane-json">
+        <pre id="doc-json-pane"></pre>
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
