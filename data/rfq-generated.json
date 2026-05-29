@@ -12,8 +12,28 @@
           "montantHT": 75650,
           "notes": "Prix unitaire incluant la dépose des éléments existants, la fourniture, la fabrication, le transport, la pose, les fixations, les scellements, les ajustements, les réglages, les essais et toutes sujétions de finition et de parfait achèvement conformément au CCTP et aux règles de l'art."
         }
-      ]
+      ],
+      "devis": {
+        "reference": "DEV-2024-07-001",
+        "date": "2024-07-29",
+        "client": "DIRECTEUR DE LA PRISON LOCALE A BOUAARFA",
+        "validite": "30 jours à compter de la date d'émission",
+        "items": [
+          {
+            "designation": "Dépose de fenêtres existantes et Fourniture et pose de fenêtre et châssis métallique, y compris : Cadre en fer à U (40x20x5mm), ouvrants en fer à U (40x20x5mm), parcloses en fer carré vissé (14mm), Plexiglass de 6 mm, paumelles (120mm), pattes à scellement, couvre-joint en fer plat (30x6mm), 2 verrous (inférieur et supérieur), levier et gâche par ouvrant. Ouvrage conforme aux détails architecte.",
+            "unite": "M2",
+            "quantite": 89,
+            "prixUnitaire": 3200,
+            "total": 284800
+          }
+        ],
+        "totalHT": 284800,
+        "tva": 56960,
+        "totalTTC": 341760,
+        "conditions": "Paiement : 30% à la commande, 40% à l'avancement des travaux, solde à la réception provisoire. Les prix sont fermes et non révisables. Les délais de livraison et de pose seront définis dans le contrat final. Toute modification ou prestation supplémentaire fera l'objet d'un avenant.",
+        "notes": "Ce devis est établi sur la base des informations fournies et des spécifications techniques mentionnées. Il inclut la fourniture, le transport, la pose et les finitions des éléments décrits. Les prix sont exprimés en Dirhams Marocains (MAD)."
+      }
     },
-    "generatedAt": "2026-05-29T15:06:30.665Z"
+    "generatedAt": "2026-05-29T15:07:06.351Z"
   }
 ]
