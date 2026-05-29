@@ -1,0 +1,135 @@
+[
+  {
+    "id": "d1142d8b-ff4e-48e7-a87d-79044185d31f_bordereau",
+    "projectId": "d1142d8b-ff4e-48e7-a87d-79044185d31f",
+    "docType": "bordereau",
+    "title": "Bordereau de Prix",
+    "data": {
+      "projectType": "general",
+      "profiles": [],
+      "surfaces": [],
+      "vitrage": [],
+      "accessories": [],
+      "fabrication": {
+        "difficultLvl": 3,
+        "specialEquipment": [],
+        "fabricationDays": 7,
+        "notes": "Gemini non disponible — configurer GEMINI_API_KEY"
+      },
+      "installation": {
+        "phases": [
+          "Prise de cotes",
+          "Fabrication",
+          "Pose",
+          "Finitions"
+        ],
+        "teamSize": 3,
+        "installDays": 3,
+        "liftRequired": false
+      },
+      "materials": [],
+      "estimatedWeightKg": 0,
+      "keyRisks": [
+        "Analyse manuelle requise — Gemini non configuré"
+      ],
+      "missingInfo": [
+        "Dimensions",
+        "Plans",
+        "Finition",
+        "Quantités"
+      ],
+      "technicalNotes": "Analyse locale sans IA. Configurer GEMINI_API_KEY pour des résultats complets.",
+      "attractivenessScore": 5,
+      "attractivenessLabel": "Données insuffisantes",
+      "estimatedMarginPercent": null,
+      "goNoGo": "manual_review",
+      "goNoGoReason": "Gemini non configuré",
+      "overallRiskScore": 5,
+      "overallRiskLevel": "Modéré",
+      "risks": [],
+      "riskFactors": [],
+      "winProbabilityPercent": 50,
+      "confidenceLevel": "Indisponible",
+      "recommendation": "Configurer GEMINI_API_KEY",
+      "recommendationReason": "IA non disponible",
+      "summary": "Analyse locale uniquement — configurer GEMINI_API_KEY.",
+      "suppliers": [],
+      "categories": [],
+      "specificationsTechniques": [],
+      "materiaux": [],
+      "fournisseursRFQ": [],
+      "planExecution": [],
+      "mainOeuvre": [],
+      "equipements": [],
+      "risques": [],
+      "informationsManquantes": [],
+      "strategieOffre": "—",
+      "difficulte": 5,
+      "urgence": 5,
+      "rentabilite": 5,
+      "actionRecommandee": "Configurer Gemini",
+      "resume": "Analyse locale sans IA.",
+      "activiteDetectee": "—"
+    },
+    "source": "official_avis_attachment_only",
+    "updatedAt": "2026-05-29T15:39:27.542Z",
+    "createdAt": "2026-05-29T15:39:04.738Z"
+  },
+  {
+    "id": "d1142d8b-ff4e-48e7-a87d-79044185d31f_devis",
+    "projectId": "d1142d8b-ff4e-48e7-a87d-79044185d31f",
+    "docType": "devis",
+    "title": "Devis Estimatif",
+    "data": {
+      "reference": "DEV-2024-07-00123",
+      "date": "2024-07-26",
+      "client": "Province de TETOUAN",
+      "validite": "30 jours à compter de la date d'émission",
+      "items": [
+        {
+          "designation": "#01 Décapage, désherbage et nettoyage",
+          "unite": "M2",
+          "quantite": 120,
+          "prixUnitaire": 25,
+          "total": 3000
+        },
+        {
+          "designation": "#02 Tout venant",
+          "unite": "M3",
+          "quantite": 23.76,
+          "prixUnitaire": 150,
+          "total": 3564
+        },
+        {
+          "designation": "#03 Hérissonnage en pierres sèches",
+          "unite": "M2",
+          "quantite": 118.8,
+          "prixUnitaire": 80,
+          "total": 9504
+        },
+        {
+          "designation": "#04 Dallage en béton y/c treillis soudé.",
+          "unite": "M2",
+          "quantite": 118.8,
+          "prixUnitaire": 250,
+          "total": 29700
+        },
+        {
+          "designation": "#05 Fourniture de blocs sanitaires modulaires en panneaux sandwichs",
+          "unite": "U",
+          "quantite": 10,
+          "prixUnitaire": 150000,
+          "total": 1500000
+        }
+      ],
+      "totalHT": 1545768,
+      "tva": 309153.6,
+      "totalTTC": 1854921.6,
+      "conditions": "Paiement par virement bancaire à 30 jours fin de mois après réception des travaux et validation du procès-verbal de réception provisoire. Les prix sont fermes et non révisables. Les délais de livraison et d'installation seront définis dans le contrat final.",
+      "notes": "Devis établi pour le projet de FOURNITURE ET POSE DE BLOCS SANITAIRES MODULAIRES EN PANNEAUX SANDWICHS AU NIVEAU DE LA BANDE LITTORALE MÉDITERRANÉENNE – PROVINCE DE TÉTOUAN. Ce devis est une estimation et peut être sujet à ajustement après une étude technique détaillée et une visite de site."
+    },
+    "source": "official_avis_attachment_only",
+    "updatedAt": "2026-05-29T15:39:27.544Z",
+    "createdAt": "2026-05-29T15:39:22.278Z"
+  }
+]
