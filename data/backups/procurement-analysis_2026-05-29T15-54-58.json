@@ -1227,5 +1227,537 @@
       "fourniture et pose",
       "panneaux sandwich"
     ]
+  },
+  {
+    "id": "0e76790a-c527-440d-832d-98d13f4e4eab",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344139",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344139",
+    "reference": "39/2026",
+    "title": "Objet Fourniture et pose d'une porte en bois massif double battant pour salle de conférence de la région Tanger-Tétouan-Al Hoceima. NB : Chaque candidat ayant reçu la demande de confirmation de son offre sera tenu de présenter dans les 24 heures qui suivent ladite demande un catalogue et un descriptif technique détaillé relatant le type de bois, l'isolation, les accessoires utilisés et toutes informations jugées utiles, faute de quoi son offre sera rejetée d'office.",
+    "buyer": "REGION de TANGER-TETOUAN",
+    "city": "Tanger",
+    "location": "TANGER-ASSILAH",
+    "destination": "TANGER-ASSILAH",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’installation de matériels divers",
+    "deadline": "28/05/2026 12:00",
+    "publishDate": "25/05/2026 10:37",
+    "publicationDate": "25/05/2026 10:37",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et pose"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et pose d'une porte en bois massif double battant pour salle de conférence de la région Tanger-Tétouan-Al Hoceima. NB : Chaque candidat ayant reçu la demande de confirmation de son offre sera tenu de présenter dans les 24 heures qui suivent ladite demande un catalogue et un descriptif technique détaillé relatant le type de bois, l'isolation, les accessoires utilisés et toutes informations jugées utiles, faute de quoi son offre sera rejetée d'office.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1fourniture et pose d'une porte en bois massif double battant  pour salle de conférence",
+        "unite": "unité",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #39/2026 OBJET Fourniture et pose d'une porte en bois massif double battant pour salle de conférence de la région Tanger-Tétouan-Al Hoceima. NB : Chaque candidat ayant reçu la demande de confirmation de son offre sera tenu de présenter dans les 24 heures qui suivent ladite demande un catalogue et un descriptif technique détaillé relatant le type de bois, l'isolation, les accessoires utilisés",
+    "scrapedAt": "2026-05-28T19:17:08.303Z",
+    "updatedAt": "2026-05-28T19:17:08.303Z",
+    "attachments": [],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": false,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-05-28T19:19:15.538Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "88cb1e5a-b0f6-4a28-a157-58123f2503cb",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/316430",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/316430",
+    "reference": "6/2026",
+    "title": "Objet TRAVAUX D'INSTALLATION D'UN ABRIS A LA STATION DU TAXIS",
+    "buyer": "Commune IZEMMOUREN",
+    "city": "",
+    "location": "AL HOCEIMA",
+    "destination": "AL HOCEIMA",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’installation de matériels divers",
+    "deadline": "16/03/2027 14:00",
+    "publishDate": "12/03/2026 13:10",
+    "publicationDate": "12/03/2026 13:10",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet TRAVAUX D'INSTALLATION D'UN ABRIS A LA STATION DU TAXIS",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Terrassement généraux sur l'emprise du voie et terrassement pour mise en profil des fonds de forme des chaussées ,accotements et terre pleins",
+        "unite": "M3",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Beton armée pour socles Y/C.aciers et toutes sujestion",
+        "unite": "M3",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Fourniture et pose de structure métallique monopente en parfaite état de foncctionnement y compris toutes sujetions (Tole nervesco epaisseur =0,6mm",
+        "unite": "M2",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Travaux divers compris peinture , nettoyage et toutes sujestion",
+        "unite": "F",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/annulation/316430/45130008",
+        "name": "Télécharger"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "Annulé",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat #6/2026 Annulé OBJET TRAVAUX D'INSTALLATION D'UN ABRIS A LA STATION DU TAXIS INFORMATIONS LIÉES À L'ANNULATION Date d'annulation : 17/03/2026 Référence annulation / Motif : ANNULER PAR ERREUR Pièce jointe : Télécharger DÉTAILS Acheteur public Commune IZEMMOUREN Date mise en ligne 12/03/2026 13:10 Date limite de réception des devis 16/03/2027 14:00 Lieu d'exécution AL HOCEIMA Catégorie principale Travaux Nature de prestation Travaux d’installation de matériels divers Articl",
+    "scrapedAt": "2026-05-28T19:18:11.108Z",
+    "updatedAt": "2026-05-28T19:18:11.108Z",
+    "attachments": [
+      {
+        "name": "Télécharger",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/annulation/316430/45130008",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/88cb1e5a-b0f6-4a28-a157-58123f2503cb/T_l_charger.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "sourceFile": "DECION ANNUL_20260317_0001.pdf",
+        "textLength": 0,
+        "error": "Extraction PDF échouée: pdfParse is not a function"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-05-28T19:19:15.538Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "d753d779-cfcb-4ea7-915f-c0cd408f25d9",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343032",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343032",
+    "reference": "12/2026/ANCFCC/DLAG",
+    "title": "Objet Contrôle des études techniques et suivi des travaux d'aménagement et de réhabilitation du bâtiment abritant la Direction de la Cartographie",
+    "buyer": "AGENCE NATIONALE DE LA CONSERVATION FONCIERE, DU CADASTRE ET DE LA CARTOGRAPHIE",
+    "city": "Rabat",
+    "location": "RABAT",
+    "destination": "RABAT",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Contrôle et expertise techniques (ANCFCC)",
+    "deadline": "03/06/2026 12:00",
+    "publishDate": "21/05/2026 11:17",
+    "publicationDate": "21/05/2026 11:17",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Contrôle des études techniques et suivi des travaux d'aménagement et de réhabilitation du bâtiment abritant la Direction de la Cartographie",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Mission 1 : Contrôle des études techniques",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Mission 2 : Contrôle et réception des travaux",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343032/48399178",
+        "name": "Avis d'achat 12 et cahier des charges.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #12/2026/ANCFCC/DLAG OBJET Contrôle des études techniques et suivi des travaux d'aménagement et de réhabilitation du bâtiment abritant la Direction de la Cartographie DÉTAILS Acheteur public AGENCE NATIONALE DE LA CONSERVATION FONCIERE, DU CADASTRE ET DE LA CARTOGRAPHIE Date mise en ligne 21/05/2026 11:17 Date limite de réception des devis 03/06/2026 12:00 Lieu d'exécution RABAT Catégorie pr",
+    "scrapedAt": "2026-05-28T19:18:22.472Z",
+    "updatedAt": "2026-05-28T19:18:22.472Z",
+    "attachments": [
+      {
+        "name": "Avis d'achat 12 et cahier des charges.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343032/48399178",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/d753d779-cfcb-4ea7-915f-c0cd408f25d9/Avis_d_achat_12_et_cahier_des_charges.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "sourceFile": "Cahier des charges.pdf",
+        "textLength": 0,
+        "error": "Extraction PDF échouée: pdfParse is not a function"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-05-28T19:19:15.538Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "729bda69-91ba-45bb-957f-6ca4ba6d3b65",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343200",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343200",
+    "reference": "13/2026",
+    "title": "Objet Réalisation et pose de rayonnages / étagères murales en MDF. Fourniture, fabrication et pose de rayonnages muraux en MDF de bonne qualité au niveau de la direction, destinés au rangement de livres et dossiers, y compris toutes sujétions de fixation, finition et ajustement.",
+    "buyer": "DELEGUE MINISTERE DES AFFAIRES CULTURELLES ESSAOUIRA",
+    "city": "",
+    "location": "ESSAOUIRA",
+    "destination": "ESSAOUIRA",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de fournitures de bureau et de documentation",
+    "deadline": "01/06/2026 12:00",
+    "publishDate": "21/05/2026 13:32",
+    "publicationDate": "21/05/2026 13:32",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Réalisation et pose de rayonnages / étagères murales en MDF. Fourniture, fabrication et pose de rayonnages muraux en MDF de bonne qualité au niveau de la direction, destinés au rangement de livres et dossiers, y compris toutes sujétions de fixation, finition et ajustement.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture, fabrication et pose de rayonnages muraux en MDF.",
+        "unite": "ML",
+        "quantite": 15,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343200/48416275",
+        "name": "REALISATION ET POSE DE RAYONNAGE-ETAGES MURALES EN MDF..zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #13/2026 OBJET Réalisation et pose de rayonnages / étagères murales en MDF. Fourniture, fabrication et pose de rayonnages muraux en MDF de bonne qualité au niveau de la direction, destinés au rangement de livres et dossiers, y compris toutes sujétions de fixation, finition et ajustement. DÉTAILS Acheteur public DELEGUE MINISTERE DES AFFAIRES CULTURELLES ESSAOUIRA Date mise en ligne 21/05/202",
+    "scrapedAt": "2026-05-28T19:18:41.946Z",
+    "updatedAt": "2026-05-28T19:18:41.946Z",
+    "attachments": [
+      {
+        "name": "REALISATION ET POSE DE RAYONNAGE-ETAGES MURALES EN MDF..zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343200/48416275",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/729bda69-91ba-45bb-957f-6ca4ba6d3b65/REALISATION_ET_POSE_DE_RAYONNAGE-ETAGES_MURALES_EN_MDF..zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "sourceFile": "REALISATION ET POSE DE RAYONNAGE-ETAGES MURALES EN MDF.pdf",
+        "textLength": 0,
+        "error": "Extraction PDF échouée: pdfParse is not a function"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-05-28T19:19:15.538Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "34440a3c-860d-40d0-a071-b5f805cf7aca",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344585",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/344585",
+    "reference": "28/FNC/2026",
+    "title": "Objet Installation des abris pour voitures (32 places) aux parkings de la FSJP Kénitra – UIT",
+    "buyer": "FACULTE DES SCIENCES JURIDIQUES ET POLITIQUES - KENITRA",
+    "city": "Kénitra",
+    "location": "KENITRA",
+    "destination": "KENITRA",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des ouvrages, voies et réseaux",
+    "deadline": "01/06/2026 12:00",
+    "publishDate": "27/05/2026 01:13",
+    "publicationDate": "27/05/2026 01:13",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Installation des abris pour voitures (32 places) aux parkings de la FSJP Kénitra – UIT",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Poteaux en tube d’acier :",
+        "unite": "U",
+        "quantite": 18,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Diagonal support de la toile",
+        "unite": "M²",
+        "quantite": 250,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Semelles isolées en béton :",
+        "unite": "M3",
+        "quantite": 45,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Installation Toit en voile :",
+        "unite": "M²",
+        "quantite": 570,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Peinture sur structure métallique :",
+        "unite": "M²",
+        "quantite": 2550,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6Peinture sur trottoirs et parking",
+        "unite": "ML",
+        "quantite": 13000,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344585/48605899",
+        "name": "descriptif abris fsjp.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #28/FNC/2026 OBJET Installation des abris pour voitures (32 places) aux parkings de la FSJP Kénitra – UIT DÉTAILS Acheteur public FACULTE DES SCIENCES JURIDIQUES ET POLITIQUES - KENITRA Date mise en ligne 27/05/2026 01:13 Date limite de réception des devis 01/06/2026 12:00 Lieu d'exécution KENITRA Catégorie principale Travaux Nature de prestation Travaux d’aménagement, d’entretien et de répa",
+    "scrapedAt": "2026-05-28T19:18:48.314Z",
+    "updatedAt": "2026-05-28T19:18:48.314Z",
+    "attachments": [
+      {
+        "name": "descriptif abris fsjp.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344585/48605899",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/34440a3c-860d-40d0-a071-b5f805cf7aca/descriptif_abris_fsjp.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "sourceFile": "__MACOSX/._descriptif abris fsjp.pdf",
+        "textLength": 0,
+        "error": "Extraction PDF échouée: pdfParse is not a function"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-05-28T19:19:15.538Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "5b45093a-e79b-4b04-8b35-b20751a48c0c",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343531",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/343531",
+    "reference": "57/2026/INRH/DGMN",
+    "title": "Objet Fourniture et installation d’un analyseur de 15 ppm Alarme avec son document d’agrément et certificat validés par la société de classification Lloyd’s Register, pour le séparateur des eaux mazouteuses du navire AL HASSAN AL MARRAKCHI de l’INRH exigé par les autorités maritimes et la société de classification Lloyd’s Register",
+    "buyer": "INSTITUT NATIONAL DE RECHERCHE HALIEUTIQUE",
+    "city": "Agadir",
+    "location": "AGADIR IDA OU TANANE",
+    "destination": "AGADIR IDA OU TANANE",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de matériel de sécurité et de lutte contre l’incendie",
+    "deadline": "04/06/2026 12:00",
+    "publishDate": "22/05/2026 10:42",
+    "publicationDate": "22/05/2026 10:42",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et installation"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et installation d’un analyseur de 15 ppm Alarme avec son document d’agrément et certificat validés par la société de classification Lloyd’s Register, pour le séparateur des eaux mazouteuses du navire AL HASSAN AL MARRAKCHI de l’INRH exigé par les autorités maritimes et la société de classification Lloyd’s Register",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture et installation d’un analyseur de 15 ppm Alarme pour le séparateur des eaux mazouteuses du bord identique à celui installé ou équivalent et qui répond aux normes de MARPOL et aux exigences de délivrance de certificat IOPP - Fourniture des documents techniques, l’agrément et le certificat de cet analyseur validé par la société de classification Lloyd’s Register",
+        "unite": "unité",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343531/48454158",
+        "name": "AA N°57-2026-INRH-DGMN.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #57/2026/INRH/DGMN OBJET Fourniture et installation d’un analyseur de 15 ppm Alarme avec son document d’agrément et certificat validés par la société de classification Lloyd’s Register, pour le séparateur des eaux mazouteuses du navire AL HASSAN AL MARRAKCHI de l’INRH exigé par les autorités maritimes et la société de classification Lloyd’s Register DÉTAILS Acheteur public INSTITUT NATIONAL ",
+    "scrapedAt": "2026-05-28T19:19:13.021Z",
+    "updatedAt": "2026-05-28T19:19:13.021Z",
+    "attachments": [
+      {
+        "name": "AA N°57-2026-INRH-DGMN.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343531/48454158",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/5b45093a-e79b-4b04-8b35-b20751a48c0c/AA_N_57-2026-INRH-DGMN.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "sourceFile": "AA N°57-2026-INRH-DGMN.pdf",
+        "textLength": 0,
+        "error": "Extraction PDF échouée: pdfParse is not a function"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-05-28T19:19:15.538Z",
+        "note": "Scraping automatique"
+      }
+    ]
   }
 ]

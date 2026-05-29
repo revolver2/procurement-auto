@@ -1,0 +1,31 @@
+{
+  "bonId": "51ce948e-3187-4c94-b47a-21a58e7ec3fc",
+  "bonReference": "40/2026",
+  "attachments": [
+    {
+      "name": "avis d'achat fenetres_005.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/339896/48603385",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/51ce948e-3187-4c94-b47a-21a58e7ec3fc/avis_d_achat_fenetres_005.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": null,
+      "sourceZip": "avis_d_achat_fenetres_005.zip",
+      "extractedPath": null,
+      "textLength": 0,
+      "error": "Erreur ZIP: ADM-ZIP: Invalid or unsupported zip format. No END header found"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-29T15:52:43.903Z",
+  "extractionNote": null
+}

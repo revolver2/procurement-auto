@@ -1,6 +1,56 @@
 [
   {
     "date": "28/05/2026",
+    "heure": "19:19",
+    "nouveaux": 6,
+    "total": 18,
+    "statut": "Succès",
+    "startedAt": "2026-05-28T19:16:02.274Z",
+    "finishedAt": "2026-05-28T19:19:15.539Z",
+    "triggeredBy": "github-actions"
+  },
+  {
+    "date": "28/05/2026",
+    "heure": "19:14",
+    "nouveaux": 0,
+    "total": 12,
+    "statut": "Succès",
+    "startedAt": "2026-05-28T19:12:03.453Z",
+    "finishedAt": "2026-05-28T19:14:18.284Z",
+    "triggeredBy": "github-actions"
+  },
+  {
+    "date": "28/05/2026",
+    "heure": "18:45",
+    "nouveaux": 0,
+    "total": 12,
+    "statut": "Succès",
+    "startedAt": "2026-05-28T18:42:52.845Z",
+    "finishedAt": "2026-05-28T18:45:15.762Z",
+    "triggeredBy": "github-actions"
+  },
+  {
+    "date": "28/05/2026",
+    "heure": "11:00",
+    "nouveaux": 0,
+    "total": 12,
+    "statut": "Succès",
+    "startedAt": "2026-05-28T10:58:41.720Z",
+    "finishedAt": "2026-05-28T11:00:57.602Z",
+    "triggeredBy": "github-actions"
+  },
+  {
+    "date": "28/05/2026",
+    "heure": "10:55",
+    "nouveaux": 0,
+    "total": 12,
+    "statut": "Succès",
+    "startedAt": "2026-05-28T10:52:47.609Z",
+    "finishedAt": "2026-05-28T10:55:04.099Z",
+    "triggeredBy": "github-actions"
+  },
+  {
+    "date": "28/05/2026",
     "heure": "00:31",
     "nouveaux": 0,
     "total": 12,
