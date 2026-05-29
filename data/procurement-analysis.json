@@ -1226,7 +1226,38 @@
     "keywords": [
       "fourniture et pose",
       "panneaux sandwich"
-    ]
+    ],
+    "attachmentHasText": true,
+    "attachmentFound": true,
+    "attachments": [
+      {
+        "name": "AVIS D'ACHAT BLOC SANITAIR20260526_12344709_0086.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344503/48595765",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/opt/render/project/src/data/attachments/d1142d8b-ff4e-48e7-a87d-79044185d31f/AVIS_D_ACHAT_BLOC_SANITAIR20260526_12344709_0086.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": true,
+        "sourceFile": "AVIS D'ACHAT BLOC SANITAIR20260526_12344709_0086.pdf",
+        "sourceZip": "AVIS_D_ACHAT_BLOC_SANITAIR20260526_12344709_0086.zip",
+        "extractedPath": "/opt/render/project/src/data/attachments/d1142d8b-ff4e-48e7-a87d-79044185d31f/AVIS_D_ACHAT_BLOC_SANITAIR20260526_12344709_0086.zip_extracted/AVIS D_ACHAT BLOC SANITAIR20260526_12344709_0086.pdf",
+        "textLength": 172171,
+        "error": null
+      }
+    ],
+    "avisDocument": {
+      "selectedPdf": "AVIS D'ACHAT BLOC SANITAIR20260526_12344709_0086.pdf (depuis AVIS_D_ACHAT_BLOC_SANITAIR20260526_12344709_0086.zip)",
+      "textLength": 172171,
+      "textExtracted": true,
+      "validated": true,
+      "validatedAt": "2026-05-29T17:27:35.199Z",
+      "extractionMethod": "gemini-ocr",
+      "ocrUsed": true
+    },
+    "analysisSource": "official_avis_attachment_only"
   },
   {
     "id": "0e76790a-c527-440d-832d-98d13f4e4eab",
