@@ -32,8 +32,28 @@
         "totalTTC": 341760,
         "conditions": "Paiement : 30% à la commande, 40% à l'avancement des travaux, solde à la réception provisoire. Les prix sont fermes et non révisables. Les délais de livraison et de pose seront définis dans le contrat final. Toute modification ou prestation supplémentaire fera l'objet d'un avenant.",
         "notes": "Ce devis est établi sur la base des informations fournies et des spécifications techniques mentionnées. Il inclut la fourniture, le transport, la pose et les finitions des éléments décrits. Les prix sont exprimés en Dirhams Marocains (MAD)."
+      },
+      "rfq": {
+        "subject": "Demande de Cotation - Fourniture et pose de fenêtres et châssis métallique pour la prison locale de Bouarfa",
+        "suppliers": [
+          {
+            "category": "Menuiserie Métallique et Vitrerie",
+            "items": [
+              {
+                "designation": "#01 Dépose de fenêtres et Fourniture et pose de fenêtre et châssis métallique",
+                "specification": "Composée de n vantaux ouvrant à la française, cadre et ouvrants en fer à U de 40x20x5mm, parcloses en fer carré vissé de 14mm, Plexiglass de 6 mm (selon détail architecte), paumelles de 120mm, pattes à scellement, couvre joint en fer plat de 30x6mm, 2 verrous inférieur et supérieur, levier et gâche par ouvrant. Ouvrage payé au mètre carré.",
+                "quantite": "89",
+                "unite": "M2"
+              }
+            ],
+            "notes": "Les prix unitaires devront inclure la dépose des anciennes fenêtres, la fourniture, la pose, les fixations, les finitions, le nettoyage du site et toutes les sujétions nécessaires pour un ouvrage parfait et conforme aux règles de l'art et aux normes en vigueur."
+          }
+        ],
+        "deadline": "2024-07-15",
+        "paymentTerms": "Paiement par mandat administratif après service fait et réception provisoire, conformément aux dispositions du décret n° 2-12-349 relatif aux marchés publics et aux règles de la comptabilité publique marocaine.",
+        "deliveryRequirements": "Les travaux devront être réalisés sur site à la prison locale de Bouarfa. Le délai d'exécution des travaux, à compter de la date de notification de l'ordre de service, est à proposer par le soumissionnaire dans son offre technique et sera un critère d'évaluation."
       }
     },
-    "generatedAt": "2026-05-29T15:07:06.351Z"
+    "generatedAt": "2026-05-29T15:07:11.305Z"
   }
 ]
