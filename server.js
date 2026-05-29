@@ -36,9 +36,41 @@ function syncDocuments() {
     .catch(e => console.error('[GitHubSync] rfq-generated push failed:', e.message))
 }
 
+function syncGeneratedDocs() {
+  githubPersist.pushFile('generated-documents.json')
+    .then(r => { if (!r?.skipped) console.log('[GitHubSync] generated-documents.json pushed') })
+    .catch(e => console.error('[GitHubSync] generated-documents push failed:', e.message))
+}
+
+function readGenDocs() { return db.read('generated-documents.json') || [] }
+
+// Returns documents as { bordereau: data, devis: data, ... } or null
+function getProjectDocs(projectId) {
+  const docs = readGenDocs().filter(d => d.projectId === projectId)
+  if (!docs.length) return null
+  const obj = {}
+  docs.forEach(d => { if (d.data && Object.keys(d.data).length) obj[d.docType] = d.data })
+  return Object.keys(obj).length ? obj : null
+}
+
+// Upsert a single document record; never overwrites with empty data
+function upsertDoc(projectId, docType, data, source) {
+  if (!data || typeof data !== 'object' || Object.keys(data).length === 0) return
+  const docs = readGenDocs()
+  const id   = `${projectId}_${docType}`
+  const now  = new Date().toISOString()
+  const titles = { bordereau: 'Bordereau de Prix', devis: 'Devis Estimatif', rfq: 'Demande de Prix Fournisseurs', plan: "Plan d'Exécution", checklist: 'Checklist de Conformité' }
+  const idx  = docs.findIndex(d => d.id === id)
+  const record = { id, projectId, docType, title: titles[docType] || docType, data, source: source || 'metadata_only', updatedAt: now }
+  if (idx >= 0) docs[idx] = { ...docs[idx], ...record }
+  else docs.push({ ...record, createdAt: now })
+  db.write('generated-documents.json', docs)
+  syncGeneratedDocs()
+}
+
 // On startup: hydrate persisted files from GitHub if local copies are empty
 ;(async () => {
-  for (const [file, label] of [['candidatures.json', 'candidatures'], ['rfq-generated.json', 'documents']]) {
+  for (const [file, label] of [['candidatures.json', 'candidatures'], ['rfq-generated.json', 'documents'], ['generated-documents.json', 'generated-documents']]) {
     try {
       const local = db.read(file) || []
       if (local.length === 0) {
@@ -70,6 +102,7 @@ app.get('/api/stats', (req, res) => {
   try {
     const allBons        = db.read('procurement-analysis.json') || []
     const analyses       = db.read('specifications.json')       || []
+    const genDocs        = readGenDocs()
     const documents      = db.read('rfq-generated.json')        || []
     const candidatures   = db.read('candidatures.json')         || []
     const notifications  = db.read('notifications.json')        || []
@@ -108,7 +141,7 @@ app.get('/api/stats', (req, res) => {
       urgent,
       byActivity,
       analyzed:           analyses.length,
-      documentsGenerated: documents.length,
+      documentsGenerated: new Set(genDocs.map(d => d.projectId)).size || documents.length,
       candidatures:       candidatures.length,
       candidaturesInProgress: cInProgress,
       offresSubmises:     candidatures.filter(c => ['Offre soumise','En attente résultat'].includes(c.status)).length,
@@ -165,11 +198,15 @@ app.get('/api/projects/:id', (req, res) => {
   const bon    = bons.find(b => b.id === req.params.id)
   if (!bon) return res.status(404).json({ error: 'Bon introuvable' })
 
-  // Documents and candidature
-  const rfqs       = db.read('rfq-generated.json') || []
+  // Documents and candidature — read from new per-doc store, fall back to legacy
   const cands      = db.read('candidatures.json')  || []
-  bon.documents    = rfqs.find(d => d.bonId === bon.id)?.documents || null
-  bon.candidature  = cands.find(c => c.bonId === bon.id)           || null
+  let docs = getProjectDocs(bon.id)
+  if (!docs) {
+    const rfqs = db.read('rfq-generated.json') || []
+    docs = rfqs.find(d => d.bonId === bon.id)?.documents || null
+  }
+  bon.documents    = docs
+  bon.candidature  = cands.find(c => c.bonId === bon.id) || null
 
   // Legacy Skills-IA analysis (specifications.json)
   const analyses   = db.read('specifications.json') || []
@@ -204,11 +241,15 @@ app.get('/api/projects/:id/full', (req, res) => {
   const bon  = bons.find(b => b.id === req.params.id)
   if (!bon) return res.status(404).json({ error: 'Bon introuvable' })
 
-  const rfqs  = db.read('rfq-generated.json') || []
   const cands = db.read('candidatures.json')  || []
   const specs = db.read('specifications.json') || []
 
-  const documents   = rfqs.find(d => d.bonId === bon.id)?.documents         || null
+  // Read from new per-doc store; fall back to legacy rfq-generated.json
+  let documents = getProjectDocs(bon.id)
+  if (!documents) {
+    const rfqs = db.read('rfq-generated.json') || []
+    documents  = rfqs.find(d => d.bonId === bon.id)?.documents || null
+  }
   const candidature = cands.find(c => c.bonId === bon.id)                   || null
   const analysis    = specs.find(a => a.bonId === bon.id)?.analysis         || null
 
@@ -322,23 +363,36 @@ app.post('/api/analyze', async (req, res) => {
 
 // Per-project document retrieval (RESTful alias)
 app.get('/api/projects/:id/documents', (req, res) => {
-  const all   = db.read('rfq-generated.json') || []
-  const found = all.find(d => d.bonId === req.params.id)
-  if (!found) return res.json({ documents: null, generatedAt: null })
-  res.json({ documents: found.documents || null, generatedAt: found.generatedAt || null })
+  const projectId = req.params.id
+  let documents = getProjectDocs(projectId)
+  let generatedAt = null
+  if (documents) {
+    const latest = readGenDocs().filter(d => d.projectId === projectId).sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt))[0]
+    generatedAt  = latest?.updatedAt || null
+  } else {
+    const rfqs  = db.read('rfq-generated.json') || []
+    const found = rfqs.find(d => d.bonId === projectId)
+    documents   = found?.documents || null
+    generatedAt = found?.generatedAt || null
+  }
+  res.json({ documents, generatedAt })
 })
 
 app.get('/api/generate', (req, res) => {
   const { projectId } = req.query
   if (!projectId) return res.status(400).json({ error: 'projectId requis' })
-  const all   = db.read('rfq-generated.json') || []
-  const found = all.find(d => d.bonId === projectId)
-  if (!found) return res.status(404).json({ error: 'Aucun document pour ce projet' })
-  res.json({ documents: found.documents })
+  let documents = getProjectDocs(projectId)
+  if (!documents) {
+    const all  = db.read('rfq-generated.json') || []
+    documents  = all.find(d => d.bonId === projectId)?.documents || null
+  }
+  if (!documents) return res.status(404).json({ error: 'Aucun document pour ce projet' })
+  res.json({ documents })
 })
 
-app.post('/api/generate', async (req, res) => {
-  const { projectId, documentType = 'all' } = req.body
+async function handleGenerateDocs(req, res) {
+  const projectId    = req.params?.id || req.body?.projectId
+  const documentType = req.body?.documentType || req.body?.docType || 'all'
   if (!projectId) return res.status(400).json({ error: 'projectId requis' })
 
   const bons     = db.read('procurement-analysis.json') || []
@@ -353,13 +407,20 @@ app.post('/api/generate', async (req, res) => {
     if (documentType === 'all') {
       documents = await documentGenerator.generateAll(bon, analysis)
     } else {
-      const result = await documentGenerator.generate(bon, analysis, documentType)
-      const all    = db.read('rfq-generated.json') || []
-      const found  = all.find(d => d.bonId === projectId)
-      documents    = found?.documents || {}
-      documents[documentType] = result.data
+      // Merge new doc into existing docs so we don't lose others
+      const existing = getProjectDocs(projectId) || {}
+      const result   = await documentGenerator.generate(bon, analysis, documentType)
+      documents      = { ...existing, [documentType]: result.data }
     }
 
+    // Determine source from attachment spec
+    const spec   = loadSpec(projectId)
+    const source = spec?.hasText ? 'official_avis_attachment_only' : 'metadata_only'
+
+    // Persist each doc to generated-documents.json (primary store)
+    Object.entries(documents).forEach(([t, data]) => upsertDoc(projectId, t, data, source))
+
+    // Keep rfq-generated.json in sync for legacy HTML renderer
     const all    = db.read('rfq-generated.json') || []
     const idx    = all.findIndex(d => d.bonId === projectId)
     const record = { bonId: projectId, documents, generatedAt: new Date().toISOString() }
@@ -369,7 +430,10 @@ app.post('/api/generate', async (req, res) => {
 
     res.json({ success: true, documents })
   } catch (e) { res.status(500).json({ success: false, error: e.message }) }
-})
+}
+
+app.post('/api/generate', handleGenerateDocs)
+app.post('/api/projects/:id/documents', handleGenerateDocs)
 
 /* ═══════════════════════════════════════════════════════════════
    CANDIDATURES
@@ -1245,8 +1309,13 @@ app.get('/api/documents/:bonId/:type/html', (req, res) => {
   const bon  = bons.find(b => b.id === bonId)
   if (!bon) return res.status(404).send('<h3>Bon introuvable</h3>')
 
-  const rfqs    = db.read('rfq-generated.json') || []
-  const docData = rfqs.find(d => d.bonId === bonId)?.documents?.[type] || null
+  // Read from new per-doc store; fall back to legacy rfq-generated.json
+  const projectDocs = getProjectDocs(bonId)
+  let docData = projectDocs?.[type] || null
+  if (!docData) {
+    const rfqs = db.read('rfq-generated.json') || []
+    docData    = rfqs.find(d => d.bonId === bonId)?.documents?.[type] || null
+  }
   if (!docData) return res.status(404).send(`<h3>Document "${type}" non encore généré pour ce BC.</h3>`)
 
   try {
@@ -1316,9 +1385,15 @@ app.patch('/api/documents/:bonId/:type', (req, res) => {
     return res.status(400).json({ error: 'Type invalide' })
 
   const data = req.body
+  if (!data || typeof data !== 'object' || Object.keys(data).length === 0)
+    return res.status(400).json({ error: 'Données vides — aucune modification sauvegardée' })
+
+  // Primary store: per-doc record
+  upsertDoc(bonId, type, data, 'edited')
+
+  // Keep rfq-generated.json in sync for HTML renderer
   const rfqs = db.read('rfq-generated.json') || []
   const idx  = rfqs.findIndex(d => d.bonId === bonId)
-
   if (idx >= 0) {
     rfqs[idx].documents       = rfqs[idx].documents || {}
     rfqs[idx].documents[type] = data
@@ -1326,9 +1401,9 @@ app.patch('/api/documents/:bonId/:type', (req, res) => {
   } else {
     rfqs.push({ bonId, documents: { [type]: data }, generatedAt: new Date().toISOString(), updatedAt: new Date().toISOString() })
   }
-
   db.write('rfq-generated.json', rfqs)
   syncDocuments()
+
   res.json({ success: true })
 })
 
