@@ -125,8 +125,56 @@
         "actionRecommandee": "Configurer Gemini",
         "resume": "Analyse locale sans IA.",
         "activiteDetectee": "—"
+      },
+      "devis": {
+        "reference": "DEV-TET-SAN-2024-001",
+        "date": "2024-07-26",
+        "client": "Province de TETOUAN",
+        "validite": "60 jours à compter de la date d'émission",
+        "items": [
+          {
+            "designation": "#01 Décapage, désherbage et nettoyage",
+            "unite": "M2",
+            "quantite": 120,
+            "prixUnitaire": 22.5,
+            "total": 2700
+          },
+          {
+            "designation": "#02 Tout venant",
+            "unite": "M3",
+            "quantite": 23.76,
+            "prixUnitaire": 210,
+            "total": 4989.6
+          },
+          {
+            "designation": "#03 Hérissonnage en pierres sèches",
+            "unite": "M2",
+            "quantite": 118.8,
+            "prixUnitaire": 58,
+            "total": 6890.4
+          },
+          {
+            "designation": "#04 Dallage en béton y/c treillis soudé.",
+            "unite": "M2",
+            "quantite": 118.8,
+            "prixUnitaire": 340,
+            "total": 40392
+          },
+          {
+            "designation": "#05 Fourniture de blocs sanitaires modulaires en panneaux sandwichs",
+            "unite": "U",
+            "quantite": 10,
+            "prixUnitaire": 88500,
+            "total": 885000
+          }
+        ],
+        "totalHT": 949972,
+        "tva": 189994.4,
+        "totalTTC": 1139966.4,
+        "conditions": "Paiement par virement bancaire. Acompte de 30% à la commande, solde à la réception provisoire des travaux. Délais de réalisation : 120 jours calendaires après notification de l'ordre de service. Pénalités de retard applicables conformément au CCAG-T.",
+        "notes": "Ce devis est établi sur la base des quantités estimatives fournies. Toute modification des quantités ou des spécifications techniques fera l'objet d'un avenant. Les prix incluent la fourniture, la pose, le transport, la main d'œuvre, les raccordements aux réseaux existants (eau, électricité, assainissement) et les essais de mise en service."
       }
     },
-    "generatedAt": "2026-05-29T15:39:04.744Z"
+    "generatedAt": "2026-05-29T15:39:22.280Z"
   }
 ]
