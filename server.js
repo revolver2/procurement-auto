@@ -85,7 +85,15 @@ const PORT = process.env.PORT || 3001
 /* ── Middleware ─────────────────────────────────────────────────── */
 app.use(cors())
 app.use(express.json())
-app.use(express.static(path.join(__dirname, 'public')))
+// Serve static assets with caching; HTML files get no-store to always deliver the latest version
+app.use(express.static(path.join(__dirname, 'public'), {
+  setHeaders(res, filePath) {
+    if (filePath.endsWith('.html')) {
+      res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
+      res.setHeader('Pragma', 'no-cache')
+    }
+  },
+}))
 
 /* ── Boot: start daily cron ────────────────────────────────────── */
 scheduler.startCron()
@@ -1475,6 +1483,8 @@ app.post('/api/ai/test', async (req, res) => {
    SPA fallback
 ══════════════════════════════════════════════════════════════════ */
 app.get('*', (req, res) => {
+  res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate')
+  res.setHeader('Pragma', 'no-cache')
   res.sendFile(path.join(__dirname, 'public/index.html'))
 })
 

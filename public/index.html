@@ -1,7 +1,10 @@
 <!DOCTYPE html>
+<!-- APP_VERSION: 2026-05-29-v3 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Marché Public — Automatisation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -803,6 +806,19 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
 <div id="toast"><i class="bi bi-check-circle-fill"></i><span id="toast-msg"></span></div>
 
 <script>
+/* ── Global error diagnostics (catches ReferenceError, TypeError, etc.) ── */
+window.onerror = function(msg, src, line, col) {
+  console.error('[GlobalError]', msg, 'at', src, 'line', line, 'col', col)
+  // Surface ReferenceErrors in the detail panel if it's open
+  if (msg && /process is not defined|is not defined/i.test(msg)) {
+    const dc = document.getElementById('detail-content')
+    if (dc && dc.innerHTML.includes('loading')) {
+      dc.innerHTML = `<p style="color:var(--danger);padding:16px">Erreur JS: ${msg} (${src}:${line})</p>`
+    }
+  }
+  return false // let browser also log it
+}
+
 /* ── State ── */
 let allProjects = []
 let currentProject = null
