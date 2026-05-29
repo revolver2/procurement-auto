@@ -869,8 +869,30 @@ app.post('/api/projects/:id/extract-avis', async (req, res) => {
       bons[idx].attachmentHasText = spec.hasText
       bons[idx].attachmentFound   = !spec.noAttachmentFound
       if (spec.attachments?.length) bons[idx].attachments = spec.attachments
+      // Set avisDocument so CrewAI unlocks immediately after successful extraction
+      if (spec.hasText) {
+        bons[idx].avisDocument = {
+          selectedPdf:      spec.primaryAvisName,
+          textLength:       spec.textLength,
+          textExtracted:    true,
+          validated:        true,
+          validatedAt:      new Date().toISOString(),
+          extractionMethod: spec.attachments?.some(a => a.ocrUsed) ? 'gemini-ocr' : 'pdf-parse',
+          ocrUsed:          spec.attachments?.some(a => a.ocrUsed) || false,
+        }
+        bons[idx].analysisSource = 'official_avis_attachment_only'
+      }
       db.write('procurement-analysis.json', bons)
     }
+
+    // Detect auth-gated download failures for clearer UI messaging
+    const allFailed = forceDownload && spec.attachments?.length > 0 && spec.attachments.every(a => !a.downloaded)
+    const authErrors = spec.attachments?.filter(a => /401|403|expired|token|session|unauthorized/i.test(a.error || '')) || []
+    const downloadError = allFailed
+      ? authErrors.length
+        ? 'Lien de téléchargement expiré ou portail authentifié. Lancez un scrape complet pour re-télécharger avec session active.'
+        : `Téléchargement échoué: ${spec.attachments[0]?.error || 'erreur réseau'}. Vérifiez les URLs ou relancez un scrape.`
+      : null
 
     // Include files-on-disk listing in response for UI debug
     const safeId2 = req.params.id.replace(/[^a-zA-Z0-9\-]/g, '_')
@@ -880,7 +902,7 @@ app.post('/api/projects/:id/extract-avis', async (req, res) => {
       try { filesOnDisk = fs.readdirSync(dir).map(f => ({ name: f, size: fs.statSync(path.join(dir,f)).size })) } catch {}
     }
 
-    res.json({ success: true, spec, filesOnDisk, dirExists: fs.existsSync(dir) })
+    res.json({ success: true, spec, filesOnDisk, dirExists: fs.existsSync(dir), downloadError, githubPersistence: !!(process.env.GITHUB_TOKEN || process.env.GITHUB_PAT) })
   } catch (e) { res.status(500).json({ success: false, error: e.message }) }
 })
 
@@ -1067,6 +1089,17 @@ app.get('/api/diagnostics/github', (req, res) => {
     githubRepo:            process.env.GITHUB_REPO || 'revolver2/procurement-auto',
     githubBranch:          process.env.GITHUB_BRANCH || 'main',
     tokenSource:           process.env.GITHUB_TOKEN ? 'GITHUB_TOKEN' : process.env.GITHUB_PAT ? 'GITHUB_PAT' : null,
+  })
+})
+
+/* ── Safe public config for frontend — never exposes secrets ─── */
+app.get('/api/public-config', (req, res) => {
+  res.json({
+    githubTokenConfigured: !!(process.env.GITHUB_TOKEN || process.env.GITHUB_PAT),
+    geminiConfigured:      !!process.env.GEMINI_API_KEY,
+    crewaiConfigured:      !!(process.env.CREWAI_SERVICE_URL || process.env.CREWAI_URL),
+    ocrAvailable:          !!process.env.GEMINI_API_KEY,
+    marchesConfigured:     !!(process.env.MARCHESPUBLICS_USERNAME && process.env.MARCHESPUBLICS_PASSWORD),
   })
 })
 

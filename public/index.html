@@ -810,9 +810,12 @@ let chatHistory = []
 let currentDetailBonId = null
 let settingsKeywords = null
 let detailChecks = {}
+window._publicConfig = {}
 
 /* ── Boot ── */
 document.addEventListener('DOMContentLoaded', () => {
+  // Load safe public config first (no secrets — only booleans)
+  fetch('/api/public-config').then(r => r.json()).then(cfg => { window._publicConfig = cfg || {} }).catch(() => {})
   fetchStats()
   fetchProjects()
   loadSyncHistory()
@@ -1124,7 +1127,7 @@ function renderDetail(bon) {
                   <span style="background:${statusOk?(att.ocrUsed?'rgba(124,58,237,.1)':'rgba(59,130,246,.1)'):statusOCR?'rgba(245,158,11,.1)':'#f1f5f9'};color:${statusOk?(att.ocrUsed?'#7c3aed':'var(--info)'):statusOCR?'#b45309':'var(--muted)'};padding:1px 7px;border-radius:10px;font-size:10px;font-weight:700">${statusOk?(att.ocrUsed?`✓ OCR Gemini (${(att.textLength||0).toLocaleString()} chars)`:`✓ Texte (${(att.textLength||0).toLocaleString()} chars)`):statusOCR?'⚠ PDF scanné — OCR requis':'Non extrait'}</span>
                 </div>
                 ${att.ocrUsed?`<div style="font-size:11px;color:#7c3aed;margin-bottom:4px"><i class="bi bi-stars"></i> OCR Gemini réussi — texte extrait automatiquement</div>`:''}
-                ${statusOCR&&!att.ocrUsed?`<div style="font-size:11px;color:#b45309;margin-bottom:4px"><i class="bi bi-exclamation-triangle"></i> PDF scanné sans couche texte${process.env.GEMINI_API_KEY===undefined?'' : ' — configurez GEMINI_API_KEY dans Render pour activer l\'OCR'}</div>`:''}
+                ${statusOCR&&!att.ocrUsed?`<div style="font-size:11px;color:#b45309;margin-bottom:4px"><i class="bi bi-exclamation-triangle"></i> PDF scanné sans couche texte${window._publicConfig?.geminiConfigured ? ' — cliquez Valider PDF AVIS (OCR Gemini disponible)' : ' — ajoutez GEMINI_API_KEY dans Render pour activer l\'OCR'}</div>`:''}
                 ${att.error?`<div style="font-size:11px;color:var(--danger);margin-bottom:4px"><i class="bi bi-x-circle"></i> ${h(att.error)}</div>`:''}
                 ${att.textLength?`<div style="font-size:11px;color:#64748b">${(att.textLength).toLocaleString()} caractères extraits</div>`:''}
                 ${att.url?`<a href="${h(att.url)}" target="_blank" style="font-size:11px;color:var(--info);margin-top:4px;display:inline-block"><i class="bi bi-box-arrow-up-right"></i> Ouvrir URL source</a>`:''}
@@ -3316,10 +3319,17 @@ async function reExtractAvis(bonId, forceDownload) {
     if (d.success) {
       const spec = d.spec || {}
       const ocrUsed = spec.attachments?.some(a=>a.ocrUsed)
-      if (spec.hasText) showToast(`✓ ${ocrUsed?'OCR Gemini':'Texte'} extrait: ${spec.textLength} chars — "${spec.primaryAvisName||'fichier'}"`)
-      else if (spec.attachments?.some(a=>a.requiresOCR)) showToast('PDF scanné — Gemini OCR tenté mais échoué. Vérifiez la clé GEMINI_API_KEY','warn')
-      else if (d.dirExists===false||spec.noAttachmentFound) showToast('Aucun fichier en cache — utilisez Force téléchargement','warn')
-      else showToast('Extraction terminée — aucun texte lisible trouvé','warn')
+      if (spec.hasText) {
+        showToast(`✓ ${ocrUsed?'OCR Gemini':'Texte'} extrait: ${spec.textLength} chars — CrewAI débloqué`)
+      } else if (d.downloadError) {
+        showToast(d.downloadError, 'warn')
+      } else if (spec.attachments?.some(a=>a.requiresOCR)) {
+        showToast(window._publicConfig?.geminiConfigured ? 'PDF scanné — OCR Gemini tenté mais échoué. Cliquez Valider PDF AVIS.' : 'PDF scanné — ajoutez GEMINI_API_KEY dans Render pour activer l\'OCR.', 'warn')
+      } else if (d.dirExists===false||spec.noAttachmentFound) {
+        showToast('Aucun fichier en cache — utilisez Force téléchargement','warn')
+      } else {
+        showToast('Extraction terminée — aucun texte lisible trouvé','warn')
+      }
       openProject(bonId)
     } else showToast(d.error||'Extraction échouée','err')
   } catch(e) { if (panel) panel.style.opacity=''; showToast(e.message,'err') }
