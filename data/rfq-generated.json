@@ -1,0 +1,19 @@
+[
+  {
+    "bonId": "1be4b663-3e8d-4f50-a04f-0ae7eef8904e",
+    "documents": {
+      "bordereau": [
+        {
+          "num": 1,
+          "designation": "#01Dépose de fenêtres et Fourniture et pose de fenêtre et châssis métallique composée de n vantaux ouvrant à la française à réaliser conformément aux détails comprenant : -Cadre en fer à U de  40x20x5mm. -ouvrants avec cadre en fer à U de 40x20x5mm. -parcloses en fer carré vissé de 14mm. -Plexiglass de 6 mm selon détail architecte. -paumelles de 120mm. -pattes à scellement nécessaires. -couvre joint en fer plat de 30x6mm. -2 verrous inférieur et supérieur. -levier et gâche par ouvrant. Ouvrage payé au mètre carré",
+          "unite": "M2",
+          "quantite": 89,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": ""
+        }
+      ]
+    },
+    "generatedAt": "2026-05-29T15:06:27.180Z"
+  }
+]
