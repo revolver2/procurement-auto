@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- APP_VERSION: 2026-05-29-v3 -->
+<!-- APP_VERSION: 2026-05-29-v4 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -806,17 +806,53 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
 <div id="toast"><i class="bi bi-check-circle-fill"></i><span id="toast-msg"></span></div>
 
 <script>
-/* ── Global error diagnostics (catches ReferenceError, TypeError, etc.) ── */
-window.onerror = function(msg, src, line, col) {
-  console.error('[GlobalError]', msg, 'at', src, 'line', line, 'col', col)
-  // Surface ReferenceErrors in the detail panel if it's open
-  if (msg && /process is not defined|is not defined/i.test(msg)) {
-    const dc = document.getElementById('detail-content')
-    if (dc && dc.innerHTML.includes('loading')) {
-      dc.innerHTML = `<p style="color:var(--danger);padding:16px">Erreur JS: ${msg} (${src}:${line})</p>`
-    }
+/* ══ RUNTIME PROCESS TRAP ══════════════════════════════════════════
+   Intercepts ANY access to window.process so we get the exact stack.
+   Safe polyfill fallback prevents third-party libs from crashing.
+   ================================================================ */
+;(function() {
+  const _safeProcess = { env: { NODE_ENV: 'production' }, browser: true }
+  try {
+    Object.defineProperty(window, 'process', {
+      get() {
+        /* Capture stack trace and surface it immediately */
+        const stack = new Error('process accessed in browser').stack || '(no stack)'
+        console.error('[PROCESS-TRAP] Accessed at:\n' + stack)
+        /* Show diagnostics in the detail panel if a BC is loading */
+        try {
+          const dc = document.getElementById('detail-content')
+          if (dc) {
+            dc.innerHTML = '<div style="color:#dc2626;padding:16px;font-family:monospace;font-size:12px;white-space:pre-wrap">'
+              + '<b>⚠ process accessed in browser — stack trace:</b>\n\n'
+              + stack.replace(/</g,'&lt;')
+              + '</div>'
+          }
+        } catch(_) {}
+        /* Return safe polyfill so execution continues — we can see the full stack */
+        return _safeProcess
+      },
+      configurable: true,
+    })
+  } catch(e) {
+    /* If defineProperty fails (some browsers), set a safe value */
+    window.process = _safeProcess
   }
-  return false // let browser also log it
+})()
+
+/* ── Global error diagnostics ─────────────────────────────────── */
+window.onerror = function(msg, src, line, col, errObj) {
+  const stack = errObj?.stack || '(no stack)'
+  console.error('[GlobalError]', msg, '\nat', src + ':' + line + ':' + col, '\n', stack)
+  const dc = document.getElementById('detail-content')
+  if (dc && /process|not defined|Cannot read/i.test(msg)) {
+    dc.innerHTML = '<div style="color:#dc2626;padding:16px;font-family:monospace;font-size:12px;white-space:pre-wrap">'
+      + '<b>Erreur JS: ' + msg + '</b>\n'
+      + 'Source: ' + src + ':' + line + ':' + col + '\n'
+      + 'Projet: ' + (window.currentDetailBonId || '—') + '\n\n'
+      + (stack||'').replace(/</g,'&lt;')
+      + '</div>'
+  }
+  return false
 }
 
 /* ── State ── */
