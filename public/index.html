@@ -1693,7 +1693,81 @@ function confBadge(arr, i) {
   return `<span class="conf-verify">⚑ À vérifier</span>`
 }
 
-function renderCrewAiHtml(d, bonId) {
+/* ── Normalise local-orchestrator format → flat UI format ── */
+function normalizeCrewAi(raw) {
+  if (!raw) return null
+  // Already flat (CrewAI Python service format has these top-level)
+  if (raw.profitabilityScore !== undefined || raw.urgencyScore !== undefined) {
+    return {
+      ...raw,
+      profitabilityScore: raw.profitabilityScore ?? 0,
+      urgencyScore:       raw.urgencyScore       ?? 0,
+      winningProbability: raw.winningProbability  || 'Inconnue',
+      summary:            raw.summary             || '',
+    }
+  }
+
+  // Local orchestrator format: nested objects
+  const p   = raw.profitability || {}
+  const a   = raw.activity      || {}
+  const det = raw.detection     || {}
+
+  const profScore = Math.min(100, Math.round((p.rentabilite || p.attractivenessScore || 0) * 10))
+  const urgScore  = Math.min(100, Math.round((p.urgence     || 0) * 10))
+  const winPct    = typeof p.winProbabilityPercent === 'number' ? p.winProbabilityPercent
+                  : typeof raw.winProbability      === 'number' ? raw.winProbability : 50
+  const winLabel  = winPct >= 65 ? 'Élevée' : winPct >= 40 ? 'Modérée' : 'Faible'
+
+  // Build supplier RFQ from profitability.fournisseursRFQ or supplier categories
+  const rawRfq = p.fournisseursRFQ || []
+  const supplierRFQ = rawRfq.map(f => typeof f === 'string' ? { category: f, items: [] } : f)
+
+  return {
+    ...raw,
+    // Scores (flat)
+    profitabilityScore: profScore,
+    urgencyScore:       urgScore,
+    winningProbability: winLabel,
+
+    // Content
+    summary:            p.resume || p.summary || '',
+    destination:        p.destination || '',
+    specifications:     p.specificationsTechniques || a.mainSections || [],
+    materials:          p.materiaux || (a.materials||[]).map(m => typeof m==='string'?m:m?.designation||JSON.stringify(m)) || [],
+    quantities:         [],
+    dimensions:         [],
+    supplierRFQ,
+    executionPlan:      p.planExecution || a.installation?.phases || [],
+    bordereauDraft:     p.bordereau     || [],
+    submissionChecklist:p.checklistSoumission || [],
+    risks:              p.risques || a.keyRisks || [],
+    missingInformation: p.informationsManquantes || a.missingInfo || [],
+    recommendedNextAction: p.actionRecommandee || p.recommendation || '',
+    confidence:         {},
+
+    // Source traceability built from log
+    sourceTraceability: raw.sourceTraceability || (raw.bonId ? {
+      bcId:               raw.bonId,
+      buyer:              raw.bon?.buyer        || '',
+      attachmentAnalyzed: raw.attachmentSpec?.primaryAvisName || '',
+      analysisDate:       raw.cachedAt          || raw.orchestratedAt || '',
+      aiEngine:           raw.provider          || 'orchestrateur local',
+      statement:          `Analyse basée sur l'AVIS officiel — ${raw.analysisSource||''}`,
+    } : null),
+
+    // Keep raw for debug
+    _raw:      raw,
+    _log:      raw.log || [],
+    _detection: det,
+    _winPct:   winPct,
+    _avisTextLength: raw.attachmentSpec?.textLength || 0,
+    _analysisSource: raw.analysisSource || '',
+  }
+}
+
+function renderCrewAiHtml(raw, bonId) {
+  const d = normalizeCrewAi(raw) || {}
+
   const specs     = d.specifications      || []
   const mats      = d.materials           || []
   const qtys      = d.quantities          || []
@@ -1821,8 +1895,57 @@ function renderCrewAiHtml(d, bonId) {
   ${d.recommendedNextAction ? `<div style="margin-top:4px;padding:12px 16px;background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:10px;font-size:13px">
     <b style="color:var(--orange)">Action recommandée:</b> ${h(d.recommendedNextAction)}
   </div>` : ''}
+
+  <!-- Diagnostics section -->
+  <details style="margin-top:14px">
+    <summary style="cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;padding:8px 0;list-style:none;display:flex;align-items:center;gap:6px">
+      <i class="bi bi-bug"></i> Diagnostics analyse
+    </summary>
+    <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin-top:6px;font-size:12px">
+      <table style="width:100%;border-collapse:collapse">
+        <tr><td style="color:#64748b;padding:2px 0;width:180px">Longueur texte AVIS</td>
+            <td style="font-weight:600">${d._avisTextLength ? d._avisTextLength.toLocaleString()+' chars' : '—'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Source analyse</td>
+            <td style="font-weight:600">${h(d._analysisSource || d.analysisSource || '—')}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Moteur IA</td>
+            <td style="font-weight:600">${h(d.provider || '—')}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Cache</td>
+            <td style="font-weight:600">${d.cached||d.cachedAt ? '✓ Oui — '+(d.cachedAt?new Date(d.cachedAt).toLocaleString('fr-FR'):'') : 'Non'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">PDF analysé</td>
+            <td style="font-weight:600;word-break:break-all">${h(d.sourceTraceability?.attachmentAnalyzed || d._raw?.attachmentSpec?.primaryAvisName || '—')}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Rentabilité (brut)</td>
+            <td style="font-weight:600">${d.profitabilityScore??'?'}/100 (valeur source: ${d._raw?.profitability?.rentabilite??'?'}/10)</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Urgence (brut)</td>
+            <td style="font-weight:600">${d.urgencyScore??'?'}/100 (valeur source: ${d._raw?.profitability?.urgence??'?'}/10)</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Prob. succès (brut)</td>
+            <td style="font-weight:600">${h(d.winningProbability||'?')} (${d._winPct??'?'}%)</td></tr>
+      </table>
+      ${d._avisTextLength < 50 ? `<div style="margin-top:8px;padding:8px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:6px;color:#dc2626">
+        <i class="bi bi-exclamation-triangle-fill"></i> <b>Analyse impossible:</b> aucun texte exploitable extrait de l'AVIS (${d._avisTextLength||0} chars &lt; 50 requis).
+      </div>` : ''}
+      ${d._log?.length ? `<div style="margin-top:8px"><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:4px">Log pipeline</div>
+        <div style="font-family:monospace;font-size:10px;color:#475569;max-height:100px;overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:4px;padding:6px">${d._log.map(l=>h(l)).join('<br>')}</div>
+      </div>` : ''}
+      <button onclick="showJsonDebug('${bonId}')" style="margin-top:10px;background:none;border:1px solid #e2e8f0;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;color:#64748b"><i class="bi bi-braces"></i> Voir JSON analyse</button>
+    </div>
+  </details>
   `
   return html
+}
+
+async function showJsonDebug(bonId) {
+  try {
+    const r = await fetch(`/api/projects/${bonId}/crewai-analysis`)
+    const d = await r.json()
+    const modal = document.getElementById('doc-modal')
+    const pane  = document.getElementById('doc-form-pane')
+    if (!modal || !pane) { alert(JSON.stringify(d, null, 2).substring(0,2000)); return }
+    pane.innerHTML = `<div style="padding:16px"><h3 style="font-size:14px;margin-bottom:12px;color:#1e3a5f"><i class="bi bi-braces"></i> JSON Analyse — ${h(bonId)}</h3>
+      <pre style="font-size:11px;background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:12px;overflow:auto;max-height:60vh;color:#374151">${h(JSON.stringify(d, null, 2))}</pre>
+    </div>`
+    modal.classList.add('open')
+    document.getElementById('doc-modal-title').textContent = 'JSON Debug'
+  } catch(e) { showToast('Erreur: '+e.message,'err') }
 }
 
 /* ── Document generation ── */
