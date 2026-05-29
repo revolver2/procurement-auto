@@ -358,6 +358,33 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);displ
 .source-trace td{padding:3px 0;vertical-align:top}
 .source-trace td:first-child{color:var(--muted);width:140px;font-weight:600}
 
+/* ── Procurement Engineer tabs ── */
+.pe-tabs-wrapper{width:100%}
+.pe-tabs{display:flex;gap:3px;padding:4px;background:#f1f5f9;border-radius:10px;margin-bottom:14px;overflow-x:auto;scrollbar-width:none;flex-shrink:0}
+.pe-tabs::-webkit-scrollbar{display:none}
+.pe-tab{display:flex;align-items:center;gap:5px;padding:6px 11px;border:none;border-radius:7px;background:transparent;color:var(--muted);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all .15s;font-family:inherit;flex-shrink:0}
+.pe-tab:hover{background:rgba(255,255,255,.7);color:var(--text)}
+.pe-tab.active{background:#fff;color:var(--text);font-weight:600;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.pe-tab i{font-size:13px}
+.pe-tab-badge{background:var(--orange);color:#fff;border-radius:8px;font-size:9px;font-weight:700;padding:1px 5px;min-width:16px;text-align:center;line-height:1.4}
+.pe-pane{display:none}
+.pe-pane.active{display:block}
+.pe-table{width:100%;border-collapse:collapse;font-size:12px}
+.pe-table th{padding:6px 8px;background:#f8fafc;font-weight:600;font-size:10px;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);border-bottom:1px solid var(--border);text-align:left}
+.pe-table td{padding:7px 8px;border-bottom:1px solid #f8fafc;vertical-align:top}
+.pe-table tr:last-child td{border-bottom:none}
+.pe-card{background:#fff;border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:10px}
+.pe-card h4{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.pe-phase{background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.pe-empty{text-align:center;padding:32px 20px;color:var(--muted)}
+.pe-empty i{font-size:28px;display:block;margin-bottom:8px;opacity:.4}
+.sev-high{color:#dc2626;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.15);padding:1px 7px;border-radius:8px;font-size:10px;font-weight:700}
+.sev-med{color:#d97706;background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.15);padding:1px 7px;border-radius:8px;font-size:10px;font-weight:700}
+.sev-low{color:#059669;background:rgba(5,150,105,.08);border:1px solid rgba(5,150,105,.15);padding:1px 7px;border-radius:8px;font-size:10px;font-weight:700}
+.cert-req{display:inline-block;margin:2px;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#dc2626;background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.15)}
+.cert-opt{display:inline-block;margin:2px;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;color:#d97706;background:rgba(217,119,6,.08);border:1px solid rgba(217,119,6,.15)}
+.cert-na{display:inline-block;margin:2px;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;color:var(--muted);background:#f1f5f9;border:1px solid #e2e8f0}
+
 /* ── Toast ── */
 #toast{position:fixed;bottom:24px;right:24px;background:#1e293b;color:#fff;padding:12px 18px;border-radius:10px;font-size:13px;font-weight:500;z-index:9999;display:none;align-items:center;gap:8px;max-width:340px;box-shadow:0 8px 24px rgba(0,0,0,.2)}
 #toast.show{display:flex}
@@ -1674,7 +1701,7 @@ async function loadCrewAiTab(bonId) {
   const panel = document.getElementById('crewai-result-panel')
   if (!panel) return
   // If already populated from the /full endpoint, don't overwrite
-  if (panel.querySelector('.crewai-section')) return
+  if (panel.querySelector('.pe-tabs-wrapper') || panel.querySelector('.crewai-section')) return
   try {
     const r = await fetch(`/api/projects/${bonId}/crewai-analysis`)
     if (!r.ok) return
@@ -1693,244 +1720,427 @@ function confBadge(arr, i) {
   return `<span class="conf-verify">⚑ À vérifier</span>`
 }
 
-/* ── Normalise local-orchestrator format → flat UI format ── */
+/* ── Normalise any format → unified PE v2 shape ── */
 function normalizeCrewAi(raw) {
   if (!raw) return null
-  // Already flat (CrewAI Python service format has these top-level)
+
+  // ── v2: master-analysis-skill output ────────────────────────
+  if (raw.analysisVersion === 'v2-procurement-engineer' || raw.executive) {
+    const ex = raw.executive || {}
+    return {
+      ...raw,
+      profitabilityScore: ex.profitabilityScore ?? raw.profitabilityScore ?? 50,
+      urgencyScore:       ex.urgencyScore       ?? raw.urgencyScore       ?? 50,
+      winningProbability: ex.winningProbability ?? raw.winningProbability ?? 'Modérée',
+      summary:            raw.summary || ex.scopeOfWork || '',
+      executive:          ex,
+      materials:          raw.materials          || [],
+      certifications:     raw.certifications     || { required: [], optional: [], notMentioned: [] },
+      complianceChecklist:raw.complianceChecklist|| [],
+      supplierRFQ:        raw.supplierRFQ        || [],
+      bordereau:          raw.bordereau          || [],
+      executionPlan:      raw.executionPlan      || [],
+      manpower:           raw.manpower           || [],
+      equipment:          raw.equipment          || [],
+      risks:              raw.risks              || [],
+      winningStrategy:    raw.winningStrategy    || {},
+      actionPlan:         raw.actionPlan         || [],
+      _v2: true,
+      _raw: raw,
+      _log: raw.log || [],
+      _avisTextLength: raw.attachmentSpec?.textLength || 0,
+      _analysisSource: raw.analysisSource || '',
+    }
+  }
+
+  // ── v1 flat: Python CrewAI service ──────────────────────────
   if (raw.profitabilityScore !== undefined || raw.urgencyScore !== undefined) {
     return {
       ...raw,
       profitabilityScore: raw.profitabilityScore ?? 0,
       urgencyScore:       raw.urgencyScore       ?? 0,
-      winningProbability: raw.winningProbability  || 'Inconnue',
-      summary:            raw.summary             || '',
+      winningProbability: raw.winningProbability || 'Inconnue',
+      summary:            raw.summary || '',
+      executive: {
+        profitabilityScore: raw.profitabilityScore ?? 0,
+        urgencyScore:       raw.urgencyScore       ?? 0,
+        winningProbability: raw.winningProbability || 'Inconnue',
+        bidRecommendation:  '—',
+        scopeOfWork:        raw.summary || '',
+      },
+      materials:          (raw.materials||[]).map(m => typeof m==='string'?{designation:m,category:'Autres',confidence:'Faible'}:m),
+      certifications:     raw.certifications || { required:[], optional:[], notMentioned:[] },
+      complianceChecklist:(raw.submissionChecklist||[]).map(s=>({item:s,category:'admin'})),
+      supplierRFQ:        raw.supplierRFQ || [],
+      bordereau:          raw.bordereau || raw.bordereauDraft || [],
+      executionPlan:      (raw.executionPlan||[]).map(p2=>typeof p2==='string'?{phase:p2,duration:'—',tasks:[]}:p2),
+      manpower:           raw.manpower || [],
+      equipment:          raw.equipment || [],
+      risks:              (raw.risks||[]).map(r=>typeof r==='string'?{description:r,severity:'Moyenne',type:'technical_risk'}:r),
+      winningStrategy:    raw.winningStrategy || { strengths:[], technicalPoints:[], commercialRecommendations:[], riskMitigation:[] },
+      actionPlan:         raw.actionPlan || [],
+      _raw: raw, _log: raw.log||[], _avisTextLength: raw.attachmentSpec?.textLength||0, _analysisSource: raw.analysisSource||'',
     }
   }
 
-  // Local orchestrator format: nested objects
+  // ── v1 nested: local orchestrator (profitability.rentabilite) ─
   const p   = raw.profitability || {}
   const a   = raw.activity      || {}
-  const det = raw.detection     || {}
-
   const profScore = Math.min(100, Math.round((p.rentabilite || p.attractivenessScore || 0) * 10))
-  const urgScore  = Math.min(100, Math.round((p.urgence     || 0) * 10))
-  const winPct    = typeof p.winProbabilityPercent === 'number' ? p.winProbabilityPercent
-                  : typeof raw.winProbability      === 'number' ? raw.winProbability : 50
+  const urgScore  = Math.min(100, Math.round((p.urgence || 0) * 10))
+  const winPct    = typeof p.winProbabilityPercent === 'number' ? p.winProbabilityPercent : typeof raw.winProbability === 'number' ? raw.winProbability : 50
   const winLabel  = winPct >= 65 ? 'Élevée' : winPct >= 40 ? 'Modérée' : 'Faible'
 
-  // Build supplier RFQ from profitability.fournisseursRFQ or supplier categories
-  const rawRfq = p.fournisseursRFQ || []
-  const supplierRFQ = rawRfq.map(f => typeof f === 'string' ? { category: f, items: [] } : f)
+  const mats = (p.materiaux || a.materials || []).map(m =>
+    typeof m === 'string' ? { designation: m, category: 'Autres', confidence: 'Faible' } :
+    { designation: m.name||m.designation||JSON.stringify(m), specification: m.specification||'', quantity: String(m.quantite||m.qty||''), unit: m.unite||m.unit||'', category: 'Autres', confidence: 'Moyenne' }
+  )
+  const execPlan = (p.planExecution || a.installation?.phases || []).map(ph =>
+    typeof ph === 'string' ? { phase: ph, duration: '—', tasks: [] } : ph
+  )
 
   return {
     ...raw,
-    // Scores (flat)
     profitabilityScore: profScore,
     urgencyScore:       urgScore,
     winningProbability: winLabel,
-
-    // Content
     summary:            p.resume || p.summary || '',
-    destination:        p.destination || '',
-    specifications:     p.specificationsTechniques || a.mainSections || [],
-    materials:          p.materiaux || (a.materials||[]).map(m => typeof m==='string'?m:m?.designation||JSON.stringify(m)) || [],
-    quantities:         [],
-    dimensions:         [],
-    supplierRFQ,
-    executionPlan:      p.planExecution || a.installation?.phases || [],
-    bordereauDraft:     p.bordereau     || [],
-    submissionChecklist:p.checklistSoumission || [],
-    risks:              p.risques || a.keyRisks || [],
-    missingInformation: p.informationsManquantes || a.missingInfo || [],
-    recommendedNextAction: p.actionRecommandee || p.recommendation || '',
-    confidence:         {},
-
-    // Source traceability built from log
+    executive: {
+      projectTitle: raw.bon?.title || '',
+      buyer:        raw.bon?.buyer || '',
+      city:         raw.bon?.location || '',
+      deadline:     raw.bon?.deadline || '',
+      scopeOfWork:  p.resume || '',
+      estimatedComplexity: p.difficulte >= 7 ? 'Élevée' : p.difficulte >= 4 ? 'Moyenne' : 'Faible',
+      bidRecommendation: profScore >= 70 ? 'Recommandé' : profScore >= 40 ? 'Neutre' : 'Non recommandé',
+      profitabilityScore: profScore,
+      urgencyScore:       urgScore,
+      winningProbability: winLabel,
+    },
+    materials:          mats,
+    certifications:     { required:[], optional:[], notMentioned:[] },
+    complianceChecklist:(p.checklistSoumission||[]).map(s=>({item:s,category:'admin'})),
+    supplierRFQ:        (p.fournisseursRFQ||[]).map(f=>typeof f==='string'?{category:f,items:[]}:f),
+    bordereau:          p.bordereau || [],
+    executionPlan:      execPlan,
+    manpower:           (p.mainOeuvre||[]).map(mo=>({role:mo.role||mo, count:mo.nombre||1, duration:`${mo.dureeJours||'?'} jours`, notes:''})),
+    equipment:          (p.equipements||[]).map(e=>({item:typeof e==='string'?e:(e.item||JSON.stringify(e)), quantity:1, location:'Chantier', notes:''})),
+    risks:              (p.risques||a.keyRisks||[]).map(r=>typeof r==='string'?{description:r,severity:'Moyenne',type:'technical_risk'}:r),
+    winningStrategy: {
+      strengths: [],
+      technicalPoints:           p.specificationsTechniques?.slice(0,3) || [],
+      commercialRecommendations: p.strategieOffre ? [p.strategieOffre] : [],
+      riskMitigation: [],
+    },
+    actionPlan: p.actionRecommandee ? [{step:1,action:p.actionRecommandee,deadline:'Immédiat',owner:'Direction'}] : [],
     sourceTraceability: raw.sourceTraceability || (raw.bonId ? {
-      bcId:               raw.bonId,
-      buyer:              raw.bon?.buyer        || '',
-      attachmentAnalyzed: raw.attachmentSpec?.primaryAvisName || '',
-      analysisDate:       raw.cachedAt          || raw.orchestratedAt || '',
-      aiEngine:           raw.provider          || 'orchestrateur local',
-      statement:          `Analyse basée sur l'AVIS officiel — ${raw.analysisSource||''}`,
+      bcId: raw.bonId, buyer: raw.bon?.buyer||'', attachmentAnalyzed: raw.attachmentSpec?.primaryAvisName||'',
+      analysisDate: raw.cachedAt||raw.orchestratedAt||'', aiEngine: raw.provider||'orchestrateur local',
+      statement: `Analyse basée sur l'AVIS officiel — ${raw.analysisSource||''}`,
     } : null),
-
-    // Keep raw for debug
-    _raw:      raw,
-    _log:      raw.log || [],
-    _detection: det,
-    _winPct:   winPct,
-    _avisTextLength: raw.attachmentSpec?.textLength || 0,
-    _analysisSource: raw.analysisSource || '',
+    _raw: raw, _log: raw.log||[], _winPct: winPct,
+    _avisTextLength: raw.attachmentSpec?.textLength||0,
+    _analysisSource: raw.analysisSource||'',
   }
 }
 
+function peTab(name, btn) {
+  const wrapper = btn.closest('.pe-tabs-wrapper')
+  if (!wrapper) return
+  wrapper.querySelectorAll('.pe-tab').forEach(b => b.classList.remove('active'))
+  wrapper.querySelectorAll('.pe-pane').forEach(p => p.classList.remove('active'))
+  btn.classList.add('active')
+  const pane = wrapper.querySelector('[data-pane="'+name+'"]')
+  if (pane) pane.classList.add('active')
+}
+
 function renderCrewAiHtml(raw, bonId) {
-  const d = normalizeCrewAi(raw) || {}
+  const d  = normalizeCrewAi(raw) || {}
+  const ex = d.executive || {}
 
-  const specs     = d.specifications      || []
-  const mats      = d.materials           || []
-  const qtys      = d.quantities          || []
-  const dims      = d.dimensions          || []
-  const rfq       = d.supplierRFQ         || []
-  const plan      = d.executionPlan       || []
-  const risks     = d.risks               || []
-  const miss      = d.missingInformation  || []
-  const bord      = d.bordereauDraft      || []
-  const checklist = d.submissionChecklist || []
-  const conf      = d.confidence          || {}
-  const trace     = d.sourceTraceability  || null
+  const mats     = d.materials          || []
+  const certs    = d.certifications     || { required:[], optional:[], notMentioned:[] }
+  const checklist= d.complianceChecklist|| []
+  const rfq      = d.supplierRFQ        || []
+  const bord     = d.bordereau          || []
+  const execPlan = d.executionPlan      || []
+  const manpower = d.manpower           || []
+  const equipment= d.equipment          || []
+  const risks    = d.risks              || []
+  const strategy = d.winningStrategy    || {}
+  const actions  = d.actionPlan         || []
+  const trace    = d.sourceTraceability || null
 
-  const providerBadge = d.provider === 'gemini'
-    ? `<span style="font-size:10px;background:rgba(16,185,129,.1);color:#059669;padding:1px 8px;border-radius:10px;font-weight:700">Gemini</span>`
+  const profScore = ex.profitabilityScore ?? d.profitabilityScore ?? 0
+  const urgScore  = ex.urgencyScore       ?? d.urgencyScore       ?? 0
+  const winLabel  = ex.winningProbability || d.winningProbability || '—'
+  const bidRec    = ex.bidRecommendation  || '—'
+
+  const providerBadge = (d.provider === 'gemini' || d._v2)
+    ? `<span style="font-size:10px;background:rgba(16,185,129,.1);color:#059669;padding:1px 8px;border-radius:10px;font-weight:700">Gemini 2.5 Flash</span>`
     : `<span style="font-size:10px;background:#f1f5f9;color:var(--muted);padding:1px 8px;border-radius:10px;font-weight:600">Règles locales</span>`
 
-  const traceHtml = trace ? `
-  <div class="source-trace">
-    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--orange);margin-bottom:8px"><i class="bi bi-shield-check"></i> Source officielle</div>
-    <table>
-      <tr><td>BC / Ref</td><td><strong>${h(trace.bcId||'—')}</strong></td></tr>
-      <tr><td>Acheteur</td><td><strong>${h(trace.buyer||'—')}</strong></td></tr>
-      <tr><td>Pièce jointe analysée</td><td><strong>${h(trace.attachmentAnalyzed||'—')}</strong></td></tr>
-      <tr><td>Date d'analyse</td><td><strong>${h(trace.analysisDate||'—')}</strong></td></tr>
-      <tr><td>Moteur IA</td><td><strong>${h(trace.aiEngine||'—')}</strong></td></tr>
-    </table>
-    <p style="margin-top:8px;font-style:italic;color:var(--muted)">${h(trace.statement||'')}</p>
+  const recColor = bidRec.includes('Fortement') ? '#059669' : bidRec.includes('Recommandé') ? '#16a34a' : bidRec.includes('Non') ? '#dc2626' : '#d97706'
+  const recBg    = bidRec.includes('Fortement') ? 'rgba(16,185,129,.1)' : bidRec.includes('Recommandé') ? 'rgba(22,163,74,.08)' : bidRec.includes('Non') ? 'rgba(220,38,38,.08)' : 'rgba(217,119,6,.08)'
+
+  /* ── TAB 1: SUMMARY ──────────────────────────────────────── */
+  const traceHtml = trace ? `<div class="source-trace" style="margin-bottom:12px">
+    <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:var(--orange);margin-bottom:6px"><i class="bi bi-shield-check"></i> Source officielle</div>
+    <table><tr><td>BC / Ref</td><td><strong>${h(trace.bcId||'—')}</strong></td></tr>
+    <tr><td>Acheteur</td><td><strong>${h(trace.buyer||'—')}</strong></td></tr>
+    <tr><td>Pièce jointe</td><td><strong>${h(trace.attachmentAnalyzed||'—')}</strong></td></tr>
+    <tr><td>Date analyse</td><td><strong>${h(trace.analysisDate||'—')}</strong></td></tr>
+    <tr><td>Moteur IA</td><td><strong>${h(trace.aiEngine||'—')}</strong></td></tr></table>
   </div>` : ''
 
-  let html = `
-  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:14px">
-    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
-      <span class="crewai-badge"><i class="bi bi-robot"></i> CrewAI — 8 agents</span>
-      ${providerBadge}
-      ${d.cached ? `<span style="font-size:10px;background:rgba(59,130,246,.1);color:#2563eb;padding:1px 8px;border-radius:10px;font-weight:600"><i class="bi bi-lightning-charge-fill"></i> Mis en cache</span>` : ''}
-      <span style="font-size:11px;color:var(--muted)">${d.analyzedAt ? new Date(d.analyzedAt).toLocaleString('fr-FR') : ''}</span>
+  const summaryTab = `${traceHtml}
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px">
+    <div class="pe-card" style="text-align:center;padding:12px 8px">
+      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:5px">Rentabilité</p>
+      <div style="font-size:26px;font-weight:800;color:${profScore>=60?'var(--success)':profScore>=35?'#f59e0b':'var(--danger)'}">${profScore}<span style="font-size:11px">/100</span></div>
     </div>
-    <button onclick="runCrewAiAnalysis('${bonId}',true)" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Re-analyze from AVIS</button>
-  </div>
-
-  ${traceHtml}
-
-  ${d.summary ? `<div class="crewai-section"><h4><i class="bi bi-blockquote-left" style="color:var(--orange)"></i> Résumé</h4><p style="font-size:13px;line-height:1.6;color:var(--text)">${h(d.summary)}</p></div>` : ''}
-
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px">
-    <div class="crewai-section" style="text-align:center;padding:14px">
-      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Rentabilité</p>
-      <div style="font-size:24px;font-weight:800;color:${(d.profitabilityScore||0)>=60?'var(--success)':(d.profitabilityScore||0)>=35?'#f59e0b':'var(--danger)'}">${d.profitabilityScore||'?'}<span style="font-size:12px">/100</span></div>
+    <div class="pe-card" style="text-align:center;padding:12px 8px">
+      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:5px">Urgence</p>
+      <div style="font-size:26px;font-weight:800;color:${urgScore>=70?'var(--danger)':urgScore>=40?'#f59e0b':'var(--success)'}">${urgScore}<span style="font-size:11px">/100</span></div>
     </div>
-    <div class="crewai-section" style="text-align:center;padding:14px">
-      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Urgence</p>
-      <div style="font-size:24px;font-weight:800;color:${(d.urgencyScore||0)>=70?'var(--danger)':(d.urgencyScore||0)>=40?'#f59e0b':'var(--success)'}">${d.urgencyScore||'?'}<span style="font-size:12px">/100</span></div>
+    <div class="pe-card" style="text-align:center;padding:12px 8px">
+      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:5px">Prob. succès</p>
+      <div style="font-size:18px;font-weight:800;color:${winLabel==='Élevée'?'var(--success)':winLabel==='Faible'?'var(--danger)':'#f59e0b'}">${h(winLabel)}</div>
     </div>
-    <div class="crewai-section" style="text-align:center;padding:14px">
-      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:6px">Prob. succès</p>
-      <div style="font-size:18px;font-weight:800;color:${d.winningProbability==='Élevée'?'var(--success)':d.winningProbability==='Faible'?'var(--danger)':'#f59e0b'}">${h(d.winningProbability||'?')}</div>
+    <div class="pe-card" style="text-align:center;padding:12px 8px">
+      <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:5px">Recommandation</p>
+      <div style="font-size:11px;font-weight:700;color:${recColor};background:${recBg};border-radius:6px;padding:4px 5px;line-height:1.4">${h(bidRec)}</div>
     </div>
   </div>
-
-  ${d.destination && d.destination !== 'Non précisé dans l\'avis joint.' ? `<div class="crewai-section"><h4><i class="bi bi-geo-alt" style="color:var(--orange)"></i> Destination</h4><p style="font-size:13px">${h(d.destination)}</p></div>` : ''}
-
-  ${specs.length ? `<div class="crewai-section"><h4><i class="bi bi-tools" style="color:var(--orange)"></i> Spécifications techniques</h4><div style="display:flex;flex-wrap:wrap;gap:6px">${specs.map((s,i)=>`<span style="display:inline-flex;align-items:center;gap:4px;margin:2px"><span class="crewai-tag">${h(String(s))}</span>${confBadge(conf.specifications,i)}</span>`).join('')}</div></div>` : ''}
-
-  ${mats.length ? `<div class="crewai-section"><h4><i class="bi bi-boxes" style="color:var(--purple)"></i> Matériaux</h4><div style="display:flex;flex-wrap:wrap;gap:6px">${mats.map((m,i)=>`<span style="display:inline-flex;align-items:center;gap:4px;margin:2px"><span class="crewai-tag mat">${h(String(m))}</span>${confBadge(conf.materials,i)}</span>`).join('')}</div>
-  ${(qtys.length||dims.length) ? `<div style="margin-top:10px;display:flex;flex-wrap:wrap;gap:6px">
-    ${qtys.map((q,i)=>`<span style="display:inline-flex;align-items:center;gap:4px;margin:2px"><span class="crewai-tag" style="background:rgba(2,132,199,.08);color:#0284c7">${h(String(q))}</span>${confBadge(conf.quantities,i)}</span>`).join('')}
-    ${dims.map((d2,i)=>`<span style="display:inline-flex;align-items:center;gap:4px;margin:2px"><span class="crewai-tag" style="background:rgba(16,185,129,.08);color:#059669">${h(String(d2))}</span>${confBadge(conf.dimensions,i)}</span>`).join('')}
-  </div>` : ''}</div>` : ''}
-
-  ${rfq.length ? `<div class="crewai-section"><h4><i class="bi bi-envelope-open" style="color:var(--orange)"></i> RFQ Fournisseurs</h4>
-    ${rfq.map(r2 => `<div style="margin-bottom:12px">
-      <div style="font-size:13px;font-weight:600;margin-bottom:6px">${h(r2.category||'')}</div>
-      <div style="display:flex;flex-wrap:wrap;gap:5px">${(r2.items||[]).map(it=>`<span class="crewai-tag">${h(String(it))}</span>`).join('')}</div>
-      ${r2.specification ? `<p style="font-size:12px;color:var(--muted);margin-top:5px">${h(r2.specification)}</p>` : ''}
-    </div>`).join('')}
+  ${(ex.buyer||ex.city||ex.deadline||ex.estimatedComplexity) ? `<div class="pe-card" style="margin-bottom:10px">
+    <h4><i class="bi bi-info-circle" style="color:var(--orange)"></i> Projet</h4>
+    <table style="width:100%;border-collapse:collapse;font-size:13px">
+      ${ex.buyer ? `<tr><td style="color:var(--muted);padding:3px 0;width:120px;font-weight:600">Acheteur</td><td>${h(ex.buyer)}</td></tr>` : ''}
+      ${ex.city  ? `<tr><td style="color:var(--muted);padding:3px 0;font-weight:600">Ville</td><td>${h(ex.city)}</td></tr>` : ''}
+      ${ex.deadline ? `<tr><td style="color:var(--muted);padding:3px 0;font-weight:600">Délai</td><td><strong style="color:var(--danger)">${h(ex.deadline)}</strong></td></tr>` : ''}
+      ${ex.estimatedComplexity ? `<tr><td style="color:var(--muted);padding:3px 0;font-weight:600">Complexité</td><td>${h(ex.estimatedComplexity)}</td></tr>` : ''}
+    </table>
   </div>` : ''}
+  ${d.summary||ex.scopeOfWork ? `<div class="pe-card">
+    <h4><i class="bi bi-blockquote-left" style="color:var(--orange)"></i> Résumé exécutif</h4>
+    <p style="font-size:13px;line-height:1.6">${h(d.summary||ex.scopeOfWork||'')}</p>
+  </div>` : ''}`
 
-  ${bord.length ? `<div class="crewai-section"><h4><i class="bi bi-list-columns-reverse" style="color:var(--orange)"></i> Bordereau (projet)</h4>
-    <table class="bordereau-table"><thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Qté</th><th>PU HT</th><th>Total HT</th><th>TVA</th><th>TTC</th><th style="width:90px">Confiance</th></tr></thead>
-    <tbody>${bord.map((b2,i)=>`<tr>
-      <td>${b2.num||''}</td>
-      <td>${h(String(b2.designation||''))}</td>
-      <td>${h(String(b2.unite||''))}</td>
-      <td>${h(String(b2.quantite||''))}</td>
-      <td style="color:var(--muted);font-style:italic">${h(String(b2.prixUnitaireHT||'— à compléter'))}</td>
-      <td style="color:var(--muted);font-style:italic">${h(String(b2.totalHT||''))}</td>
-      <td>${h(String(b2.tva||'20%'))}</td>
-      <td style="color:var(--muted);font-style:italic">${h(String(b2.totalTTC||''))}</td>
-      <td>${confBadge(conf.bordereauDraft,i)}</td>
-    </tr>`).join('')}</tbody></table>
-  </div>` : ''}
+  /* ── TAB 2: MATERIALS ────────────────────────────────────── */
+  const CAT_ORDER = ['Aluminium','Inox','Vitrage','Quincaillerie','Serrurerie','Charpente métallique','Panneaux sandwich','Fixation','Peinture','Main d\'œuvre','Autres']
+  const byCategory = {}
+  for (const m of mats) { const c = m.category||'Autres'; (byCategory[c]=byCategory[c]||[]).push(m) }
+  const cColor = c => c==='Élevée'?'#059669':c==='Moyenne'?'#d97706':'#94a3b8'
+  const cBg    = c => c==='Élevée'?'rgba(5,150,105,.08)':c==='Moyenne'?'rgba(217,119,6,.08)':'#f1f5f9'
 
-  ${plan.length ? `<div class="crewai-section"><h4><i class="bi bi-diagram-3" style="color:var(--info)"></i> Plan d'exécution</h4>
-    <div style="display:flex;flex-direction:column;gap:8px">${plan.map((p2,i)=>`
-    <div style="display:flex;align-items:flex-start;gap:10px">
-      <div style="width:22px;height:22px;border-radius:50%;background:rgba(59,130,246,.1);color:#2563eb;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px">${i+1}</div>
-      <span class="crewai-tag plan" style="flex:1;border-radius:8px;padding:5px 10px">${h(String(p2))}</span>
-      ${confBadge(conf.executionPlan,i)}
+  const materialsTab = mats.length ? CAT_ORDER.filter(cat => byCategory[cat]?.length).map(cat => `
+  <div class="pe-card" style="margin-bottom:10px">
+    <h4><i class="bi bi-tag" style="color:var(--purple)"></i> ${h(cat)} <span style="font-weight:400;font-size:11px">(${byCategory[cat].length})</span></h4>
+    <table class="pe-table">
+      <thead><tr><th>Désignation</th><th>Spécification</th><th>Quantité</th><th>Unité</th><th>Confiance</th></tr></thead>
+      <tbody>${byCategory[cat].map(m=>`<tr>
+        <td style="font-weight:500">${h(m.designation||m.name||'—')}</td>
+        <td style="color:var(--muted)">${h(m.specification||m.spec||'—')}</td>
+        <td>${h(String(m.quantity||m.quantite||'—'))}</td>
+        <td>${h(m.unit||m.unite||'—')}</td>
+        <td><span style="font-size:10px;font-weight:700;color:${cColor(m.confidence)};background:${cBg(m.confidence)};padding:1px 7px;border-radius:8px">${h(m.confidence||'—')}</span></td>
+      </tr>`).join('')}</tbody>
+    </table>
+  </div>`).join('') : `<div class="pe-empty"><i class="bi bi-boxes"></i>Aucun matériau détecté</div>`
+
+  /* ── TAB 3: CERTIFICATIONS ───────────────────────────────── */
+  const certsTab = `
+  <div class="pe-card" style="margin-bottom:10px">
+    <h4><i class="bi bi-patch-exclamation-fill" style="color:var(--danger)"></i> Documents requis <span style="font-weight:400">(${certs.required.length})</span></h4>
+    ${certs.required.length ? `<div>${certs.required.map(c=>`<span class="cert-req">${h(c)}</span>`).join('')}</div>` : '<p style="font-size:12px;color:var(--muted)">Non précisé dans l\'AVIS</p>'}
+  </div>
+  <div class="pe-card" style="margin-bottom:10px">
+    <h4><i class="bi bi-patch-check" style="color:#d97706"></i> Documents optionnels <span style="font-weight:400">(${certs.optional.length})</span></h4>
+    ${certs.optional.length ? `<div>${certs.optional.map(c=>`<span class="cert-opt">${h(c)}</span>`).join('')}</div>` : '<p style="font-size:12px;color:var(--muted)">Aucun</p>'}
+  </div>
+  ${checklist.length ? `<div class="pe-card">
+    <h4><i class="bi bi-check2-square" style="color:var(--success)"></i> Checklist soumission</h4>
+    <div style="display:flex;flex-direction:column;gap:5px">${checklist.map(c=>`
+    <div style="display:flex;align-items:center;gap:8px;font-size:13px">
+      <i class="bi bi-square" style="color:var(--muted);flex-shrink:0"></i>
+      <span style="flex:1">${h(c.item||String(c))}</span>
+      ${c.category?`<span style="font-size:10px;color:var(--muted)">${h(c.category)}</span>`:''}
     </div>`).join('')}</div>
-  </div>` : ''}
+  </div>` : ''}`
 
-  ${risks.length ? `<div class="crewai-section"><h4><i class="bi bi-exclamation-triangle" style="color:var(--danger)"></i> Risques</h4>
-    <div style="display:flex;flex-direction:column;gap:6px">${risks.map((r3,i)=>`
-    <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px">
-      <i class="bi bi-exclamation-circle-fill" style="color:var(--danger);flex-shrink:0;margin-top:2px;font-size:12px"></i>
-      <span class="crewai-tag risk" style="flex:1;border-radius:8px;padding:4px 10px">${h(String(r3))}</span>
-      ${confBadge(conf.risks,i)}
-    </div>`).join('')}</div>
-  </div>` : ''}
+  /* ── TAB 4: RFQ ──────────────────────────────────────────── */
+  const rfqTab = rfq.length ? rfq.map(cat2=>`
+  <div class="pe-card" style="margin-bottom:10px">
+    <h4><i class="bi bi-envelope-open" style="color:var(--orange)"></i> ${h(cat2.category||'—')}</h4>
+    ${cat2.items?.length ? `<table class="pe-table">
+      <thead><tr><th>Désignation</th><th>Spécification</th><th>Quantité</th><th>Unité</th><th>Type fournisseur</th></tr></thead>
+      <tbody>${cat2.items.map(it=>`<tr>
+        <td style="font-weight:500">${h(typeof it==='string'?it:(it.designation||it.item||'—'))}</td>
+        <td style="color:var(--muted)">${h(it.specification||'—')}</td>
+        <td>${h(String(it.quantity||it.quantite||'—'))}</td>
+        <td>${h(it.unit||it.unite||'—')}</td>
+        <td>${h(it.supplierType||it.fournisseur||'—')}</td>
+      </tr>`).join('')}</tbody>
+    </table>` : `<div style="display:flex;flex-wrap:wrap;gap:5px">${(cat2.items||[]).map(i=>`<span class="crewai-tag">${h(String(i))}</span>`).join('')||'<span style="color:var(--muted);font-size:12px">Aucun article</span>'}</div>`}
+  </div>`).join('') : `<div class="pe-empty"><i class="bi bi-envelope-open"></i>Aucun RFQ généré — re-analyser depuis l'AVIS</div>`
 
-  ${miss.length ? `<div class="crewai-section"><h4><i class="bi bi-question-circle" style="color:#d97706"></i> Informations manquantes</h4>
-    <div style="display:flex;flex-wrap:wrap;gap:6px">${miss.map((m2,i)=>`<span style="display:inline-flex;align-items:center;gap:4px;margin:2px"><span class="crewai-tag missing">${h(String(m2))}</span>${confBadge(conf.missingInformation,i)}</span>`).join('')}</div>
-  </div>` : ''}
+  /* ── TAB 5: BORDEREAU ────────────────────────────────────── */
+  const bordTab = bord.length ? `<div class="pe-card">
+    <h4><i class="bi bi-list-columns-reverse" style="color:var(--orange)"></i> Bordereau des prix (projet)</h4>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:8px">Les prix unitaires sont à compléter avant soumission.</p>
+    <table class="pe-table">
+      <thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Quantité</th><th style="color:#d97706">PU HT (MAD)</th><th>Notes</th></tr></thead>
+      <tbody>${bord.map((b2,i)=>`<tr>
+        <td style="color:var(--muted)">${b2.num||i+1}</td>
+        <td style="font-weight:500">${h(b2.designation||'—')}</td>
+        <td>${h(b2.unit||b2.unite||'—')}</td>
+        <td>${h(String(b2.quantity||b2.quantite||'—'))}</td>
+        <td style="color:var(--muted);font-style:italic">— à compléter</td>
+        <td style="color:var(--muted);font-size:11px">${h(b2.notes||'')}</td>
+      </tr>`).join('')}</tbody>
+    </table>
+  </div>` : `<div class="pe-empty"><i class="bi bi-list-columns-reverse"></i>Bordereau non généré — re-analyser depuis l'AVIS</div>`
 
-  ${checklist.length ? `<div class="crewai-section"><h4><i class="bi bi-check2-square" style="color:var(--success)"></i> Checklist de soumission</h4>
-    <div style="display:flex;flex-direction:column;gap:5px">${checklist.map((c2,i)=>`
-    <div style="display:flex;align-items:flex-start;gap:8px;font-size:13px">
-      <i class="bi bi-square" style="color:var(--muted);flex-shrink:0;margin-top:2px"></i>
-      <span style="flex:1">${h(String(c2))}</span>
-      ${confBadge(conf.submissionChecklist,i)}
-    </div>`).join('')}</div>
-  </div>` : ''}
+  /* ── TAB 6: EXECUTION PLAN ───────────────────────────────── */
+  const phaseColors = ['#2563eb','#7c3aed','#d97706','#059669','#dc2626','#0891b2','#374151']
+  const execTab = execPlan.length ? `<div style="display:flex;flex-direction:column;gap:8px">
+  ${execPlan.map((ph,i)=>{
+    const name2   = typeof ph==='string'?ph:(ph.phase||ph.name||`Phase ${i+1}`)
+    const dur     = ph.duration||''
+    const tasks2  = ph.tasks||[]
+    const col     = phaseColors[i%phaseColors.length]
+    return `<div class="pe-phase" style="border-left:3px solid ${col}">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:${tasks2.length?'7px':'0'}">
+        <div style="width:22px;height:22px;border-radius:50%;background:${col};color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${i+1}</div>
+        <span style="font-size:13px;font-weight:600">${h(name2)}</span>
+        ${dur?`<span style="font-size:11px;color:var(--muted)">— ${h(dur)}</span>`:''}
+      </div>
+      ${tasks2.length?`<div style="display:flex;flex-direction:column;gap:3px;padding-left:30px">${tasks2.map(t=>`<div style="display:flex;gap:6px;font-size:12px;color:#475569"><i class="bi bi-arrow-right-short" style="flex-shrink:0;color:${col}"></i>${h(String(t))}</div>`).join('')}</div>`:''}</div>`
+  }).join('')}</div>` : `<div class="pe-empty"><i class="bi bi-diagram-3"></i>Plan d'exécution non disponible</div>`
 
-  ${d.recommendedNextAction ? `<div style="margin-top:4px;padding:12px 16px;background:rgba(249,115,22,.06);border:1px solid rgba(249,115,22,.2);border-radius:10px;font-size:13px">
-    <b style="color:var(--orange)">Action recommandée:</b> ${h(d.recommendedNextAction)}
+  /* ── TAB 7: RESOURCES ────────────────────────────────────── */
+  const resourcesTab = `
+  ${manpower.length ? `<div class="pe-card" style="margin-bottom:10px">
+    <h4><i class="bi bi-people" style="color:var(--info)"></i> Ressources humaines</h4>
+    <table class="pe-table">
+      <thead><tr><th>Rôle</th><th>Nombre</th><th>Durée</th><th>Notes</th></tr></thead>
+      <tbody>${manpower.map(mp=>`<tr>
+        <td style="font-weight:500">${h(mp.role||'—')}</td>
+        <td>${h(String(mp.count||mp.nombre||1))}</td>
+        <td>${h(mp.duration||mp.duree||'—')}</td>
+        <td style="color:var(--muted);font-size:11px">${h(mp.notes||'')}</td>
+      </tr>`).join('')}</tbody>
+    </table>
   </div>` : ''}
+  ${equipment.length ? `<div class="pe-card">
+    <h4><i class="bi bi-tools" style="color:var(--orange)"></i> Équipements</h4>
+    <table class="pe-table">
+      <thead><tr><th>Équipement</th><th>Quantité</th><th>Lieu</th><th>Notes</th></tr></thead>
+      <tbody>${equipment.map(eq=>`<tr>
+        <td style="font-weight:500">${h(typeof eq==='string'?eq:(eq.item||eq.name||'—'))}</td>
+        <td>${h(String(eq.quantity||eq.qty||1))}</td>
+        <td>${h(eq.location||eq.lieu||'—')}</td>
+        <td style="color:var(--muted);font-size:11px">${h(eq.notes||'')}</td>
+      </tr>`).join('')}</tbody>
+    </table>
+  </div>` : ''}
+  ${!manpower.length&&!equipment.length?`<div class="pe-empty"><i class="bi bi-people"></i>Ressources non estimées</div>`:''}`
 
-  <!-- Diagnostics section -->
-  <details style="margin-top:14px">
-    <summary style="cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;padding:8px 0;list-style:none;display:flex;align-items:center;gap:6px">
-      <i class="bi bi-bug"></i> Diagnostics analyse
-    </summary>
+  /* ── TAB 8: RISKS & STRATEGY ─────────────────────────────── */
+  const sevClass = s => s==='Élevée'?'sev-high':s==='Moyenne'?'sev-med':'sev-low'
+  const typeIcon = t => t==='deadline_risk'?'bi-clock-history':t==='missing_quantities'?'bi-rulers':t==='commercial_risk'?'bi-cash':'bi-exclamation-triangle'
+
+  const risksTab = `
+  ${risks.length ? `<div class="pe-card" style="margin-bottom:10px">
+    <h4><i class="bi bi-shield-exclamation" style="color:var(--danger)"></i> Risques identifiés</h4>
+    <div style="display:flex;flex-direction:column;gap:7px">
+    ${risks.map(r=>{
+      const desc = typeof r==='string'?r:(r.description||String(r))
+      const sev  = typeof r==='object'?(r.severity||''):''; const type = typeof r==='object'?(r.type||''):''
+      return `<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 12px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0">
+        <i class="bi ${typeIcon(type)}" style="color:${sev==='Élevée'?'#dc2626':sev==='Moyenne'?'#d97706':'#059669'};flex-shrink:0;margin-top:1px"></i>
+        <div style="flex:1;font-size:13px">${h(desc)}</div>
+        ${sev?`<span class="${sevClass(sev)}">${h(sev)}</span>`:''}
+      </div>`
+    }).join('')}
+    </div>
+  </div>` : ''}
+  ${(strategy.strengths?.length||strategy.technicalPoints?.length||strategy.commercialRecommendations?.length) ? `<div class="pe-card" style="margin-bottom:10px">
+    <h4><i class="bi bi-trophy" style="color:#d97706"></i> Stratégie gagnante</h4>
+    ${strategy.strengths?.length?`<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Forces</div>${strategy.strengths.map(s=>`<div style="display:flex;gap:6px;font-size:13px;margin-bottom:3px"><i class="bi bi-check-circle-fill" style="color:var(--success);flex-shrink:0;margin-top:1px"></i>${h(String(s))}</div>`).join('')}</div>`:''}
+    ${strategy.technicalPoints?.length?`<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Points techniques à valoriser</div>${strategy.technicalPoints.map(s=>`<div style="display:flex;gap:6px;font-size:13px;margin-bottom:3px"><i class="bi bi-star-fill" style="color:#d97706;flex-shrink:0;margin-top:1px"></i>${h(String(s))}</div>`).join('')}</div>`:''}
+    ${strategy.commercialRecommendations?.length?`<div style="margin-bottom:10px"><div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Recommandations commerciales</div>${strategy.commercialRecommendations.map(s=>`<div style="display:flex;gap:6px;font-size:13px;margin-bottom:3px"><i class="bi bi-lightbulb-fill" style="color:var(--orange);flex-shrink:0;margin-top:1px"></i>${h(String(s))}</div>`).join('')}</div>`:''}
+    ${strategy.riskMitigation?.length?`<div><div style="font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;margin-bottom:4px">Mitigation</div>${strategy.riskMitigation.map(s=>`<div style="display:flex;gap:6px;font-size:13px;margin-bottom:3px"><i class="bi bi-shield-check" style="color:var(--info);flex-shrink:0;margin-top:1px"></i>${h(String(s))}</div>`).join('')}</div>`:''}
+  </div>` : ''}
+  ${actions.length ? `<div class="pe-card">
+    <h4><i class="bi bi-list-check" style="color:var(--info)"></i> Plan d'action</h4>
+    <div style="display:flex;flex-direction:column;gap:6px">
+    ${actions.map((act,i)=>{
+      const action2 = typeof act==='string'?act:(act.action||String(act))
+      const dl = typeof act==='object'?act.deadline:''
+      const own= typeof act==='object'?act.owner:''
+      return `<div style="display:flex;align-items:flex-start;gap:10px;padding:8px 12px;background:#f8fafc;border-radius:8px;border:1px solid #e2e8f0">
+        <div style="width:20px;height:20px;border-radius:50%;background:var(--info);color:#fff;font-size:10px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0">${act.step||i+1}</div>
+        <div style="flex:1;font-size:13px">${h(action2)}</div>
+        ${dl?`<span style="font-size:10px;color:var(--muted);white-space:nowrap">${h(dl)}</span>`:''}
+        ${own?`<span style="font-size:10px;background:#f1f5f9;color:var(--muted);padding:1px 6px;border-radius:8px;white-space:nowrap">${h(own)}</span>`:''}
+      </div>`
+    }).join('')}
+    </div>
+  </div>` : ''}
+  ${!risks.length&&!strategy.strengths?.length&&!actions.length?`<div class="pe-empty"><i class="bi bi-shield"></i>Analyse des risques non disponible</div>`:''}`
+
+  /* ── Build tab bar ───────────────────────────────────────── */
+  const highRisks = risks.filter(r=>typeof r==='object'&&r.severity==='Élevée').length
+  const tabs = [
+    { id:'summary',   label:'Résumé',         icon:'bi-speedometer2',    pane:summaryTab,   badge:'' },
+    { id:'materials', label:'Matériaux',       icon:'bi-boxes',           pane:materialsTab, badge:mats.length?String(mats.length):'' },
+    { id:'certs',     label:'Certifications',  icon:'bi-patch-check',     pane:certsTab,     badge:certs.required.length?String(certs.required.length):'' },
+    { id:'rfq',       label:'RFQ',             icon:'bi-envelope-open',   pane:rfqTab,       badge:rfq.length?String(rfq.length):'' },
+    { id:'bordereau', label:'Bordereau',       icon:'bi-list-columns',    pane:bordTab,      badge:bord.length?String(bord.length):'' },
+    { id:'execution', label:'Exécution',       icon:'bi-diagram-3',       pane:execTab,      badge:'' },
+    { id:'resources', label:'Ressources',      icon:'bi-people',          pane:resourcesTab, badge:'' },
+    { id:'risks',     label:'Risques',         icon:'bi-shield-exclamation', pane:risksTab,  badge:highRisks?String(highRisks):'' },
+  ]
+
+  /* ── Diagnostics ─────────────────────────────────────────── */
+  const diagHtml = `<details style="margin-top:12px">
+    <summary style="cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;padding:6px 0;list-style:none;display:flex;align-items:center;gap:6px"><i class="bi bi-bug"></i> Diagnostics</summary>
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin-top:6px;font-size:12px">
       <table style="width:100%;border-collapse:collapse">
-        <tr><td style="color:#64748b;padding:2px 0;width:180px">Longueur texte AVIS</td>
-            <td style="font-weight:600">${d._avisTextLength ? d._avisTextLength.toLocaleString()+' chars' : '—'}</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">Source analyse</td>
-            <td style="font-weight:600">${h(d._analysisSource || d.analysisSource || '—')}</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">Moteur IA</td>
-            <td style="font-weight:600">${h(d.provider || '—')}</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">Cache</td>
-            <td style="font-weight:600">${d.cached||d.cachedAt ? '✓ Oui — '+(d.cachedAt?new Date(d.cachedAt).toLocaleString('fr-FR'):'') : 'Non'}</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">PDF analysé</td>
-            <td style="font-weight:600;word-break:break-all">${h(d.sourceTraceability?.attachmentAnalyzed || d._raw?.attachmentSpec?.primaryAvisName || '—')}</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">Rentabilité (brut)</td>
-            <td style="font-weight:600">${d.profitabilityScore??'?'}/100 (valeur source: ${d._raw?.profitability?.rentabilite??'?'}/10)</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">Urgence (brut)</td>
-            <td style="font-weight:600">${d.urgencyScore??'?'}/100 (valeur source: ${d._raw?.profitability?.urgence??'?'}/10)</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">Prob. succès (brut)</td>
-            <td style="font-weight:600">${h(d.winningProbability||'?')} (${d._winPct??'?'}%)</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0;width:160px">Version</td><td style="font-weight:600">${h(raw.analysisVersion||'v1-legacy')}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Texte AVIS</td><td style="font-weight:600">${d._avisTextLength?d._avisTextLength.toLocaleString()+' chars':'—'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Source</td><td style="font-weight:600">${h(d._analysisSource||d.analysisSource||'—')}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Moteur IA</td><td style="font-weight:600">${h(d.provider||'—')}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Cache</td><td style="font-weight:600">${d.cached||d.cachedAt?'✓ Oui — '+(d.cachedAt?new Date(d.cachedAt).toLocaleString('fr-FR'):''):'Non'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Matériaux</td><td style="font-weight:600">${mats.length}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Risques</td><td style="font-weight:600">${risks.length} (${highRisks} élevés)</td></tr>
       </table>
-      ${d._avisTextLength < 50 ? `<div style="margin-top:8px;padding:8px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:6px;color:#dc2626">
-        <i class="bi bi-exclamation-triangle-fill"></i> <b>Analyse impossible:</b> aucun texte exploitable extrait de l'AVIS (${d._avisTextLength||0} chars &lt; 50 requis).
-      </div>` : ''}
+      ${d._avisTextLength < 50 ? `<div style="margin-top:8px;padding:8px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:6px;color:#dc2626"><i class="bi bi-exclamation-triangle-fill"></i> <b>Analyse sur métadonnées:</b> AVIS non disponible (${d._avisTextLength||0} chars). Qualité réduite.</div>` : ''}
       ${d._log?.length ? `<div style="margin-top:8px"><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:4px">Log pipeline</div>
-        <div style="font-family:monospace;font-size:10px;color:#475569;max-height:100px;overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:4px;padding:6px">${d._log.map(l=>h(l)).join('<br>')}</div>
-      </div>` : ''}
-      <button onclick="showJsonDebug('${bonId}')" style="margin-top:10px;background:none;border:1px solid #e2e8f0;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;color:#64748b"><i class="bi bi-braces"></i> Voir JSON analyse</button>
+        <div style="font-family:monospace;font-size:10px;color:#475569;max-height:90px;overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:4px;padding:6px">${d._log.map(l=>h(l)).join('<br>')}</div></div>` : ''}
+      <button onclick="showJsonDebug('${bonId}')" style="margin-top:10px;background:none;border:1px solid #e2e8f0;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;color:#64748b"><i class="bi bi-braces"></i> Voir JSON</button>
     </div>
-  </details>
-  `
-  return html
+  </details>`
+
+  return `<div class="pe-tabs-wrapper">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:7px;flex-wrap:wrap">
+        <span class="crewai-badge"><i class="bi bi-robot"></i> Ingénieur Procurement IA</span>
+        ${providerBadge}
+        ${d.cached?`<span style="font-size:10px;background:rgba(59,130,246,.1);color:#2563eb;padding:1px 8px;border-radius:10px;font-weight:600"><i class="bi bi-lightning-charge-fill"></i> Cache</span>`:''}
+        <span style="font-size:11px;color:var(--muted)">${d.analyzedAt?new Date(d.analyzedAt).toLocaleString('fr-FR'):''}</span>
+      </div>
+      <button onclick="runCrewAiAnalysis('${bonId}',true)" style="background:var(--orange-light);color:var(--orange);border:none;border-radius:7px;padding:5px 12px;font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:5px"><i class="bi bi-arrow-clockwise"></i> Re-analyser</button>
+    </div>
+    <div class="pe-tabs">
+      ${tabs.map((t,i)=>`<button class="pe-tab${i===0?' active':''}" onclick="peTab('${t.id}',this)"><i class="bi ${t.icon}"></i> ${t.label}${t.badge?` <span class="pe-tab-badge">${t.badge}</span>`:''}</button>`).join('')}
+    </div>
+    <div class="pe-panes">
+      ${tabs.map((t,i)=>`<div class="pe-pane${i===0?' active':''}" data-pane="${t.id}">${t.pane}</div>`).join('')}
+    </div>
+    ${diagHtml}
+  </div>`
 }
 
 async function showJsonDebug(bonId) {
