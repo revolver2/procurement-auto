@@ -137,76 +137,64 @@
     "projectId": "34440a3c-860d-40d0-a071-b5f805cf7aca",
     "docType": "bordereau",
     "title": "Bordereau de Prix",
-    "data": {
-      "projectType": "general",
-      "profiles": [],
-      "surfaces": [],
-      "vitrage": [],
-      "accessories": [],
-      "fabrication": {
-        "difficultLvl": 3,
-        "specialEquipment": [],
-        "fabricationDays": 7,
-        "notes": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez."
+    "data": [
+      {
+        "num": 1,
+        "designation": "#1Poteaux en tube d’acier :",
+        "unite": "U",
+        "quantite": 18,
+        "prixUnitaireHT": 0,
+        "montantHT": 0,
+        "notes": ""
       },
-      "installation": {
-        "phases": [
-          "Prise de cotes",
-          "Fabrication",
-          "Pose",
-          "Finitions"
-        ],
-        "teamSize": 3,
-        "installDays": 3,
-        "liftRequired": false
+      {
+        "num": 2,
+        "designation": "#2Diagonal support de la toile",
+        "unite": "M²",
+        "quantite": 250,
+        "prixUnitaireHT": 0,
+        "montantHT": 0,
+        "notes": ""
       },
-      "materials": [],
-      "estimatedWeightKg": 0,
-      "keyRisks": [
-        "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez."
-      ],
-      "missingInfo": [
-        "Dimensions",
-        "Plans",
-        "Finition",
-        "Quantités"
-      ],
-      "technicalNotes": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
-      "attractivenessScore": null,
-      "attractivenessLabel": "Indisponible",
-      "estimatedMarginPercent": null,
-      "goNoGo": "unavailable",
-      "goNoGoReason": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
-      "overallRiskScore": null,
-      "overallRiskLevel": "Indisponible",
-      "risks": [],
-      "riskFactors": [],
-      "winProbabilityPercent": null,
-      "confidenceLevel": "Indisponible",
-      "recommendation": "Analyse IA avancée indisponible",
-      "recommendationReason": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
-      "summary": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
-      "suppliers": [],
-      "categories": [],
-      "specificationsTechniques": [],
-      "materiaux": [],
-      "fournisseursRFQ": [],
-      "planExecution": [],
-      "mainOeuvre": [],
-      "equipements": [],
-      "risques": [],
-      "informationsManquantes": [],
-      "strategieOffre": "—",
-      "difficulte": null,
-      "urgence": null,
-      "rentabilite": null,
-      "actionRecommandee": "Réessayez après configuration Gemini",
-      "resume": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
-      "activiteDetectee": "—",
-      "_fallbackReason": "api_error"
-    },
+      {
+        "num": 3,
+        "designation": "#3Semelles isolées en béton :",
+        "unite": "M3",
+        "quantite": 45,
+        "prixUnitaireHT": 0,
+        "montantHT": 0,
+        "notes": ""
+      },
+      {
+        "num": 4,
+        "designation": "#4Installation Toit en voile :",
+        "unite": "M²",
+        "quantite": 570,
+        "prixUnitaireHT": 0,
+        "montantHT": 0,
+        "notes": ""
+      },
+      {
+        "num": 5,
+        "designation": "#5Peinture sur structure métallique :",
+        "unite": "M²",
+        "quantite": 2550,
+        "prixUnitaireHT": 0,
+        "montantHT": 0,
+        "notes": ""
+      },
+      {
+        "num": 6,
+        "designation": "#6Peinture sur trottoirs et parking",
+        "unite": "ML",
+        "quantite": 13000,
+        "prixUnitaireHT": 0,
+        "montantHT": 0,
+        "notes": ""
+      }
+    ],
     "source": "official_avis_attachment_only",
-    "updatedAt": "2026-05-29T17:15:40.411Z",
+    "updatedAt": "2026-05-29T17:16:00.733Z",
     "createdAt": "2026-05-29T17:14:58.550Z"
   },
   {
