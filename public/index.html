@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- APP_VERSION: 2026-05-29-v5 -->
+<!-- APP_VERSION: 2026-05-29-v6 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -1775,6 +1775,52 @@ function confBadge(arr, i) {
   return `<span class="conf-verify">⚑ À vérifier</span>`
 }
 
+/* ── Sub-normalizers for materials / rfq / bordereau ─────────── */
+function normalizeRawMaterials(arr) {
+  if (!Array.isArray(arr)) return []
+  return arr.map(m => typeof m === 'string'
+    ? { designation: m, category: 'Autres', specification: '', quantity: '—', unit: '', confidence: 'Faible' }
+    : { ...m, designation: m.designation || m.item || m.name || '—', quantity: m.quantity || m.quantite || '—' }
+  )
+}
+
+function normalizeRawRfq(arr) {
+  if (!Array.isArray(arr) || !arr.length) return []
+  // New flat format: [{ category, item, specification, quantity, unit, supplierType, notes }]
+  if (arr[0]?.item !== undefined || (!arr[0]?.items && arr[0]?.category)) return arr
+  // Old nested format: [{ category, items: [...] }] — flatten
+  if (arr[0]?.items !== undefined) {
+    return arr.flatMap(group => {
+      const items = Array.isArray(group.items) ? group.items : []
+      if (!items.length) return [{ category: group.category || 'Fournitures', item: group.category || '—', supplierType: group.category || '', quantity: '—', unit: '', specification: '', notes: '' }]
+      return items.map(it => ({
+        category:     group.category || it.category || 'Fournitures',
+        item:         it.designation || it.item || it.name || '—',
+        specification:it.specification || '',
+        quantity:     it.quantity || it.quantite || 'Non précisé dans l\'avis joint',
+        unit:         it.unit || it.unite || '',
+        supplierType: it.supplierType || group.category || '',
+        notes:        it.notes || '',
+      }))
+    })
+  }
+  return arr
+}
+
+function normalizeRawBordereau(arr) {
+  if (!Array.isArray(arr)) return []
+  return arr.map((row, i) => ({
+    num:         row.num || i + 1,
+    designation: row.designation || row.item || row.name || '—',
+    unit:        row.unit || row.unite || 'Ens',
+    quantity:    row.quantity || row.quantite || 'Non précisé dans l\'avis joint',
+    unitPriceHT: row.unitPriceHT || row.pu || '',
+    totalHT:     row.totalHT || row.total || '',
+    tva:         row.tva || '20%',
+    notes:       row.notes || '',
+  }))
+}
+
 /* ── Normalise any format → unified PE v2 shape ── */
 function normalizeCrewAi(raw) {
   if (!raw) return null
@@ -1795,11 +1841,11 @@ function normalizeCrewAi(raw) {
       winningProbability: winProb,
       summary:            raw.summary || ex.scopeOfWork || '',
       executive:          { ...ex, profitabilityScore: profScore, urgencyScore: urgScore, winningProbability: winProb },
-      materials:          raw.materials          || [],
+      materials:          normalizeRawMaterials(raw.materials),
       certifications:     raw.certifications     || { required: [], optional: [], notMentioned: [] },
       complianceChecklist:raw.complianceChecklist|| [],
-      supplierRFQ:        raw.supplierRFQ        || [],
-      bordereau:          raw.bordereau          || [],
+      supplierRFQ:        normalizeRawRfq(raw.supplierRFQ),
+      bordereau:          normalizeRawBordereau(raw.bordereauDraft || raw.bordereau),
       executionPlan:      raw.executionPlan      || [],
       manpower:           raw.manpower           || [],
       equipment:          raw.equipment          || [],
@@ -2037,7 +2083,7 @@ function renderCrewAiHtml(raw, bonId) {
         <td><span style="font-size:10px;font-weight:700;color:${cColor(m.confidence)};background:${cBg(m.confidence)};padding:1px 7px;border-radius:8px">${h(m.confidence||'—')}</span></td>
       </tr>`).join('')}</tbody>
     </table>
-  </div>`).join('') : `<div class="pe-empty"><i class="bi bi-boxes"></i>Aucun matériau détecté</div>`
+  </div>`).join('') : `<div class="pe-empty"><i class="bi bi-boxes"></i>Aucun matériau détecté — cliquez <strong>Re-analyser</strong> pour lancer l'extraction.</div>`
 
   /* ── TAB 3: CERTIFICATIONS ───────────────────────────────── */
   const certsTab = `
@@ -2059,38 +2105,49 @@ function renderCrewAiHtml(raw, bonId) {
     </div>`).join('')}</div>
   </div>` : ''}`
 
-  /* ── TAB 4: RFQ ──────────────────────────────────────────── */
-  const rfqTab = rfq.length ? rfq.map(cat2=>`
+  /* ── TAB 4: RFQ — flat format: [{ category, item, specification, quantity, unit, supplierType, notes }] ── */
+  const rfqTab = rfq.length ? (() => {
+    // Group flat items by category for display
+    const rfqGroups = {}; const rfqOrder = []
+    rfq.forEach(it => {
+      const cat = it.category || it.supplierType || 'Fournitures'
+      if (!rfqGroups[cat]) { rfqGroups[cat] = []; rfqOrder.push(cat) }
+      rfqGroups[cat].push(it)
+    })
+    return rfqOrder.map(cat => `
   <div class="pe-card" style="margin-bottom:10px">
-    <h4><i class="bi bi-envelope-open" style="color:var(--orange)"></i> ${h(cat2.category||'—')}</h4>
-    ${cat2.items?.length ? `<table class="pe-table">
-      <thead><tr><th>Désignation</th><th>Spécification</th><th>Quantité</th><th>Unité</th><th>Type fournisseur</th></tr></thead>
-      <tbody>${cat2.items.map(it=>`<tr>
-        <td style="font-weight:500">${h(typeof it==='string'?it:(it.designation||it.item||'—'))}</td>
+    <h4><i class="bi bi-envelope-open" style="color:var(--orange)"></i> ${h(cat)} <span style="font-weight:400;font-size:11px">(${rfqGroups[cat].length})</span></h4>
+    <table class="pe-table">
+      <thead><tr><th>Article</th><th>Spécification</th><th>Quantité</th><th>Unité</th><th>Type fournisseur</th><th>Notes</th></tr></thead>
+      <tbody>${rfqGroups[cat].map(it=>`<tr>
+        <td style="font-weight:500">${h(it.item||it.designation||it.name||'—')}</td>
         <td style="color:var(--muted)">${h(it.specification||'—')}</td>
-        <td>${h(String(it.quantity||it.quantite||'—'))}</td>
+        <td><span style="font-size:11px;color:${(it.quantity||'').includes('Non précisé')?'#d97706':'inherit'}">${h(String(it.quantity||it.quantite||'—'))}</span></td>
         <td>${h(it.unit||it.unite||'—')}</td>
-        <td>${h(it.supplierType||it.fournisseur||'—')}</td>
+        <td>${h(it.supplierType||'—')}</td>
+        <td style="color:var(--muted);font-size:11px">${h(it.notes||'')}</td>
       </tr>`).join('')}</tbody>
-    </table>` : `<div style="display:flex;flex-wrap:wrap;gap:5px">${(cat2.items||[]).map(i=>`<span class="crewai-tag">${h(String(i))}</span>`).join('')||'<span style="color:var(--muted);font-size:12px">Aucun article</span>'}</div>`}
-  </div>`).join('') : `<div class="pe-empty"><i class="bi bi-envelope-open"></i>Aucun RFQ généré — re-analyser depuis l'AVIS</div>`
+    </table>
+  </div>`).join('')
+  })() : `<div class="pe-empty"><i class="bi bi-envelope-open"></i>Aucun RFQ généré — cliquez <strong>Re-analyser</strong> pour lancer l'extraction.</div>`
 
   /* ── TAB 5: BORDEREAU ────────────────────────────────────── */
   const bordTab = bord.length ? `<div class="pe-card">
     <h4><i class="bi bi-list-columns-reverse" style="color:var(--orange)"></i> Bordereau des prix (projet)</h4>
-    <p style="font-size:11px;color:var(--muted);margin-bottom:8px">Les prix unitaires sont à compléter avant soumission.</p>
+    <p style="font-size:11px;color:var(--muted);margin-bottom:8px">Quantités à confirmer après visite de chantier · Prix unitaires à compléter avant soumission.</p>
     <table class="pe-table">
-      <thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Quantité</th><th style="color:#d97706">PU HT (MAD)</th><th>Notes</th></tr></thead>
+      <thead><tr><th>#</th><th>Désignation</th><th>Unité</th><th>Quantité</th><th style="color:#d97706">PU HT (MAD)</th><th>Total HT</th><th>TVA</th></tr></thead>
       <tbody>${bord.map((b2,i)=>`<tr>
         <td style="color:var(--muted)">${b2.num||i+1}</td>
         <td style="font-weight:500">${h(b2.designation||'—')}</td>
-        <td>${h(b2.unit||b2.unite||'—')}</td>
-        <td>${h(String(b2.quantity||b2.quantite||'—'))}</td>
-        <td style="color:var(--muted);font-style:italic">— à compléter</td>
-        <td style="color:var(--muted);font-size:11px">${h(b2.notes||'')}</td>
+        <td>${h(b2.unit||b2.unite||'Ens')}</td>
+        <td><span style="font-size:11px;color:${(String(b2.quantity||'')).includes('Non précisé')?'#d97706':'inherit'}">${h(String(b2.quantity||b2.quantite||'—'))}</span></td>
+        <td style="color:var(--muted);font-style:italic">${b2.unitPriceHT||'— à compléter'}</td>
+        <td style="color:var(--muted);font-style:italic">${b2.totalHT||'—'}</td>
+        <td style="color:var(--muted);font-size:11px">${h(b2.tva||'20%')}</td>
       </tr>`).join('')}</tbody>
     </table>
-  </div>` : `<div class="pe-empty"><i class="bi bi-list-columns-reverse"></i>Bordereau non généré — re-analyser depuis l'AVIS</div>`
+  </div>` : `<div class="pe-empty"><i class="bi bi-list-columns-reverse"></i>Bordereau non généré — cliquez <strong>Re-analyser</strong> pour lancer l'extraction.</div>`
 
   /* ── TAB 6: EXECUTION PLAN ───────────────────────────────── */
   const phaseColors = ['#2563eb','#7c3aed','#d97706','#059669','#dc2626','#0891b2','#374151']
