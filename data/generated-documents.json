@@ -137,64 +137,140 @@
     "projectId": "34440a3c-860d-40d0-a071-b5f805cf7aca",
     "docType": "bordereau",
     "title": "Bordereau de Prix",
-    "data": [
-      {
-        "num": 1,
-        "designation": "#1Poteaux en tube d’acier :",
-        "unite": "U",
-        "quantite": 18,
-        "prixUnitaireHT": 0,
-        "montantHT": 0,
-        "notes": ""
+    "data": {
+      "projectType": "general",
+      "profiles": [],
+      "surfaces": [],
+      "vitrage": [],
+      "accessories": [],
+      "fabrication": {
+        "difficultLvl": 3,
+        "specialEquipment": [],
+        "fabricationDays": 7,
+        "notes": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez."
       },
-      {
-        "num": 2,
-        "designation": "#2Diagonal support de la toile",
-        "unite": "M²",
-        "quantite": 250,
-        "prixUnitaireHT": 0,
-        "montantHT": 0,
-        "notes": ""
+      "installation": {
+        "phases": [
+          "Prise de cotes",
+          "Fabrication",
+          "Pose",
+          "Finitions"
+        ],
+        "teamSize": 3,
+        "installDays": 3,
+        "liftRequired": false
       },
-      {
-        "num": 3,
-        "designation": "#3Semelles isolées en béton :",
-        "unite": "M3",
-        "quantite": 45,
-        "prixUnitaireHT": 0,
-        "montantHT": 0,
-        "notes": ""
-      },
-      {
-        "num": 4,
-        "designation": "#4Installation Toit en voile :",
-        "unite": "M²",
-        "quantite": 570,
-        "prixUnitaireHT": 0,
-        "montantHT": 0,
-        "notes": ""
-      },
-      {
-        "num": 5,
-        "designation": "#5Peinture sur structure métallique :",
-        "unite": "M²",
-        "quantite": 2550,
-        "prixUnitaireHT": 0,
-        "montantHT": 0,
-        "notes": ""
-      },
-      {
-        "num": 6,
-        "designation": "#6Peinture sur trottoirs et parking",
-        "unite": "ML",
-        "quantite": 13000,
-        "prixUnitaireHT": 0,
-        "montantHT": 0,
-        "notes": ""
-      }
-    ],
+      "materials": [],
+      "estimatedWeightKg": 0,
+      "keyRisks": [
+        "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez."
+      ],
+      "missingInfo": [
+        "Dimensions",
+        "Plans",
+        "Finition",
+        "Quantités"
+      ],
+      "technicalNotes": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
+      "attractivenessScore": null,
+      "attractivenessLabel": "Indisponible",
+      "estimatedMarginPercent": null,
+      "goNoGo": "unavailable",
+      "goNoGoReason": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
+      "overallRiskScore": null,
+      "overallRiskLevel": "Indisponible",
+      "risks": [],
+      "riskFactors": [],
+      "winProbabilityPercent": null,
+      "confidenceLevel": "Indisponible",
+      "recommendation": "Analyse IA avancée indisponible",
+      "recommendationReason": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
+      "summary": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
+      "suppliers": [],
+      "categories": [],
+      "specificationsTechniques": [],
+      "materiaux": [],
+      "fournisseursRFQ": [],
+      "planExecution": [],
+      "mainOeuvre": [],
+      "equipements": [],
+      "risques": [],
+      "informationsManquantes": [],
+      "strategieOffre": "—",
+      "difficulte": null,
+      "urgence": null,
+      "rentabilite": null,
+      "actionRecommandee": "Réessayez après configuration Gemini",
+      "resume": "Analyse IA indisponible — Erreur API Gemini. Vérifiez la clé et réessayez.",
+      "activiteDetectee": "—",
+      "_fallbackReason": "api_error"
+    },
     "source": "official_avis_attachment_only",
-    "updatedAt": "2026-05-29T17:15:22.913Z",
+    "updatedAt": "2026-05-29T17:15:40.411Z",
     "createdAt": "2026-05-29T17:14:58.550Z"
+  },
+  {
+    "id": "34440a3c-860d-40d0-a071-b5f805cf7aca_devis",
+    "projectId": "34440a3c-860d-40d0-a071-b5f805cf7aca",
+    "docType": "devis",
+    "title": "Devis Estimatif",
+    "data": {
+      "reference": "DEV-FSJPK-2024-001",
+      "date": "2024-07-29",
+      "client": "FACULTE DES SCIENCES JURIDIQUES ET POLITIQUES - KENITRA",
+      "validite": "30 jours à compter de la date d'émission du devis.",
+      "items": [
+        {
+          "designation": "Poteaux en tube d’acier (y compris fourniture, façonnage, pose et scellement)",
+          "unite": "U",
+          "quantite": 18,
+          "prixUnitaire": 1500,
+          "total": 27000
+        },
+        {
+          "designation": "Diagonal support de la toile (structure métallique secondaire, y compris fourniture et pose)",
+          "unite": "M²",
+          "quantite": 250,
+          "prixUnitaire": 350,
+          "total": 87500
+        },
+        {
+          "designation": "Semelles isolées en béton armé (y compris terrassement, ferraillage, bétonnage et remblai)",
+          "unite": "M3",
+          "quantite": 45,
+          "prixUnitaire": 1200,
+          "total": 54000
+        },
+        {
+          "designation": "Installation Toit en voile (membrane tendue, y compris fourniture, confection et pose)",
+          "unite": "M²",
+          "quantite": 570,
+          "prixUnitaire": 250,
+          "total": 142500
+        },
+        {
+          "designation": "Peinture sur structure métallique (primaire anticorrosion et deux couches de finition)",
+          "unite": "M²",
+          "quantite": 2550,
+          "prixUnitaire": 50,
+          "total": 127500
+        },
+        {
+          "designation": "Peinture sur trottoirs et parking (marquage au sol, y compris préparation et application)",
+          "unite": "ML",
+          "quantite": 13000,
+          "prixUnitaire": 15,
+          "total": 195000
+        }
+      ],
+      "totalHT": 633500,
+      "tva": 126700,
+      "totalTTC": 760200,
+      "conditions": "1. Les prix sont exprimés en Dirhams Marocains (MAD) hors taxes. \n2. La TVA applicable est de 20% conformément à la législation en vigueur. \n3. Les délais d'exécution seront définis dans le contrat final après notification du marché. \n4. Les modalités de paiement seront conformes aux dispositions du Cahier des Clauses Administratives Générales (CCAG-Travaux) des marchés publics marocains. \n5. Ce devis ne constitue pas un engagement contractuel ferme et définitif. Il est sujet à une validation technique et financière finale.",
+      "notes": "Ce devis est établi pour l'installation de 32 places d'abris pour voitures aux parkings de la FSJP Kénitra – UIT. Il inclut la fourniture, la pose et la finition des éléments décrits. Toute modification ou ajout de prestations fera l'objet d'un avenant ou d'un nouveau devis."
+    },
+    "source": "official_avis_attachment_only",
+    "updatedAt": "2026-05-29T17:15:22.915Z",
+    "createdAt": "2026-05-29T17:15:22.915Z"
   }
 ]
