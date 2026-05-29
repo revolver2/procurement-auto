@@ -807,7 +807,8 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
     return res.json({ success: false, error: 'Aucun fichier valide trouvé dans le cache', crewaiUnlocked: false, pdfsFound: 0, filesFound: allFiles.length })
   }
 
-  let bestText = '', bestName = null, requiresOCR = false
+  let bestText = '', bestName = null, bestSourceZip = null, bestOcrUsed = false
+  let bestExtractionMethod = null, requiresOCR = false
 
   /* try scored candidates first */
   for (const cand of candidates) {
@@ -816,8 +817,11 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
     if (result.requiresOCR) requiresOCR = true
     if (result.textExtracted && result.text && result.text.length >= 50) {
       if (!bestText || result.text.length > bestText.length) {
-        bestText = result.text
-        bestName = cand.name + (result.sourceFile ? ` / ${result.sourceFile}` : '')
+        bestText             = result.text
+        bestName             = result.sourceFile || cand.name
+        bestSourceZip        = result.sourceZip  || null
+        bestOcrUsed          = result.ocrUsed    || false
+        bestExtractionMethod = result.ocrUsed ? 'gemini-ocr' : 'pdf-parse'
       }
       if (score(cand.name) <= 2) break  // AVIS/consultation found — stop
     }
@@ -830,18 +834,27 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
       try { result = await extractPdfText(z.path) } catch { continue }
       if (result.requiresOCR) requiresOCR = true
       if (result.textExtracted && result.text && result.text.length >= 50) {
-        bestText = result.text
-        bestName = z.name + (result.sourceFile ? ` / ${result.sourceFile}` : '')
+        bestText             = result.text
+        bestName             = result.sourceFile || z.name
+        bestSourceZip        = result.sourceZip  || z.name
+        bestOcrUsed          = result.ocrUsed    || false
+        bestExtractionMethod = result.ocrUsed ? 'gemini-ocr' : 'pdf-parse'
         break
       }
     }
   }
 
   if (!bestText) {
+    const ocrAvail = !!process.env.GEMINI_API_KEY
     return res.json({
       success: false,
-      error:   requiresOCR ? 'PDF trouvé mais texte non lisible — OCR requis' : 'Aucun texte extractible dans les fichiers téléchargés',
+      error:   requiresOCR
+        ? ocrAvail
+          ? 'PDF scanné — Gemini OCR tenté mais échoué'
+          : 'PDF scanné — ajoutez GEMINI_API_KEY dans Render pour activer l\'OCR'
+        : 'Aucun texte extractible dans les fichiers téléchargés',
       requiresOCR,
+      ocrAvailable: ocrAvail,
       crewaiUnlocked: false,
       pdfsFound: candidates.filter(c=>c.ext==='.pdf').length,
       filesFound: allFiles.length,
@@ -856,14 +869,19 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
       name:          c.name,
       type:          /avis/i.test(c.name) ? 'avis' : 'other',
       downloaded:    true,
-      textExtracted: c.name === (bestName||'').split(' / ')[0],
-      textLength:    c.name === (bestName||'').split(' / ')[0] ? bestText.length : 0,
+      textExtracted: bestName === c.name || bestSourceZip === c.name,
+      textLength:    (bestName === c.name || bestSourceZip === c.name) ? bestText.length : 0,
+      sourceFile:    bestSourceZip === c.name ? bestName : null,
+      sourceZip:     bestSourceZip === c.name ? bestSourceZip : null,
+      ocrUsed:       (bestName === c.name || bestSourceZip === c.name) ? bestOcrUsed : false,
       localPath:     c.path,
     })),
     primaryAvisText:   bestText,
     primaryAvisName:   bestName,
+    primarySourceZip:  bestSourceZip,
     hasText:           true,
     textLength:        bestText.length,
+    extractionMethod:  bestExtractionMethod,
     noAttachmentFound: false,
     analysisSource:    'official_attachment_only',
     extractedAt:       new Date().toISOString(),
@@ -875,22 +893,40 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
     bons[idx].attachmentHasText = true
     bons[idx].attachmentFound   = true
     bons[idx].avisDocument = {
-      selectedPdf:   bestName,
-      textLength:    bestText.length,
-      textExtracted: true,
-      validated:     true,
-      validatedAt:   new Date().toISOString(),
+      selectedPdf:      bestName,
+      sourceZip:        bestSourceZip,
+      textLength:       bestText.length,
+      textExtracted:    true,
+      extractionMethod: bestExtractionMethod,
+      ocrUsed:          bestOcrUsed,
+      validated:        true,
+      validatedAt:      new Date().toISOString(),
     }
     db.write('procurement-analysis.json', bons)
   }
 
   res.json({
-    success:          true,
-    selectedPdf:      bestName,
-    textLength:       bestText.length,
+    success:           true,
+    selectedPdf:       bestName,
+    sourceZip:         bestSourceZip,
+    textLength:        bestText.length,
+    extractionMethod:  bestExtractionMethod,
+    ocrUsed:           bestOcrUsed,
     attachmentHasText: true,
-    crewaiUnlocked:   true,
-    pdfsFound:        candidates.filter(c=>c.ext==='.pdf').length,
+    crewaiUnlocked:    true,
+    pdfsFound:         candidates.filter(c=>c.ext==='.pdf').length,
+  })
+})
+
+/* ── AI/OCR diagnostic endpoint ─────────────────────────────── */
+app.get('/api/diagnostics/ai', (req, res) => {
+  const geminiKey    = !!process.env.GEMINI_API_KEY
+  const crewaiUrl    = !!(process.env.CREWAI_SERVICE_URL || process.env.CREWAI_URL)
+  res.json({
+    geminiKeyConfigured:  geminiKey,
+    crewaiUrlConfigured:  crewaiUrl,
+    ocrAvailable:         geminiKey,
+    ocrProvider:          geminiKey ? 'gemini-2.5-flash' : null,
   })
 })
 
