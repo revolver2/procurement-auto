@@ -24,23 +24,18 @@ const docRenderers = {
 }
 
 // Fire-and-forget candidature sync to GitHub (keeps data alive across Render deploys)
-function syncCandidatures() {
-  githubPersist.pushFile('candidatures.json')
-    .then(r => { if (!r?.skipped) console.log('[GitHubSync] candidatures.json pushed') })
-    .catch(e => console.error('[GitHubSync] candidatures push failed:', e.message))
+function githubSync(filename) {
+  githubPersist.pushFile(filename)
+    .then(r => {
+      if (r?.skipped) console.log(`[GitHubSync] ${filename} skipped (${r.reason || 'no token'})`)
+      else console.log(`[GitHubSync] GitHub persistence successful: ${filename}`)
+    })
+    .catch(e => console.error(`[GitHubSync] GitHub persistence failed: ${filename} — ${e.message}`))
 }
 
-function syncDocuments() {
-  githubPersist.pushFile('rfq-generated.json')
-    .then(r => { if (!r?.skipped) console.log('[GitHubSync] rfq-generated.json pushed') })
-    .catch(e => console.error('[GitHubSync] rfq-generated push failed:', e.message))
-}
-
-function syncGeneratedDocs() {
-  githubPersist.pushFile('generated-documents.json')
-    .then(r => { if (!r?.skipped) console.log('[GitHubSync] generated-documents.json pushed') })
-    .catch(e => console.error('[GitHubSync] generated-documents push failed:', e.message))
-}
+function syncCandidatures()  { githubSync('candidatures.json') }
+function syncDocuments()     { githubSync('rfq-generated.json') }
+function syncGeneratedDocs() { githubSync('generated-documents.json') }
 
 function readGenDocs() { return db.read('generated-documents.json') || [] }
 
@@ -286,9 +281,9 @@ app.post('/api/scrape', async (req, res) => {
 
   // Production: trigger GitHub Actions workflow (scraping + data commit)
   if (process.env.NODE_ENV === 'production') {
-    const token = process.env.GITHUB_TOKEN
+    const token = process.env.GITHUB_TOKEN || process.env.GITHUB_PAT
     const repo  = process.env.GITHUB_REPO || 'revolver2/procurement-auto'
-    if (!token) return res.json({ success: false, error: 'GITHUB_TOKEN non configuré sur Render.' })
+    if (!token) return res.json({ success: false, error: 'GitHub token manquant. Ajoutez GITHUB_TOKEN ou GITHUB_PAT dans les variables d\'environnement Render.' })
     try {
       const r = await fetch(`https://api.github.com/repos/${repo}/actions/workflows/daily-scrape.yml/dispatches`, {
         method:  'POST',
@@ -1059,6 +1054,19 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
     attachmentHasText: true,
     crewaiUnlocked:    true,
     pdfsFound:         candidates.filter(c=>c.ext==='.pdf').length,
+  })
+})
+
+/* ── GitHub persistence diagnostic endpoint ─────────────────── */
+app.get('/api/diagnostics/github', (req, res) => {
+  const hasToken = !!(process.env.GITHUB_TOKEN || process.env.GITHUB_PAT)
+  const hasRepo  = !!(process.env.GITHUB_REPO  || 'revolver2/procurement-auto')
+  res.json({
+    githubTokenConfigured: hasToken,
+    githubRepoConfigured:  hasRepo,
+    githubRepo:            process.env.GITHUB_REPO || 'revolver2/procurement-auto',
+    githubBranch:          process.env.GITHUB_BRANCH || 'main',
+    tokenSource:           process.env.GITHUB_TOKEN ? 'GITHUB_TOKEN' : process.env.GITHUB_PAT ? 'GITHUB_PAT' : null,
   })
 })
 
