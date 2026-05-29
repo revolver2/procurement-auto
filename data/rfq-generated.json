@@ -176,5 +176,67 @@
       }
     },
     "generatedAt": "2026-05-29T15:39:22.280Z"
+  },
+  {
+    "bonId": "34440a3c-860d-40d0-a071-b5f805cf7aca",
+    "documents": {
+      "bordereau": [
+        {
+          "num": 1,
+          "designation": "#1Poteaux en tube d’acier :",
+          "unite": "U",
+          "quantite": 18,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": ""
+        },
+        {
+          "num": 2,
+          "designation": "#2Diagonal support de la toile",
+          "unite": "M²",
+          "quantite": 250,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": ""
+        },
+        {
+          "num": 3,
+          "designation": "#3Semelles isolées en béton :",
+          "unite": "M3",
+          "quantite": 45,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": ""
+        },
+        {
+          "num": 4,
+          "designation": "#4Installation Toit en voile :",
+          "unite": "M²",
+          "quantite": 570,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": ""
+        },
+        {
+          "num": 5,
+          "designation": "#5Peinture sur structure métallique :",
+          "unite": "M²",
+          "quantite": 2550,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": ""
+        },
+        {
+          "num": 6,
+          "designation": "#6Peinture sur trottoirs et parking",
+          "unite": "ML",
+          "quantite": 13000,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": ""
+        }
+      ]
+    },
+    "generatedAt": "2026-05-29T17:14:58.552Z"
   }
 ]
