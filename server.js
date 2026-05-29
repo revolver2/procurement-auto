@@ -23,19 +23,22 @@ const docRenderers = {
   checklist: require('./lib/document-renderers/checklist-renderer'),
 }
 
-// Fire-and-forget candidature sync to GitHub (keeps data alive across Render deploys)
+// Fire-and-forget sync to GitHub (keeps data alive across Render deploys)
 function githubSync(filename) {
   githubPersist.pushFile(filename)
     .then(r => {
       if (r?.skipped) console.log(`[GitHubSync] ${filename} skipped (${r.reason || 'no token'})`)
-      else console.log(`[GitHubSync] GitHub persistence successful: ${filename}`)
+      else console.log(`[GitHubSync] pushed: ${filename}`)
     })
-    .catch(e => console.error(`[GitHubSync] GitHub persistence failed: ${filename} — ${e.message}`))
+    .catch(e => console.error(`[GitHubSync] failed: ${filename} — ${e.message}`))
 }
 
-function syncCandidatures()  { githubSync('candidatures.json') }
-function syncDocuments()     { githubSync('rfq-generated.json') }
-function syncGeneratedDocs() { githubSync('generated-documents.json') }
+function syncCandidatures()   { githubSync('candidatures.json') }
+function syncDocuments()      { githubSync('rfq-generated.json') }
+function syncGeneratedDocs()  { githubSync('generated-documents.json') }
+function syncBons()           { githubSync('procurement-analysis.json') }
+function syncOrchestrations() { githubSync('orchestrations.json') }
+function syncAttachmentSpecs(){ githubSync('attachment-specs.json') }
 
 function readGenDocs() { return db.read('generated-documents.json') || [] }
 
@@ -63,9 +66,17 @@ function upsertDoc(projectId, docType, data, source) {
   syncGeneratedDocs()
 }
 
-// On startup: hydrate persisted files from GitHub if local copies are empty
+// On startup: hydrate persisted files from GitHub so data survives Render restarts
 ;(async () => {
-  for (const [file, label] of [['candidatures.json', 'candidatures'], ['rfq-generated.json', 'documents'], ['generated-documents.json', 'generated-documents']]) {
+  const { hydrateSpecsFromAggregate, AGG_FILE } = require('./lib/attachments/attachment-analyzer')
+
+  // ── Simple array stores: pull if local is empty ──────────────────
+  for (const [file, label] of [
+    ['candidatures.json',       'candidatures'],
+    ['rfq-generated.json',      'documents'],
+    ['generated-documents.json','generated-documents'],
+    ['orchestrations.json',     'orchestrations'],
+  ]) {
     try {
       const local = db.read(file) || []
       if (local.length === 0) {
@@ -74,9 +85,73 @@ function upsertDoc(projectId, docType, data, source) {
           db.write(file, remote)
           console.log(`[Startup] Hydrated ${remote.length} ${label} from GitHub`)
         }
+      } else {
+        console.log(`[Startup] ${label}: ${local.length} records already in local store`)
       }
-    } catch (e) { console.log(`[Startup] GitHub hydration skipped for ${file}:`, e.message) }
+    } catch (e) { console.log(`[Startup] ${file} hydration skipped:`, e.message) }
   }
+
+  // ── attachment-specs: pull aggregate then restore per-file specs ─
+  try {
+    const localAgg = fs.existsSync(AGG_FILE)
+      ? JSON.parse(fs.readFileSync(AGG_FILE, 'utf8'))
+      : {}
+    const localCount = Object.keys(localAgg).length
+
+    if (localCount === 0) {
+      const remote = await githubPersist.pullFile('attachment-specs.json')
+      if (remote && typeof remote === 'object' && !Array.isArray(remote)) {
+        fs.writeFileSync(AGG_FILE, JSON.stringify(remote))
+        console.log(`[Startup] Hydrated attachment-specs (${Object.keys(remote).length} entries) from GitHub`)
+      }
+    } else {
+      console.log(`[Startup] attachment-specs: ${localCount} specs in aggregate`)
+    }
+    const restored = hydrateSpecsFromAggregate()
+    if (restored) console.log(`[Startup] Restored ${restored} per-file specs from aggregate`)
+  } catch (e) { console.log('[Startup] attachment-specs hydration skipped:', e.message) }
+
+  // ── procurement-analysis: MERGE GitHub interactive flags into local ─
+  // The local copy comes from the last scrape (no interactive flags).
+  // The GitHub copy was pushed by us after each interactive operation (avisDocument, orchestrated, etc.)
+  try {
+    const remote = await githubPersist.pullFile('procurement-analysis.json')
+    if (Array.isArray(remote) && remote.length > 0) {
+      const local = db.read('procurement-analysis.json') || []
+      const localMap = {}
+      local.forEach(b => { localMap[b.id] = b })
+
+      // Merge: keep all remote BCs; overlay interactive flags from local if present
+      const INTERACTIVE_FIELDS = [
+        'avisDocument','attachmentHasText','attachmentFound','attachments',
+        'orchestrated','orchestratedAt','profitabilityScore','urgencyScore',
+        'winningProbability','bidRecommendation','providerUsed','analysisType',
+        'analysisSource','documentsGenerated','avisDownloaded','avisExtracted',
+        'analysisGenerated','lastUpdated','projectStatus','statusHistory',
+        'officialAttachmentTextPath',
+      ]
+      const merged = remote.map(rb => {
+        const lb = localMap[rb.id]
+        if (!lb) return rb
+        const overlay = {}
+        INTERACTIVE_FIELDS.forEach(k => {
+          const lv = lb[k]; const rv = rb[k]
+          // Prefer the value that is truthy / more informative
+          if (lv !== undefined && lv !== null && lv !== false) overlay[k] = lv
+          else if (rv !== undefined) overlay[k] = rv
+        })
+        return { ...rb, ...lb, ...overlay }
+      })
+      // Add local-only BCs (scraped but not yet pushed to GitHub)
+      local.forEach(lb => {
+        if (!merged.find(rb => rb.id === lb.id)) merged.push(lb)
+      })
+
+      db.write('procurement-analysis.json', merged)
+      const withFlags = merged.filter(b => b.orchestrated || b.attachmentHasText).length
+      console.log(`[Startup] Merged procurement-analysis: ${merged.length} BCs (${withFlags} with interactive flags)`)
+    }
+  } catch (e) { console.log('[Startup] procurement-analysis merge skipped:', e.message) }
 })()
 
 const app  = express()
@@ -215,24 +290,39 @@ app.get('/api/projects/:id', (req, res) => {
   const analyses   = db.read('specifications.json') || []
   bon.analysis     = analyses.find(a => a.bonId === bon.id)?.analysis || null
 
-  // CrewAI analysis from per-project cache file
+  // CrewAI analysis: try per-file cache first, fall back to orchestrations.json
   const aiPath = path.resolve(__dirname, 'data/ai-analysis', `${bon.id}.json`)
   if (fs.existsSync(aiPath)) {
     try { bon.crewaiAnalysis = JSON.parse(fs.readFileSync(aiPath, 'utf8')) }
     catch { bon.crewaiAnalysis = null }
   } else {
-    bon.crewaiAnalysis = null
+    bon.crewaiAnalysis = orchestrator.getOrchestration(bon.id) || null
+    if (bon.crewaiAnalysis) {
+      // Restore per-file cache from orchestrations.json so future reads are fast
+      try { fs.writeFileSync(aiPath, JSON.stringify(bon.crewaiAnalysis, null, 2)) }
+      catch {}
+    }
   }
 
-  // Attachment spec (primaryAvisName, hasText, etc.)
-  const specPath = path.resolve(__dirname, 'data/specifications', `${bon.id}.json`)
-  if (fs.existsSync(specPath)) {
-    try {
-      const spec = JSON.parse(fs.readFileSync(specPath, 'utf8'))
-      bon.attachments     = spec.attachments      || bon.attachments      || []
-      bon.attachmentHasText = spec.hasText        || bon.attachmentHasText|| false
-      bon.avisDocument    = bon.avisDocument      || { selectedPdf: spec.primaryAvisName, textLength: spec.textLength }
-    } catch {}
+  // Attachment spec (primaryAvisName, hasText, etc.) — loadSpec already falls back to aggregate
+  const spec = loadSpec(bon.id)
+  if (spec) {
+    bon.attachments       = spec.attachments      || bon.attachments      || []
+    bon.attachmentHasText = spec.hasText          || bon.attachmentHasText|| false
+    bon.avisDocument      = bon.avisDocument      || { selectedPdf: spec.primaryAvisName, textLength: spec.textLength }
+  }
+
+  // Project state — stable summary of what exists for this BC
+  bon.projectState = {
+    projectId:          bon.id,
+    avisDownloaded:     !!(bon.avisDownloaded || spec?.attachments?.some(a => a.downloaded)),
+    avisExtracted:      !!(bon.avisExtracted  || bon.attachmentHasText || spec?.hasText),
+    analysisGenerated:  !!(bon.analysisGenerated || bon.orchestrated || bon.crewaiAnalysis),
+    documentsGenerated: !!getProjectDocs(bon.id),
+    lastUpdated:        bon.lastUpdated || bon.orchestratedAt || null,
+    specPath:           spec ? `data/specifications/${bon.id}.json` : null,
+    analysisPath:       (bon.crewaiAnalysis || fs.existsSync(aiPath)) ? `data/ai-analysis/${bon.id}.json` : null,
+    docsCount:          (getProjectDocs(bon.id) ? Object.keys(getProjectDocs(bon.id)).length : 0),
   }
 
   res.json(bon)
@@ -256,16 +346,34 @@ app.get('/api/projects/:id/full', (req, res) => {
   const candidature = cands.find(c => c.bonId === bon.id)                   || null
   const analysis    = specs.find(a => a.bonId === bon.id)?.analysis         || null
 
+  // CrewAI analysis: per-file first, fall back to orchestrations.json (survives restart)
   let crewaiAnalysis = null
-  const aiPath = path.resolve(__dirname, 'data/ai-analysis', `${bon.id}.json`)
-  if (fs.existsSync(aiPath)) {
-    try { crewaiAnalysis = JSON.parse(fs.readFileSync(aiPath, 'utf8')) } catch {}
+  const aiPath2 = path.resolve(__dirname, 'data/ai-analysis', `${bon.id}.json`)
+  if (fs.existsSync(aiPath2)) {
+    try { crewaiAnalysis = JSON.parse(fs.readFileSync(aiPath2, 'utf8')) } catch {}
+  } else {
+    crewaiAnalysis = orchestrator.getOrchestration(bon.id) || null
+    if (crewaiAnalysis) {
+      try { fs.writeFileSync(aiPath2, JSON.stringify(crewaiAnalysis, null, 2)) } catch {}
+    }
   }
 
-  let attachmentSpec = null
-  const specPath = path.resolve(__dirname, 'data/specifications', `${bon.id}.json`)
-  if (fs.existsSync(specPath)) {
-    try { attachmentSpec = JSON.parse(fs.readFileSync(specPath, 'utf8')) } catch {}
+  // Attachment spec — loadSpec falls back to aggregate automatically
+  const attachmentSpec   = loadSpec(bon.id)
+  const attachments      = attachmentSpec?.attachments || bon.attachments || []
+  const attachmentHasText = attachmentSpec?.hasText    || bon.attachmentHasText || false
+  const avisDocument     = bon.avisDocument || { selectedPdf: attachmentSpec?.primaryAvisName, textLength: attachmentSpec?.textLength }
+
+  const projectState = {
+    projectId:          bon.id,
+    avisDownloaded:     !!(bon.avisDownloaded || attachments.some(a => a.downloaded)),
+    avisExtracted:      !!(bon.avisExtracted  || attachmentHasText),
+    analysisGenerated:  !!(bon.analysisGenerated || bon.orchestrated || crewaiAnalysis),
+    documentsGenerated: !!documents,
+    lastUpdated:        bon.lastUpdated || bon.orchestratedAt || null,
+    specPath:           attachmentSpec ? `data/specifications/${bon.id}.json` : null,
+    analysisPath:       crewaiAnalysis ? `data/ai-analysis/${bon.id}.json` : null,
+    docsCount:          documents ? Object.keys(documents).length : 0,
   }
 
   res.json({
@@ -275,9 +383,10 @@ app.get('/api/projects/:id/full', (req, res) => {
     analysis,
     crewaiAnalysis,
     attachmentSpec,
-    attachments:      attachmentSpec?.attachments     || bon.attachments     || [],
-    attachmentHasText: attachmentSpec?.hasText        || bon.attachmentHasText || false,
-    avisDocument:     bon.avisDocument                || { selectedPdf: attachmentSpec?.primaryAvisName, textLength: attachmentSpec?.textLength },
+    attachments,
+    attachmentHasText,
+    avisDocument,
+    projectState,
   })
 })
 
@@ -695,6 +804,18 @@ app.post('/api/orchestrate/:id', async (req, res) => {
   const { generateDocuments = false, forceRefresh = false } = req.body || {}
   try {
     const result = await orchestrator.orchestrate(req.params.id, { generateDocuments, forceRefresh })
+    if (result.success) {
+      syncOrchestrations()
+      // Mark BC as analysed
+      const _bons = db.read('procurement-analysis.json') || []
+      const _idx  = _bons.findIndex(b => b.id === req.params.id)
+      if (_idx >= 0) {
+        _bons[_idx].analysisGenerated = true
+        _bons[_idx].lastUpdated       = new Date().toISOString()
+        db.write('procurement-analysis.json', _bons)
+        syncBons()
+      }
+    }
     res.json(result)
   } catch (e) {
     res.status(500).json({ success: false, error: e.message })
@@ -726,7 +847,7 @@ app.put('/api/company-memory', (req, res) => {
 /* ═══════════════════════════════════════════════════════════════
    ATTACHMENT PIPELINE
 ══════════════════════════════════════════════════════════════════ */
-const { processFromUrls, reExtractFromCache, loadSpec, saveSpec, ATTACHMENTS_DIR } = require('./lib/attachments/attachment-analyzer')
+const { processFromUrls, reExtractFromCache, loadSpec, saveSpec, hydrateSpecsFromAggregate, ATTACHMENTS_DIR } = require('./lib/attachments/attachment-analyzer')
 const { extractText: extractPdfText } = require('./lib/attachments/pdf-text-extractor')
 
 // Get specification (extracted attachment text)
@@ -760,7 +881,12 @@ app.post('/api/attachments/:id/process', async (req, res) => {
       bons[idx].officialAttachmentTextPath = spec.hasText ? `data/specifications/${bon.id}.json` : null
       bons[idx].analysisSource             = spec.analysisSource
       bons[idx].attachments                = spec.attachments
+      bons[idx].avisDownloaded             = spec.attachments?.some(a => a.downloaded) || false
+      bons[idx].avisExtracted              = spec.hasText || false
+      bons[idx].lastUpdated                = new Date().toISOString()
       db.write('procurement-analysis.json', bons)
+      syncBons()
+      syncAttachmentSpecs()
     }
 
     res.json({ success: true, spec })
@@ -806,6 +932,7 @@ app.patch('/api/projects/:id/status', (req, res) => {
   }
   try {
     db.write('procurement-analysis.json', bons)
+      syncBons()
     res.json({ success: true, bon: bons[idx] })
   } catch (e) {
     res.status(500).json({ error: e.message })
@@ -891,6 +1018,7 @@ app.post('/api/projects/:id/extract-avis', async (req, res) => {
         bons[idx].analysisSource = 'official_avis_attachment_only'
       }
       db.write('procurement-analysis.json', bons)
+      syncBons()
     }
 
     // Detect auth-gated download failures for clearer UI messaging
@@ -1056,11 +1184,15 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
     extractedAt:       new Date().toISOString(),
   }
   saveSpec(bonId, spec)
+  syncAttachmentSpecs()
 
   const idx = bons.findIndex(b => b.id === bonId)
   if (idx >= 0) {
-    bons[idx].attachmentHasText = true
-    bons[idx].attachmentFound   = true
+    bons[idx].attachmentHasText  = true
+    bons[idx].attachmentFound    = true
+    bons[idx].avisExtracted      = true
+    bons[idx].avisDownloaded     = true
+    bons[idx].lastUpdated        = new Date().toISOString()
     bons[idx].avisDocument = {
       selectedPdf:      bestName,
       sourceZip:        bestSourceZip,
@@ -1072,6 +1204,7 @@ app.post('/api/projects/:id/validate-avis-pdf', async (req, res) => {
       validatedAt:      new Date().toISOString(),
     }
     db.write('procurement-analysis.json', bons)
+      syncBons()
   }
 
   res.json({
@@ -1228,6 +1361,7 @@ app.post('/api/projects/:id/upload-avis',
         ocrUsed,
       }
       db.write('procurement-analysis.json', bons)
+      syncBons()
     }
 
     res.json({
@@ -1349,6 +1483,7 @@ app.post('/api/projects/:id/analyze-from-avis', async (req, res) => {
       analyzedAt:     new Date().toISOString(),
     }
     db.write('procurement-analysis.json', bons)
+      syncBons()
   }
 
   // Telegram notification (fire-and-forget — never blocks the response)

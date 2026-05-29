@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- APP_VERSION: 2026-05-29-v6 -->
+<!-- APP_VERSION: 2026-05-29-v7 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -2253,21 +2253,42 @@ function renderCrewAiHtml(raw, bonId) {
 
   /* ── Diagnostics ─────────────────────────────────────────── */
   const diagHtml = `<details style="margin-top:12px">
-    <summary style="cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;padding:6px 0;list-style:none;display:flex;align-items:center;gap:6px"><i class="bi bi-bug"></i> Diagnostics</summary>
+    <summary style="cursor:pointer;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#94a3b8;padding:6px 0;list-style:none;display:flex;align-items:center;gap:6px"><i class="bi bi-bug"></i> Diagnostics persistance</summary>
     <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:12px;margin-top:6px;font-size:12px">
-      <table style="width:100%;border-collapse:collapse">
-        <tr><td style="color:#64748b;padding:2px 0;width:160px">Version</td><td style="font-weight:600">${h(raw.analysisVersion||'v1-legacy')}</td></tr>
+
+      <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:6px">État du projet</div>
+      <table style="width:100%;border-collapse:collapse;margin-bottom:10px">
+        <tr><td style="color:#64748b;padding:2px 0;width:180px">Project ID</td><td style="font-weight:600;font-family:monospace;font-size:10px">${h(bonId)}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">AVIS téléchargé</td><td>${raw.projectState?.avisDownloaded||raw.avisDownloaded ? '<span style="color:#059669;font-weight:700">✓ Oui</span>' : '<span style="color:#94a3b8">✗ Non</span>'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">AVIS extrait</td><td>${raw.projectState?.avisExtracted||raw.avisExtracted||raw.attachmentHasText ? '<span style="color:#059669;font-weight:700">✓ Oui</span>' : '<span style="color:#94a3b8">✗ Non</span>'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Analyse générée</td><td>${raw.projectState?.analysisGenerated||raw.analysisGenerated||raw.orchestrated ? '<span style="color:#059669;font-weight:700">✓ Oui</span>' : '<span style="color:#94a3b8">✗ Non</span>'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Documents générés</td><td>${raw.projectState?.documentsGenerated||raw.documentsGenerated ? '<span style="color:#059669;font-weight:700">✓ Oui ('+h(String(raw.projectState?.docsCount||'?'))+')</span>' : '<span style="color:#94a3b8">✗ Non</span>'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Dernière MAJ</td><td style="font-weight:600">${(raw.projectState?.lastUpdated||raw.lastUpdated||raw.orchestratedAt)?new Date(raw.projectState?.lastUpdated||raw.lastUpdated||raw.orchestratedAt).toLocaleString('fr-FR'):'—'}</td></tr>
+      </table>
+
+      <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:6px">Fichiers</div>
+      <table style="width:100%;border-collapse:collapse;margin-bottom:10px">
+        <tr><td style="color:#64748b;padding:2px 0;width:180px">Spec AVIS</td><td style="font-family:monospace;font-size:10px;color:#475569">${raw.projectState?.specPath ? h(raw.projectState.specPath) : '<span style="color:#94a3b8">non disponible</span>'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Analyse</td><td style="font-family:monospace;font-size:10px;color:#475569">${raw.projectState?.analysisPath ? h(raw.projectState.analysisPath) : '<span style="color:#94a3b8">non disponible</span>'}</td></tr>
         <tr><td style="color:#64748b;padding:2px 0">Texte AVIS</td><td style="font-weight:600">${d._avisTextLength?d._avisTextLength.toLocaleString()+' chars':'—'}</td></tr>
+      </table>
+
+      <div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:6px">Analyse</div>
+      <table style="width:100%;border-collapse:collapse">
+        <tr><td style="color:#64748b;padding:2px 0;width:180px">Version</td><td style="font-weight:600">${h(raw.analysisVersion||'v1-legacy')}</td></tr>
         <tr><td style="color:#64748b;padding:2px 0">Source</td><td style="font-weight:600">${h(d._analysisSource||d.analysisSource||'—')}</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">Moteur IA</td><td style="font-weight:600">${h(d.provider||'—')}</td></tr>
-        <tr><td style="color:#64748b;padding:2px 0">Cache</td><td style="font-weight:600">${d.cached||d.cachedAt?'✓ Oui — '+(d.cachedAt?new Date(d.cachedAt).toLocaleString('fr-FR'):''):'Non'}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Fournisseur IA</td><td style="font-weight:600">${h(raw.providerUsed||d.provider||'—')} ${raw.modelUsed&&raw.modelUsed!=='local-rulebased'?'('+h(raw.modelUsed)+')':''}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Type analyse</td><td style="font-weight:600">${h(raw.analysisType||'—')}</td></tr>
+        <tr><td style="color:#64748b;padding:2px 0">Cache</td><td style="font-weight:600">${raw.cached||raw.cachedAt?'✓ Oui — '+(raw.cachedAt?new Date(raw.cachedAt).toLocaleString('fr-FR'):''):'Non'}</td></tr>
         <tr><td style="color:#64748b;padding:2px 0">Matériaux</td><td style="font-weight:600">${mats.length}</td></tr>
         <tr><td style="color:#64748b;padding:2px 0">Risques</td><td style="font-weight:600">${risks.length} (${highRisks} élevés)</td></tr>
       </table>
+
       ${d._avisTextLength < 50 ? `<div style="margin-top:8px;padding:8px;background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.2);border-radius:6px;color:#dc2626"><i class="bi bi-exclamation-triangle-fill"></i> <b>Analyse sur métadonnées:</b> AVIS non disponible (${d._avisTextLength||0} chars). Qualité réduite.</div>` : ''}
       ${d._log?.length ? `<div style="margin-top:8px"><div style="font-size:10px;font-weight:700;color:#94a3b8;text-transform:uppercase;margin-bottom:4px">Log pipeline</div>
         <div style="font-family:monospace;font-size:10px;color:#475569;max-height:90px;overflow-y:auto;background:#fff;border:1px solid #e2e8f0;border-radius:4px;padding:6px">${d._log.map(l=>h(l)).join('<br>')}</div></div>` : ''}
       <button onclick="showJsonDebug('${bonId}')" style="margin-top:10px;background:none;border:1px solid #e2e8f0;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;color:#64748b"><i class="bi bi-braces"></i> Voir JSON</button>
+      <button onclick="showPersistDiag('${bonId}')" style="margin-top:10px;margin-left:6px;background:none;border:1px solid #e2e8f0;border-radius:6px;padding:4px 10px;font-size:11px;cursor:pointer;color:#64748b"><i class="bi bi-hdd-network"></i> Diag persistance</button>
     </div>
   </details>`
 
@@ -2289,6 +2310,80 @@ function renderCrewAiHtml(raw, bonId) {
     </div>
     ${diagHtml}
   </div>`
+}
+
+async function showPersistDiag(bonId) {
+  const modal = document.getElementById('doc-modal')
+  const pane  = document.getElementById('doc-form-pane')
+  if (!modal || !pane) return
+
+  pane.innerHTML = `<div style="padding:16px;text-align:center;color:#64748b"><span class="spinner"></span> Chargement diagnostics…</div>`
+  modal.classList.add('open')
+  document.getElementById('doc-modal-title').textContent = 'Diagnostics Persistance'
+
+  try {
+    const [projRes, diagRes] = await Promise.all([
+      fetch(`/api/projects/${encodeURIComponent(bonId)}`).then(r => r.json()),
+      fetch('/api/diagnostics/gemini').then(r => r.json()).catch(() => null),
+    ])
+
+    const ps = projRes.projectState || {}
+    const ai = diagRes || {}
+
+    function statusBadge(val) {
+      return val
+        ? `<span style="color:#16a34a;font-weight:600">✓ Oui</span>`
+        : `<span style="color:#dc2626;font-weight:600">✗ Non</span>`
+    }
+    function row(label, value) {
+      return `<tr><td style="padding:5px 10px;color:#64748b;white-space:nowrap">${h(label)}</td><td style="padding:5px 10px;font-family:monospace;font-size:12px;word-break:break-all">${value}</td></tr>`
+    }
+
+    pane.innerHTML = `
+      <div style="padding:16px">
+        <h3 style="font-size:14px;margin-bottom:16px;color:#1e3a5f"><i class="bi bi-hdd-network"></i> Diagnostics Persistance — ${h(bonId)}</h3>
+
+        <p style="font-size:12px;font-weight:600;color:#374151;margin-bottom:6px">État du projet</p>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px;background:#f8fafc;border-radius:8px;overflow:hidden;border:1px solid #e2e8f0">
+          <tbody>
+            ${row('Project ID', h(ps.projectId || bonId))}
+            ${row('AVIS téléchargé', statusBadge(ps.avisDownloaded))}
+            ${row('AVIS extrait (texte)', statusBadge(ps.avisExtracted))}
+            ${row('Analyse IA générée', statusBadge(ps.analysisGenerated))}
+            ${row('Documents générés', statusBadge(ps.documentsGenerated))}
+            ${row('Dernière MAJ', h(ps.lastUpdated ? new Date(ps.lastUpdated).toLocaleString('fr-FR') : '—'))}
+          </tbody>
+        </table>
+
+        <p style="font-size:12px;font-weight:600;color:#374151;margin-bottom:6px">Fichiers persistance</p>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px;background:#f8fafc;border-radius:8px;overflow:hidden;border:1px solid #e2e8f0">
+          <tbody>
+            ${row('Spec AVIS (path)', h(ps.specPath || '—'))}
+            ${row('Analyse IA (path)', h(ps.analysisPath || '—'))}
+            ${row('Longueur texte AVIS', h(ps.textLength != null ? ps.textLength + ' chars' : '—'))}
+            ${row('Documents (count)', h(ps.docsCount != null ? String(ps.docsCount) : '—'))}
+          </tbody>
+        </table>
+
+        <p style="font-size:12px;font-weight:600;color:#374151;margin-bottom:6px">État moteur IA</p>
+        <table style="width:100%;border-collapse:collapse;font-size:12px;margin-bottom:16px;background:#f8fafc;border-radius:8px;overflow:hidden;border:1px solid #e2e8f0">
+          <tbody>
+            ${row('Gemini configuré', statusBadge(ai.geminiConfigured))}
+            ${row('Provider actif', h(ai.providerActive || '—'))}
+            ${row('Modèle', h(ai.model || '—'))}
+            ${row('Dernière erreur', h(ai.lastError || '—'))}
+            ${row('Dernier appel', h(ai.lastCalledAt ? new Date(ai.lastCalledAt).toLocaleString('fr-FR') : '—'))}
+          </tbody>
+        </table>
+
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button onclick="showJsonDebug('${h(bonId)}')" style="background:none;border:1px solid #e2e8f0;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;color:#374151"><i class="bi bi-braces"></i> JSON analyse</button>
+          <button onclick="document.getElementById('doc-modal').classList.remove('open')" style="background:none;border:1px solid #e2e8f0;border-radius:6px;padding:5px 12px;font-size:12px;cursor:pointer;color:#374151">Fermer</button>
+        </div>
+      </div>`
+  } catch(e) {
+    pane.innerHTML = `<div style="padding:16px;color:#dc2626">Erreur: ${h(e.message)}</div>`
+  }
 }
 
 async function showJsonDebug(bonId) {
