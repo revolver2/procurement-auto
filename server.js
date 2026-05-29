@@ -27,20 +27,28 @@ const docRenderers = {
 function syncCandidatures() {
   githubPersist.pushFile('candidatures.json')
     .then(r => { if (!r?.skipped) console.log('[GitHubSync] candidatures.json pushed') })
-    .catch(e => console.error('[GitHubSync] push failed:', e.message))
+    .catch(e => console.error('[GitHubSync] candidatures push failed:', e.message))
 }
 
-// On startup: if local candidatures.json is empty, pull from GitHub
+function syncDocuments() {
+  githubPersist.pushFile('rfq-generated.json')
+    .then(r => { if (!r?.skipped) console.log('[GitHubSync] rfq-generated.json pushed') })
+    .catch(e => console.error('[GitHubSync] rfq-generated push failed:', e.message))
+}
+
+// On startup: hydrate persisted files from GitHub if local copies are empty
 ;(async () => {
-  const local = db.read('candidatures.json') || []
-  if (local.length === 0) {
+  for (const [file, label] of [['candidatures.json', 'candidatures'], ['rfq-generated.json', 'documents']]) {
     try {
-      const remote = await githubPersist.pullFile('candidatures.json')
-      if (Array.isArray(remote) && remote.length > 0) {
-        db.write('candidatures.json', remote)
-        console.log(`[Startup] Hydrated ${remote.length} candidatures from GitHub`)
+      const local = db.read(file) || []
+      if (local.length === 0) {
+        const remote = await githubPersist.pullFile(file)
+        if (Array.isArray(remote) && remote.length > 0) {
+          db.write(file, remote)
+          console.log(`[Startup] Hydrated ${remote.length} ${label} from GitHub`)
+        }
       }
-    } catch (e) { console.log('[Startup] GitHub hydration skipped:', e.message) }
+    } catch (e) { console.log(`[Startup] GitHub hydration skipped for ${file}:`, e.message) }
   }
 })()
 
@@ -157,14 +165,76 @@ app.get('/api/projects/:id', (req, res) => {
   const bon    = bons.find(b => b.id === req.params.id)
   if (!bon) return res.status(404).json({ error: 'Bon introuvable' })
 
-  // Attach analysis + documents + candidature if available
-  const analyses   = db.read('specifications.json')   || []
-  const rfqs       = db.read('rfq-generated.json')    || []
-  const cands      = db.read('candidatures.json')     || []
-  bon.analysis     = analyses.find(a => a.bonId === bon.id)?.analysis     || null
-  bon.documents    = rfqs.find(d => d.bonId === bon.id)?.documents        || null
-  bon.candidature  = cands.find(c => c.bonId === bon.id)                  || null
+  // Documents and candidature
+  const rfqs       = db.read('rfq-generated.json') || []
+  const cands      = db.read('candidatures.json')  || []
+  bon.documents    = rfqs.find(d => d.bonId === bon.id)?.documents || null
+  bon.candidature  = cands.find(c => c.bonId === bon.id)           || null
+
+  // Legacy Skills-IA analysis (specifications.json)
+  const analyses   = db.read('specifications.json') || []
+  bon.analysis     = analyses.find(a => a.bonId === bon.id)?.analysis || null
+
+  // CrewAI analysis from per-project cache file
+  const aiPath = path.resolve(__dirname, 'data/ai-analysis', `${bon.id}.json`)
+  if (fs.existsSync(aiPath)) {
+    try { bon.crewaiAnalysis = JSON.parse(fs.readFileSync(aiPath, 'utf8')) }
+    catch { bon.crewaiAnalysis = null }
+  } else {
+    bon.crewaiAnalysis = null
+  }
+
+  // Attachment spec (primaryAvisName, hasText, etc.)
+  const specPath = path.resolve(__dirname, 'data/specifications', `${bon.id}.json`)
+  if (fs.existsSync(specPath)) {
+    try {
+      const spec = JSON.parse(fs.readFileSync(specPath, 'utf8'))
+      bon.attachments     = spec.attachments      || bon.attachments      || []
+      bon.attachmentHasText = spec.hasText        || bon.attachmentHasText|| false
+      bon.avisDocument    = bon.avisDocument      || { selectedPdf: spec.primaryAvisName, textLength: spec.textLength }
+    } catch {}
+  }
+
   res.json(bon)
+})
+
+/* All data for a project in one call — avoids multiple round-trips */
+app.get('/api/projects/:id/full', (req, res) => {
+  const bons = db.read('procurement-analysis.json') || []
+  const bon  = bons.find(b => b.id === req.params.id)
+  if (!bon) return res.status(404).json({ error: 'Bon introuvable' })
+
+  const rfqs  = db.read('rfq-generated.json') || []
+  const cands = db.read('candidatures.json')  || []
+  const specs = db.read('specifications.json') || []
+
+  const documents   = rfqs.find(d => d.bonId === bon.id)?.documents         || null
+  const candidature = cands.find(c => c.bonId === bon.id)                   || null
+  const analysis    = specs.find(a => a.bonId === bon.id)?.analysis         || null
+
+  let crewaiAnalysis = null
+  const aiPath = path.resolve(__dirname, 'data/ai-analysis', `${bon.id}.json`)
+  if (fs.existsSync(aiPath)) {
+    try { crewaiAnalysis = JSON.parse(fs.readFileSync(aiPath, 'utf8')) } catch {}
+  }
+
+  let attachmentSpec = null
+  const specPath = path.resolve(__dirname, 'data/specifications', `${bon.id}.json`)
+  if (fs.existsSync(specPath)) {
+    try { attachmentSpec = JSON.parse(fs.readFileSync(specPath, 'utf8')) } catch {}
+  }
+
+  res.json({
+    ...bon,
+    documents,
+    candidature,
+    analysis,
+    crewaiAnalysis,
+    attachmentSpec,
+    attachments:      attachmentSpec?.attachments     || bon.attachments     || [],
+    attachmentHasText: attachmentSpec?.hasText        || bon.attachmentHasText || false,
+    avisDocument:     bon.avisDocument                || { selectedPdf: attachmentSpec?.primaryAvisName, textLength: attachmentSpec?.textLength },
+  })
 })
 
 /* ═══════════════════════════════════════════════════════════════
@@ -249,6 +319,15 @@ app.post('/api/analyze', async (req, res) => {
 /* ═══════════════════════════════════════════════════════════════
    DOCUMENT GENERATION
 ══════════════════════════════════════════════════════════════════ */
+
+// Per-project document retrieval (RESTful alias)
+app.get('/api/projects/:id/documents', (req, res) => {
+  const all   = db.read('rfq-generated.json') || []
+  const found = all.find(d => d.bonId === req.params.id)
+  if (!found) return res.json({ documents: null, generatedAt: null })
+  res.json({ documents: found.documents || null, generatedAt: found.generatedAt || null })
+})
+
 app.get('/api/generate', (req, res) => {
   const { projectId } = req.query
   if (!projectId) return res.status(400).json({ error: 'projectId requis' })
@@ -286,6 +365,7 @@ app.post('/api/generate', async (req, res) => {
     const record = { bonId: projectId, documents, generatedAt: new Date().toISOString() }
     if (idx >= 0) all[idx] = record; else all.push(record)
     db.write('rfq-generated.json', all)
+    syncDocuments()
 
     res.json({ success: true, documents })
   } catch (e) { res.status(500).json({ success: false, error: e.message }) }
@@ -1248,6 +1328,7 @@ app.patch('/api/documents/:bonId/:type', (req, res) => {
   }
 
   db.write('rfq-generated.json', rfqs)
+  syncDocuments()
   res.json({ success: true })
 })
 

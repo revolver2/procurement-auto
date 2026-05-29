@@ -958,7 +958,7 @@ async function openProject(id) {
   navTo('detail')
   document.getElementById('detail-content').innerHTML = '<div class="loading"><span class="spinner"></span>Chargement...</div>'
   try {
-    const bon = await fetch(`/api/projects/${id}`).then(r => r.json())
+    const bon = await fetch(`/api/projects/${id}/full`).then(r => r.json())
     currentProject = bon
     renderDetail(bon)
   } catch(e) { document.getElementById('detail-content').innerHTML = `<p style="color:var(--danger)">Erreur: ${e.message}</p>` }
@@ -1190,11 +1190,13 @@ function renderDetail(bon) {
           </div>
         </div>
         <div id="crewai-result-panel">
-          <div style="text-align:center;padding:32px;color:var(--muted)">
-            <i class="bi bi-robot" style="font-size:36px;display:block;margin-bottom:10px;opacity:.4"></i>
-            <p style="font-size:13px">Cliquez <b>Run CrewAI Analysis</b> pour lancer le pipeline 8-agents.</p>
-            <p style="font-size:12px;margin-top:6px">Le pipeline analyse uniquement l'AVIS officiel extrait.</p>
-          </div>
+          ${bon.crewaiAnalysis && (bon.crewaiAnalysis.summary || bon.crewaiAnalysis.materials?.length || bon.crewaiAnalysis.specifications?.length)
+            ? renderCrewAiHtml(bon.crewaiAnalysis, bon.id)
+            : `<div style="text-align:center;padding:32px;color:var(--muted)">
+                <i class="bi bi-robot" style="font-size:36px;display:block;margin-bottom:10px;opacity:.4"></i>
+                <p style="font-size:13px">Cliquez <b>Run CrewAI Analysis</b> pour lancer le pipeline 8-agents.</p>
+                <p style="font-size:12px;margin-top:6px">Le pipeline analyse uniquement l'AVIS officiel extrait.</p>
+              </div>`}
         </div>` : `
         <div style="padding:28px 20px">
           <div style="text-align:center;margin-bottom:20px">
@@ -1671,11 +1673,13 @@ async function runCrewAiAnalysis(bonId, forceRefresh) {
 async function loadCrewAiTab(bonId) {
   const panel = document.getElementById('crewai-result-panel')
   if (!panel) return
+  // If already populated from the /full endpoint, don't overwrite
+  if (panel.querySelector('.crewai-section')) return
   try {
     const r = await fetch(`/api/projects/${bonId}/crewai-analysis`)
     if (!r.ok) return
     const d = await r.json()
-    if (d && (d.summary || d.materials?.length)) {
+    if (d && (d.summary || d.materials?.length || d.specifications?.length)) {
       panel.innerHTML = renderCrewAiHtml(d, bonId)
     }
   } catch {}
