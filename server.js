@@ -1123,6 +1123,29 @@ app.get('/api/diagnostics/ai', (req, res) => {
   })
 })
 
+/* ── Gemini-specific diagnostics ────────────────────────────── */
+app.get('/api/diagnostics/gemini', (req, res) => {
+  const aiRouter     = require('./lib/ai-router')
+  const status       = aiRouter.getStatus ? aiRouter.getStatus() : {}
+  const geminiKey    = !!process.env.GEMINI_API_KEY
+
+  let providerActive = 'unknown'
+  if (!geminiKey)                                    providerActive = 'local-rulebased'
+  else if (status.lastProvider === 'gemini')         providerActive = 'gemini'
+  else if (status.lastProvider === 'local-rulebased') providerActive = 'local-rulebased'
+  else                                               providerActive = geminiKey ? 'gemini (not yet called)' : 'local-rulebased'
+
+  res.json({
+    geminiConfigured:  geminiKey,
+    geminiKeyPresent:  geminiKey,
+    providerActive,
+    model:             status.lastModel    || (geminiKey ? 'gemini-2.5-flash' : null),
+    lastError:         status.lastError    || null,
+    lastCalledAt:      status.lastCalledAt || null,
+    lastProvider:      status.lastProvider || null,
+  })
+})
+
 /* ── Upload AVIS PDF directly (drag-and-drop from browser) ── */
 app.post('/api/projects/:id/upload-avis',
   express.raw({ type: '*/*', limit: '50mb' }),

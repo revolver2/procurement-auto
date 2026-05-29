@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- APP_VERSION: 2026-05-29-v4 -->
+<!-- APP_VERSION: 2026-05-29-v5 -->
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -1782,13 +1782,19 @@ function normalizeCrewAi(raw) {
   // ── v2: master-analysis-skill output ────────────────────────
   if (raw.analysisVersion === 'v2-procurement-engineer' || raw.executive) {
     const ex = raw.executive || {}
+    // Preserve null scores — do NOT default to 50 (that would be fake data)
+    const profScore = ex.profitabilityScore !== undefined ? ex.profitabilityScore
+                    : raw.profitabilityScore !== undefined ? raw.profitabilityScore : null
+    const urgScore  = ex.urgencyScore !== undefined ? ex.urgencyScore
+                    : raw.urgencyScore !== undefined ? raw.urgencyScore : null
+    const winProb   = ex.winningProbability || raw.winningProbability || null
     return {
       ...raw,
-      profitabilityScore: ex.profitabilityScore ?? raw.profitabilityScore ?? 50,
-      urgencyScore:       ex.urgencyScore       ?? raw.urgencyScore       ?? 50,
-      winningProbability: ex.winningProbability ?? raw.winningProbability ?? 'Modérée',
+      profitabilityScore: profScore,
+      urgencyScore:       urgScore,
+      winningProbability: winProb,
       summary:            raw.summary || ex.scopeOfWork || '',
-      executive:          ex,
+      executive:          { ...ex, profitabilityScore: profScore, urgencyScore: urgScore, winningProbability: winProb },
       materials:          raw.materials          || [],
       certifications:     raw.certifications     || { required: [], optional: [], notMentioned: [] },
       complianceChecklist:raw.complianceChecklist|| [],
@@ -1805,6 +1811,9 @@ function normalizeCrewAi(raw) {
       _log: raw.log || [],
       _avisTextLength: raw.attachmentSpec?.textLength || 0,
       _analysisSource: raw.analysisSource || '',
+      _providerUsed:   raw.providerUsed   || null,
+      _analysisType:   raw.analysisType   || null,
+      _fallbackReason: raw.fallbackReason || null,
     }
   }
 
@@ -1926,17 +1935,32 @@ function renderCrewAiHtml(raw, bonId) {
   const actions  = d.actionPlan         || []
   const trace    = d.sourceTraceability || null
 
-  const profScore = ex.profitabilityScore ?? d.profitabilityScore ?? 0
-  const urgScore  = ex.urgencyScore       ?? d.urgencyScore       ?? 0
-  const winLabel  = ex.winningProbability || d.winningProbability || '—'
-  const bidRec    = ex.bidRecommendation  || '—'
+  const profScore = ex.profitabilityScore ?? d.profitabilityScore ?? null
+  const urgScore  = ex.urgencyScore       ?? d.urgencyScore       ?? null
+  const winLabel  = ex.winningProbability || d.winningProbability || null
+  const bidRec    = ex.bidRecommendation  || null
 
-  const providerBadge = (d.provider === 'gemini' || d._v2)
-    ? `<span style="font-size:10px;background:rgba(16,185,129,.1);color:#059669;padding:1px 8px;border-radius:10px;font-weight:700">Gemini 2.5 Flash</span>`
-    : `<span style="font-size:10px;background:#f1f5f9;color:var(--muted);padding:1px 8px;border-radius:10px;font-weight:600">Règles locales</span>`
+  // Detect fallback mode — never show fake 50/50 scores
+  const isFallback   = d._providerUsed === 'local-rulebased' || d._analysisType === 'fallback'
+                     || raw.providerUsed === 'local-rulebased' || raw.analysisType === 'fallback'
+  const fallbackReason = d._fallbackReason || raw.fallbackReason || null
+  const fallbackMsg  = fallbackReason === 'quota_exceeded'
+    ? 'Quota Gemini dépassé (limite gratuite). Réessayez dans quelques minutes.'
+    : fallbackReason === 'no_key'
+      ? 'GEMINI_API_KEY non configuré sur Render.'
+      : fallbackReason === 'api_error'
+        ? 'Erreur API Gemini. Vérifiez la clé et réessayez.'
+        : raw.summary || 'Analyse IA avancée indisponible.'
 
-  const recColor = bidRec.includes('Fortement') ? '#059669' : bidRec.includes('Recommandé') ? '#16a34a' : bidRec.includes('Non') ? '#dc2626' : '#d97706'
-  const recBg    = bidRec.includes('Fortement') ? 'rgba(16,185,129,.1)' : bidRec.includes('Recommandé') ? 'rgba(22,163,74,.08)' : bidRec.includes('Non') ? 'rgba(220,38,38,.08)' : 'rgba(217,119,6,.08)'
+  const usedModel    = d.modelUsed || raw.modelUsed || (isFallback ? null : 'gemini-2.5-flash')
+  const providerBadge = isFallback
+    ? `<span style="font-size:10px;background:rgba(239,68,68,.1);color:#dc2626;padding:1px 8px;border-radius:10px;font-weight:700"><i class="bi bi-exclamation-circle"></i> Fallback local</span>`
+    : usedModel
+      ? `<span style="font-size:10px;background:rgba(16,185,129,.1);color:#059669;padding:1px 8px;border-radius:10px;font-weight:700"><i class="bi bi-check-circle"></i> ${h(usedModel)}</span>`
+      : `<span style="font-size:10px;background:#f1f5f9;color:var(--muted);padding:1px 8px;border-radius:10px;font-weight:600">Moteur local</span>`
+
+  const recColor = !bidRec ? '#94a3b8' : bidRec.includes('Fortement') ? '#059669' : bidRec.includes('Recommandé') ? '#16a34a' : bidRec.includes('Non') ? '#dc2626' : '#d97706'
+  const recBg    = !bidRec ? '#f1f5f9' : bidRec.includes('Fortement') ? 'rgba(16,185,129,.1)' : bidRec.includes('Recommandé') ? 'rgba(22,163,74,.08)' : bidRec.includes('Non') ? 'rgba(220,38,38,.08)' : 'rgba(217,119,6,.08)'
 
   /* ── TAB 1: SUMMARY ──────────────────────────────────────── */
   const traceHtml = trace ? `<div class="source-trace" style="margin-bottom:12px">
@@ -1948,25 +1972,37 @@ function renderCrewAiHtml(raw, bonId) {
     <tr><td>Moteur IA</td><td><strong>${h(trace.aiEngine||'—')}</strong></td></tr></table>
   </div>` : ''
 
-  const summaryTab = `${traceHtml}
+  const fallbackBanner = isFallback ? `
+  <div style="background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.25);border-radius:10px;padding:14px 16px;margin-bottom:14px;display:flex;gap:12px;align-items:flex-start">
+    <div style="font-size:22px;line-height:1">⚠️</div>
+    <div>
+      <div style="font-weight:700;color:#dc2626;font-size:13px;margin-bottom:3px">Analyse IA avancée indisponible</div>
+      <div style="font-size:12px;color:#7f1d1d;line-height:1.5">${h(fallbackMsg)}</div>
+      <div style="margin-top:8px;font-size:11px;color:#b45309">Configurez <strong>GEMINI_API_KEY</strong> dans Render → Environment Variables, puis relancez l'analyse.</div>
+    </div>
+  </div>` : ''
+
+  const scoresHtml = isFallback ? '' : `
   <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:12px">
     <div class="pe-card" style="text-align:center;padding:12px 8px">
       <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:5px">Rentabilité</p>
-      <div style="font-size:26px;font-weight:800;color:${profScore>=60?'var(--success)':profScore>=35?'#f59e0b':'var(--danger)'}">${profScore}<span style="font-size:11px">/100</span></div>
+      ${profScore !== null ? `<div style="font-size:26px;font-weight:800;color:${profScore>=60?'var(--success)':profScore>=35?'#f59e0b':'var(--danger)'}">${profScore}<span style="font-size:11px">/100</span></div>` : '<div style="font-size:20px;color:var(--muted)">—</div>'}
     </div>
     <div class="pe-card" style="text-align:center;padding:12px 8px">
       <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:5px">Urgence</p>
-      <div style="font-size:26px;font-weight:800;color:${urgScore>=70?'var(--danger)':urgScore>=40?'#f59e0b':'var(--success)'}">${urgScore}<span style="font-size:11px">/100</span></div>
+      ${urgScore !== null ? `<div style="font-size:26px;font-weight:800;color:${urgScore>=70?'var(--danger)':urgScore>=40?'#f59e0b':'var(--success)'}">${urgScore}<span style="font-size:11px">/100</span></div>` : '<div style="font-size:20px;color:var(--muted)">—</div>'}
     </div>
     <div class="pe-card" style="text-align:center;padding:12px 8px">
       <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:5px">Prob. succès</p>
-      <div style="font-size:18px;font-weight:800;color:${winLabel==='Élevée'?'var(--success)':winLabel==='Faible'?'var(--danger)':'#f59e0b'}">${h(winLabel)}</div>
+      <div style="font-size:18px;font-weight:800;color:${winLabel==='Élevée'?'var(--success)':winLabel==='Faible'?'var(--danger)':'#f59e0b'}">${winLabel ? h(winLabel) : '—'}</div>
     </div>
     <div class="pe-card" style="text-align:center;padding:12px 8px">
       <p style="font-size:10px;color:var(--muted);text-transform:uppercase;margin-bottom:5px">Recommandation</p>
-      <div style="font-size:11px;font-weight:700;color:${recColor};background:${recBg};border-radius:6px;padding:4px 5px;line-height:1.4">${h(bidRec)}</div>
+      <div style="font-size:11px;font-weight:700;color:${recColor};background:${recBg};border-radius:6px;padding:4px 5px;line-height:1.4">${bidRec ? h(bidRec) : '—'}</div>
     </div>
-  </div>
+  </div>`
+
+  const summaryTab = `${traceHtml}${fallbackBanner}${scoresHtml}
   ${(ex.buyer||ex.city||ex.deadline||ex.estimatedComplexity) ? `<div class="pe-card" style="margin-bottom:10px">
     <h4><i class="bi bi-info-circle" style="color:var(--orange)"></i> Projet</h4>
     <table style="width:100%;border-collapse:collapse;font-size:13px">
@@ -1976,7 +2012,7 @@ function renderCrewAiHtml(raw, bonId) {
       ${ex.estimatedComplexity ? `<tr><td style="color:var(--muted);padding:3px 0;font-weight:600">Complexité</td><td>${h(ex.estimatedComplexity)}</td></tr>` : ''}
     </table>
   </div>` : ''}
-  ${d.summary||ex.scopeOfWork ? `<div class="pe-card">
+  ${!isFallback && (d.summary||ex.scopeOfWork) ? `<div class="pe-card">
     <h4><i class="bi bi-blockquote-left" style="color:var(--orange)"></i> Résumé exécutif</h4>
     <p style="font-size:13px;line-height:1.6">${h(d.summary||ex.scopeOfWork||'')}</p>
   </div>` : ''}`
