@@ -866,7 +866,38 @@
       "metallique",
       "métal",
       "metal"
-    ]
+    ],
+    "attachmentHasText": true,
+    "attachmentFound": true,
+    "attachments": [
+      {
+        "name": "avis d'achat fenetres_005.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/339896/48603385",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/opt/render/project/src/data/attachments/1be4b663-3e8d-4f50-a04f-0ae7eef8904e/avis_d_achat_fenetres_005.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "avis d'achat fenetres_005.pdf",
+        "sourceZip": "avis_d_achat_fenetres_005.zip",
+        "extractedPath": "/opt/render/project/src/data/attachments/1be4b663-3e8d-4f50-a04f-0ae7eef8904e/avis_d_achat_fenetres_005.zip_extracted/avis d_achat fenetres_005.pdf",
+        "textLength": 2591,
+        "error": null
+      }
+    ],
+    "avisDocument": {
+      "selectedPdf": "avis d'achat fenetres_005.pdf (depuis avis_d_achat_fenetres_005.zip)",
+      "textLength": 2591,
+      "textExtracted": true,
+      "validated": true,
+      "validatedAt": "2026-05-30T13:48:57.445Z",
+      "extractionMethod": "pdf-parse",
+      "ocrUsed": false
+    },
+    "analysisSource": "official_avis_attachment_only"
   },
   {
     "id": "fd63f4f9-d541-4cfe-b23a-0b01e3473bb5",
