@@ -1,0 +1,31 @@
+{
+  "bonId": "b14fbc09-3c64-4dff-9c46-ca8a1132ca7d",
+  "bonReference": "07/BP/2026",
+  "attachments": [
+    {
+      "name": "AVIS D'ACHAT BLOC SANITAIR20260526_12344709_0086.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/344503/48595765",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b14fbc09-3c64-4dff-9c46-ca8a1132ca7d/AVIS_D_ACHAT_BLOC_SANITAIR20260526_12344709_0086.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "AVIS D'ACHAT BLOC SANITAIR20260526_12344709_0086.pdf",
+      "sourceZip": "AVIS_D_ACHAT_BLOC_SANITAIR20260526_12344709_0086.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b14fbc09-3c64-4dff-9c46-ca8a1132ca7d/AVIS_D_ACHAT_BLOC_SANITAIR20260526_12344709_0086.zip_extracted/AVIS D_ACHAT BLOC SANITAIR20260526_12344709_0086.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-31T22:47:40.079Z",
+  "extractionNote": null
+}

@@ -1,0 +1,31 @@
+{
+  "bonId": "2858afe5-a38f-4474-9029-be5ca27a1b40",
+  "bonReference": "57/2026/INRH/DGMN",
+  "attachments": [
+    {
+      "name": "AA N°57-2026-INRH-DGMN.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343531/48454158",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/2858afe5-a38f-4474-9029-be5ca27a1b40/AA_N_57-2026-INRH-DGMN.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "AA N°57-2026-INRH-DGMN.pdf",
+      "sourceZip": "AA_N_57-2026-INRH-DGMN.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/2858afe5-a38f-4474-9029-be5ca27a1b40/AA_N_57-2026-INRH-DGMN.zip_extracted/AA N_57-2026-INRH-DGMN.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-05-31T22:49:13.338Z",
+  "extractionNote": null
+}
