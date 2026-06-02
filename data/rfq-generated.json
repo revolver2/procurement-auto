@@ -238,5 +238,31 @@
       ]
     },
     "generatedAt": "2026-05-29T17:14:58.552Z"
+  },
+  {
+    "bonId": "d753d779-cfcb-4ea7-915f-c0cd408f25d9",
+    "documents": {
+      "bordereau": [
+        {
+          "num": 1,
+          "designation": "#1Mission 1 : Contrôle des études techniques",
+          "unite": "Forfait",
+          "quantite": 1,
+          "prixUnitaireHT": 95000,
+          "montantHT": 95000,
+          "notes": "Prestation forfaitaire incluant la vérification de la conformité des études techniques (architecturales, structurelles, fluides, VRD, etc.) aux normes en vigueur, au programme et aux exigences réglementaires."
+        },
+        {
+          "num": 2,
+          "designation": "#2Mission 2 : Contrôle et réception des travaux",
+          "unite": "Forfait",
+          "quantite": 1,
+          "prixUnitaireHT": 280000,
+          "montantHT": 280000,
+          "notes": "Prestation forfaitaire incluant le suivi régulier de l'exécution des travaux, le contrôle qualité, la validation des situations de travaux, l'assistance aux opérations de réception provisoire et définitive, et le suivi de la période de garantie."
+        }
+      ]
+    },
+    "generatedAt": "2026-06-02T10:58:27.411Z"
   }
 ]
