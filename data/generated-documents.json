@@ -272,5 +272,34 @@
     "source": "official_avis_attachment_only",
     "updatedAt": "2026-05-29T17:16:01.806Z",
     "createdAt": "2026-05-29T17:15:22.915Z"
+  },
+  {
+    "id": "d753d779-cfcb-4ea7-915f-c0cd408f25d9_bordereau",
+    "projectId": "d753d779-cfcb-4ea7-915f-c0cd408f25d9",
+    "docType": "bordereau",
+    "title": "Bordereau de Prix",
+    "data": [
+      {
+        "num": 1,
+        "designation": "Mission 1 : Contrôle des études techniques",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0,
+        "notes": "Prestation de contrôle des études techniques conformément au cahier des prescriptions spéciales (CPS)."
+      },
+      {
+        "num": 2,
+        "designation": "Mission 2 : Contrôle et réception des travaux",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0,
+        "notes": "Prestation de contrôle et de suivi des travaux, incluant les opérations de réception provisoire et définitive, conformément au CPS."
+      }
+    ],
+    "source": "metadata_only",
+    "updatedAt": "2026-06-02T10:58:29.805Z",
+    "createdAt": "2026-06-02T10:58:27.408Z"
   }
 ]
