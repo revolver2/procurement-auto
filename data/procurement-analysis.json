@@ -1519,20 +1519,23 @@
         "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/343032/48399178",
         "type": "avis",
         "isAvis": true,
-        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/d753d779-cfcb-4ea7-915f-c0cd408f25d9/Avis_d_achat_12_et_cahier_des_charges.zip",
+        "localPath": "/opt/render/project/src/data/attachments/d753d779-cfcb-4ea7-915f-c0cd408f25d9/Avis_d_achat_12_et_cahier_des_charges.zip",
         "downloaded": true,
         "skipped": false,
-        "textExtracted": false,
-        "requiresOCR": true,
-        "sourceFile": "Cahier des charges.pdf",
-        "textLength": 0,
-        "error": "Extraction PDF échouée: pdfParse is not a function"
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "Avis d'achat sur bon de commande 12.pdf",
+        "sourceZip": "Avis_d_achat_12_et_cahier_des_charges.zip",
+        "extractedPath": "/opt/render/project/src/data/attachments/d753d779-cfcb-4ea7-915f-c0cd408f25d9/Avis_d_achat_12_et_cahier_des_charges.zip_extracted/Avis d_achat sur bon de commande 12.pdf",
+        "textLength": 5500,
+        "error": null
       }
     ],
     "officialAttachmentTextPath": null,
-    "analysisSource": "metadata_only",
+    "analysisSource": "official_avis_attachment_only",
     "attachmentFound": true,
-    "attachmentHasText": false,
+    "attachmentHasText": true,
     "projectStatus": "Nouveau",
     "statusHistory": [
       {
@@ -1540,7 +1543,16 @@
         "date": "2026-05-28T19:19:15.538Z",
         "note": "Scraping automatique"
       }
-    ]
+    ],
+    "avisDocument": {
+      "selectedPdf": "Avis d'achat sur bon de commande 12.pdf (depuis Avis_d_achat_12_et_cahier_des_charges.zip)",
+      "textLength": 5500,
+      "textExtracted": true,
+      "validated": true,
+      "validatedAt": "2026-06-02T11:11:50.644Z",
+      "extractionMethod": "pdf-parse",
+      "ocrUsed": false
+    }
   },
   {
     "id": "729bda69-91ba-45bb-957f-6ca4ba6d3b65",
