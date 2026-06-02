@@ -242,34 +242,53 @@
   {
     "bonId": "d753d779-cfcb-4ea7-915f-c0cd408f25d9",
     "documents": {
-      "devis": {
-        "reference": "DEV-2024-07-15-CART-001",
-        "date": "2024-07-15",
-        "client": "AGENCE NATIONALE DE LA CONSERVATION FONCIERE, DU CADASTRE ET DE LA CARTOGRAPHIE",
-        "validite": "30 jours à compter de la date d'émission",
-        "items": [
+      "bordereau": [
+        {
+          "num": 1,
+          "designation": "Mission 1 : Contrôle des études techniques",
+          "unite": "Forfait",
+          "quantite": 1,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": "Prestation de contrôle des études techniques conformément au cahier des prescriptions spéciales (CPS)."
+        },
+        {
+          "num": 2,
+          "designation": "Mission 2 : Contrôle et réception des travaux",
+          "unite": "Forfait",
+          "quantite": 1,
+          "prixUnitaireHT": 0,
+          "montantHT": 0,
+          "notes": "Prestation de contrôle et de suivi des travaux, incluant les opérations de réception provisoire et définitive, conformément au CPS."
+        }
+      ],
+      "rfq": {
+        "subject": "Demande de Cotation pour le Contrôle des études techniques et suivi des travaux d'aménagement et de réhabilitation du bâtiment abritant la Direction de la Cartographie",
+        "suppliers": [
           {
-            "designation": "Mission 1 : Contrôle des études techniques pour l'aménagement et la réhabilitation du bâtiment de la Direction de la Cartographie",
-            "unite": "Forfait",
-            "quantite": 1,
-            "prixUnitaire": 75000,
-            "total": 75000
-          },
-          {
-            "designation": "Mission 2 : Contrôle et réception des travaux d'aménagement et de réhabilitation du bâtiment de la Direction de la Cartographie",
-            "unite": "Forfait",
-            "quantite": 1,
-            "prixUnitaire": 225000,
-            "total": 225000
+            "category": "Bureaux d'études techniques / Ingénierie",
+            "items": [
+              {
+                "designation": "Mission 1 : Contrôle des études techniques",
+                "specification": "Vérification de la conformité et de la qualité des études techniques (architecture, structure, fluides, VRD, etc.) relatives à l'aménagement et la réhabilitation du bâtiment de la Direction de la Cartographie.",
+                "quantite": "1",
+                "unite": "Forfait"
+              },
+              {
+                "designation": "Mission 2 : Contrôle et réception des travaux",
+                "specification": "Suivi de l'exécution des travaux, vérification de la conformité aux plans et spécifications techniques, assistance à la réception provisoire et définitive des travaux d'aménagement et de réhabilitation.",
+                "quantite": "1",
+                "unite": "Forfait"
+              }
+            ],
+            "notes": "Les soumissionnaires devront justifier de leurs qualifications et références dans des missions similaires de contrôle et suivi de projets de réhabilitation de bâtiments administratifs au Maroc. Une note méthodologique détaillée pour chaque mission est requise."
           }
         ],
-        "totalHT": 300000,
-        "tva": 60000,
-        "totalTTC": 360000,
-        "conditions": "Paiement par virement bancaire après service fait et présentation de facture, selon les délais réglementaires des marchés publics marocains. Les prix sont exprimés en Dirhams Marocains (MAD) et sont sujets à la TVA en vigueur (20%).",
-        "notes": "Ce devis est établi sur la base des informations préliminaires fournies. Une analyse détaillée du Cahier des Prescriptions Spéciales (CPS) et une visite des lieux seront nécessaires pour confirmer ou ajuster les montants proposés. Toute prestation additionnelle non incluse dans les missions définies fera l'objet d'un avenant ou d'un devis complémentaire."
+        "deadline": "2024-07-31",
+        "paymentTerms": "Paiement par virement bancaire après service fait et validation des livrables, selon les termes du marché public marocain en vigueur.",
+        "deliveryRequirements": "Les livrables (rapports d'études, PV de réunions, PV de réception, etc.) devront être remis en versions numérique (format PDF éditable) et papier (en trois exemplaires), conformément aux exigences du maître d'ouvrage et aux délais contractuels."
       }
     },
-    "generatedAt": "2026-06-02T10:58:31.713Z"
+    "generatedAt": "2026-06-02T11:10:06.485Z"
   }
 ]
