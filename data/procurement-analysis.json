@@ -1833,5 +1833,3688 @@
         "note": "Scraping automatique"
       }
     ]
+  },
+  {
+    "id": "9d814429-cf30-4d05-855e-a8cd1e5869b8",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351583",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351583",
+    "reference": "28/2026",
+    "title": "Objet Travaux d’aménagement intérieur comprenant la réalisation de cloisons séparatives en aluminium et les travaux de peinture vinylique sur murs au profit des éablisements sanitaires relevant de la DMSPS de Taounate.",
+    "buyer": "DELEGUE DU MINISTERE DE LA SANTE A LA PROVINCE TAOUNATE",
+    "city": "",
+    "location": "TAOUNATE",
+    "destination": "TAOUNATE",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "22/06/2026 14:00",
+    "publishDate": "15/06/2026 15:24",
+    "publicationDate": "15/06/2026 15:24",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "A",
+    "activityMatched": "Aluminium / Menuiserie aluminium",
+    "keywordsMatched": [
+      "aluminium",
+      "cloison"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Travaux d’aménagement intérieur comprenant la réalisation de cloisons séparatives en aluminium et les travaux de peinture vinylique sur murs au profit des éablisements sanitaires relevant de la DMSPS de Taounate.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Peinture vinylique sur mur     Fourniture et application de peinture vinylique sur murs de première qualité, comprenant le grattage et le décapage des anciennes peintures, le traitement des fissures, la préparation des surfaces, l’application d’une couche d’enduit de ragréage, le ponçage et le dépoussiérage, l’application d’une couche d’impression si nécessaire, puis l’application de deux couches de peinture, les retouches et finitions, ainsi que toutes sujétions.",
+        "unite": "M²",
+        "quantite": 3000,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#02Fourniture et pose de cloisons séparatives en aluminium.                                                                                                                                                        Caractéristiques et spécifications :                                                                                                                                                                                         La fourniture des profilés en aluminium, panneaux, vitrages, joints et accessoires nécessaires ; La fourniture et la pose des portes intégrées aux cloisons, assorties à l’ensemble ; La fourniture et la pose de la quincaillerie complète comprenant notamment serrures, poignées, paumelles, ferme-portes,  et tous accessoires nécessaires au bon fonctionnement des portes y compris toutes sujétions.      \"",
+        "unite": "M²",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351583/49439042",
+        "name": "avis d achat n 28 sur 2026_0001.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #28/2026 OBJET Travaux d’aménagement intérieur comprenant la réalisation de cloisons séparatives en aluminium et les travaux de peinture vinylique sur murs au profit des éablisements sanitaires relevant de la DMSPS de Taounate. DÉTAILS Acheteur public DELEGUE DU MINISTERE DE LA SANTE A LA PROVINCE TAOUNATE Date mise en ligne 15/06/2026 15:24 Date limite de réception des devis 22/06/2026 14:0",
+    "scrapedAt": "2026-06-18T13:17:06.233Z",
+    "updatedAt": "2026-06-18T13:17:06.233Z",
+    "attachments": [
+      {
+        "name": "avis d achat n 28 sur 2026_0001.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351583/49439042",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/9d814429-cf30-4d05-855e-a8cd1e5869b8/avis_d_achat_n_28_sur_2026_0001.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "avis d achat n 28 sur 2026_0001.pdf",
+        "sourceZip": "avis_d_achat_n_28_sur_2026_0001.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/9d814429-cf30-4d05-855e-a8cd1e5869b8/avis_d_achat_n_28_sur_2026_0001.zip_extracted/avis d achat n 28 sur 2026_0001.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "57996215-7ac3-4d19-8eb6-cf05c4af8cb4",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352687",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352687",
+    "reference": "09/2026",
+    "title": "Objet Achat de la MOPO de la filière « menuiserie aluminium »",
+    "buyer": "OFPPT - INSTITUT SPECIALISE DE TECHNOLOGIE APPLIQUEE TATA",
+    "city": "",
+    "location": "TATA",
+    "destination": "TATA",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat d’articles de droguerie, de quincaillerie, d’électricité, de menuiserie et de plomberie sanitaire",
+    "deadline": "20/06/2026 12:00",
+    "publishDate": "18/06/2026 11:44",
+    "publicationDate": "18/06/2026 11:44",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "A",
+    "activityMatched": "Aluminium / Menuiserie aluminium",
+    "keywordsMatched": [
+      "aluminium",
+      "menuiserie aluminium"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Achat de la MOPO de la filière « menuiserie aluminium »",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1DORMANT A FRAPPE AVEC COUVRE JOINT 40 X 20 (Barre de 6 m)",
+        "unite": "UN",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2OUVRANT 40 X 20  SERIE BATTANT   Z (Barre de 6 m)",
+        "unite": "UN",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3OUVRANT 40 X 40  SERIE BATTANT  grande Z (Barre de 6 m)",
+        "unite": "UN",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4PARCLOSE  (Barre de 6 m)",
+        "unite": "UN",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5JOINT BATTUE RIGIDE",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6JOINT VITRAGE",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7MONTANT CENTRALE (BARRE DE 6 M)",
+        "unite": "UN",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8MONTANT LATÉRALE (BARRE DE 6 M)",
+        "unite": "UN",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9TRAVERS COULISSE (BARRE DE 6 M)",
+        "unite": "UN",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10ROULETTE À COULISSE",
+        "unite": "UN",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11UNION D'ASSEMBLAGE \"T\" 40 X 20",
+        "unite": "UN",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12EQUERRES D'ASSEMBLAGE  40 X 20",
+        "unite": "UN",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 13,
+        "designation": "#13EQUERRES D'ASSEMBLAGE  40 X 40",
+        "unite": "UN",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 14,
+        "designation": "#14COUPE VERRE",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 15,
+        "designation": "#15JOINT BROSSE",
+        "unite": "ML",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 16,
+        "designation": "#16EMBOUTS DE VISSEUSE TÊTE CRUCIFORME",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 17,
+        "designation": "#17DORMANT A COULISSE AVEC COUVRE JOINT  (BARRE DE 6 M)",
+        "unite": "UN",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 18,
+        "designation": "#18TRAVERS  \"T\"  40 X 20 (BARRE DE 6 M)",
+        "unite": "UN",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 19,
+        "designation": "#19Verre EP 3 mm ( 1m x1m )",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 20,
+        "designation": "#20Verre EP 6 mm ( 1m x1m )",
+        "unite": "UN",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 21,
+        "designation": "#21PAUMELLE RENVERSIBLE",
+        "unite": "UN",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 22,
+        "designation": "#22SERRURE ENCASTRÉ  POUR COULISSE",
+        "unite": "UN",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352687/49592393",
+        "name": "AVIS D'ACHAT 09 (2).zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #09/2026 OBJET Achat de la MOPO de la filière « menuiserie aluminium » DÉTAILS Acheteur public OFPPT - INSTITUT SPECIALISE DE TECHNOLOGIE APPLIQUEE TATA Date mise en ligne 18/06/2026 11:44 Date limite de réception des devis 20/06/2026 12:00 Lieu d'exécution TATA Catégorie principale Fournitures Nature de prestation Achat d’articles de droguerie, de quincaillerie, d’électricité, de menuiserie",
+    "scrapedAt": "2026-06-18T13:17:21.634Z",
+    "updatedAt": "2026-06-18T13:17:21.634Z",
+    "attachments": [
+      {
+        "name": "AVIS D'ACHAT 09 (2).zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352687/49592393",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/57996215-7ac3-4d19-8eb6-cf05c4af8cb4/AVIS_D_ACHAT_09__2_.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "AVIS D'ACHAT 09.pdf",
+        "sourceZip": "AVIS_D_ACHAT_09__2_.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/57996215-7ac3-4d19-8eb6-cf05c4af8cb4/AVIS_D_ACHAT_09__2_.zip_extracted/AVIS D_ACHAT 09.pdf",
+        "textLength": 2799,
+        "error": null
+      }
+    ],
+    "officialAttachmentTextPath": "data/specifications/57996215-7ac3-4d19-8eb6-cf05c4af8cb4.json",
+    "analysisSource": "official_attachment_only",
+    "attachmentFound": true,
+    "attachmentHasText": true,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "622d3539-ccd4-439f-a495-83cc9cbf5c84",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/350449",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/350449",
+    "reference": "AA011/2026/DRHMAS",
+    "title": "Objet Acquisition de présentoirs de documents pliables en inox et plexiglas pour la Direction Régionale de la CNSS Hay Mohammadi Ain Sebaa",
+    "buyer": "CNSS DIRECTION REGIONALE HAY MOHAMMADI AIN SEBAA",
+    "city": "Casablanca",
+    "location": "CASABLANCA",
+    "destination": "CASABLANCA",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de mobilier, d’enseignement, de laboratoire et d’exposition",
+    "deadline": "22/06/2026 10:00",
+    "publishDate": "12/06/2026 10:55",
+    "publicationDate": "12/06/2026 10:55",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "B",
+    "activityMatched": "Inox",
+    "keywordsMatched": [
+      "inox"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Acquisition de présentoirs de documents pliables en inox et plexiglas pour la Direction Régionale de la CNSS Hay Mohammadi Ain Sebaa",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Acquisition de présentoirs de documents pliables en inox et plexiglas pour la Direction Régionale de la CNSS Hay Mohammadi Ain Sebaa",
+        "unite": "unité",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/350449/49334447",
+        "name": "AA 011- Achat de Présentoirs.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #AA011/2026/DRHMAS OBJET Acquisition de présentoirs de documents pliables en inox et plexiglas pour la Direction Régionale de la CNSS Hay Mohammadi Ain Sebaa DÉTAILS Acheteur public CNSS DIRECTION REGIONALE HAY MOHAMMADI AIN SEBAA Date mise en ligne 12/06/2026 10:55 Date limite de réception des devis 22/06/2026 10:00 Lieu d'exécution CASABLANCA Catégorie principale Fournitures Nature de pres",
+    "scrapedAt": "2026-06-18T13:17:34.118Z",
+    "updatedAt": "2026-06-18T13:17:34.118Z",
+    "attachments": [
+      {
+        "name": "AA 011- Achat de Présentoirs.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/350449/49334447",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/622d3539-ccd4-439f-a495-83cc9cbf5c84/AA_011-_Achat_de_Pr_sentoirs.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "AA 011- Achat de Pr�sentoirs.pdf",
+        "sourceZip": "AA_011-_Achat_de_Pr_sentoirs.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/622d3539-ccd4-439f-a495-83cc9cbf5c84/AA_011-_Achat_de_Pr_sentoirs.zip_extracted/AA 011- Achat de Pr_sentoirs.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "7ddec934-f2ff-42cc-9dc6-f916068d216b",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352471",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352471",
+    "reference": "055/ONDA/TNG/26",
+    "title": "Objet ACQUISITION DES BARRIERES METALLIQUE EN INOX A L’AEROPORT DE TANGER IBN BATOUTA",
+    "buyer": "ONDA - AEROPORT TANGER IBN BATOUTA",
+    "city": "Tanger",
+    "location": "TANGER-ASSILAH",
+    "destination": "TANGER-ASSILAH",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Autres matériels (ONDA)",
+    "deadline": "21/06/2026 16:00",
+    "publishDate": "16/06/2026 17:15",
+    "publicationDate": "16/06/2026 17:15",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "B",
+    "activityMatched": "Inox",
+    "keywordsMatched": [
+      "inox",
+      "métallique",
+      "metallique",
+      "métal",
+      "metal"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet ACQUISITION DES BARRIERES METALLIQUE EN INOX A L’AEROPORT DE TANGER IBN BATOUTA",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1BARRIERS METALLIQUE EN INOX",
+        "unite": "UNITE",
+        "quantite": 15,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352471/49523119",
+        "name": "REGLEMENT DE CONSULTATION AQUISITION DES BARRIERS METTALIQUE.zip"
+      },
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352471/49523239",
+        "name": "AVIS D ACHAT _055-TNG-26_0001_0001.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #055/ONDA/TNG/26 OBJET ACQUISITION DES BARRIERES METALLIQUE EN INOX A L’AEROPORT DE TANGER IBN BATOUTA DÉTAILS Acheteur public ONDA - AEROPORT TANGER IBN BATOUTA Date mise en ligne 16/06/2026 17:15 Date limite de réception des devis 21/06/2026 16:00 Lieu d'exécution TANGER-ASSILAH Catégorie principale Fournitures Nature de prestation Autres matériels (ONDA) PIÈCES JOINTES REGLEMENT DE CONSUL",
+    "scrapedAt": "2026-06-18T13:17:47.575Z",
+    "updatedAt": "2026-06-18T13:17:47.575Z",
+    "attachments": [
+      {
+        "name": "AVIS D ACHAT _055-TNG-26_0001_0001.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352471/49523239",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/7ddec934-f2ff-42cc-9dc6-f916068d216b/AVIS_D_ACHAT__055-TNG-26_0001_0001.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "AVIS D ACHAT _055-TNG-26_0001_0001.pdf",
+        "sourceZip": "AVIS_D_ACHAT__055-TNG-26_0001_0001.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/7ddec934-f2ff-42cc-9dc6-f916068d216b/AVIS_D_ACHAT__055-TNG-26_0001_0001.zip_extracted/AVIS D ACHAT _055-TNG-26_0001_0001.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      },
+      {
+        "name": "REGLEMENT DE CONSULTATION AQUISITION DES BARRIERS METTALIQUE.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352471/49523119",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/7ddec934-f2ff-42cc-9dc6-f916068d216b/REGLEMENT_DE_CONSULTATION_AQUISITION_DES_BARRIERS_METTALIQUE.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "REGLEMENT DE CONSULTATION  AQUISITION DES BARRIERS METTALIQUE.pdf",
+        "sourceZip": "REGLEMENT_DE_CONSULTATION_AQUISITION_DES_BARRIERS_METTALIQUE.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/7ddec934-f2ff-42cc-9dc6-f916068d216b/REGLEMENT_DE_CONSULTATION_AQUISITION_DES_BARRIERS_METTALIQUE.zip_extracted/REGLEMENT DE CONSULTATION  AQUISITION DES BARRIERS METTALIQUE.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "3023c920-0288-407c-8bf7-ba780b947733",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/349804",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/349804",
+    "reference": "03/2026",
+    "title": "Objet Travaux d’aménagement d’une fourrière en charpente métallique avec couverture en Zinc commune Mrizigue",
+    "buyer": "Commune de M'RIZIG",
+    "city": "Settat",
+    "location": "SETTAT",
+    "destination": "SETTAT",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "23/06/2026 13:00",
+    "publishDate": "11/06/2026 11:59",
+    "publicationDate": "11/06/2026 11:59",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal",
+      "charpente métallique",
+      "charpente metallique"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Travaux d’aménagement d’une fourrière en charpente métallique avec couverture en Zinc commune Mrizigue",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Travaux de désherbage, démolition de toute nature et évacuation a la décharge",
+        "unite": "M2",
+        "quantite": 225,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Déblais",
+        "unite": "M3",
+        "quantite": 80,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Fourniture et pose d'un abri métallique de parking",
+        "unite": "M2",
+        "quantite": 225,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Remblais sous dallage en Touvenant",
+        "unite": "M3",
+        "quantite": 33.75,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Dallage en Béton B20 dose à 300kg/m3 y compris coffrage d'une épaisseur 13 cm",
+        "unite": "M2",
+        "quantite": 225,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6Surélévation d'un mur de clôture existant d'une hauteur 1,10 m y compris couronnement",
+        "unite": "ML",
+        "quantite": 50,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/349804/49292557",
+        "name": "AVIS S B C N 2 26.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #03/2026 OBJET Travaux d’aménagement d’une fourrière en charpente métallique avec couverture en Zinc commune Mrizigue DÉTAILS Acheteur public Commune de M'RIZIG Date mise en ligne 11/06/2026 11:59 Date limite de réception des devis 23/06/2026 13:00 Lieu d'exécution SETTAT Catégorie principale Travaux Nature de prestation Travaux d’aménagement, d’entretien et de réparation des bâtiments admin",
+    "scrapedAt": "2026-06-18T13:18:11.396Z",
+    "updatedAt": "2026-06-18T13:18:11.396Z",
+    "attachments": [
+      {
+        "name": "AVIS S B C N 2 26.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/349804/49292557",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/3023c920-0288-407c-8bf7-ba780b947733/AVIS_S_B_C_N_2_26.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "AVIS S B C N 2 26.pdf",
+        "sourceZip": "AVIS_S_B_C_N_2_26.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/3023c920-0288-407c-8bf7-ba780b947733/AVIS_S_B_C_N_2_26.zip_extracted/AVIS S B C N 2 26.pdf",
+        "textLength": 7435,
+        "error": null
+      }
+    ],
+    "officialAttachmentTextPath": "data/specifications/3023c920-0288-407c-8bf7-ba780b947733.json",
+    "analysisSource": "official_attachment_only",
+    "attachmentFound": true,
+    "attachmentHasText": true,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "b1534afd-a55d-4b82-9ba1-32bd4c91d554",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352851",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352851",
+    "reference": "23/2026",
+    "title": "Objet ÉTUDE ET ASSISTANCE TECHNIQUE DES TRAVAUX D’AMENAGEMENT DE LA FOURRIERE PAR UNE CHARPENT METALLIQUE.",
+    "buyer": "Commune urbaine de ZAIO",
+    "city": "",
+    "location": "NADOR",
+    "destination": "NADOR",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Études, conseil et formation",
+    "deadline": "22/06/2026 09:30",
+    "publishDate": "18/06/2026 13:37",
+    "publicationDate": "18/06/2026 13:37",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet ÉTUDE ET ASSISTANCE TECHNIQUE DES TRAVAUX D’AMENAGEMENT DE LA FOURRIERE PAR UNE CHARPENT METALLIQUE.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1    Etude générale    Le budget prévisionnel maximum TOUTE TAXE COMPRISE pour l’exécution des travaux à réaliser est de : 282.000,00dhs.",
+        "unite": "FORFAIT",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2   Suivie et coordination des travaux",
+        "unite": "FORFAIT",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3  Réception provisoire",
+        "unite": "FORFAIT",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4 Réception définitif",
+        "unite": "FORFAIT",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352851/49607276",
+        "name": "avis d'achat 23-2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #23/2026 OBJET ÉTUDE ET ASSISTANCE TECHNIQUE DES TRAVAUX D’AMENAGEMENT DE LA FOURRIERE PAR UNE CHARPENT METALLIQUE. DÉTAILS Acheteur public Commune urbaine de ZAIO Date mise en ligne 18/06/2026 13:37 Date limite de réception des devis 22/06/2026 09:30 Lieu d'exécution NADOR Catégorie principale Services Nature de prestation Études, conseil et formation PIÈCES JOINTES avis d'achat 23-2026.zip",
+    "scrapedAt": "2026-06-18T13:18:59.027Z",
+    "updatedAt": "2026-06-18T13:18:59.027Z",
+    "attachments": [
+      {
+        "name": "avis d'achat 23-2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352851/49607276",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b1534afd-a55d-4b82-9ba1-32bd4c91d554/avis_d_achat_23-2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "avis d'achat 23-2026.pdf",
+        "sourceZip": "avis_d_achat_23-2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b1534afd-a55d-4b82-9ba1-32bd4c91d554/avis_d_achat_23-2026.zip_extracted/avis d_achat 23-2026.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "3adc0f72-998e-4058-acc6-da06f7e1510a",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351309",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351309",
+    "reference": "13/2026",
+    "title": "Objet Location d’un camion Ampli roll et de benne métallique",
+    "buyer": "COMMUNE AIN JEMAA",
+    "city": "Meknès",
+    "location": "MEKNES",
+    "destination": "MEKNES",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Location d’engins et de moyens de transport de matériels et matériaux et d’engins",
+    "deadline": "19/06/2026 10:30",
+    "publishDate": "15/06/2026 12:24",
+    "publicationDate": "15/06/2026 12:24",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Location d’un camion Ampli roll et de benne métallique",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Location d’un camion Ampli-roll de 16m3 pour l’évacuation des ordures ménagères de la commune de Ain Jemaa vers la décharge publique de Meknès.",
+        "unite": "jour",
+        "quantite": 80,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#02Location de trois bennes métalliques de 16 m3",
+        "unite": "Unité",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351309/49424061",
+        "name": "AA N° 13-2026.pdf"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #13/2026 OBJET Location d’un camion Ampli roll et de benne métallique DÉTAILS Acheteur public COMMUNE AIN JEMAA Date mise en ligne 15/06/2026 12:24 Date limite de réception des devis 19/06/2026 10:30 Lieu d'exécution MEKNES Catégorie principale Services Nature de prestation Location d’engins et de moyens de transport de matériels et matériaux et d’engins PIÈCES JOINTES AA N° 13-2026.pdf Arti",
+    "scrapedAt": "2026-06-18T13:19:05.364Z",
+    "updatedAt": "2026-06-18T13:19:05.364Z",
+    "attachments": [
+      {
+        "name": "AA N° 13-2026.pdf",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351309/49424061",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/3adc0f72-998e-4058-acc6-da06f7e1510a/AA_N__13-2026.pdf",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": null,
+        "sourceZip": null,
+        "extractedPath": null,
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "b54c16cd-2bac-42ad-a3ed-265169886068",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352105",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352105",
+    "reference": "09/2026",
+    "title": "Objet Fourniture et pose des abris bus métallique, aux douar oulad brih, Douar Laatamna et Douar el machta à la Commune de Meknassa Acharqia, Province de Taza.",
+    "buyer": "Commune rurale de MEKNASSA ACHARQIA",
+    "city": "",
+    "location": "MAROC, TAZA",
+    "destination": "MAROC, TAZA",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’installation de matériels divers",
+    "deadline": "18/06/2026 13:00",
+    "publishDate": "16/06/2026 12:50",
+    "publicationDate": "16/06/2026 12:50",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal",
+      "fourniture et pose",
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et pose des abris bus métallique, aux douar oulad brih, Douar Laatamna et Douar el machta à la Commune de Meknassa Acharqia, Province de Taza.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture et pose des abris en métallique y/c dallage en béton légèrement armé de 12cm",
+        "unite": "U",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352105/49502426",
+        "name": "AVIS D'ACHAT N°9-2026 ABRIS DE BUS.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #09/2026 OBJET Fourniture et pose des abris bus métallique, aux douar oulad brih, Douar Laatamna et Douar el machta à la Commune de Meknassa Acharqia, Province de Taza. DÉTAILS Acheteur public Commune rurale de MEKNASSA ACHARQIA Date mise en ligne 16/06/2026 12:50 Date limite de réception des devis 18/06/2026 13:00 Lieu d'exécution MAROC, TAZA Catégorie principale Travaux Nature de prestatio",
+    "scrapedAt": "2026-06-18T13:19:15.962Z",
+    "updatedAt": "2026-06-18T13:19:15.962Z",
+    "attachments": [
+      {
+        "name": "AVIS D'ACHAT N°9-2026 ABRIS DE BUS.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352105/49502426",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b54c16cd-2bac-42ad-a3ed-265169886068/AVIS_D_ACHAT_N_9-2026_ABRIS_DE_BUS.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "AVIS D'ACHAT N�9-2026 ABRIS DE BUS.pdf",
+        "sourceZip": "AVIS_D_ACHAT_N_9-2026_ABRIS_DE_BUS.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b54c16cd-2bac-42ad-a3ed-265169886068/AVIS_D_ACHAT_N_9-2026_ABRIS_DE_BUS.zip_extracted/AVIS D_ACHAT N_9-2026 ABRIS DE BUS.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "86fbc53b-8a12-438e-b438-3d389b115fe9",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351711",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351711",
+    "reference": "BC.14-2026",
+    "title": "Objet Fourniture, Conception et Fabrication d'une structure métallique composée de mâts de drapeaux avec leurs supports d'ancrage et de scellement déplaçables.",
+    "buyer": "Commune rurale de IGUERFEROUAN",
+    "city": "",
+    "location": "AL HAOUZ",
+    "destination": "AL HAOUZ",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de badges, de médailles, d’effigies, de fanions, de drapeaux et de portraits",
+    "deadline": "18/06/2026 12:00",
+    "publishDate": "15/06/2026 16:55",
+    "publicationDate": "15/06/2026 16:55",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal",
+      "structure métallique",
+      "structure metallique",
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture, Conception et Fabrication d'une structure métallique composée de mâts de drapeaux avec leurs supports d'ancrage et de scellement déplaçables.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture, Conception et Fabrication d'une structure métallique.",
+        "unite": "U",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2 Fourniture, pose et montage d’un mât porte drapeau",
+        "unite": "U",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Fourniture, pose et montage d’un mât porte drapeau",
+        "unite": "U",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351711/49446181",
+        "name": "Avis d'achat BC.14-2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #BC.14-2026 OBJET Fourniture, Conception et Fabrication d'une structure métallique composée de mâts de drapeaux avec leurs supports d'ancrage et de scellement déplaçables. DÉTAILS Acheteur public Commune rurale de IGUERFEROUAN Date mise en ligne 15/06/2026 16:55 Date limite de réception des devis 18/06/2026 12:00 Lieu d'exécution AL HAOUZ Catégorie principale Fournitures Nature de prestation",
+    "scrapedAt": "2026-06-18T13:19:22.188Z",
+    "updatedAt": "2026-06-18T13:19:22.188Z",
+    "attachments": [
+      {
+        "name": "Avis d'achat BC.14-2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351711/49446181",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/86fbc53b-8a12-438e-b438-3d389b115fe9/Avis_d_achat_BC.14-2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "Avis d'achat BC.14-2026.pdf",
+        "sourceZip": "Avis_d_achat_BC.14-2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/86fbc53b-8a12-438e-b438-3d389b115fe9/Avis_d_achat_BC.14-2026.zip_extracted/Avis d_achat BC.14-2026.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "7a7c08b1-5efa-4fa6-a1b6-fc4621cbd059",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/346432",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/346432",
+    "reference": "09/2026/FONCT",
+    "title": "Objet IMPRESSION DES MACARONS DE VEHICULE EN METAL AU PROFIT DE LA FACULTE.",
+    "buyer": "FACULTE DE CHARIAA DE FES",
+    "city": "Fès",
+    "location": "FES",
+    "destination": "FES",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Prestations d’impression, de tirage, de reproduction et de photographie",
+    "deadline": "18/06/2026 13:30",
+    "publishDate": "16/06/2026 11:35",
+    "publicationDate": "16/06/2026 11:35",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métal",
+      "metal"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet IMPRESSION DES MACARONS DE VEHICULE EN METAL AU PROFIT DE LA FACULTE.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01IMPRESSION DES MACARONS DE VEHICULE EN METAL :",
+        "unite": "U",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/346432/49494020",
+        "name": "AVIS D'ACHAT 09-2026-MACARON FAC CHARIAA.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #09/2026/FONCT OBJET IMPRESSION DES MACARONS DE VEHICULE EN METAL AU PROFIT DE LA FACULTE. DÉTAILS Acheteur public FACULTE DE CHARIAA DE FES Date mise en ligne 16/06/2026 11:35 Date limite de réception des devis 18/06/2026 13:30 Lieu d'exécution FES Catégorie principale Services Nature de prestation Prestations d’impression, de tirage, de reproduction et de photographie PIÈCES JOINTES AVIS D",
+    "scrapedAt": "2026-06-18T13:19:32.303Z",
+    "updatedAt": "2026-06-18T13:19:32.303Z",
+    "attachments": [
+      {
+        "name": "AVIS D'ACHAT 09-2026-MACARON FAC CHARIAA.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/346432/49494020",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/7a7c08b1-5efa-4fa6-a1b6-fc4621cbd059/AVIS_D_ACHAT_09-2026-MACARON_FAC_CHARIAA.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "AVIS D'ACHAT 09-2026- MACARON.pdf",
+        "sourceZip": "AVIS_D_ACHAT_09-2026-MACARON_FAC_CHARIAA.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/7a7c08b1-5efa-4fa6-a1b6-fc4621cbd059/AVIS_D_ACHAT_09-2026-MACARON_FAC_CHARIAA.zip_extracted/AVIS D_ACHAT 09-2026- MACARON.pdf",
+        "textLength": 2024,
+        "error": null
+      }
+    ],
+    "officialAttachmentTextPath": "data/specifications/7a7c08b1-5efa-4fa6-a1b6-fc4621cbd059.json",
+    "analysisSource": "official_attachment_only",
+    "attachmentFound": true,
+    "attachmentHasText": true,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "a81d8e90-5f41-4f20-96b2-651c649ed012",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351941",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351941",
+    "reference": "34/2026",
+    "title": "Objet L’objet de la prestation : achat, fixation et pose des étagères de rangement en métal galvanisé 5 niveaux .",
+    "buyer": "DELEGUE DU MINISTERE DE LA SANTE A LA PROVINCE BERKANE",
+    "city": "",
+    "location": "BERKANE",
+    "destination": "BERKANE",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "18/06/2026 12:00",
+    "publishDate": "16/06/2026 11:27",
+    "publicationDate": "16/06/2026 11:27",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métal",
+      "metal"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet L’objet de la prestation : achat, fixation et pose des étagères de rangement en métal galvanisé 5 niveaux .",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01achat, fixation et pose des étagères de rangement en métal galvanisé 5 niveaux",
+        "unite": "U",
+        "quantite": 35,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351941/49492817",
+        "name": "AVIS D'ACHAT N 34-2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #34/2026 OBJET L’objet de la prestation : achat, fixation et pose des étagères de rangement en métal galvanisé 5 niveaux . DÉTAILS Acheteur public DELEGUE DU MINISTERE DE LA SANTE A LA PROVINCE BERKANE Date mise en ligne 16/06/2026 11:27 Date limite de réception des devis 18/06/2026 12:00 Lieu d'exécution BERKANE Catégorie principale Travaux Nature de prestation Travaux d’aménagement, d’entr",
+    "scrapedAt": "2026-06-18T13:19:51.749Z",
+    "updatedAt": "2026-06-18T13:19:51.749Z",
+    "attachments": [
+      {
+        "name": "AVIS D'ACHAT N 34-2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351941/49492817",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/a81d8e90-5f41-4f20-96b2-651c649ed012/AVIS_D_ACHAT_N_34-2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "AVIS D'ACHAT N 34-2026.pdf",
+        "sourceZip": "AVIS_D_ACHAT_N_34-2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/a81d8e90-5f41-4f20-96b2-651c649ed012/AVIS_D_ACHAT_N_34-2026.zip_extracted/AVIS D_ACHAT N 34-2026.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "ecc60d8e-4b70-4fa1-901b-8a2b2abc0682",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351626",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351626",
+    "reference": "16/BA/2026",
+    "title": "Objet Acquisition de panneaux de signalisation routière et barrière metalique",
+    "buyer": "Collectivité Territoriale de BNI AROUSS",
+    "city": "",
+    "location": "LARACHE",
+    "destination": "LARACHE",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat d’affiches et d’articles publicitaires",
+    "deadline": "18/06/2026 10:00",
+    "publishDate": "15/06/2026 15:40",
+    "publicationDate": "15/06/2026 15:40",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métal",
+      "metal"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Acquisition de panneaux de signalisation routière et barrière metalique",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Panneau de signalisation réf 301",
+        "unite": "U",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#02Panneau de signalisation réf 328.2",
+        "unite": "U",
+        "quantite": 8,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#03Panneau de signalisation réf 340.1",
+        "unite": "U",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#04Panneau de signalisation réf 340.2",
+        "unite": "U",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#05Panneau de signalisation réf 343.1",
+        "unite": "U",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#06Panneau de signalisation réf 343.2",
+        "unite": "U",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#07Panneau de signalisation réf 404",
+        "unite": "U",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#08Panneau de direction réf 506 GF",
+        "unite": "U",
+        "quantite": 24,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#09Panneau de direction réf 507 GF",
+        "unite": "U",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10Panneau de signalisation réf 81.01",
+        "unite": "U",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11Panneau de signalisation réf 81.08",
+        "unite": "U",
+        "quantite": 8,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12Support UPN galvanisé de 3.00 M",
+        "unite": "U",
+        "quantite": 52,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 13,
+        "designation": "#13achat de barrieres metallique de securite mobile en tube rond dim 2x1.10 de 11 barreaux avec logo",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #16/BA/2026 OBJET Acquisition de panneaux de signalisation routière et barrière metalique DÉTAILS Acheteur public Collectivité Territoriale de BNI AROUSS Date mise en ligne 15/06/2026 15:40 Date limite de réception des devis 18/06/2026 10:00 Lieu d'exécution LARACHE Catégorie principale Fournitures Nature de prestation Achat d’affiches et d’articles publicitaires Articles Tout afficher Tout ",
+    "scrapedAt": "2026-06-18T13:19:58.309Z",
+    "updatedAt": "2026-06-18T13:19:58.309Z",
+    "attachments": [],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": false,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "b04921e3-31e8-441c-a395-b322d8a69326",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351754",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351754",
+    "reference": "45/PL.Err/2026",
+    "title": "Objet Fourniture et pose de plexiglass transparent de 6mm pour les fenêtres aux divers locaux de la prison locale Errachidia",
+    "buyer": "DIRECTEUR DE LA PRISON D'ERRACHIDIA",
+    "city": "",
+    "location": "ERRACHIDIA",
+    "destination": "ERRACHIDIA",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "18/06/2026 09:00",
+    "publishDate": "15/06/2026 21:17",
+    "publicationDate": "15/06/2026 21:17",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et pose"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et pose de plexiglass transparent de 6mm pour les fenêtres aux divers locaux de la prison locale Errachidia",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Dépose d’ancien vitre de différent dimension pour les fenêtres de l’action sociale, le couloir vers la salle des visiteurs, la pharmacie, bureau du docteur, salle de dialyse, bureau du psychiatre et une partie à l’administration de l’établissement y compris décharge vers l’extérieur.",
+        "unite": "m2",
+        "quantite": 33,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#02Fourniture et pose de plexiglass transparent de 06mm  au niveau  de bloc des affaires  sociales",
+        "unite": "m2",
+        "quantite": 11.68,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#03Fourniture et pose de plexiglass transparent de  06mm  au niveau  de bloc d’infirmerie",
+        "unite": "m2",
+        "quantite": 3.32,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#04Fourniture et pose de plexiglass transparent de 06mm  au niveau de bloc des visiteurs",
+        "unite": "m2",
+        "quantite": 4.12,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#05Fourniture et pose de plexiglass transparent de 06mm  au niveau de bloc hymodialyse",
+        "unite": "m2",
+        "quantite": 1.9,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#06Fourniture et pose de plexiglass transparent de 06mm  au niveau de bloc administratif",
+        "unite": "m2",
+        "quantite": 7.28,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351754/49458801",
+        "name": "avis 45-2026 .zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #45/PL.Err/2026 OBJET Fourniture et pose de plexiglass transparent de 6mm pour les fenêtres aux divers locaux de la prison locale Errachidia DÉTAILS Acheteur public DIRECTEUR DE LA PRISON D'ERRACHIDIA Date mise en ligne 15/06/2026 21:17 Date limite de réception des devis 18/06/2026 09:00 Lieu d'exécution ERRACHIDIA Catégorie principale Travaux Nature de prestation Travaux d’aménagement, d’en",
+    "scrapedAt": "2026-06-18T13:20:19.326Z",
+    "updatedAt": "2026-06-18T13:20:19.326Z",
+    "attachments": [
+      {
+        "name": "avis 45-2026 .zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351754/49458801",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b04921e3-31e8-441c-a395-b322d8a69326/avis_45-2026_.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "avis 45-2026 .pdf",
+        "sourceZip": "avis_45-2026_.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b04921e3-31e8-441c-a395-b322d8a69326/avis_45-2026_.zip_extracted/avis 45-2026 .pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "f8f433fb-4acf-40c5-9662-be87563cec16",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351263",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351263",
+    "reference": "4/2026/ASB",
+    "title": "Objet Achat de produits de ferronnerie, regards et buses",
+    "buyer": "Arrondissement SIDI BERNOUSSI",
+    "city": "Casablanca",
+    "location": "CASABLANCA",
+    "destination": "CASABLANCA",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat d’articles de droguerie, de quincaillerie, d’électricité, de menuiserie et de plomberie sanitaire",
+    "deadline": "22/06/2026 10:00",
+    "publishDate": "15/06/2026 12:25",
+    "publicationDate": "15/06/2026 12:25",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "ferronnerie"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Achat de produits de ferronnerie, regards et buses",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Tôle noire acier 2,00*1,00*2 mm",
+        "unite": "FEUILLE",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Cornière acier  de 40*40*4",
+        "unite": "Barre de 6 ml",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Cornière acier  de 35*35*3",
+        "unite": "Barre de 6 ml",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Fer carré plein en acier 16 x 16 mm",
+        "unite": "Barre de 6 ml",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Fer plat 40 x 4 mm",
+        "unite": "Barre de 6 ml",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6Fer plat 60 x 4 mm",
+        "unite": "Barre de 6 ml",
+        "quantite": 8,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7Aciers de construction",
+        "unite": "KG",
+        "quantite": 200,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8Ferme de porte métallique",
+        "unite": "U",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9Serrure à tirage",
+        "unite": "U",
+        "quantite": 6,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10Paumelle électrique 140",
+        "unite": "U",
+        "quantite": 7,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11Paumelle électrique de 100",
+        "unite": "U",
+        "quantite": 7,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12Disque a meuler 230",
+        "unite": "U",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 13,
+        "designation": "#13Clous at n°7",
+        "unite": "KG",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 14,
+        "designation": "#14Vis à tête fraisée 4*40mm",
+        "unite": "PAQUET",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 15,
+        "designation": "#15Vis à tête fraisée 6 *40mm",
+        "unite": "PAQUET",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 16,
+        "designation": "#16Vis à tête fraisée 8 *40mm",
+        "unite": "PAQUET",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 17,
+        "designation": "#17Piton vis à bois de 4 cm",
+        "unite": "PAQUET",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 18,
+        "designation": "#18Cadenas g.m",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 19,
+        "designation": "#19Serrure vachette",
+        "unite": "U",
+        "quantite": 15,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 20,
+        "designation": "#20Poignées en cuivre",
+        "unite": "U",
+        "quantite": 15,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 21,
+        "designation": "#21Canon de serrure",
+        "unite": "U",
+        "quantite": 30,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 22,
+        "designation": "#22Lames de scie sauteuse base métal",
+        "unite": "PAQUET",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 23,
+        "designation": "#23Jeu de forets à béton",
+        "unite": "PAQUET",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 24,
+        "designation": "#24Jeu de forets à métal",
+        "unite": "PAQUET",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 25,
+        "designation": "#25Hache grand modèle",
+        "unite": "U",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 26,
+        "designation": "#26Hache petit modèle",
+        "unite": "U",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 27,
+        "designation": "#27Jeu de 8 clés mixtes de 8à 19",
+        "unite": "U",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 28,
+        "designation": "#28Jeu de 6 clés à pipe débouchées de 8à19mm",
+        "unite": "U",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 29,
+        "designation": "#29Jeu de8 clés plates de 6x7à20x22",
+        "unite": "U",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 30,
+        "designation": "#30Clés à griffes    renforce  dim 10",
+        "unite": "U",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 31,
+        "designation": "#31Clés à griffes  renforce dim  14",
+        "unite": "U",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 32,
+        "designation": "#32Jeu de tourne vis",
+        "unite": "U",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351263/49424064",
+        "name": "BC 4 2026 ASB.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #4/2026/ASB OBJET Achat de produits de ferronnerie, regards et buses DÉTAILS Acheteur public Arrondissement SIDI BERNOUSSI Date mise en ligne 15/06/2026 12:25 Date limite de réception des devis 22/06/2026 10:00 Lieu d'exécution CASABLANCA Catégorie principale Fournitures Nature de prestation Achat d’articles de droguerie, de quincaillerie, d’électricité, de menuiserie et de plomberie sanitai",
+    "scrapedAt": "2026-06-18T13:20:41.054Z",
+    "updatedAt": "2026-06-18T13:20:41.054Z",
+    "attachments": [
+      {
+        "name": "BC 4 2026 ASB.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351263/49424064",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/f8f433fb-4acf-40c5-9662-be87563cec16/BC_4_2026_ASB.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": null,
+        "sourceZip": "BC_4_2026_ASB.zip",
+        "extractedPath": null,
+        "textLength": 0,
+        "error": "Aucun fichier exploitable dans le ZIP"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "867839a8-757c-4912-851e-cbcbf49c3ca6",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351843",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351843",
+    "reference": "16/2026",
+    "title": "Objet Achat de produits de ferronnerie regards et buses POUR LE COMPTE DE LA COMMUNE HAD BOUHSSOUUSEN.",
+    "buyer": "Commune de HAD BOUHSSOUSSEN",
+    "city": "",
+    "location": "KHENIFRA",
+    "destination": "KHENIFRA",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de matériaux de construction",
+    "deadline": "18/06/2026 15:00",
+    "publishDate": "16/06/2026 10:43",
+    "publicationDate": "16/06/2026 10:43",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "ferronnerie"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Achat de produits de ferronnerie regards et buses POUR LE COMPTE DE LA COMMUNE HAD BOUHSSOUUSEN.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Fil de tension galvanisé",
+        "unite": "kg",
+        "quantite": 160,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#02GRILLAGE GALVANISE GRIS SIMPLE TORSION MAILLE 50 mm",
+        "unite": "m2",
+        "quantite": 900,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#03Tendeur en Acier Galvanisé fil",
+        "unite": "U",
+        "quantite": 100,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#04ACHAT DE FER",
+        "unite": "kg",
+        "quantite": 600,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#05ACHAT DE FER",
+        "unite": "kg",
+        "quantite": 200,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351843/49484345",
+        "name": "avis.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #16/2026 OBJET Achat de produits de ferronnerie regards et buses POUR LE COMPTE DE LA COMMUNE HAD BOUHSSOUUSEN. DÉTAILS Acheteur public Commune de HAD BOUHSSOUSSEN Date mise en ligne 16/06/2026 10:43 Date limite de réception des devis 18/06/2026 15:00 Lieu d'exécution KHENIFRA Catégorie principale Fournitures Nature de prestation Achat de matériaux de construction PIÈCES JOINTES avis.zip Art",
+    "scrapedAt": "2026-06-18T13:20:56.781Z",
+    "updatedAt": "2026-06-18T13:20:56.781Z",
+    "attachments": [
+      {
+        "name": "avis.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351843/49484345",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/867839a8-757c-4912-851e-cbcbf49c3ca6/avis.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "avis.pdf",
+        "sourceZip": "avis.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/867839a8-757c-4912-851e-cbcbf49c3ca6/avis.zip_extracted/avis.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "51455b00-c26f-4e52-95cc-a76d990b25cd",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351666",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351666",
+    "reference": "DP/18/BRF/2026",
+    "title": "Objet Fourniture et pose de film de vitrage et accessoires adhésifs",
+    "buyer": "ONDA - AEROPORT BOUARFA",
+    "city": "",
+    "location": "FIGUIG",
+    "destination": "FIGUIG",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Signalétique et signalisation (ONDA)",
+    "deadline": "19/06/2026 10:00",
+    "publishDate": "15/06/2026 16:10",
+    "publicationDate": "15/06/2026 16:10",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et pose",
+      "vitrage"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et pose de film de vitrage et accessoires adhésifs",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture et pose de film opaque pour vitrage",
+        "unite": "M²",
+        "quantite": 27,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Fourniture de ruban adhésif double face 3M",
+        "unite": "Unité",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Fourniture et pose d’autocollants adhésifs avec logo",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351666/49442907",
+        "name": "DP-18-BRF-2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #DP/18/BRF/2026 OBJET Fourniture et pose de film de vitrage et accessoires adhésifs DÉTAILS Acheteur public ONDA - AEROPORT BOUARFA Date mise en ligne 15/06/2026 16:10 Date limite de réception des devis 19/06/2026 10:00 Lieu d'exécution FIGUIG Catégorie principale Fournitures Nature de prestation Signalétique et signalisation (ONDA) PIÈCES JOINTES DP-18-BRF-2026.zip Articles Tout afficher To",
+    "scrapedAt": "2026-06-18T13:21:06.832Z",
+    "updatedAt": "2026-06-18T13:21:06.832Z",
+    "attachments": [
+      {
+        "name": "DP-18-BRF-2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351666/49442907",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/51455b00-c26f-4e52-95cc-a76d990b25cd/DP-18-BRF-2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "note aux concurrents.pdf",
+        "sourceZip": "DP-18-BRF-2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/51455b00-c26f-4e52-95cc-a76d990b25cd/DP-18-BRF-2026.zip_extracted/note aux concurrents.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "46fba030-7c55-4251-9533-e01773634602",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352810",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352810",
+    "reference": "34/2026",
+    "title": "Objet Fourniture et pose des panneaux solaires au profit de la prison locale TOULAL 2.",
+    "buyer": "DIRECTEUR DE LA PRISON LOCALE DE TOULAL 2",
+    "city": "Meknès",
+    "location": "MEKNES",
+    "destination": "MEKNES",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’installation de matériels divers",
+    "deadline": "20/06/2026 16:00",
+    "publishDate": "18/06/2026 12:47",
+    "publicationDate": "18/06/2026 12:47",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et pose"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et pose des panneaux solaires au profit de la prison locale TOULAL 2.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture et pose des panneaux solaires existants, y compris les structures de support, avec réglage et fixation de l’ensemble des équipements",
+        "unite": "U",
+        "quantite": 30,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Fourniture et pose tube en acier noir de diamètre 1’’ tarif 10",
+        "unite": "ML",
+        "quantite": 96,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Fourniture et pose flexible arme diamètre ½ (LG 1METRE)",
+        "unite": "U",
+        "quantite": 60,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Fourniture et pose vanne Seral Diamètre ½ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Fourniture et pose raccord union diamètre ½ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6Fourniture et pose mamelon diamètre ½ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 20,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7Fourniture et pose pompe circulateur diamètre 1 ¼ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8Fourniture et pose vanne seral diamètre 1’’ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9Fourniture et pose raccord union diamètre 1’’ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10Fourniture et pose te diamètre 1’’ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 17,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11Fourniture et pose réduction diamètre 1’’- ¾ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 17,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 12,
+        "designation": "#12Fourniture et pose raccord d’assemblage plaque solaire  Diamètre ¾",
+        "unite": "U",
+        "quantite": 35,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 13,
+        "designation": "#13Fourniture et pose vanne à bille diamètre ¾ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 17,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 14,
+        "designation": "#14Fourniture et pose raccord union diamètre ¾ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 17,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 15,
+        "designation": "#15Fourniture et pose mamelon diametre ¾  y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 19,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 16,
+        "designation": "#16Fourniture et pose alimentateur d’eau auto   diamètre ½ y compris les accessoires de raccordement",
+        "unite": "U",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 17,
+        "designation": "#17Fourniture et pose tube isolent   diamètre 1’’",
+        "unite": "ML",
+        "quantite": 96,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352810/49602811",
+        "name": "AVIS 342026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #34/2026 OBJET Fourniture et pose des panneaux solaires au profit de la prison locale TOULAL 2. DÉTAILS Acheteur public DIRECTEUR DE LA PRISON LOCALE DE TOULAL 2 Date mise en ligne 18/06/2026 12:47 Date limite de réception des devis 20/06/2026 16:00 Lieu d'exécution MEKNES Catégorie principale Travaux Nature de prestation Travaux d’installation de matériels divers PIÈCES JOINTES AVIS 342026.",
+    "scrapedAt": "2026-06-18T13:21:36.901Z",
+    "updatedAt": "2026-06-18T13:21:36.901Z",
+    "attachments": [
+      {
+        "name": "AVIS 342026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352810/49602811",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/46fba030-7c55-4251-9533-e01773634602/AVIS_342026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "AVIS 342026.pdf",
+        "sourceZip": "AVIS_342026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/46fba030-7c55-4251-9533-e01773634602/AVIS_342026.zip_extracted/AVIS 342026.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "8a57e296-8fac-4d81-a9bc-b8c8e8bb25f7",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352234",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352234",
+    "reference": "16/2026/DRI/AG",
+    "title": "Objet Fourniture et pose de panneaux signalétique intérieure au profit de l’immeuble administratif abritant l’annexe de la Direction Régionale des Impôts d’Agadir.",
+    "buyer": "Charge de la Dir Regionale des Impots des pref d'Agadir-Ida-Tanane d'Inezgane-Ait Melloul et des provinces de Chtouka-A Baha, Taroudante,Tiznit, Tata, dGuelmim, As-Zag, Ifni, Laayoune, Boujdour, Tarfaya Semara,Oued Eddah -Aousserd",
+    "city": "Agadir",
+    "location": "AGADIR IDA OU TANANE",
+    "destination": "AGADIR IDA OU TANANE",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "18/06/2026 15:00",
+    "publishDate": "16/06/2026 14:56",
+    "publicationDate": "16/06/2026 14:56",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et pose",
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et pose de panneaux signalétique intérieure au profit de l’immeuble administratif abritant l’annexe de la Direction Régionale des Impôts d’Agadir.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1PLAQUE SIGNALETIQUE pour bureau : Fourniture et pose des plaques signalétiques intérieures en plexiglas, suivant modèle fourni.    Les plaques de signalétique intérieure de chaque espace, réalisées en plexi-glass avec partie transparentes, qui permet le glissement de papier, fixées au mur. L’entrepreneur doit coordonner avec le maître d’ouvrage au moment de la confection de l’enseigne pour tout ce qui est dénomination du projet, dimensions des plaques, la taille des lettres et destination.  Échantillon à soumettre au maître d’ouvrage pour approbation avant toute mise en œuvre. Ouvrage payé à l’unité y compris toutes sujétions.  PLAQUE SIGNALITIQUE pour sanitaires : Fourniture et pose des plaques signalétiques des portes des sanitaires, suivant modèle fourni,    De dimensions 20x30cm réalisées en plexiglas aspect brillant, durable et nettoyage facile.  •\tTexte et pictogramme imprimés au verso de la plaque, protégés des dégradations, rayures, •\tFixation adhésive très forte. •\tÉchantillon à soumettre au maître d’ouvrage pour approbation avant toute mise en œuvre. Ouvrage payé à l’unité y compris toutes sujétions.",
+        "unite": "Unité",
+        "quantite": 140,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2PLAQUE SIGNALITIQUE pour sanitaires : Fourniture et pose des plaques signalétiques des portes des sanitaires, suivant modèle fourni,    De dimensions 20x30cm réalisées en plexiglas aspect brillant, durable et nettoyage facile.  •\tTexte et pictogramme imprimés au verso de la plaque, protégés des dégradations, rayures, •\tFixation adhésive très forte. •\tÉchantillon à soumettre au maître d’ouvrage pour approbation avant toute mise en œuvre. Ouvrage payé à l’unité y compris toutes sujétions.",
+        "unite": "Unité",
+        "quantite": 40,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3PLAN D’EVACUATION de dimensions 100cm x 65cm: Ce prix rémunère la fourniture et la pose d’un plan d’évacuation de sécurité, réalisé sur support en plexiglass transparent, destiné à l’information des usagers et à l’orientation vers les issues de secours en cas d’urgence. Le plan sera constitué de : •\tUne plaque en plexiglass (PMMA) transparent, d’épaisseur minimale 5 mm, aux dimensions indiquées sur les plans ou validées par le Maître d’Ouvrage. •\tUn support graphique imprimé en haute résolution, représentant le plan d’évacuation du bâtiment avec indication des : -\tIssues de secours, -\tCheminements d’évacuation, -\tEmplacements des extincteurs, -\tPoints de rassemblement, -\tEscaliers et ascenseurs, -\tPosition « Vous êtes ici ». •\tImpression sur film adhésif ou impression directe protégée contre l’humidité, les UV et l’usure. •\tFixations murales par entretoises en inox ou aluminium anodisé, assurant une bonne rigidité et une finition esthétique. Le plan devra être conforme aux normes de signalisation de sécurité et d’évacuation des établissements recevant du public (ERP) et aux prescriptions du bureau de contrôle et des services de sécurité incendie. La prestation comprend également : •\tLa conception graphique et l’adaptation du plan à l’architecture du bâtiment. •\tLa validation du contenu par le Maître d’Ouvrage. •\tLa fourniture de toutes sujétions de pose, visserie et accessoires. •\tLa pose, l’alignement, le nettoyage et les réglages nécessaires. L’ouvrage devra être lisible, durable et solidement fixé. Ouvrage payé à l’unité y compris toutes sujétions",
+        "unite": "Unité",
+        "quantite": 10,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4PICTOGRAMME de dimensions 20cm x 30cm :  Ce prix rémunère la fourniture et la pose de plaques pictogrammes de signalisation, destinées à l’identification et à l’orientation des usagers à l’intérieur ou à l’extérieur des bâtiments. Les plaques seront constituées de : •\tSupport rigide en plexiglass, PVC expansé ou aluminium composite, d’épaisseur minimale 3 à 5 mm, résistant aux chocs et aux conditions d’usage. •\tPictogrammes normalisés imprimés ou sérigraphiés en haute définition, conformes aux normes de signalisation et facilement lisibles. •\tProtection de surface contre l’humidité, les rayures et les rayons UV. •\tFinition soignée avec bords polis ou arrondis.  Les pictogrammes pourront indiquer notamment : -\tSortie de secours, -\tEscalier -\tAscenseur, -\tInterdictions ou obligations de sécurité, -\tLocaux techniques ou administratifs.  La prestation comprend également : •\tLa fourniture de tous accessoires nécessaires à la fixation. •\tLa pose sur mur, porte ou support existant, selon les indications. •\tLes réglages, l’alignement et le nettoyage final. Les plaques devront être parfaitement visibles, durables et conformes aux prescriptions du Maître d’Ouvrage et aux normes de signalisation de sécurité.  Ouvrage payé à l’unité y compris toutes sujétions",
+        "unite": "Unité",
+        "quantite": 90,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5PANNEAUX DIRECTIONNELLES de dimensions 50cm x 80cm : Ce prix rémunère la fourniture et la pose de panneaux directionnels en plexiglass, destinés à l’orientation et à l’information des usagers à l’intérieur des bâtiments, des équipements publics ou des espaces collectifs. selon modèle fourni :     Les panneaux seront constitués de : •\tPlaque en plexiglass (PMMA) transparent ou diffusant, d’épaisseur minimale 4 mm, découpée aux dimensions indiquées sur les plans d’exécution. •\tInscriptions, flèches directionnelles et pictogrammes réalisés par impression numérique haute définition, sérigraphie ou film adhésif, protégés contre l’humidité, les rayures et les rayons UV. •\tGraphisme clair et lisible, conforme aux normes de signalétique et validé par la maîtrise d’ouvrage. •\tFinition soignée, avec bords polis et angles arrondis. Les panneaux seront fixés par : •\tEntretoises décoratives en inox ou aluminium anodisé, ou •\tSystème de fixation invisible par adhésif haute résistance, selon l’emplacement et les prescriptions de la maîtrise d’ouvrage. La prestation comprend également : •\tLa conception et l’adaptation graphique des indications directionnelles. •\tLa fourniture de tous accessoires nécessaires à la fixation (visserie inox, chevilles, entretoises, supports). •\tLa pose, l’alignement, les réglages et le nettoyage final. Les panneaux devront être parfaitement lisibles, solidement fixés et résistants aux conditions d’utilisation. Ouvrage payé à l’unité y compris toutes sujétions.",
+        "unite": "Unité",
+        "quantite": 9,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6PANNEAUX DIRECTIONNELLES de dimensions 80cmx140cm : Ce prix rémunère la fourniture et la pose de panneaux directionnels en plexiglass de dimensions 80cmx140cm.au même descriptif que le prix n°5  , suivant modèle fourni :",
+        "unite": "Unité",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352234/49511856",
+        "name": "Avis d achat n 16-2026-dri-ag.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #16/2026/DRI/AG OBJET Fourniture et pose de panneaux signalétique intérieure au profit de l’immeuble administratif abritant l’annexe de la Direction Régionale des Impôts d’Agadir. DÉTAILS Acheteur public Charge de la Dir Regionale des Impots des pref d'Agadir-Ida-Tanane d'Inezgane-Ait Melloul et des provinces de Chtouka-A Baha, Taroudante,Tiznit, Tata, dGuelmim, As-Zag, Ifni, Laayoune, Boujd",
+    "scrapedAt": "2026-06-18T13:21:43.467Z",
+    "updatedAt": "2026-06-18T13:21:43.467Z",
+    "attachments": [
+      {
+        "name": "Avis d achat n 16-2026-dri-ag.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352234/49511856",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/8a57e296-8fac-4d81-a9bc-b8c8e8bb25f7/Avis_d_achat_n_16-2026-dri-ag.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "Avis d achat n 16-2026-dri-ag.pdf",
+        "sourceZip": "Avis_d_achat_n_16-2026-dri-ag.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/8a57e296-8fac-4d81-a9bc-b8c8e8bb25f7/Avis_d_achat_n_16-2026-dri-ag.zip_extracted/Avis d achat n 16-2026-dri-ag.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "917b36a4-711e-44df-a675-33110a1a8fcf",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/311404",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/311404",
+    "reference": "CQPMCASA13/2026",
+    "title": "Objet TRAVAUX D’AMENAGEMENT ET D’ETANCHEITE DES GAINES AUX LOCAUX ABRITANT LES SERVICES DU CENTRE DE QUALIFICATION PROFESSIONNELLE MARITIME DE CASABLANCA.",
+    "buyer": "CENTRE DE QUALIFICATION PROFESSIONNELLE MARITIME DE CASA",
+    "city": "Casablanca",
+    "location": "MAROC, CASABLANCA",
+    "destination": "MAROC, CASABLANCA",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "24/06/2026 12:00",
+    "publishDate": "18/06/2026 08:26",
+    "publicationDate": "18/06/2026 08:26",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet TRAVAUX D’AMENAGEMENT ET D’ETANCHEITE DES GAINES AUX LOCAUX ABRITANT LES SERVICES DU CENTRE DE QUALIFICATION PROFESSIONNELLE MARITIME DE CASABLANCA.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01TRAVAUX D’AMENAGEMENT ET D’ETANCHEITE DES GAINES",
+        "unite": "FORFAIT",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/311404/49514746",
+        "name": "Avis achat CQPMCASA13-2026-Juin Ouv_Gaines.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #CQPMCASA13/2026 OBJET TRAVAUX D’AMENAGEMENT ET D’ETANCHEITE DES GAINES AUX LOCAUX ABRITANT LES SERVICES DU CENTRE DE QUALIFICATION PROFESSIONNELLE MARITIME DE CASABLANCA. DÉTAILS Acheteur public CENTRE DE QUALIFICATION PROFESSIONNELLE MARITIME DE CASA Date mise en ligne 18/06/2026 08:26 Date limite de réception des devis 24/06/2026 12:00 Lieu d'exécution MAROC, CASABLANCA Catégorie principa",
+    "scrapedAt": "2026-06-18T13:22:15.048Z",
+    "updatedAt": "2026-06-18T13:22:15.048Z",
+    "attachments": [
+      {
+        "name": "Avis achat CQPMCASA13-2026-Juin Ouv_Gaines.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/311404/49514746",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/917b36a4-711e-44df-a675-33110a1a8fcf/Avis_achat_CQPMCASA13-2026-Juin_Ouv_Gaines.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": null,
+        "sourceZip": "Avis_achat_CQPMCASA13-2026-Juin_Ouv_Gaines.zip",
+        "extractedPath": null,
+        "textLength": 0,
+        "error": "Aucun fichier exploitable dans le ZIP"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "e9cc6f0b-8efe-4575-bbff-442d9183ba6e",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352814",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352814",
+    "reference": "3/2026/NARSA.TTA",
+    "title": "Objet Entretien du bâtiment abritant le Service Provincial de Larache relevant de la Direction Régionale de l'Agence Nationale et de le Sécurité Routière de Tanger Tétouan Al Hoceima.",
+    "buyer": "DIRECTION REGIONALE E L AGENCE NATIOANLE DE LA SECURITE ROUTIERE DE TANGER TETOUAN AL HOUCEIMA",
+    "city": "Tanger",
+    "location": "LARACHE",
+    "destination": "LARACHE",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "22/06/2026 16:30",
+    "publishDate": "18/06/2026 12:44",
+    "publicationDate": "18/06/2026 12:44",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Entretien du bâtiment abritant le Service Provincial de Larache relevant de la Direction Régionale de l'Agence Nationale et de le Sécurité Routière de Tanger Tétouan Al Hoceima.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Peinture vinylique sur murs extérieurs",
+        "unite": "M2",
+        "quantite": 1579.92,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Nettoyage du marbre",
+        "unite": "M2",
+        "quantite": 128.84,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Traitement de la terrasse contre les infiltrations d’eau de pluie",
+        "unite": "M2",
+        "quantite": 319.88,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352814/49602428",
+        "name": "Avis d'achat N3 Entretien du bâtiment Larache.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #3/2026/NARSA.TTA OBJET Entretien du bâtiment abritant le Service Provincial de Larache relevant de la Direction Régionale de l'Agence Nationale et de le Sécurité Routière de Tanger Tétouan Al Hoceima. DÉTAILS Acheteur public DIRECTION REGIONALE E L AGENCE NATIOANLE DE LA SECURITE ROUTIERE DE TANGER TETOUAN AL HOUCEIMA Date mise en ligne 18/06/2026 12:44 Date limite de réception des devis 22",
+    "scrapedAt": "2026-06-18T13:22:24.325Z",
+    "updatedAt": "2026-06-18T13:22:24.325Z",
+    "attachments": [
+      {
+        "name": "Avis d'achat N3 Entretien du bâtiment Larache.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352814/49602428",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/e9cc6f0b-8efe-4575-bbff-442d9183ba6e/Avis_d_achat_N3_Entretien_du_b_timent_Larache.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "Avis d'achat N3 Entretien du bâtiment Larache.pdf",
+        "sourceZip": "Avis_d_achat_N3_Entretien_du_b_timent_Larache.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/e9cc6f0b-8efe-4575-bbff-442d9183ba6e/Avis_d_achat_N3_Entretien_du_b_timent_Larache.zip_extracted/Avis d_achat N3 Entretien du b_timent Larache.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "939c8aed-db3e-4fae-a9ec-181d30325e7a",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351926",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351926",
+    "reference": "19/E.T/2026",
+    "title": "Objet Étude technique et suivi des travaux d’installation des abris de voiture à l’annexe IBNOU HAZEM – AREF Laâyoune Sakia El Hamra sur une surface de 285m² (environ 10 places).",
+    "buyer": "ACADEMIE REGIONALE D'EDUCATION ET DE FORMATION LAAYOUNE-SAKIA EL HAMRA",
+    "city": "",
+    "location": "LAAYOUNE",
+    "destination": "LAAYOUNE",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Études, conseil et formation",
+    "deadline": "22/06/2026 11:00",
+    "publishDate": "16/06/2026 11:23",
+    "publicationDate": "16/06/2026 11:23",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Étude technique et suivi des travaux d’installation des abris de voiture à l’annexe IBNOU HAZEM – AREF Laâyoune Sakia El Hamra sur une surface de 285m² (environ 10 places).",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Etablissement des études techniques tous corps d’état (plans-croquis …) et du DCE.",
+        "unite": "F",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Suivi des travaux tous corps d’état (assister aux réunions de chantier, vérification des attachements et décomptes) et Réception provisoire des travaux.",
+        "unite": "F",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Réception définitive des travaux.",
+        "unite": "F",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351926/49491504",
+        "name": "AVIS D'ACHAT SUR B.C N° 19-E.T-2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #19/E.T/2026 OBJET Étude technique et suivi des travaux d’installation des abris de voiture à l’annexe IBNOU HAZEM – AREF Laâyoune Sakia El Hamra sur une surface de 285m² (environ 10 places). DÉTAILS Acheteur public ACADEMIE REGIONALE D'EDUCATION ET DE FORMATION LAAYOUNE-SAKIA EL HAMRA Date mise en ligne 16/06/2026 11:23 Date limite de réception des devis 22/06/2026 11:00 Lieu d'exécution LA",
+    "scrapedAt": "2026-06-18T13:22:31.298Z",
+    "updatedAt": "2026-06-18T13:22:31.298Z",
+    "attachments": [
+      {
+        "name": "AVIS D'ACHAT SUR B.C N° 19-E.T-2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351926/49491504",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/939c8aed-db3e-4fae-a9ec-181d30325e7a/AVIS_D_ACHAT_SUR_B.C_N__19-E.T-2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "AVIS D'ACHAT SUR B.C N� 19-E.T-2026.docx",
+        "sourceZip": "AVIS_D_ACHAT_SUR_B.C_N__19-E.T-2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/939c8aed-db3e-4fae-a9ec-181d30325e7a/AVIS_D_ACHAT_SUR_B.C_N__19-E.T-2026.zip_extracted/AVIS D_ACHAT SUR B.C N_ 19-E.T-2026.docx",
+        "textLength": 1546,
+        "error": null
+      }
+    ],
+    "officialAttachmentTextPath": "data/specifications/939c8aed-db3e-4fae-a9ec-181d30325e7a.json",
+    "analysisSource": "official_attachment_only",
+    "attachmentFound": true,
+    "attachmentHasText": true,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "67f2d034-b463-4c89-bb49-9bdbef5c7893",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352859",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352859",
+    "reference": "26/2026",
+    "title": "Objet Entretien et renforcement d’un réseau d’eau au Douar jabrienne CT BRIKCHA",
+    "buyer": "Commune rurale de BRIKCHA",
+    "city": "",
+    "location": "OUEZZANE",
+    "destination": "OUEZZANE",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des ouvrages, voies et réseaux",
+    "deadline": "22/06/2026 11:00",
+    "publishDate": "18/06/2026 13:24",
+    "publicationDate": "18/06/2026 13:24",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Entretien et renforcement d’un réseau d’eau au Douar jabrienne CT BRIKCHA",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture et pose conduite PEHD PN16 D40 y/c fouille en tranche de profondeur entre 0.80 et 1.00 m",
+        "unite": "ML",
+        "quantite": 1000,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Fourniture conduite PEHD de 3/4 PN16 Bars",
+        "unite": "ML",
+        "quantite": 300,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Fourniture conduite PEHD de 1/2 PN16 Bars",
+        "unite": "ML",
+        "quantite": 200,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #26/2026 OBJET Entretien et renforcement d’un réseau d’eau au Douar jabrienne CT BRIKCHA DÉTAILS Acheteur public Commune rurale de BRIKCHA Date mise en ligne 18/06/2026 13:24 Date limite de réception des devis 22/06/2026 11:00 Lieu d'exécution OUEZZANE Catégorie principale Travaux Nature de prestation Travaux d’aménagement, d’entretien et de réparation des ouvrages, voies et réseaux Articles",
+    "scrapedAt": "2026-06-18T13:22:38.387Z",
+    "updatedAt": "2026-06-18T13:22:38.387Z",
+    "attachments": [],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": false,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "f1d3f150-b12e-4601-a9fb-47028687217e",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352513",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352513",
+    "reference": "BC-CS-08-2026",
+    "title": "Objet Elaboration d’une contre - expertise technique du bâtiment abritant le siège administratif de la commune de selfat",
+    "buyer": "COMMUNE SELFAT",
+    "city": "",
+    "location": "SIDI KACEM",
+    "destination": "SIDI KACEM",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Études, conseil et formation",
+    "deadline": "21/06/2026 22:00",
+    "publishDate": "16/06/2026 23:17",
+    "publicationDate": "16/06/2026 23:17",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Elaboration d’une contre - expertise technique du bâtiment abritant le siège administratif de la commune de selfat",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Une contre - expertise technique  du bâtiment    abritant le siège  administratif  de la commune",
+        "unite": "F",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #BC-CS-08-2026 OBJET Elaboration d’une contre - expertise technique du bâtiment abritant le siège administratif de la commune de selfat DÉTAILS Acheteur public COMMUNE SELFAT Date mise en ligne 16/06/2026 23:17 Date limite de réception des devis 21/06/2026 22:00 Lieu d'exécution SIDI KACEM Catégorie principale Services Nature de prestation Études, conseil et formation Articles Tout afficher ",
+    "scrapedAt": "2026-06-18T13:22:42.318Z",
+    "updatedAt": "2026-06-18T13:22:42.318Z",
+    "attachments": [],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": false,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "ca714718-2afc-49e6-811f-f96144eef125",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352760",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352760",
+    "reference": "07INV/2026/KH",
+    "title": "Objet Études technique et suivi des travaux de remplacement des salles de classe type préfabriqués par salles en dur à la direction provincial de Khouribga.",
+    "buyer": "DIRECTION PROVINCIALE DE L’EDUCATION NATIONALE DE KHOURIBGA",
+    "city": "",
+    "location": "KHOURIBGA",
+    "destination": "KHOURIBGA",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Contrôle et expertise techniques",
+    "deadline": "20/06/2026 15:00",
+    "publishDate": "18/06/2026 12:11",
+    "publicationDate": "18/06/2026 12:11",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Études technique et suivi des travaux de remplacement des salles de classe type préfabriqués par salles en dur à la direction provincial de Khouribga.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Ec lazaazia",
+        "unite": "Forfitaire",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Sat bni aissa",
+        "unite": "Forfitaire",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Sat zaama hajjaj",
+        "unite": "Forfitaire",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Sat chfag",
+        "unite": "Forfitaire",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Sat bir drouba",
+        "unite": "Forfitaire",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6Sat laachachga",
+        "unite": "Forfitaire",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352760/49598408",
+        "name": "Avis d'achat sur BC N°07INV-2026-KH.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #07INV/2026/KH OBJET Études technique et suivi des travaux de remplacement des salles de classe type préfabriqués par salles en dur à la direction provincial de Khouribga. DÉTAILS Acheteur public DIRECTION PROVINCIALE DE L’EDUCATION NATIONALE DE KHOURIBGA Date mise en ligne 18/06/2026 12:11 Date limite de réception des devis 20/06/2026 15:00 Lieu d'exécution KHOURIBGA Catégorie principale Se",
+    "scrapedAt": "2026-06-18T13:22:46.271Z",
+    "updatedAt": "2026-06-18T13:22:46.271Z",
+    "attachments": [
+      {
+        "name": "Avis d'achat sur BC N°07INV-2026-KH.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352760/49598408",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/ca714718-2afc-49e6-811f-f96144eef125/Avis_d_achat_sur_BC_N_07INV-2026-KH.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "Avis d'achat sur BC N�07INV-2026-KH.pdf",
+        "sourceZip": "Avis_d_achat_sur_BC_N_07INV-2026-KH.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/ca714718-2afc-49e6-811f-f96144eef125/Avis_d_achat_sur_BC_N_07INV-2026-KH.zip_extracted/Avis d_achat sur BC N_07INV-2026-KH.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "a4e3ac6f-0ca5-4b52-8663-c72ce1de0771",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/345793",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/345793",
+    "reference": "09/2026/DGM",
+    "title": "Objet Etude topographique afin de régulariser l'assiette foncière abritant le siège du Centre Provincial Météorologique de Taourirt, (sis à Bvd Moulay Abdellah, BP 220 –Taourirt (province de Taourirt).",
+    "buyer": "DIRECTEUR DE LA METEOROLOGIE NATIONALE",
+    "city": "",
+    "location": "TAOURIRT",
+    "destination": "TAOURIRT",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Études, conseil et formation",
+    "deadline": "19/06/2026 16:00",
+    "publishDate": "10/06/2026 12:53",
+    "publicationDate": "10/06/2026 12:53",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Etude topographique afin de régulariser l'assiette foncière abritant le siège du Centre Provincial Météorologique de Taourirt, (sis à Bvd Moulay Abdellah, BP 220 –Taourirt (province de Taourirt).",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Établissement des Levés et plans topographiques de deux parcelles de terrains suivantes : - portion de 17616 m² (1ha 76a 16ca) de la parcelle relevant du TF1965/O. - portion de 5148 m² (51a 48ca) de la parcelle relevant du TF14388/51.",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/345793/49225954",
+        "name": "Avis d'Achat N°9-2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #09/2026/DGM OBJET Etude topographique afin de régulariser l'assiette foncière abritant le siège du Centre Provincial Météorologique de Taourirt, (sis à Bvd Moulay Abdellah, BP 220 –Taourirt (province de Taourirt). DÉTAILS Acheteur public DIRECTEUR DE LA METEOROLOGIE NATIONALE Date mise en ligne 10/06/2026 12:53 Date limite de réception des devis 19/06/2026 16:00 Lieu d'exécution TAOURIRT Ca",
+    "scrapedAt": "2026-06-18T13:22:55.459Z",
+    "updatedAt": "2026-06-18T13:22:55.459Z",
+    "attachments": [
+      {
+        "name": "Avis d'Achat N°9-2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/345793/49225954",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/a4e3ac6f-0ca5-4b52-8663-c72ce1de0771/Avis_d_Achat_N_9-2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "Avis d'Achat N�9-2026.pdf",
+        "sourceZip": "Avis_d_Achat_N_9-2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/a4e3ac6f-0ca5-4b52-8663-c72ce1de0771/Avis_d_Achat_N_9-2026.zip_extracted/Avis d_Achat N_9-2026.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "6d27624c-8f0a-4f8e-8cff-1b3895f129d6",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351315",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351315",
+    "reference": "08/AREF/2026",
+    "title": "Objet ÉTUDES TOPOGRAPHIQUES DES TERRAINS ABRITANT DES BLOCS SANITAIRES EN DUR AUX ÉTABLISSEMENTS SCOLAIRES RELEVANT DE L’AREF DE LA RÉGION DE RABAT SALÉ KENITRA, EN LOT UNIQUE. PROGRAMME 2026",
+    "buyer": "ACADEMIE REGIONALE D'EDUCATION ET DE FORMATION RABAT-SALE- KENITRA",
+    "city": "Rabat",
+    "location": "SALE, KENITRA, KHEMISSET, SIDI KACEM, SIDI SLIMANE",
+    "destination": "SALE, KENITRA, KHEMISSET, SIDI KACEM, SIDI SLIMANE",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Prestations topographiques et océanographiques",
+    "deadline": "19/06/2026 12:00",
+    "publishDate": "15/06/2026 12:31",
+    "publicationDate": "15/06/2026 12:31",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet ÉTUDES TOPOGRAPHIQUES DES TERRAINS ABRITANT DES BLOCS SANITAIRES EN DUR AUX ÉTABLISSEMENTS SCOLAIRES RELEVANT DE L’AREF DE LA RÉGION DE RABAT SALÉ KENITRA, EN LOT UNIQUE. PROGRAMME 2026",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1ETUDES TOPOGRAPHIQUES",
+        "unite": "Site",
+        "quantite": 148,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351315/49424635",
+        "name": "Avis BC 08-2026 Etude Topo.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #08/AREF/2026 OBJET ÉTUDES TOPOGRAPHIQUES DES TERRAINS ABRITANT DES BLOCS SANITAIRES EN DUR AUX ÉTABLISSEMENTS SCOLAIRES RELEVANT DE L’AREF DE LA RÉGION DE RABAT SALÉ KENITRA, EN LOT UNIQUE. PROGRAMME 2026 DÉTAILS Acheteur public ACADEMIE REGIONALE D'EDUCATION ET DE FORMATION RABAT-SALE- KENITRA Date mise en ligne 15/06/2026 12:31 Date limite de réception des devis 19/06/2026 12:00 Lieu d'ex",
+    "scrapedAt": "2026-06-18T13:23:03.327Z",
+    "updatedAt": "2026-06-18T13:23:03.327Z",
+    "attachments": [
+      {
+        "name": "Avis BC 08-2026 Etude Topo.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351315/49424635",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/6d27624c-8f0a-4f8e-8cff-1b3895f129d6/Avis_BC_08-2026_Etude_Topo.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "Avis BC 08-2026 Etude Topo.pdf",
+        "sourceZip": "Avis_BC_08-2026_Etude_Topo.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/6d27624c-8f0a-4f8e-8cff-1b3895f129d6/Avis_BC_08-2026_Etude_Topo.zip_extracted/Avis BC 08-2026 Etude Topo.pdf",
+        "textLength": 2459,
+        "error": null
+      }
+    ],
+    "officialAttachmentTextPath": "data/specifications/6d27624c-8f0a-4f8e-8cff-1b3895f129d6.json",
+    "analysisSource": "official_attachment_only",
+    "attachmentFound": true,
+    "attachmentHasText": true,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "8649dab4-a8cd-4a77-86db-0a5ae82de497",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351362",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351362",
+    "reference": "09/AREF/2026",
+    "title": "Objet ÉTUDE GÉOTECHNIQUE DES TERRAINS ABRITANT DES BLOCS SANITAIRES EN DUR AUX ÉTABLISSEMENTS SCOLAIRES RELEVANT DE L’AREF DE LA RÉGION DE RABAT SALÉ KENITRA, EN LOT UNIQUE. PROGRAMME 2026",
+    "buyer": "ACADEMIE REGIONALE D'EDUCATION ET DE FORMATION RABAT-SALE- KENITRA",
+    "city": "Rabat",
+    "location": "SALE, KENITRA, KHEMISSET, SIDI KACEM, SIDI SLIMANE",
+    "destination": "SALE, KENITRA, KHEMISSET, SIDI KACEM, SIDI SLIMANE",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Prestations géotechniques et de laboratoire",
+    "deadline": "19/06/2026 12:00",
+    "publishDate": "15/06/2026 12:54",
+    "publicationDate": "15/06/2026 12:54",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet ÉTUDE GÉOTECHNIQUE DES TERRAINS ABRITANT DES BLOCS SANITAIRES EN DUR AUX ÉTABLISSEMENTS SCOLAIRES RELEVANT DE L’AREF DE LA RÉGION DE RABAT SALÉ KENITRA, EN LOT UNIQUE. PROGRAMME 2026",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Essais, Etudes et établissement du dossier géotechnique préliminaire",
+        "unite": "Site",
+        "quantite": 148,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351362/49426990",
+        "name": "Avis BC 9-2026 Etude Geo.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #09/AREF/2026 OBJET ÉTUDE GÉOTECHNIQUE DES TERRAINS ABRITANT DES BLOCS SANITAIRES EN DUR AUX ÉTABLISSEMENTS SCOLAIRES RELEVANT DE L’AREF DE LA RÉGION DE RABAT SALÉ KENITRA, EN LOT UNIQUE. PROGRAMME 2026 DÉTAILS Acheteur public ACADEMIE REGIONALE D'EDUCATION ET DE FORMATION RABAT-SALE- KENITRA Date mise en ligne 15/06/2026 12:54 Date limite de réception des devis 19/06/2026 12:00 Lieu d'exécu",
+    "scrapedAt": "2026-06-18T13:23:10.633Z",
+    "updatedAt": "2026-06-18T13:23:10.633Z",
+    "attachments": [
+      {
+        "name": "Avis BC 9-2026 Etude Geo.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351362/49426990",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/8649dab4-a8cd-4a77-86db-0a5ae82de497/Avis_BC_9-2026_Etude_Geo.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "Avis BC 9-2026 Etude Geo.pdf",
+        "sourceZip": "Avis_BC_9-2026_Etude_Geo.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/8649dab4-a8cd-4a77-86db-0a5ae82de497/Avis_BC_9-2026_Etude_Geo.zip_extracted/Avis BC 9-2026 Etude Geo.pdf",
+        "textLength": 2403,
+        "error": null
+      }
+    ],
+    "officialAttachmentTextPath": "data/specifications/8649dab4-a8cd-4a77-86db-0a5ae82de497.json",
+    "analysisSource": "official_attachment_only",
+    "attachmentFound": true,
+    "attachmentHasText": true,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "cd724968-7d31-4db0-9d88-06481edf3ab4",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352453",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352453",
+    "reference": "09/2026",
+    "title": "Objet Travaux d'entretien du bâtiment administratif abritant le siège de la Direction Provinciale de l’Habitat et de la Politique de Ville d’Al-Hoceima",
+    "buyer": "DIRECTEUR PROVINCIAL DU MINISTERE DE HABITAT ET DE LA POLITIQUE DE LA VILLE AL HOCEIMA",
+    "city": "",
+    "location": "AL HOCEIMA",
+    "destination": "AL HOCEIMA",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "19/06/2026 11:00",
+    "publishDate": "16/06/2026 16:46",
+    "publicationDate": "16/06/2026 16:46",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Travaux d'entretien du bâtiment administratif abritant le siège de la Direction Provinciale de l’Habitat et de la Politique de Ville d’Al-Hoceima",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Peinture vinylique",
+        "unite": "m2",
+        "quantite": 300,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Peinture laquée",
+        "unite": "m2",
+        "quantite": 120,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352453/49521382",
+        "name": "Avis BC 09-2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #09/2026 OBJET Travaux d'entretien du bâtiment administratif abritant le siège de la Direction Provinciale de l’Habitat et de la Politique de Ville d’Al-Hoceima DÉTAILS Acheteur public DIRECTEUR PROVINCIAL DU MINISTERE DE HABITAT ET DE LA POLITIQUE DE LA VILLE AL HOCEIMA Date mise en ligne 16/06/2026 16:46 Date limite de réception des devis 19/06/2026 11:00 Lieu d'exécution AL HOCEIMA Catégo",
+    "scrapedAt": "2026-06-18T13:23:17.826Z",
+    "updatedAt": "2026-06-18T13:23:17.826Z",
+    "attachments": [
+      {
+        "name": "Avis BC 09-2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352453/49521382",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/cd724968-7d31-4db0-9d88-06481edf3ab4/Avis_BC_09-2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "Avis BC 09-2026.pdf",
+        "sourceZip": "Avis_BC_09-2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/cd724968-7d31-4db0-9d88-06481edf3ab4/Avis_BC_09-2026.zip_extracted/Avis BC 09-2026.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "c727852f-368f-455a-b589-e6a825019bce",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352239",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352239",
+    "reference": "17/2026/DRI/AG",
+    "title": "Objet Fourniture et pose de stores enrouleurs au profit de l’immeuble administratif abritant l’annexe de la Direction Régionale des Impôts d’Agadir",
+    "buyer": "Charge de la Dir Regionale des Impots des pref d'Agadir-Ida-Tanane d'Inezgane-Ait Melloul et des provinces de Chtouka-A Baha, Taroudante,Tiznit, Tata, dGuelmim, As-Zag, Ifni, Laayoune, Boujdour, Tarfaya Semara,Oued Eddah -Aousserd",
+    "city": "Agadir",
+    "location": "AGADIR IDA OU TANANE",
+    "destination": "AGADIR IDA OU TANANE",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’aménagement, d’entretien et de réparation des bâtiments administratifs",
+    "deadline": "18/06/2026 15:00",
+    "publishDate": "16/06/2026 14:55",
+    "publicationDate": "16/06/2026 14:55",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et pose",
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et pose de stores enrouleurs au profit de l’immeuble administratif abritant l’annexe de la Direction Régionale des Impôts d’Agadir",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture et pose de stores enrouleur en tissu SCREEN :  Ce Prix comprend la fourniture et la pose de stores à enroulement en tissu SCREEN. Ce type de tissu devra permettre d’éliminer la lumière solaire gênante et l'éblouissement. Il permet la vision vers l'extérieur, mais empêche la vision depuis l'extérieur. Les espaces restent lumineux et reçoivent la lumière du jour. Les stores à enroulement sont composés de : 1.Type de commande : Le Store est actionné par une chaînette assurant l’entrainement du tube d’enroulement, le mécanisme de commande contient les éléments suivants : \tEmbout d’extrémité de diamètre 40 mm, longueur = 60mm au minimum, en PVC, à faible coefficient de frottement. La conception de l’embout permet un montage précis et un démontage rapide ; \tTreuil chaînette de diamètre de 40 mm, longueur = 70 mm ; \tChainette d’orientation en PVC blanche à boule (4,5 mm x 6 mm) ; \tConnecteur chainette en PVC blanc, \tFrein chaînette ; \tUn système de freinage automatique à double action afin d’assurer une mobilisation optimale et garder le store à la hauteur voulue ; \tUn tourillon en acier est inséré afin d’augmenter la longévité du produit ; 2.Tube d’enroulement : Tube rond en aluminium anodisé de diamètre 40 mm d’épaisseur 1.2 mm, adapté au support et aux dimensions du store. Le tube rond est muni d’un ruban adhésif double face qui permet une fixation aisée et efficace du tissu ; 3.Barre de charge : Barre de charge apparente de forme rectangulaire de dimensions 32mm x 13mm ou bien ronde de diamètre en aluminium anodisé ou bien laquée blanc (RAL 9010) avec embouts assortis ; 4.Support de fixation : Soit deux équerres en acier galvanisé avec des caches support en PVC, soit un jeu d’insertions en PVC ; ces supports permettront une dépose aisée par simple déclipage ; 5.caractéristiques du tissu : \tTissu SCREEN ayant les caractéristiques suivantes : \tComposition : ≥20% de polyester et ≤ 80% PVC ; \tPoids : entre 220 g/m² et 630 g/m² ; \tEpaisseur : ≤ 0,95 mm permettant un faible encombrement ; \tCoefficient d’ouverture (OF) : au choix du Maître d’ouvrage selon orientation des façades (3%-5%). \tCouleur : au choix du Maître d’Ouvrage.  Caractéristiques mécaniques minimales :  Résistance mécanique minimale\tRupture (ISO 1421)\tDéchirure (EN 1875-3) Chaîne\t≥ 160 daN/5cm\t≥ 4.8 daN Trame\t≥ 120 daN/5cm\t≥ 3.8 daN   Santé/Sécurité : \tTissu Conçu pour répondre aux exigences de Santé et Sécurité des établissements recevant du public ; \tClassement Feu : tissu Ininflammable, classement M1 (NFP 92 503) ; \tGarantie de la qualité de l’air : tissu certifié par un label reconnu qui atteste de la qualité de l'air intérieur grâce à la mesure des émissions de composés organiques volatiles (COV) ; \tSolidité des couleurs à la lumière (échelle sur 8) : ≥ 7/8 (ISO 105 B02) ; Ouvrage payé au mètre carré, y compris fourniture, fabrication, pose, fixation, réglage, finitions, chutes, nettoyage, dépose des anciens stores et toutes sujétions d’exécution et de mise en œuvre.",
+        "unite": "m2",
+        "quantite": 745,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352239/49511803",
+        "name": "Avis d'achat N° 17-2026-DRI-AG.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #17/2026/DRI/AG OBJET Fourniture et pose de stores enrouleurs au profit de l’immeuble administratif abritant l’annexe de la Direction Régionale des Impôts d’Agadir DÉTAILS Acheteur public Charge de la Dir Regionale des Impots des pref d'Agadir-Ida-Tanane d'Inezgane-Ait Melloul et des provinces de Chtouka-A Baha, Taroudante,Tiznit, Tata, dGuelmim, As-Zag, Ifni, Laayoune, Boujdour, Tarfaya Sem",
+    "scrapedAt": "2026-06-18T13:23:24.146Z",
+    "updatedAt": "2026-06-18T13:23:24.146Z",
+    "attachments": [
+      {
+        "name": "Avis d'achat N° 17-2026-DRI-AG.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352239/49511803",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/c727852f-368f-455a-b589-e6a825019bce/Avis_d_achat_N__17-2026-DRI-AG.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "Avis d'achat N° 17-2026-DRI-AG.pdf",
+        "sourceZip": "Avis_d_achat_N__17-2026-DRI-AG.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/c727852f-368f-455a-b589-e6a825019bce/Avis_d_achat_N__17-2026-DRI-AG.zip_extracted/Avis d_achat N_ 17-2026-DRI-AG.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "d6b513f6-4be5-46ca-b854-ec071a8c47d5",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351097",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351097",
+    "reference": "8/2026",
+    "title": "Objet fourniture et pose des abris au profit de la commune de Rbaa El Fouki",
+    "buyer": "Commune rurale de RBAA EL FOUKI",
+    "city": "",
+    "location": "TAZA",
+    "destination": "TAZA",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’installation de matériels divers",
+    "deadline": "18/06/2026 12:00",
+    "publishDate": "16/06/2026 00:15",
+    "publicationDate": "16/06/2026 00:15",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et pose",
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet fourniture et pose des abris au profit de la commune de Rbaa El Fouki",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1fourniture et pose des abris métalliques au profit de la commune, y/c tous les accessoires.",
+        "unite": "UNITE",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351097/49464881",
+        "name": "ABRITS 8 2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #8/2026 OBJET fourniture et pose des abris au profit de la commune de Rbaa El Fouki DÉTAILS Acheteur public Commune rurale de RBAA EL FOUKI Date mise en ligne 16/06/2026 00:15 Date limite de réception des devis 18/06/2026 12:00 Lieu d'exécution TAZA Catégorie principale Travaux Nature de prestation Travaux d’installation de matériels divers PIÈCES JOINTES ABRITS 8 2026.zip Articles Tout affi",
+    "scrapedAt": "2026-06-18T13:23:32.195Z",
+    "updatedAt": "2026-06-18T13:23:32.195Z",
+    "attachments": [
+      {
+        "name": "ABRITS 8 2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351097/49464881",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/d6b513f6-4be5-46ca-b854-ec071a8c47d5/ABRITS_8_2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "avis achat N� 8 abris.pdf",
+        "sourceZip": "ABRITS_8_2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/d6b513f6-4be5-46ca-b854-ec071a8c47d5/ABRITS_8_2026.zip_extracted/avis achat N_ 8 abris.pdf",
+        "textLength": 1843,
+        "error": null
+      }
+    ],
+    "officialAttachmentTextPath": "data/specifications/d6b513f6-4be5-46ca-b854-ec071a8c47d5.json",
+    "analysisSource": "official_attachment_only",
+    "attachmentFound": true,
+    "attachmentHasText": true,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "01262315-e3f6-4c1a-8129-bbf81a654927",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351722",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/351722",
+    "reference": "05/2026/DRIERR",
+    "title": "Objet Fourniture, installation complète et mise en service des climatiseurs muraux au niveau des bâtiments administratifs abritant les services fiscaux d’Errachidia et des provinces de Ouarzazate, Midelt, Tinghir et Zagora.",
+    "buyer": "DIRECTION REGIONALE DES IMPOTS DES PROVINCES D'ERRACHIDIA,MIDELT,OUARZAZATE,TINGHIR ET ZAGORA",
+    "city": "",
+    "location": "ERRACHIDIA, OUARZAZATE, MIDELT, TINGHIR, ZAGORA",
+    "destination": "ERRACHIDIA, OUARZAZATE, MIDELT, TINGHIR, ZAGORA",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’installation de matériels divers",
+    "deadline": "18/06/2026 11:00",
+    "publishDate": "15/06/2026 17:47",
+    "publicationDate": "15/06/2026 17:47",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture, installation complète et mise en service des climatiseurs muraux au niveau des bâtiments administratifs abritant les services fiscaux d’Errachidia et des provinces de Ouarzazate, Midelt, Tinghir et Zagora.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 9000 BTU (1er choix), Marque Carrier R32, au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.  Ce prix comprend la dépose des climatiseurs en place et leur le remplacement suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 8,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#2Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 9000 BTU (1er choix), Marque Carrier R32 au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.  Ce prix comprend la fourniture, l’installation initiale et la mise en service des climatiseurs dans les bureaux ne disposant pas encore de système de climatisation, et ce, suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 3,
+        "designation": "#3Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 12000 BTU (1er choix), Marque Carrier R32 au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.  Ce prix couvre la dépose des climatiseurs en place et leur le remplacement suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 15,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 4,
+        "designation": "#4Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 12000 BTU (1er choix), Marque Carrier R32 au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.  Ce prix comprend la fourniture, l’installation initiale et la mise en service des climatiseurs dans les bureaux ne disposant pas encore de système de climatisation, et ce, suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 5,
+        "designation": "#5Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 18000 BTU (1er choix), Marque Carrier R32 au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.   Ce prix couvre la dépose des climatiseurs en place et leur le remplacement suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 4,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 6,
+        "designation": "#6Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 18000 BTU (1er choix), Marque Carrier R32 au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.   Ce prix comprend la fourniture, l’installation initiale et la mise en service des climatiseurs dans les bureaux ne disposant pas encore de système de climatisation, et ce, suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 7,
+        "designation": "#7Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 24000 BTU (1er choix), Marque Carrier R32 au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie année.  Ce prix couvre la dépose des climatiseurs en place et leur le remplacement suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 5,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 8,
+        "designation": "#8Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 24000 BTU (1er choix), Marque Carrier R32 au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie année.  Ce prix comprend la fourniture, l’installation initiale et la mise en service des climatiseurs dans les bureaux ne disposant pas encore de système de climatisation, et ce, suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 9,
+        "designation": "#9Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 30000 BTU (1er choix), Marque Carrier R32 où ON/OFF au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.  Ce prix couvre la dépose des climatiseurs en place et leur le remplacement suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 10,
+        "designation": "#10Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 36000 BTU (1er choix), Marque Carrier R32 où ON/OFF au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.  Ce prix couvre la dépose des climatiseurs en place et leur le remplacement suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 3,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 11,
+        "designation": "#11Fourniture, installation complète et mise en service de climatiseurs Split System Mural Smart Inverter de puissance frigorifique 36000 BTU (1er choix), Marque Carrier R32 où ON/OFF au équivalent, y compris raccordement, fixation, installation électrique, essaie et toutes sujétions de fourniture et de pose, garantie 1 année.  Ce prix comprend la fourniture, l’installation initiale et la mise en service des climatiseurs dans les bureaux ne disposant pas encore de système de climatisation, et ce, suivant le descriptif ci-annexé.",
+        "unite": "Unité",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351722/49449180",
+        "name": "BC5 - 2026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #05/2026/DRIERR OBJET Fourniture, installation complète et mise en service des climatiseurs muraux au niveau des bâtiments administratifs abritant les services fiscaux d’Errachidia et des provinces de Ouarzazate, Midelt, Tinghir et Zagora. DÉTAILS Acheteur public DIRECTION REGIONALE DES IMPOTS DES PROVINCES D'ERRACHIDIA,MIDELT,OUARZAZATE,TINGHIR ET ZAGORA Date mise en ligne 15/06/2026 17:47 ",
+    "scrapedAt": "2026-06-18T13:23:40.631Z",
+    "updatedAt": "2026-06-18T13:23:40.631Z",
+    "attachments": [
+      {
+        "name": "BC5 - 2026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351722/49449180",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/01262315-e3f6-4c1a-8129-bbf81a654927/BC5_-_2026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "BC5 - 2026.pdf",
+        "sourceZip": "BC5_-_2026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/01262315-e3f6-4c1a-8129-bbf81a654927/BC5_-_2026.zip_extracted/BC5 - 2026.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "9b336281-7b80-416d-9842-137f0114ff47",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352629",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/352629",
+    "reference": "06/2026CNSSDRANFA",
+    "title": "Objet Fourniture et installation de deux (2) onduleurs au niveau des agence: Moulay Youssef et Mâarif",
+    "buyer": "CNSS DIRECTION REGIONALE ANFA",
+    "city": "Casablanca",
+    "location": "CASABLANCA",
+    "destination": "CASABLANCA",
+    "specifications": "",
+    "category": "Fournitures",
+    "naturePrestation": "Achat de matériel électrique, de groupes électrogènes, d’électropompes et de motopompes de chantier",
+    "deadline": "29/06/2026 12:00",
+    "publishDate": "18/06/2026 10:34",
+    "publicationDate": "18/06/2026 10:34",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "D",
+    "activityMatched": "Fourniture et pose",
+    "keywordsMatched": [
+      "fourniture et installation"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Fourniture et installation de deux (2) onduleurs au niveau des agence: Moulay Youssef et Mâarif",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Onduleur 10 KVA",
+        "unite": "Unité",
+        "quantite": 2,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352629/49578757",
+        "name": "Avis d'achat N° 06-2026 DRANFA.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #06/2026CNSSDRANFA OBJET Fourniture et installation de deux (2) onduleurs au niveau des agence: Moulay Youssef et Mâarif DÉTAILS Acheteur public CNSS DIRECTION REGIONALE ANFA Date mise en ligne 18/06/2026 10:34 Date limite de réception des devis 29/06/2026 12:00 Lieu d'exécution CASABLANCA Catégorie principale Fournitures Nature de prestation Achat de matériel électrique, de groupes électrog",
+    "scrapedAt": "2026-06-18T13:24:09.961Z",
+    "updatedAt": "2026-06-18T13:24:09.961Z",
+    "attachments": [
+      {
+        "name": "Avis d'achat N° 06-2026 DRANFA.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352629/49578757",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/9b336281-7b80-416d-9842-137f0114ff47/Avis_d_achat_N__06-2026_DRANFA.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "Avis d'achat N� 06-2026 DRANFA.pdf",
+        "sourceZip": "Avis_d_achat_N__06-2026_DRANFA.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/9b336281-7b80-416d-9842-137f0114ff47/Avis_d_achat_N__06-2026_DRANFA.zip_extracted/Avis d_achat N_ 06-2026 DRANFA.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-18T13:24:23.211Z",
+        "note": "Scraping automatique"
+      }
+    ]
   }
 ]

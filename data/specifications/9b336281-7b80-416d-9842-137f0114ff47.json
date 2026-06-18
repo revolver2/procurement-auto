@@ -1,0 +1,31 @@
+{
+  "bonId": "9b336281-7b80-416d-9842-137f0114ff47",
+  "bonReference": "06/2026CNSSDRANFA",
+  "attachments": [
+    {
+      "name": "Avis d'achat N° 06-2026 DRANFA.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352629/49578757",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/9b336281-7b80-416d-9842-137f0114ff47/Avis_d_achat_N__06-2026_DRANFA.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'achat N� 06-2026 DRANFA.pdf",
+      "sourceZip": "Avis_d_achat_N__06-2026_DRANFA.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/9b336281-7b80-416d-9842-137f0114ff47/Avis_d_achat_N__06-2026_DRANFA.zip_extracted/Avis d_achat N_ 06-2026 DRANFA.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T13:24:19.224Z",
+  "extractionNote": null
+}

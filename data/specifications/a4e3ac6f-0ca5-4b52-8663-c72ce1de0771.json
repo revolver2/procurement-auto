@@ -1,0 +1,31 @@
+{
+  "bonId": "a4e3ac6f-0ca5-4b52-8663-c72ce1de0771",
+  "bonReference": "09/2026/DGM",
+  "attachments": [
+    {
+      "name": "Avis d'Achat N°9-2026.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/345793/49225954",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/a4e3ac6f-0ca5-4b52-8663-c72ce1de0771/Avis_d_Achat_N_9-2026.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'Achat N�9-2026.pdf",
+      "sourceZip": "Avis_d_Achat_N_9-2026.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/a4e3ac6f-0ca5-4b52-8663-c72ce1de0771/Avis_d_Achat_N_9-2026.zip_extracted/Avis d_Achat N_9-2026.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T13:22:59.374Z",
+  "extractionNote": null
+}

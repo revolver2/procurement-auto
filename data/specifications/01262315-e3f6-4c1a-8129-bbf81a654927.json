@@ -1,0 +1,31 @@
+{
+  "bonId": "01262315-e3f6-4c1a-8129-bbf81a654927",
+  "bonReference": "05/2026/DRIERR",
+  "attachments": [
+    {
+      "name": "BC5 - 2026.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351722/49449180",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/01262315-e3f6-4c1a-8129-bbf81a654927/BC5_-_2026.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "BC5 - 2026.pdf",
+      "sourceZip": "BC5_-_2026.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/01262315-e3f6-4c1a-8129-bbf81a654927/BC5_-_2026.zip_extracted/BC5 - 2026.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T13:23:45.794Z",
+  "extractionNote": null
+}

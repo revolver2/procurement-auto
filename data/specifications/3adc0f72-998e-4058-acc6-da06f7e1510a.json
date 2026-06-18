@@ -1,0 +1,31 @@
+{
+  "bonId": "3adc0f72-998e-4058-acc6-da06f7e1510a",
+  "bonReference": "13/2026",
+  "attachments": [
+    {
+      "name": "AA N° 13-2026.pdf",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351309/49424061",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/3adc0f72-998e-4058-acc6-da06f7e1510a/AA_N__13-2026.pdf",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": null,
+      "sourceZip": null,
+      "extractedPath": null,
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T13:19:07.810Z",
+  "extractionNote": null
+}

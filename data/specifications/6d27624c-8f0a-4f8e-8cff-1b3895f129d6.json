@@ -1,0 +1,31 @@
+{
+  "bonId": "6d27624c-8f0a-4f8e-8cff-1b3895f129d6",
+  "bonReference": "08/AREF/2026",
+  "attachments": [
+    {
+      "name": "Avis BC 08-2026 Etude Topo.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351315/49424635",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/6d27624c-8f0a-4f8e-8cff-1b3895f129d6/Avis_BC_08-2026_Etude_Topo.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "Avis BC 08-2026 Etude Topo.pdf",
+      "sourceZip": "Avis_BC_08-2026_Etude_Topo.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/6d27624c-8f0a-4f8e-8cff-1b3895f129d6/Avis_BC_08-2026_Etude_Topo.zip_extracted/Avis BC 08-2026 Etude Topo.pdf",
+      "textLength": 2459,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Royaume du Maroc Ministèredel'ÉducationNationale,duPréscolaireetdesSports L'Académie Régionale d'Éducation et de Formation Région de Rabat Salé Kenitra Avisd'achatsurbonsdecommandeNo0s/AREFl2026 Le Directeur de l,Académie Régionale d,Education et de Formation de la région de Rabat salé Kénitra, procède à l'achat sur bons de commande des prestations objet du présent avis, en application des dispositiÀs de 1'article 91 du décret rf 2-22-431relatif aux marchés Publics, Objet de la Prestation: ETUDES TOPOGRAPHIQUES DES TERRÀINS ABRITANT DES BLOCS SANITAIRES EN DUR AUX ETABLISSEMENTS scoLAIRES RELEvANT DE L,AREF DE LA nÉcroN DE RABAT sALÉ KENITRA, EN Lor UNIQUE' PROGRAMME2026 NO Désignation Descriptif technique Unité Qté Site 148 I ETUDES TOPOGRAPHIQUES BLoCSSANITAIRESENDURAUxETABLISSEMENTSSCoLAIRESRELEVANTDESI DIRECTIONS PROVINCIALES SUIVANTE VENTILES COMME SUIT : I - Khemisset:28 | - Sidi kacem:42 | - Sidi Slimane:S I - Kenitra:67 I l- saté:6 | l- nocuurnrs A FouRNIR: I l- \"tï;';:ïÏJui\"\",i',, rourniture des pièces suivantes : l- Un Leve topographique avec un plan de situation, l- Un olan paicellaire avec le relevé de l'existant en 12 exemplaires I ù\" ir.\" cote en 12 exemplaires indiquant la mention de l'extrait du plan d'aménagement en 112 exemplaires et USB ; l- un. u,t.r,u,ion de propriété délivrée par la conservation foncière (le cas échéant)' I ;;r ;;;.r, né..rruir. pour 1'acquisition de dossier d'autorisation en coordination avec I I 'architecte. l- pnonl DE L'EeutPE: I ;; ,-;rdrt. .I.ùug\" à affecter aux études des cadres spécialistes au profil adéquat à la lmission qui lui sera confiée I ;;, d;;.rts élaborés par le bureau doivenr être cosignés par le responsable du projet er lo* Àr\"\"r. qui t., u élaborés, cette personne doit imposer son nom, sa qualité et son cadre I qrrr le\".lil\" .l^\"tt,.\".rc del restation: a*, dt-é..,1.\", Kh.*\"t.t§rAi tacem, Sidi Slimane,Kenitra et Salé' Date et heure limites de réception des devis des concurrents: 1910612026 à 12:04 Délai d,exécution ou date dc livraison de la prestation: 30 jours CautionProvisoire: 5.000,00dirhams r h i aô La caution originale devera être déposée physiquement à l'annexe Ibn sina de 1'AREF de la région de Rabat-salé-Kénitra sise à rue Kadi Ahmed Bennani, souissi - Rabat au plus tard le 1810612026 à 14:00' Les devis des concurrents doivent être déposés par voie électronique dans le portail des marchés publics accessible à l'adresse www.marchespublics. gov.ma' C",
+  "primaryAvisName": "Avis BC 08-2026 Etude Topo.pdf (depuis Avis_BC_08-2026_Etude_Topo.zip)",
+  "hasText": true,
+  "textLength": 2459,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-18T13:23:06.691Z",
+  "extractionNote": null
+}
