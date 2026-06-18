@@ -1,0 +1,31 @@
+{
+  "bonId": "44491c1f-30f6-42ce-b9f9-6e0d16db3de9",
+  "bonReference": "09/2026/FONCT",
+  "attachments": [
+    {
+      "name": "AVIS D'ACHAT 09-2026-MACARON FAC CHARIAA.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/346432/49494020",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/44491c1f-30f6-42ce-b9f9-6e0d16db3de9/AVIS_D_ACHAT_09-2026-MACARON_FAC_CHARIAA.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "AVIS D'ACHAT 09-2026- MACARON.pdf",
+      "sourceZip": "AVIS_D_ACHAT_09-2026-MACARON_FAC_CHARIAA.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/44491c1f-30f6-42ce-b9f9-6e0d16db3de9/AVIS_D_ACHAT_09-2026-MACARON_FAC_CHARIAA.zip_extracted/AVIS D_ACHAT 09-2026- MACARON.pdf",
+      "textLength": 2024,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "DESIGNATION UNITE DE MESURE QUANTIT E PU HT PT HT IMPRESSION DES MACARONS DE VEHICULE EN METAL : Forme personnalisée selon la maquette validée par l’administration ; Fabrication en métal rigide de qualité supérieure ; Finition générale en couleur dorée ; Eléments graphiques et zones de décoration en couleur bleue et rouge ; Texte, logo et visuels réalisés par gravure ; Gravure nette, soignée, durable et résistante à l’effacement ; Aspect haut de gamme avec rendu métallique professionnel ; Perçage ou dispositif de fixation intégré permettant la pose sur véhicule ; Dimensions conformes à la maquette arrêtée par l’administration ; Résistance adaptée à un usage extérieur et à l’exposition aux conditions climatiques. U 120 0,00 ARRÊTÉ LE PRÉSENT DEVIS A LA SOMME DE : TOTAL HT 0,00 TAUX DE TVA 20% 0,00 TOTAL TTC 0,00 FES LE : 16/06/2026 LE SOUS-ORDONNATEUR Avis d'achat sur bons de commande n° 09/2026/FONCT Le doyen de la faculté de chariâa de Fès procède à l’achat sur bons de commande des prestations objet du présent avis, en application des dispositions de l’article 91 du décret n° 2-22-431 relatif aux marchés publics. Objet de la prestation : IMPRESSION DES MACARONS DE VEHICULE EN METAL AU PROFIT DE LA FACULTE Consistance de la prestation : Lieu d’exécution: LA FACULTE DE CHARIAA DE FES Délai d’exécution ou date de livraison de la prestation: 15 JOURS à compter du lendemain de la date de notification du bon de commande. Date et heure limites de réception des devis des concurrents: 18/06/2026 à 13h30 Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l'adresse www.marchespublics.gov.ma. * TOUTE OFFRE ANORMALEMENT BASSE (< 25%) OU EXCESSIVE (> 20%) PAR RAPPORT A L'ESTIMATION DU MAITRE D'OUVRAGE SERA ECARTEE. * ESTIMATION DU MAITRE D'OUVRAGE : 12 000,00 DHS TTC (DOUZE MILLE DIRHAMS TTC). *GARANTIE : LE CONCURRENT DOIT SOUMETTRE UN ECHANTILLON DU MACARON POUR VALIDATION SELON LE MODELE EN PIECE JOINTE AVANT L'ATTRIBUTION DU BON DE COMMANDE.",
+  "primaryAvisName": "AVIS D'ACHAT 09-2026- MACARON.pdf (depuis AVIS_D_ACHAT_09-2026-MACARON_FAC_CHARIAA.zip)",
+  "hasText": true,
+  "textLength": 2024,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-18T21:22:37.849Z",
+  "extractionNote": null
+}

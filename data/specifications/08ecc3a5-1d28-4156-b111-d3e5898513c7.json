@@ -1,0 +1,31 @@
+{
+  "bonId": "08ecc3a5-1d28-4156-b111-d3e5898513c7",
+  "bonReference": "19/E.T/2026",
+  "attachments": [
+    {
+      "name": "AVIS D'ACHAT SUR B.C N° 19-E.T-2026.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351926/49491504",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/08ecc3a5-1d28-4156-b111-d3e5898513c7/AVIS_D_ACHAT_SUR_B.C_N__19-E.T-2026.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "AVIS D'ACHAT SUR B.C N� 19-E.T-2026.docx",
+      "sourceZip": "AVIS_D_ACHAT_SUR_B.C_N__19-E.T-2026.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/08ecc3a5-1d28-4156-b111-d3e5898513c7/AVIS_D_ACHAT_SUR_B.C_N__19-E.T-2026.zip_extracted/AVIS D_ACHAT SUR B.C N_ 19-E.T-2026.docx",
+      "textLength": 1546,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Avis d'achat sur bons de commande N° : 19/E.T/2026 Le Directeur l’AREF Laâyoune Sakia El Hamra, procède à l’achat sur bon de commande des prestations objet du présent avis, en application des dispositions de l’article 91 du décret n° 2-22-431 relatif aux marchés publics. Objet de la prestation : Étude technique et suivi des travaux d’installation des abris de voiture à l’annexe IBNOU HAZEM – AREF Laâyoune Sakia El Hamra sur une surface de 285m² (environ 10 places) Consistance de la prestation : N° Désignation Caractéristiques et spécifications Unité de mesure Quantité Garantie exigée 1 Etablissement des études techniques tous corps d’état (plans-croquis …) et du DCE. Etablissement des études techniques tous corps d’état (plans-croquis …) et du DCE. F 1 2 Suivi des travaux tous corps d’état (assister aux réunions de chantier, vérification des attachements et décomptes) et Réception provisoire des travaux. Suivi des travaux tous corps d’état (assister aux réunions de chantier, vérification des attachements et décomptes) et Réception provisoire des travaux. F 1 3 Réception définitive des travaux. Réception définitive des travaux. F 1 Lieu d’exécution : Annexe DE L’AREF (IBNOU HAZEM) à Laâyoune. Délai d’exécution ou date de livraison de la prestation : 10 jours Date et heure limites de réception des devis des concurrents et Agréments : 22/06/2026 à 11h00min Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l'adressewww.marchespublics.gov.ma.) Laâyoune le : 16/06/2026",
+  "primaryAvisName": "AVIS D'ACHAT SUR B.C N� 19-E.T-2026.docx (depuis AVIS_D_ACHAT_SUR_B.C_N__19-E.T-2026.zip)",
+  "hasText": true,
+  "textLength": 1546,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-18T21:25:34.031Z",
+  "extractionNote": null
+}

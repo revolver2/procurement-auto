@@ -1,0 +1,31 @@
+{
+  "bonId": "d7e2b6ad-4896-428b-97e9-64967d4ccfe3",
+  "bonReference": "10/2026",
+  "attachments": [
+    {
+      "name": "Numérisation_20260618 (3) - Copie.pdf",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352762/49598595",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/d7e2b6ad-4896-428b-97e9-64967d4ccfe3/Num_risation_20260618__3__-_Copie.pdf",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": null,
+      "sourceZip": null,
+      "extractedPath": null,
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T21:25:14.978Z",
+  "extractionNote": null
+}

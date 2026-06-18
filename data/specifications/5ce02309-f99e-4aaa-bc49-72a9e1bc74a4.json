@@ -1,0 +1,31 @@
+{
+  "bonId": "5ce02309-f99e-4aaa-bc49-72a9e1bc74a4",
+  "bonReference": "07INV/2026/KH",
+  "attachments": [
+    {
+      "name": "Avis d'achat sur BC N°07INV-2026-KH.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352760/49598408",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/5ce02309-f99e-4aaa-bc49-72a9e1bc74a4/Avis_d_achat_sur_BC_N_07INV-2026-KH.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'achat sur BC N�07INV-2026-KH.pdf",
+      "sourceZip": "Avis_d_achat_sur_BC_N_07INV-2026-KH.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/5ce02309-f99e-4aaa-bc49-72a9e1bc74a4/Avis_d_achat_sur_BC_N_07INV-2026-KH.zip_extracted/Avis d_achat sur BC N_07INV-2026-KH.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T21:25:49.019Z",
+  "extractionNote": null
+}

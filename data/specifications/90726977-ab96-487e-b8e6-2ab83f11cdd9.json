@@ -1,0 +1,31 @@
+{
+  "bonId": "90726977-ab96-487e-b8e6-2ab83f11cdd9",
+  "bonReference": "45/PL.Err/2026",
+  "attachments": [
+    {
+      "name": "avis 45-2026 .zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351754/49458801",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/90726977-ab96-487e-b8e6-2ab83f11cdd9/avis_45-2026_.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "avis 45-2026 .pdf",
+      "sourceZip": "avis_45-2026_.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/90726977-ab96-487e-b8e6-2ab83f11cdd9/avis_45-2026_.zip_extracted/avis 45-2026 .pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T21:23:17.095Z",
+  "extractionNote": null
+}

@@ -1,0 +1,31 @@
+{
+  "bonId": "62e0c048-6382-4dfb-b703-d10eace04c35",
+  "bonReference": "4/2026/ASB",
+  "attachments": [
+    {
+      "name": "BC 4 2026 ASB.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351263/49424064",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/62e0c048-6382-4dfb-b703-d10eace04c35/BC_4_2026_ASB.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": null,
+      "sourceZip": "BC_4_2026_ASB.zip",
+      "extractedPath": null,
+      "textLength": 0,
+      "error": "Aucun fichier exploitable dans le ZIP"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T21:23:42.369Z",
+  "extractionNote": null
+}

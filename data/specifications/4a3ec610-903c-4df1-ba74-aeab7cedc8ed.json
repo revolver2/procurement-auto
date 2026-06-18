@@ -1,0 +1,31 @@
+{
+  "bonId": "4a3ec610-903c-4df1-ba74-aeab7cedc8ed",
+  "bonReference": "11/06/FNC/2026",
+  "attachments": [
+    {
+      "name": "BC système d’ouverture 11_06_FNC.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/353043/49622188",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/4a3ec610-903c-4df1-ba74-aeab7cedc8ed/BC_syst_me_d_ouverture_11_06_FNC.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "BC système d’ouverture 11_06_FNC.pdf",
+      "sourceZip": "BC_syst_me_d_ouverture_11_06_FNC.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/4a3ec610-903c-4df1-ba74-aeab7cedc8ed/BC_syst_me_d_ouverture_11_06_FNC.zip_extracted/BC syst_me d_ouverture 11_06_FNC.pdf",
+      "textLength": 2872,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Avis d'achat sur bons de commande n°11/06/FNC/2026 La Direction de l’École Nationale Supérieure de l’Intelligence Artificielle et Sciences des Données de Taroudant procède à l’achat, sur bons de commande, des prestations objet du présent avis, en application des dispositions de l’article 91 du décret n° 2-22-431 relatif aux marchés publics. Objet de la prestation : Fourniture et installation d’un système d’ouverture et de fermeture de 06 fenêtres au profit de l'ENSIASD Consistance de la prestation : N° Désignation Caractéristiques et spécifications Unité de mesure Quantité Garanties Exigées 01 Fourniture et installation d’un système d’ouverture et de fermeture de 06 fenêtres Objet : Fourniture et installation d’un système d’ouverture et de fermeture de fenêtres existantes Les prestations consistent en la conception, la fourniture et la mise en œuvre d’un système d’ouverture et de fermeture pour les fenêtres existantes (de forme cintrée), sans modification de la décoration, de l’aspect architectural ni des finitions actuelles (menuiserie, maçonnerie, peinture, vitrage). Le système proposé devra : Permettre une ouverture et une fermeture fonctionnelles, simples et sécurisées des fenêtres, Être discret, intégré et compatible avec l’existant, Ne nécessiter aucune dégradation ni remplacement des éléments décoratifs ou architecturaux existants. -La conception technique et le principe de fonctionnement sont à soumettre à la validation préalable du Maître d’Ouvrage (MO) avant toute exécution. Prestations incluses : Étude technique et conception de la solution adaptée aux fenêtres existantes, Fourniture de tous les équipements, accessoires et matériaux nécessaires, F 1 Sous réserve de la validation de la qualité par la commission -Un an de garantie - Les agents en charge des travaux devront être couverts par une assurance couvrant les risques liés à leur activité Travaux d’installation, réglage et mise en service, Essais de bon fonctionnement et remise en état des lieux après travaux. Conditions générales : Toutes les fournitures, la main- d’œuvre, les équipements, les moyens d’accès et les travaux sont entièrement à la charge du prestataire. Les travaux devront être réalisés dans le respect des règles de l’art et des normes en vigueur. Visite du lieu obligatoire le 20/06/2026 à 10h00 Voir le modèle ci-dessous Lieu d’exécution : École Nationale Supérieure de l’Intelligence Artificielle et Sciences des Données de Taroudant Délai d’exécution ou date de livraison de la prestation : 03 jours Date et heure limites de réception des devis des concurrents : 20/06/2026 • Obligation que le prestataire être habilité à exercer ce type de prestation, l’ICE faisant foi Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l'adresse www.marchespublics.gov.ma. Fait à Taroudant, le 18/06/2026",
+  "primaryAvisName": "BC système d’ouverture 11_06_FNC.pdf (depuis BC_syst_me_d_ouverture_11_06_FNC.zip)",
+  "hasText": true,
+  "textLength": 2872,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-18T21:23:10.875Z",
+  "extractionNote": null
+}

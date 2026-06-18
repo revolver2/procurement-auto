@@ -1,0 +1,31 @@
+{
+  "bonId": "97dda978-1f20-4e1a-87c0-f6a63584aaff",
+  "bonReference": "8/2026",
+  "attachments": [
+    {
+      "name": "ABRITS 8 2026.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351097/49464881",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/97dda978-1f20-4e1a-87c0-f6a63584aaff/ABRITS_8_2026.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "avis achat N� 8 abris.pdf",
+      "sourceZip": "ABRITS_8_2026.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/97dda978-1f20-4e1a-87c0-f6a63584aaff/ABRITS_8_2026.zip_extracted/avis achat N_ 8 abris.pdf",
+      "textLength": 1843,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "AVIS D’ACHAT SUR BON DE COMMANDE N° 8 Le Président du conseil communal de RBAA EL FOUKI possède à l’achat sur bon de commande des prestations objet du présent avis, en application des dispositions de l’article 91 du décret N° 2-22-431 relatif aux marchés publics. Objet de la prestation : fourniture et pose des abris au profit de la commune de Rbaa El Fouki. Consistance de la prestation : N° Désignation Caractéristiques et spécification exigés Unité de mesure Quantité Garantie 1 fourniture et pose des abris métalliques au profit de la commune, y/c tous les accessoires. 1. Décapage Terrassement de toute nature de 30 cm, hérissonne en pierres sèches de 20cm avec armature en tri soudé et une dalle de forme en béton d’une épaisseur de 15 cm le tout sur une surface de 4.20m de longueur et 2.20m de largeur y/c toute sujétion. 2. Structure métallique. Longueur : 4m, largeur : 2m, hauteur arrière : 2.45m et hauteur avant : 2.55m Tube carré de 7cm x 4cm est de 19.14 ml. Tube carré 8cm x 8cm est de 8.20ml. Tube carré de 3cm x 2cm est de 9.6 ml. Tôle rédale de 1.8mm (ondulé) est de 12m². Tôle simple de 1.8mm est de 4.70m². Peinture sur structure métallique selon le choix de l’administration. Enseigne portant le nom* جماعة الربع الفوقي * écrit sur les façades droite et gauche de l’abri UNITE 04 selon le model ci- joint Lieux d’exécution : la commune de RBAA EL FOUKI. Date d’exécution ou de livraison de la prestation : 1 mois Date et heure limites de réception des devis des concurrents : 18/06/2026 à 12 heures. Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l’adresse www.marchespublics.gov.ma. A Rbaa El Fouki le : 15 Juin 2026 Le président de la commune ROYAUME DU MAROC MINISTÈRE DE L’INTÉRIEUR PROVINCE DE TAZA CERCLE D’OUED AMLIL CAIDAT BNI FRASSEN C.RBAA EL FOUKI",
+  "primaryAvisName": "avis achat N� 8 abris.pdf (depuis ABRITS_8_2026.zip)",
+  "hasText": true,
+  "textLength": 1843,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-18T21:26:30.214Z",
+  "extractionNote": null
+}

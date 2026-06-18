@@ -1,0 +1,31 @@
+{
+  "bonId": "669935e3-487d-4b73-9805-01ee28fee700",
+  "bonReference": "AA011/2026/DRHMAS",
+  "attachments": [
+    {
+      "name": "AA 011- Achat de Présentoirs.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/350449/49334447",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/669935e3-487d-4b73-9805-01ee28fee700/AA_011-_Achat_de_Pr_sentoirs.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "AA 011- Achat de Pr�sentoirs.pdf",
+      "sourceZip": "AA_011-_Achat_de_Pr_sentoirs.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/669935e3-487d-4b73-9805-01ee28fee700/AA_011-_Achat_de_Pr_sentoirs.zip_extracted/AA 011- Achat de Pr_sentoirs.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T21:21:19.827Z",
+  "extractionNote": null
+}

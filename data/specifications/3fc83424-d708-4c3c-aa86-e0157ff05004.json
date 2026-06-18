@@ -1,0 +1,31 @@
+{
+  "bonId": "3fc83424-d708-4c3c-aa86-e0157ff05004",
+  "bonReference": "09/2026",
+  "attachments": [
+    {
+      "name": "AVIS D'ACHAT N°9-2026 ABRIS DE BUS.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352105/49502426",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/3fc83424-d708-4c3c-aa86-e0157ff05004/AVIS_D_ACHAT_N_9-2026_ABRIS_DE_BUS.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "AVIS D'ACHAT N�9-2026 ABRIS DE BUS.pdf",
+      "sourceZip": "AVIS_D_ACHAT_N_9-2026_ABRIS_DE_BUS.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/3fc83424-d708-4c3c-aa86-e0157ff05004/AVIS_D_ACHAT_N_9-2026_ABRIS_DE_BUS.zip_extracted/AVIS D_ACHAT N_9-2026 ABRIS DE BUS.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-18T21:22:19.499Z",
+  "extractionNote": null
+}

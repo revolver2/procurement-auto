@@ -1,0 +1,31 @@
+{
+  "bonId": "939a4380-3c46-475a-99d9-f551f0429d90",
+  "bonReference": "09/AREF/2026",
+  "attachments": [
+    {
+      "name": "Avis BC 9-2026 Etude Geo.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/351362/49426990",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/939a4380-3c46-475a-99d9-f551f0429d90/Avis_BC_9-2026_Etude_Geo.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "Avis BC 9-2026 Etude Geo.pdf",
+      "sourceZip": "Avis_BC_9-2026_Etude_Geo.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/939a4380-3c46-475a-99d9-f551f0429d90/Avis_BC_9-2026_Etude_Geo.zip_extracted/Avis BC 9-2026 Etude Geo.pdf",
+      "textLength": 2403,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "RoYaume du Maroc ffi'\"\"Jî:.îi*:ï:lïi'Jffrrjl,[:j.,Tl'iîii'\"i\"T*' Avis d'achat sur bons de commande N\" 09/AREF/2026 Le Direcreur de'Académie R;i::::[i,t ïîïiÏff\"t;i;l;:.ïlîJ:iïniïi' : Salé Kénitra, procède à l'achat sur bons de commande des prestations objet a\" \";;il;; '2-43i relatif aux marchés publics' Obiet de Ia Prestation: EruDE GE0TECHNTQUE DES rERRA'NsâËàï#rîrfJr,rîîu.â#liiîîi§î3iî$iôiiià§s#i#.:colÀIREs RELEVANT DE L',AREF Consistance de la Mission d'ttu<lcs: Essais. Etildcs.et étâblisscil)ent du dossicr géotcchnique préliminaire: ?H.'.ïlî:iï: l:i:li:îÏîïü#ri\",i.dftîirf{'*#Ï'0\"Ïi:î::\"\"'0\" \"\" avcc des movens approPriés proronds jusqu'au boil sor (de 4 i'JIiiÏ,l T i: ;ï'1ïl;; ;'l; iÂ';rt dcs éc h anti*ons ir-lii\"riin.\"t* a'tchantillon dc sol i ncontrés : épaissours dcs eouches ct ooupcs dc synthèse i nnelcvéc de la lithologie des tenatns rc -.^ r-. \"^,,rhes: iHiii,Ï#i;i;i,J' tumi\"e\" e*ucug\" des courbes I I imiics d'Attcrbcrg ct commentalrcs ; ',,;flÏJd;;;ffiarcnr Y compris tcneur en cau ; nHssai dc cisâillclncnt cl évâluatlon oe i ;;;;';;;;;r\" **tression sur bon sor' âüssai d'innrtation ^, -réscntés sur rc raeeort à r:met:ï].:l:::lîî'il::'lî:lJJ, Xl\"lTliÏ\",l'uoi, a tit,\" non '*r'u\"tii' l:ïJ:::Hï:'\":ilï:T'1:'I\"',ï:Ï:ffi iii\"\"n\"'0\"\"1'\"u'\"\"aires pour re car( Irïî,;:li#iï::mru *:iîro'nn\", .rui,\"..n, ru conrraintc ad,nissibre du sor ainsi quc rc nivcau d'ancrage des semcrres i Hi:ii::iïï ffii,r!r* i1 i\"1g;Jîllllli\";,\",\"\",*, u,::,ï,^i:::îi::T::. soutènc,ncnt en cas de s,isscmcnt ; iL. di,n\"n.ion,.'n\"ntll, ''T: l::\"l;;ii ,,io,u* l* \",,, .' oroposer des sr , ,l.ournir unc anulys\" .l\"it\" \"1 dulill'::^:\".:,,*,,i\",,\". .eton to réglcrncntarion cn vi8ucilr r\" ..nôn au sol des chargcs nouvellcs appt , i\"\",\"', ,,\"\" .\"\",r* .':,'\" \":1::î:l\".:j',:,11,:i:li:iffiliii;'i,,iJ,u,run \", ,iguon .,.i \"L*,ronr rc rcpon au sor des charscs nouvelcs appoftécs par re t LDèterlninel les paral)èttcs slsmlqucs rt ,,,,ilï,.,:riï,**1.ffi,**t.1;-\"nllllffi*Iitriïî]j,i:,î f}\",,'u-\"nug.,\"n,acs'lenan'I, iilliÏi,\"*\", o\" t'*illctnent.ct nonùale dc ruprurc \"u;;;;,'r:' i;'',\"\"\".,^,d*iï:l',\"'ï:,i:iJffii: Ïl:'',ffi..o,,p*,0g. n*nu'tou mécaniquc doit ùxplicitcr ld tcchniquc précouscc pw.--\"..\"^^],.ï\"\"i*\",0f \", sufe,o. (nlicitcr ld tcchnlquc P nc:5,Kcnitra:67 et Salé:6. fthemrsset:28.Sidi kâccm:42' Sidr slrrna Essais, Etudes et établissement du dossier géotechnique Préliminaire www.marchesPublics' gov ma'",
+  "primaryAvisName": "Avis BC 9-2026 Etude Geo.pdf (depuis Avis_BC_9-2026_Etude_Geo.zip)",
+  "hasText": true,
+  "textLength": 2403,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-18T21:26:08.495Z",
+  "extractionNote": null
+}

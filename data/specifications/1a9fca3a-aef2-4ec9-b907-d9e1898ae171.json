@@ -1,0 +1,31 @@
+{
+  "bonId": "1a9fca3a-aef2-4ec9-b907-d9e1898ae171",
+  "bonReference": "09/2026",
+  "attachments": [
+    {
+      "name": "AVIS D'ACHAT 09 (2).zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/352687/49592393",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/1a9fca3a-aef2-4ec9-b907-d9e1898ae171/AVIS_D_ACHAT_09__2_.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "AVIS D'ACHAT 09.pdf",
+      "sourceZip": "AVIS_D_ACHAT_09__2_.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/1a9fca3a-aef2-4ec9-b907-d9e1898ae171/AVIS_D_ACHAT_09__2_.zip_extracted/AVIS D_ACHAT 09.pdf",
+      "textLength": 2799,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Royaume du Maroc Organisme : OFPPT Avis d’achat sur bons de commande N° 09/2026 Le Directeur de l’ISTA TATA relevant de la Direction Régionale Souss Massa de l’OFPPT procède à l’achat sur bon de commande des prestations objet du présent avis, en application des dispositions de l’article 91 du décret n° 2-22-431 relatif aux marchés publics. Objet de la prestation : Achat de la MOPO de la filière « menuiserie aluminium ». Consistance de la prestation : N° Désignation Caractéristique et spécifications Unité de mesure Qté Garanties exigées 1 DORMANT A FRAPPE AVEC COUVRE JOINT 40 X 20 (Barre de 6 m) DORMANT A FRAPPE AVEC COUVRE JOINT 40 X 20 (Barre de 6 m) Un 6 2 OUVRANT 40 X 20 SERIE BATTANT Z (Barre de 6 m) OUVRANT 40 X 20 SERIE BATTANT Z (Barre de 6 m) Un 6 3 OUVRANT 40 X 40 SERIE BATTANT grande Z (Barre de 6 m) OUVRANT 40 X 40 SERIE BATTANT grande Z (Barre de 6 m) Un 6 4 PARCLOSE (Barre de 6 m) PARCLOSE (Barre de 6 m) Un 6 5 JOINT BATTUE RIGIDE JOINT BATTUE RIGIDE ML 100 6 JOINT VITRAGE JOINT VITRAGE ML 100 7 MONTANT CENTRALE (BARRE DE 6 M) MONTANT CENTRALE (BARRE DE 6 M) Un 3 8 MONTANT LATÉRALE (BARRE DE 6 M) MONTANT LATÉRALE (BARRE DE 6 M) Un 3 9 TRAVERS COULISSE (BARRE DE 6 M) TRAVERS COULISSE (BARRE DE 6 M) Un 4 10 ROULETTE À COULISSE ROULETTE À COULISSE Un 20 11 UNION D'ASSEMBLAGE \"T\" 40 X 20 UNION D'ASSEMBLAGE \"T\" 40 X 20 Un 20 12 EQUERRES D'ASSEMBLAGE 40 X 20 EQUERRES D'ASSEMBLAGE 40 X 20 Un 100 13 EQUERRES D'ASSEMBLAGE 40 X 40 EQUERRES D'ASSEMBLAGE 40 X 40 Un 20 14 COUPE VERRE COUPE VERRE Un 5 15 JOINT BROSSE JOINT BROSSE ML 100 16 EMBOUTS DE VISSEUSE TÊTE CRUCIFORME EMBOUTS DE VISSEUSE TÊTE CRUCIFORME Un 5 17 DORMANT A COULISSE AVEC COUVRE JOINT (BARRE DE 6 M) DORMANT A COULISSE AVEC COUVRE JOINT (BARRE DE 6 M) Un 6 18 TRAVERS \"T\" 40 X 20 (BARRE DE 6 M) TRAVERS \"T\" 40 X 20 (BARRE DE 6 M) Un 2 19 Verre EP 3 mm ( 1m x1m ) Verre EP 3 mm ( 1m x1m ) Un 5 20 Verre EP 6 mm ( 1m x1m ) Verre EP 6 mm ( 1m x1m ) Un 5 21 PAUMELLE RENVERSIBLE PAUMELLE RENVERSIBLE Un 20 22 SERRURE ENCASTRÉ POUR COULISSE SERRURE ENCASTRÉ POUR COULISSE Un 10 Direction Régionale Souss Massa BP 24/S Route de Marrakech, cite Taddart Agadir  (028) 84.66.68/ Fax : (028) 84.66.69 E-Mail : drsmd@ofppt.ma - PAGE 2 / 2 - Lieu d'exécution : Toutes les livraisons objet du présent bon de commande seront livrées à l’ISTA TATA; Délai d’exécution ou date de livraison de la prestation : Le délai d'exécution des prestations relatives au bon de commande est fixé à deux jours (2 jours), court à compter de la date de remise du bon de commande; Date et heure limite de réception des devis des concurrents : 20/06/2026 à 12h00 ; Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l'adresse www.marchespublics.gov.ma. Directeur de l’ISTA TATA",
+  "primaryAvisName": "AVIS D'ACHAT 09.pdf (depuis AVIS_D_ACHAT_09__2_.zip)",
+  "hasText": true,
+  "textLength": 2799,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-18T21:21:08.728Z",
+  "extractionNote": null
+}
