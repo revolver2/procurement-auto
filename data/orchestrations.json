@@ -1,0 +1,427 @@
+[
+  {
+    "bonId": "d922a51c-7079-4683-8ef2-a28ae3806db3",
+    "executive": {
+      "projectTitle": "Objet Étude de diagnostic et d’évaluation de l’état d’un château d’eau avec identification des anomalies et proposition des solutions de réhabilitation y compris Etude Technique Pour L’équipement Electrique De Forage Existant sis à douar ouled jabri, commune ouled Naceur.",
+      "buyer": "COMMUNE OULED NACER",
+      "city": "FQUIH BEN SALAH",
+      "deadline": "22/06/2026 12:00",
+      "scopeOfWork": "Le projet concerne une étude de diagnostic et d'évaluation de l'état d'un château d'eau, incluant l'identification des anomalies et la proposition de solutions de réhabilitation. Il comprend également une étude technique pour l'équipement électrique d'un forage existant.",
+      "estimatedComplexity": "Très élevée",
+      "bidRecommendation": "Non recommandé",
+      "profitabilityScore": 50,
+      "urgencyScore": 20,
+      "winningProbability": "Faible"
+    },
+    "materials": [
+      {
+        "category": "Charpente métallique",
+        "designation": "Structure métallique du château d'eau",
+        "specification": "Acier galvanisé ou peint, pour renforcement ou remplacement structurel",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Tonne",
+        "confidence": "Faible"
+      },
+      {
+        "category": "Inox",
+        "designation": "Tuyauterie et accessoires en inox",
+        "specification": "Acier inoxydable pour contact avec l'eau potable",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Mètre linéaire / Unité",
+        "confidence": "Faible"
+      },
+      {
+        "category": "Aluminium",
+        "designation": "Échelles d'accès et plateformes en aluminium",
+        "specification": "Alliage d'aluminium résistant à la corrosion",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Mètre linéaire / Unité",
+        "confidence": "Faible"
+      },
+      {
+        "category": "Serrurerie",
+        "designation": "Portes et trappes d'accès",
+        "specification": "Acier galvanisé ou inox, avec serrures de sécurité",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Unité",
+        "confidence": "Faible"
+      },
+      {
+        "category": "Peinture",
+        "designation": "Peinture anticorrosion pour structures métalliques",
+        "specification": "Peinture époxy ou polyuréthane pour environnement extérieur et intérieur de réservoir",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "M2",
+        "confidence": "Faible"
+      },
+      {
+        "category": "Fixation",
+        "designation": "Boulons, écrous, chevilles et ancrages",
+        "specification": "Acier galvanisé à chaud ou inox",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Unité",
+        "confidence": "Faible"
+      }
+    ],
+    "certifications": {
+      "required": [
+        "Non précisé dans l'avis joint"
+      ],
+      "optional": [
+        "Non précisé dans l'avis joint"
+      ],
+      "notMentioned": [
+        "Attestation fiscale",
+        "CNSS",
+        "Assurance",
+        "Method statement"
+      ]
+    },
+    "complianceChecklist": [
+      {
+        "item": "Dossier administratif complet",
+        "category": "admin"
+      },
+      {
+        "item": "Offre technique détaillée",
+        "category": "technique"
+      },
+      {
+        "item": "Offre financière conforme",
+        "category": "commercial"
+      },
+      {
+        "item": "Respect du délai de soumission",
+        "category": "submission"
+      },
+      {
+        "item": "Signature des documents par personne habilitée",
+        "category": "admin"
+      },
+      {
+        "item": "Caution provisoire (si requise)",
+        "category": "commercial"
+      }
+    ],
+    "supplierRFQ": [
+      {
+        "category": "Charpente métallique",
+        "item": "Profilés acier pour renforcement",
+        "specification": "HEB, IPE, UPN selon normes en vigueur",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Tonne",
+        "supplierType": "Fournisseur d'acier",
+        "notes": "Pour la phase de réhabilitation future"
+      },
+      {
+        "category": "Inox",
+        "item": "Tôles et tubes inox",
+        "specification": "Acier inoxydable 304L ou 316L",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Kg / Mètre linéaire",
+        "supplierType": "Fournisseur d'inox",
+        "notes": "Pour la phase de réhabilitation future"
+      },
+      {
+        "category": "Aluminium",
+        "item": "Profilés aluminium pour accès",
+        "specification": "Alliage 6060 ou 6063",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Kg / Mètre linéaire",
+        "supplierType": "Fournisseur d'aluminium",
+        "notes": "Pour la phase de réhabilitation future"
+      },
+      {
+        "category": "Peinture",
+        "item": "Système de peinture anticorrosion",
+        "specification": "Primaire, intermédiaire, finition époxy/polyuréthane",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Litre",
+        "supplierType": "Fournisseur de peinture industrielle",
+        "notes": "Pour la phase de réhabilitation future"
+      },
+      {
+        "category": "Fixation",
+        "item": "Quincaillerie et boulonnerie",
+        "specification": "Boulons H.R., goujons d'ancrage, inox A2/A4",
+        "quantity": "Non précisé dans l'avis joint",
+        "unit": "Unité",
+        "supplierType": "Fournisseur de quincaillerie",
+        "notes": "Pour la phase de réhabilitation future"
+      }
+    ],
+    "bordereauDraft": [
+      {
+        "num": 1,
+        "designation": "Étude de diagnostic et d'évaluation de l'état du château d'eau",
+        "unit": "Forfait",
+        "quantity": "Non précisé dans l'avis joint",
+        "unitPriceHT": "",
+        "totalHT": "",
+        "tva": "20%",
+        "notes": "Inclut les visites sur site, relevés, analyses structurelles et hydrauliques."
+      },
+      {
+        "num": 2,
+        "designation": "Identification des anomalies et proposition de solutions de réhabilitation",
+        "unit": "Forfait",
+        "quantity": "Non précisé dans l'avis joint",
+        "unitPriceHT": "",
+        "totalHT": "",
+        "tva": "20%",
+        "notes": "Rapport détaillé des pathologies et des options de réparation/renforcement."
+      },
+      {
+        "num": 3,
+        "designation": "Étude technique pour l'équipement électrique du forage existant",
+        "unit": "Forfait",
+        "quantity": "Non précisé dans l'avis joint",
+        "unitPriceHT": "",
+        "totalHT": "",
+        "tva": "20%",
+        "notes": "Conception de l'installation électrique, dimensionnement, schémas."
+      },
+      {
+        "num": 4,
+        "designation": "Rédaction des rapports finaux et présentation",
+        "unit": "Forfait",
+        "quantity": "Non précisé dans l'avis joint",
+        "unitPriceHT": "",
+        "totalHT": "",
+        "tva": "20%",
+        "notes": "Livraison des documents d'étude et soutenance."
+      }
+    ],
+    "executionPlan": [
+      {
+        "phase": "Préparation",
+        "duration": "1 semaine",
+        "tasks": [
+          "Analyse détaillée du CCTP et CPS",
+          "Mobilisation de l'équipe d'étude",
+          "Planification des visites sur site"
+        ]
+      },
+      {
+        "phase": "Collecte de données sur site",
+        "duration": "3 semaines",
+        "tasks": [
+          "Visite du château d'eau et du forage",
+          "Relevés dimensionnels et visuels",
+          "Prélèvements et essais non destructifs (si nécessaires)",
+          "Collecte des données techniques existantes"
+        ]
+      },
+      {
+        "phase": "Analyse et modélisation",
+        "duration": "4 semaines",
+        "tasks": [
+          "Analyse des données collectées",
+          "Modélisation structurelle et hydraulique du château d'eau",
+          "Diagnostic des anomalies",
+          "Conception de l'équipement électrique du forage"
+        ]
+      },
+      {
+        "phase": "Rédaction rapport",
+        "duration": "3 semaines",
+        "tasks": [
+          "Rédaction du rapport de diagnostic et d'évaluation",
+          "Rédaction des propositions de solutions de réhabilitation",
+          "Rédaction de l'étude technique électrique"
+        ]
+      },
+      {
+        "phase": "Tests",
+        "duration": "1 semaine",
+        "tasks": [
+          "Relecture et validation interne des rapports",
+          "Vérification de la conformité aux normes"
+        ]
+      },
+      {
+        "phase": "Réception",
+        "duration": "1 semaine",
+        "tasks": [
+          "Soumission des livrables",
+          "Présentation des résultats à l'acheteur",
+          "Prise en compte des commentaires et ajustements"
+        ]
+      }
+    ],
+    "manpower": [
+      {
+        "role": "Chef de projet (Ingénieur Structure/Hydraulique)",
+        "count": 1,
+        "duration": "13 semaines",
+        "notes": "Coordination générale et expertise technique principale"
+      },
+      {
+        "role": "Ingénieur Structure",
+        "count": 1,
+        "duration": "8 semaines",
+        "notes": "Analyse structurelle du château d'eau"
+      },
+      {
+        "role": "Ingénieur Hydraulicien",
+        "count": 1,
+        "duration": "6 semaines",
+        "notes": "Analyse hydraulique et fonctionnement du château d'eau"
+      },
+      {
+        "role": "Ingénieur Électricien",
+        "count": 1,
+        "duration": "5 semaines",
+        "notes": "Étude de l'équipement électrique du forage"
+      },
+      {
+        "role": "Technicien de terrain / Dessinateur",
+        "count": 1,
+        "duration": "7 semaines",
+        "notes": "Relevés sur site, assistance, mise en plan"
+      }
+    ],
+    "equipment": [
+      {
+        "item": "Véhicule de chantier",
+        "quantity": 1,
+        "location": "Chantier",
+        "notes": "Pour les déplacements sur site"
+      },
+      {
+        "item": "Ordinateurs et logiciels de CAO/calcul",
+        "quantity": 3,
+        "location": "Atelier",
+        "notes": "Pour la modélisation et la rédaction des rapports"
+      },
+      {
+        "item": "Matériel de diagnostic (ex: télémètre laser, appareil photo, endoscope)",
+        "quantity": 1,
+        "location": "Chantier",
+        "notes": "Pour les relevés et l'inspection visuelle"
+      },
+      {
+        "item": "Équipement de protection individuelle (EPI)",
+        "quantity": 3,
+        "location": "Chantier",
+        "notes": "Pour la sécurité des équipes sur site"
+      }
+    ],
+    "risks": [
+      {
+        "type": "commercial_risk",
+        "description": "Le projet est une étude d'ingénierie, ce qui est en dehors de notre cœur de métier (fabrication et installation métallique).",
+        "severity": "Élevée"
+      },
+      {
+        "type": "technical_risk",
+        "description": "Manque d'expertise interne pour les études de diagnostic structurel et hydraulique de châteaux d'eau, ainsi que pour l'ingénierie électrique de forage.",
+        "severity": "Élevée"
+      },
+      {
+        "type": "missing_quantities",
+        "description": "Aucune quantité de matériaux ou de travaux de réhabilitation n'est spécifiée, car il s'agit d'une étude préliminaire.",
+        "severity": "Moyenne"
+      },
+      {
+        "type": "ambiguous_spec",
+        "description": "Les spécifications techniques pour la réhabilitation future sont inconnues, rendant difficile l'anticipation des travaux pour notre domaine.",
+        "severity": "Moyenne"
+      },
+      {
+        "type": "deadline_risk",
+        "description": "Bien que le délai de soumission soit lointain, la réalisation d'une étude de cette nature nécessiterait une mobilisation rapide de compétences externes.",
+        "severity": "Faible"
+      }
+    ],
+    "winningStrategy": {
+      "strengths": [
+        "Notre entreprise n'a pas de forces directes pour ce type de prestation d'ingénierie pure."
+      ],
+      "technicalPoints": [
+        "Aucun point technique pertinent à mettre en avant pour une étude, notre expertise étant dans la fabrication et l'installation."
+      ],
+      "commercialRecommendations": [
+        "Ne pas soumissionner à cet appel d'offres, car il ne correspond pas à notre domaine d'activité principal.",
+        "Si une soumission était envisagée, elle nécessiterait un partenariat avec un bureau d'études spécialisé, ce qui est risqué et complexe pour un premier projet de ce type."
+      ],
+      "riskMitigation": [
+        "Se concentrer sur les appels d'offres de travaux de métallerie, aluminium, inox, charpente métallique, serrurerie et vitrerie qui correspondent à notre expertise."
+      ]
+    },
+    "actionPlan": [
+      {
+        "step": 1,
+        "action": "Confirmer que l'objet de l'appel d'offres est bien une étude et non des travaux de construction/réhabilitation.",
+        "deadline": "Immédiatement",
+        "owner": "Direction Technique"
+      },
+      {
+        "step": 2,
+        "action": "Décliner formellement la participation à cet appel d'offres en raison de l'inadéquation avec notre cœur de métier.",
+        "deadline": "24/06/2024",
+        "owner": "Direction Commerciale"
+      },
+      {
+        "step": 3,
+        "action": "Mettre en place un filtre plus strict pour les appels d'offres afin d'éviter les projets d'études à l'avenir.",
+        "deadline": "30/06/2024",
+        "owner": "Direction Commerciale"
+      }
+    ],
+    "summary": "Cet appel d'offres concerne une étude de diagnostic et de réhabilitation d'un château d'eau, ainsi qu'une étude électrique pour un forage. Ce type de prestation d'ingénierie pure ne correspond pas au cœur de métier de notre entreprise, spécialisée dans la fabrication et l'installation métallique. Il est fortement recommandé de ne pas soumissionner.",
+    "analysisVersion": "v2-procurement-engineer",
+    "analyzedAt": "2026-06-24T22:29:48.165Z",
+    "skill": "master",
+    "_hasAvis": false,
+    "providerUsed": "gemini",
+    "modelUsed": "gemini-2.5-flash",
+    "analysisType": "full",
+    "profitabilityScore": 50,
+    "urgencyScore": 20,
+    "winningProbability": "Faible",
+    "attachmentSpec": {
+      "bonId": "d922a51c-7079-4683-8ef2-a28ae3806db3",
+      "bonReference": "07/2026",
+      "attachments": [
+        {
+          "name": "Avis d'achat sur BC 07-2026.zip",
+          "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/353000/49612323",
+          "type": "avis",
+          "isAvis": true,
+          "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/d922a51c-7079-4683-8ef2-a28ae3806db3/Avis_d_achat_sur_BC_07-2026.zip",
+          "downloaded": true,
+          "skipped": false,
+          "textExtracted": false,
+          "requiresOCR": true,
+          "ocrUsed": false,
+          "sourceFile": "Avis d'achat sur BC 07-2026.pdf",
+          "sourceZip": "Avis_d_achat_sur_BC_07-2026.zip",
+          "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/d922a51c-7079-4683-8ef2-a28ae3806db3/Avis_d_achat_sur_BC_07-2026.zip_extracted/Avis d_achat sur BC 07-2026.pdf",
+          "textLength": 0,
+          "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+        }
+      ],
+      "primaryAvisText": "",
+      "primaryAvisName": null,
+      "hasText": false,
+      "textLength": 0,
+      "noAttachmentFound": false,
+      "analysisSource": "metadata_only",
+      "extractedAt": "2026-06-18T21:25:28.329Z",
+      "extractionNote": null
+    },
+    "analysisSource": "metadata_only",
+    "fallbackReason": null,
+    "log": [
+      "⚠️ AVIS scanné — OCR requis, analyse sur métadonnées",
+      "🧠 Analyse Procurement Engineer (12 sections)...",
+      "✅ Analyse Gemini complète (gemini-2.5-flash): 6 matériaux, 5 risques, 0 lignes bordereau"
+    ],
+    "orchestratedAt": "2026-06-24T22:29:48.165Z",
+    "sourceHash": "141db599124a6274",
+    "success": true,
+    "cached": false,
+    "savedAt": "2026-06-24T22:29:48.219Z"
+  }
+]
