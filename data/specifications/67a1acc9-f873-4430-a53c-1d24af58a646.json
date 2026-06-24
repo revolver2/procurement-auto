@@ -1,0 +1,31 @@
+{
+  "bonId": "67a1acc9-f873-4430-a53c-1d24af58a646",
+  "bonReference": "10/AREF/2026",
+  "attachments": [
+    {
+      "name": "Avis BC 10-2026 TOPO.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354254/49716800",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/67a1acc9-f873-4430-a53c-1d24af58a646/Avis_BC_10-2026_TOPO.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "Avis BC 10-2026 TOPO.pdf",
+      "sourceZip": "Avis_BC_10-2026_TOPO.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/67a1acc9-f873-4430-a53c-1d24af58a646/Avis_BC_10-2026_TOPO.zip_extracted/Avis BC 10-2026 TOPO.pdf",
+      "textLength": 2545,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Royaume du Maroc ,ffiMinhtère de l'Éducation Nationale, du Préscolaire et des Sports L'Acadénrie Régionale d'Éducation et de Folmatlon Région de Rabat Salé Kenitra Avis d'achat sur bons de commande No 10/AREB|2026 Le Directeur de l'Académie Régionale d'Education et de Formation de la région de Rabat Salé Kénitra, procède à l'achat sur bons de commande des prestations objet du présent avis, en application des dispositions de l'article 91 du décret n'2-22-431 relatifaux marchés publics, Obiet de Ia prestation: ETUDES TOPOGRAPHIQUES DES T'ERRAINS ABRITANT DES BLOCS SANITAIRES EN DURAUX E'IABLISSEMENTS SCOLAIRBS RELEVANT DE L'ARBF DE LA RÉGION DE RABAT SALÉ KENITRA, EN LOT UNIQUE, PROGRAMME 2026 istance de la tion Lieu d'exécution: Khemisset,Sidi kacem, Sidi Slimane,Kenitra et Salé. Date et heure limites de réception des devis des concurrents:2,ÿA612026 à 12:AA Délai d'exécution ou date de livraison de la prestation: 30 jours Caution Provisoire : §-SSSS§SjghmrcS La caution originale devera être déposée physiquement à 1'annexe Ibn Sina de l'AREF de la région de Rabat-Salé-Kénitra sise à rue Kadi Ahmed Bennani, Souissi - Rabat au plus tard le 24lÙ()n026 à l4:00. Les devis des concurrents doivent être déposés par voie électronique dans le porlail des marchés publics accessible à I'adresse www.marchespublics. gov.ma. Cons a e No Désignation Descriptif technique Unité Qté I ETUDES TOPOGRAPHIQUES ETABLISSEMENT ETUDES TOPOGRAPHIQUES DE148 SITES ABRITANT DES BLOCS SANITAIRES EN DUR AUX ETABLISSEMENTS SCOLAIRES RELEVANT DES DIRECTIONS PROVINCIALES SUIVANTE VENTILES COMME SUIT: - I(hemisset:28 - Sidi kacem:42 - Sidi Slimane:5 - Kenitra',67 - Salé:6 - DOCUMENTS A FOURNIR: L'IGT devra procéder à la fourniture des piëces suivantes : - Un Levé topographique avec un plan de situation, - Un plan parcellaire avec le lelevé de l'existant en 12 exemplaires - Un plan cote en 12 exemplaires indiquant la mention de l'extrait du plan d'aménagement en l2 exemplaires et USB ; - Une attestation de propriété délivrée par la conservation foncière (le cas échéant). - Les document nécessaire pour I'acquisition de dossier d'autorisation en coordination avec l'architecte. . PROFIL DE L'EQUIPE: Le Topographe s'engage à affecter aux études des cadres spécialistes au profil adéquat à la mission qui lui sera confiée Les documents élaborés par le bureau doivent être cosignés par le responsable du projet et de la personne qui les a élaborés, cette personne doit imposer son nom, sa qualité et son cadre sur lesdits documents Site 148 ? 2 JUINü",
+  "primaryAvisName": "Avis BC 10-2026 TOPO.pdf (depuis Avis_BC_10-2026_TOPO.zip)",
+  "hasText": true,
+  "textLength": 2545,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T23:33:37.678Z",
+  "extractionNote": null
+}

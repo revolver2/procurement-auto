@@ -1,0 +1,31 @@
+{
+  "bonId": "ea92dd47-00a4-4049-9263-14805b6b7567",
+  "bonReference": "105/FONC/2026/UIT",
+  "attachments": [
+    {
+      "name": "Avis d'achat 105-FONC-2026-UIT.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355825/49865145",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/ea92dd47-00a4-4049-9263-14805b6b7567/Avis_d_achat_105-FONC-2026-UIT.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'achat 105-FONC-2026-UIT.pdf",
+      "sourceZip": "Avis_d_achat_105-FONC-2026-UIT.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/ea92dd47-00a4-4049-9263-14805b6b7567/Avis_d_achat_105-FONC-2026-UIT.zip_extracted/Avis d_achat 105-FONC-2026-UIT.pdf",
+      "textLength": 2879,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "AVIS D’ACHAT SUR BONS DE COMMANDE N°105/FONC/2026/UIT Le président de l’Université Ibn Tofail Kénitra procède à l’achat sur bons de commande des prestations objet du présent avis, en application des dispositions de l’article 91 du décret N° 2-22-431 relatif aux marchés publics. Objet de la prestation : Fourniture et installation complète du système de motorisation adapté à un portail battant métallique à la présidence de l’Université Ibn Tofail de Kenitra Consistance de la prestation : N° Désignation Caractéristiques et spécifications Unité de mesure Quantit é Garanties exigées 1 Fourniture, installation et mise en service d’une motorisation pour portail battant métallique plein lourd ouvrant vers l’intérieur, avec rénovation de l’installation électrique La fourniture d’un système de motorisation L’installation complète du système. La rénovation et la mise en conformité de l’installation électrique existante. Les essais, réglages et mise en service. Description de l’existant Type : Portail battant à deux vantaux Matériau : Métallique plein Ouverture : Vers l’intérieur Le système de motorisation proposé devra : Être spécialement conçu pour portail battant lourd et plein. Supporter un poids minimum de 400 à 800 kg par vantail (à ajuster selon mesures réelles) Être compatible avec une ouverture vers l’intérieur Disposer d’un système autobloquant Inclure un déverrouillage manuel en cas de coupure de courant, Fonctionner sous- alimentation 230V ou 24V (préférence pour 24V pour sécurité accrue) Marques de référence acceptées (ou équivalent) : CAME, FAAC, Nice, Somfy. L’équivalence devra être justifiée techniquement. Le système devra comprendre : 2 vérins électromécaniques ou bras articulés adaptés, Armoire de commande, Photocellules de sécurité, Feu clignotant 10 télécommandes, Sélecteur à clé Plaque signalétique de sécurité Travaux électriques Les prestations comprennent : For 01 1 An Diagnostic de l’installation existante Remplacement du câblage défectueux Pose d’un tableau de protection dédié (disjoncteur différentiel) Mise à la terre conforme Pose de gaines et câbles adaptés (type U1000 R2V ou équivalent) Protection IP adaptée aux conditions extérieures Tous les travaux devront être réalisés dans les règles de l’art. Travaux d’installation Fixation renforcée des supports moteurs Vérification et renforcement des piliers si nécessaire Réglage précis des butées mécaniques Programmation des cycles d’ouverture/fermeture Tests de sécurité (arrêt sur obstacle) Garantie Garantie minimale : 12 mois Lieu d’exécution : l’Université Ibn Tofail –Kénitra Délai d’exécution ou date de livraison de la prestation : 7 jrs Date et heure limites de réception des devis des concurrents : le 26/06/2026 à 16h30 Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l'adresse www.marchespublics.gov.ma.",
+  "primaryAvisName": "Avis d'achat 105-FONC-2026-UIT.pdf (depuis Avis_d_achat_105-FONC-2026-UIT.zip)",
+  "hasText": true,
+  "textLength": 2879,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T23:29:44.277Z",
+  "extractionNote": null
+}

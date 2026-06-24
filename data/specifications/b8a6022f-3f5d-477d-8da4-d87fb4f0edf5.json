@@ -1,0 +1,31 @@
+{
+  "bonId": "b8a6022f-3f5d-477d-8da4-d87fb4f0edf5",
+  "bonReference": "41/BC/2026",
+  "attachments": [
+    {
+      "name": "ferronnerie 2.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355635/49855558",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b8a6022f-3f5d-477d-8da4-d87fb4f0edf5/ferronnerie_2.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "ferronnerie 2.pdf",
+      "sourceZip": "ferronnerie_2.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b8a6022f-3f5d-477d-8da4-d87fb4f0edf5/ferronnerie_2.zip_extracted/ferronnerie 2.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T23:31:24.762Z",
+  "extractionNote": null
+}

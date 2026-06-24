@@ -1,6 +1,16 @@
 [
   {
     "date": "24/06/2026",
+    "heure": "23:34",
+    "nouveaux": 0,
+    "total": 84,
+    "statut": "Succès",
+    "startedAt": "2026-06-24T23:29:01.862Z",
+    "finishedAt": "2026-06-24T23:34:27.193Z",
+    "triggeredBy": "github-actions"
+  },
+  {
+    "date": "24/06/2026",
     "heure": "23:27",
     "nouveaux": 0,
     "total": 84,

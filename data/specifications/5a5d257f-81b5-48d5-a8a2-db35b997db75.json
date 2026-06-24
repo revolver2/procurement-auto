@@ -1,0 +1,31 @@
+{
+  "bonId": "5a5d257f-81b5-48d5-a8a2-db35b997db75",
+  "bonReference": "20-2026-CNSSDRO",
+  "attachments": [
+    {
+      "name": "Avis d'achat n°20-2026-CNSSDRO.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/353154/49623931",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/5a5d257f-81b5-48d5-a8a2-db35b997db75/Avis_d_achat_n_20-2026-CNSSDRO.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'achat n�20-2026-CNSSDRO.pdf",
+      "sourceZip": "Avis_d_achat_n_20-2026-CNSSDRO.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/5a5d257f-81b5-48d5-a8a2-db35b997db75/Avis_d_achat_n_20-2026-CNSSDRO.zip_extracted/Avis d_achat n_20-2026-CNSSDRO.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T23:32:07.225Z",
+  "extractionNote": null
+}

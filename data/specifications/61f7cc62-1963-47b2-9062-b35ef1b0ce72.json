@@ -1,0 +1,31 @@
+{
+  "bonId": "61f7cc62-1963-47b2-9062-b35ef1b0ce72",
+  "bonReference": "CQPMCASA13/2026",
+  "attachments": [
+    {
+      "name": "Avis achat CQPMCASA13-2026-Juin Ouv_Gaines.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/311404/49514746",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/61f7cc62-1963-47b2-9062-b35ef1b0ce72/Avis_achat_CQPMCASA13-2026-Juin_Ouv_Gaines.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": null,
+      "sourceZip": "Avis_achat_CQPMCASA13-2026-Juin_Ouv_Gaines.zip",
+      "extractedPath": null,
+      "textLength": 0,
+      "error": "Aucun fichier exploitable dans le ZIP"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T23:33:58.572Z",
+  "extractionNote": null
+}
