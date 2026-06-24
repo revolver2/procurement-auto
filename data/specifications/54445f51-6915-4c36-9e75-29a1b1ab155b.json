@@ -1,0 +1,31 @@
+{
+  "bonId": "54445f51-6915-4c36-9e75-29a1b1ab155b",
+  "bonReference": "33/2026",
+  "attachments": [
+    {
+      "name": "POMPE A EAU EN INOX - LABO.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354287/49718159",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/54445f51-6915-4c36-9e75-29a1b1ab155b/POMPE_A_EAU_EN_INOX_-_LABO.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "POMPE A EAU EN INOX - LABO.docx",
+      "sourceZip": "POMPE_A_EAU_EN_INOX_-_LABO.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/54445f51-6915-4c36-9e75-29a1b1ab155b/POMPE_A_EAU_EN_INOX_-_LABO.zip_extracted/POMPE A EAU EN INOX - LABO.docx",
+      "textLength": 1086,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Avis d’achat sur bons de commande n° 33/2026 (En application des dispositifs de l’article 91 du décret n° 2.22.431 relatifs aux marchés publics.) Le 22/06/2026 LE DIRECTEUR DU CHP BERKANE procède à l’achat sur bon de commande des prestations objet du présent avis, Objet de la prestation : ACHAT DE POMPE A EAU EN INOX (220V) AVEC UN SYSTEME DE MARCHE ARRET AUTOMATIQUE Consistance de la prestation : N° Désignations Caractéristiques et Spécifications Unité De Mesure Qté Garanties Exigées 1 Pompe à eau en inox (220V) avec un système de marche arrêt automatique avec accessoires et raccords nécessaires à l’installation. -Pompe à eau en inox (220V) avec un système de marche arrêt automatique à travers un pressostat réglable -Débit 42L /min U 1 -Documentation technique complète - 3 Mois de garantie Lieu d’exécution : CHP-BERKANE. Date et heure limite de réception des devis des concurrents 25/06/2026 à 12 :00 HEURE 5221624213152Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics sur l’adresse : www.marchespublic.gov.ma. LE : 22/06/2026",
+  "primaryAvisName": "POMPE A EAU EN INOX - LABO.docx (depuis POMPE_A_EAU_EN_INOX_-_LABO.zip)",
+  "hasText": true,
+  "textLength": 1086,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T23:22:32.196Z",
+  "extractionNote": null
+}

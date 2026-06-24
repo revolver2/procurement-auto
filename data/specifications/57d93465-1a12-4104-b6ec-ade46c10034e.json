@@ -1,0 +1,31 @@
+{
+  "bonId": "57d93465-1a12-4104-b6ec-ade46c10034e",
+  "bonReference": "24/2025/drsps-dt",
+  "attachments": [
+    {
+      "name": "avis d'achat 24-2026.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355189/49801930",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/57d93465-1a12-4104-b6ec-ade46c10034e/avis_d_achat_24-2026.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "avis d'achat 24-2026.pdf",
+      "sourceZip": "avis_d_achat_24-2026.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/57d93465-1a12-4104-b6ec-ade46c10034e/avis_d_achat_24-2026.zip_extracted/avis d_achat 24-2026.pdf",
+      "textLength": 2198,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "MINISTÈRE DE LA SANTÉ ET LA PROTECTION SOCIALE toEolJoo+ I +^30{ ^ SHOX .!.E31 DIRECTION RÉGIONALE DRÂA-TAFItAtET SERVICE DES RESSOURCES FINANCIÈRES DE I..A LOGISTIQUE ET DU PARTENARIAT r rrttrlgl rrrLrr.lt rrL.Jtf toEolJool I +^30{ ^ 8}IOX \"l\"E3l *tlrf t-t r9s rf 'rrlt q;'srlt lÂWL I'lrl-rr.rtt1, rjlrlt s1!1t rrLr E crr No,.'..i::/ SRFLP/DRSPS-DT ô.J.e.C..r.e.f I uÈ.J.p.p.p/ ... û 3 JtJIhi 2026 Depart . 'fl8'q*\"\"\"'Avis d'achat sur bons de commande noz4tzüzs/drsps-dt Le directeur régional de la santé et de la protection sociale procède à l'achat sur bons de commandedes prestations objet du présent avis, en application des dispositions de l'article 9l du décretn\" 2-22-431 relatif aux marchés publics. Objet : Fourniture et installation des Distributeurs d'eau Inox avec Filtre 4 étapes de filtration Osmose Inversée Consistance de la prestation : No de prix Désignation Unité de mesure QTE 0r Distributeur d'eau Daiko DDF-6104XK ou équivalent. Équipé d'un système de filtration par osmose inverse en 4 étapes (filtres PR CTO, RO et T33). L'appareil élimine efficacement les impuretés, les métaux lourds et les bactéries pour oftir une eau d'une pureté cristalline. Polyvalent, il dispose de trois robinets offiant un accès immédiat à de I'eau chaude (usqu'à 95'C), normale ou froide (usqu'à lOoC), avec une capacité de débit performante de 5 litres par heure. La structure intègre un réservoir en acier inoxydable de haute qualité, garantissant une résistance totale à la rouille et une hygiène irréprochable. compresseur haute effrcacité et un design vertical modeme, performance énergétique . Unité 04 Lieu d'exécution : la direction régionale de la santé et de la protection sociale Draa Tafilalet Délai d'exécution : 5 jours o Date et heure limite de remise des devis des concurrents Les plis des concurrents doivent être déposés par voie électronique au portail des marchés publics : www.marchespublics.qov.ma î 5' toe / e,oPo â l tnoo LE DTRECTEUR REGT,NAL : 12 3 iijif{ 2iJ26 ôes ôel? Sïgné: Ànouar A,A(HilNT DIRECTION RÉGIONALE DE LA SANTÉ ET DE LA PROTECTION SOCIALE ,AV BIR ANZARANE ,ERRACHIDIA, TEL : 0 5 3 5 7 92Ll4,F AX t O53 57 921L5, E MAI L : drsdraatafilalet@gmail. com ffi",
+  "primaryAvisName": "avis d'achat 24-2026.pdf (depuis avis_d_achat_24-2026.zip)",
+  "hasText": true,
+  "textLength": 2198,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T23:22:26.536Z",
+  "extractionNote": null
+}

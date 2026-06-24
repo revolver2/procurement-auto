@@ -1,0 +1,31 @@
+{
+  "bonId": "e8151f07-9120-4fe1-8fc4-d54a30b23de1",
+  "bonReference": "5/2026",
+  "attachments": [
+    {
+      "name": "Avis d'achat AB et Oued El Makhazen.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/353555/49762955",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/e8151f07-9120-4fe1-8fc4-d54a30b23de1/Avis_d_achat_AB_et_Oued_El_Makhazen.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'achat AB et Oued El Makhazen.pdf",
+      "sourceZip": "Avis_d_achat_AB_et_Oued_El_Makhazen.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/e8151f07-9120-4fe1-8fc4-d54a30b23de1/Avis_d_achat_AB_et_Oued_El_Makhazen.zip_extracted/Avis d_achat AB et Oued El Makhazen.pdf",
+      "textLength": 2643,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Trésorerie Régionale de Casablanca 191, Boulevard Bordeaux, Bourgogne – Casablanca Tél. : 05 22 48 10 53 / Fax : 05 37 57 47 02 Mail : 1506@tgr.gov.ma Page 1 sur 2 Casablanca, le 23 Juin 2026 Avis d’achat sur Bon de Commande N°5/2026 Le Chef de Service des Ressources du Budget et de la Logistique à la Trésorerie Régionale de Casablanca, procède à l’achat sur Bon de Commande de la prestation objet du présent avis, en application des dispositions de l’article 91 du décret N°2 -22- 431 relatif aux Marchés Publics. Objet : Travaux d’entretien et de réparation au bâtiment abritant la Perception et l’Agence Bancaire Casa Oued El Makhazine. Consistance de la prestation : N° Article Désignation Caractéristiques et spécifications Unité Quantité 1 Peinture vinylique sur façades (RDC+7étages) Deux couches de marque Atlas Leader Plast, avec p ose d’enduit, grattage, ponçage, rebouchage, et traitement des fissures et des traces d’humidité, une première couche diluée à 10% et une deuxième couche pure non diluée après 24 heures au moins y/c les balcons et les terrasses. L’attributaire assume sa responsabilité en ce qui concerne les assurances et toute mesure de sécurité tel que palissade, échafaudage volant, harnais etc…pendant toute la période d’exécution des travaux. Les câbles des courants à fixer par des colliers ou des attaches. Une visite de lieu est souhaitable. M² 980 2 Peinture glycérophtalique laquée sur menuiserie métallique. De marque Atlas Leader Lac, y/c décapage des peintures existantes jusqu'au nu du fer, ponçage et réparation des rouilles pour fenêtres, portes garage, gardes corps des logements et fer de grillage. M² 172 3 Peinture vinylique à l’intérieur au niveau des escaliers. Deux couches de marque Atlas Leader Plast, y/c pose d’enduit, grattage, ponçage, rebouchage et traitement des fissures, une première couche diluée à 10% et une deuxième couche pure non diluée après 24 heures au moins. M² 480  Lieu d’exécution : Bâtiment abritant la Perception et l’Agence Bancaire Casa Oued El Makhazine, sis à Place Oued El Makhazine, Casablanca.  Délai d’exécution : Vingt (20) jours à compter du lendemain de la date de notification d’ordre de service de commencement des travaux du Bon de Commande.  Date et heures limite de réception des devis des concurrents : 25/06/2026 à 12h00min. Trésorerie Régionale de Casablanca 191, Boulevard Bordeaux, Bourgogne – Casablanca Tél. : 05 22 48 10 53 / Fax : 05 37 57 47 02 Mail : 1506@tgr.gov.ma Page 2 sur 2  Les plis des concurrents sont déposés par voie électronique dans le Portail des Marchés Publics accessible à l’adresse suivante : www.marchespublics.gov.ma.",
+  "primaryAvisName": "Avis d'achat AB et Oued El Makhazen.pdf (depuis Avis_d_achat_AB_et_Oued_El_Makhazen.zip)",
+  "hasText": true,
+  "textLength": 2643,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T23:26:49.319Z",
+  "extractionNote": null
+}

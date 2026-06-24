@@ -1,0 +1,31 @@
+{
+  "bonId": "991235c6-c14f-4e9a-9030-fd15d74da6d7",
+  "bonReference": "10/SLSI/26",
+  "attachments": [
+    {
+      "name": "avis d'achat N°10-SLSI-26 sur BC Extincteurs.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355256/49805854",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/991235c6-c14f-4e9a-9030-fd15d74da6d7/avis_d_achat_N_10-SLSI-26_sur_BC_Extincteurs.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "avis d'achat N°10-SLSI-26 sur BC Extincteurs.pdf",
+      "sourceZip": "avis_d_achat_N_10-SLSI-26_sur_BC_Extincteurs.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/991235c6-c14f-4e9a-9030-fd15d74da6d7/avis_d_achat_N_10-SLSI-26_sur_BC_Extincteurs.zip_extracted/avis d_achat N_10-SLSI-26 sur BC Extincteurs.pdf",
+      "textLength": 2010,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Marrakech le 23/06/2025 N° 10/SLSI/26 AVIS D'ACHAT SUR BONS DE COMMANDE La Direction Régionale des Douanes du Centre Sud à Marrakech procède à l’achat sur bon de commande des prestations objet du présent avis, en application des dispositions de l’article 91 du décret n° 2-22-431 relatif aux marchés publics. Objet de la prestation : Entretien, recharge et vérification d’extincteurs pour les bâtiments abritant les services douaniers relevant de La Direction Régionale des Douanes du Centre Sud (Marrakech, Essaouira, Safi, El jadida, Jorf lasfar, ouarzazate) Consistance de la prestation : N° Désignation Unité Oté PU HT Montant total HT 1 Entretien des extincteurs à poudre polyvalente de 2 Kg U 3 2 Entretien des extincteurs à poudre polyvalente de 6 Kg U 27 3 Entretien des extincteurs à poudre polyvalente de 9 Kg U 22 4 Entretien des extincteurs à poudre polyvalente de 50 Kg U 5 5 Entretien des extincteurs à CO2 de 2 Kg U 3 6 Entretien des extincteurs à CO2 de 6 Kg U 5 7 Entretien des extincteurs à CO2 de 5 Kg U 10 8 Entretien des robinets incendie Arme (RIA) U 8 9 Entretien des extincteurs à poudre de 1kg pour les véhicules de service U 21 Total HT TVA 20% Total TTC Lieu d’exécution : Marrakech, Essaouira, Safi, El jadida, Jorf lasfar, Ouarzazate. Délai d’exécution : Une semaine à compter du lendemain de la date de notification du Bon de Commande. Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l'adresse www.marchespublics.gov.ma. Date et heure limite de remise des devis : 25/06/2026 à 17h00 Extincteurs Contenance REPARTITION PAR VILLE Marrakech DRCS/Burea u Guiliz Ouarzazate Safi Jorf lasfar El jadida Essaouira Total A poudre polyvalente 2 Kg 2 0 0 1 0 0 3 6 Kg 18 2 1 3 0 3 27 9 Kg 14 6 0 0 2 0 22 10 Kg 0 0 0 0 0 0 0 50 Kg 4 0 0 0 1 0 5 CO2 2 Kg 2 1 0 0 0 0 3 5 Kg 6 1 0 1 1 1 10 6 Kg 0 0 0 0 0 5 5 Eau pulvérisée 10 L 0 0 0 0 0 0 0 RIA - 8 0 0 0 0 0 8 Extincteur à poudre pour les véhicules de service 1 Kg 9 4 3 1 0 4 21",
+  "primaryAvisName": "avis d'achat N°10-SLSI-26 sur BC Extincteurs.pdf (depuis avis_d_achat_N_10-SLSI-26_sur_BC_Extincteurs.zip)",
+  "hasText": true,
+  "textLength": 2010,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T23:26:24.354Z",
+  "extractionNote": null
+}

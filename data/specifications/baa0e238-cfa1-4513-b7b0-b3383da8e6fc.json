@@ -1,0 +1,48 @@
+{
+  "bonId": "baa0e238-cfa1-4513-b7b0-b3383da8e6fc",
+  "bonReference": "19/2026/DRI/AG",
+  "attachments": [
+    {
+      "name": "Avis d'achat N° 19-2026-DRI-AG.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354514/49728190",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/baa0e238-cfa1-4513-b7b0-b3383da8e6fc/Avis_d_achat_N__19-2026-DRI-AG.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'achat N° 19-2026-DRI-AG.pdf",
+      "sourceZip": "Avis_d_achat_N__19-2026-DRI-AG.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/baa0e238-cfa1-4513-b7b0-b3383da8e6fc/Avis_d_achat_N__19-2026-DRI-AG.zip_extracted/Avis d_achat N_ 19-2026-DRI-AG.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    },
+    {
+      "name": "Télécharger",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/annulation/354514/49794159",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/baa0e238-cfa1-4513-b7b0-b3383da8e6fc/T_l_charger.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "Decision annulation Avis d achat n 19-2026.pdf",
+      "sourceZip": "T_l_charger.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/baa0e238-cfa1-4513-b7b0-b3383da8e6fc/T_l_charger.zip_extracted/Decision annulation Avis d achat n 19-2026.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T23:27:03.595Z",
+  "extractionNote": null
+}
