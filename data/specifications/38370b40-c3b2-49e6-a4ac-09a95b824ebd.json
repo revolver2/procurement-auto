@@ -1,0 +1,31 @@
+{
+  "bonId": "38370b40-c3b2-49e6-a4ac-09a95b824ebd",
+  "bonReference": "11-06-2026",
+  "attachments": [
+    {
+      "name": "AVIS 11-06-2026 PEINTURE.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355510/49848151",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/38370b40-c3b2-49e6-a4ac-09a95b824ebd/AVIS_11-06-2026_PEINTURE.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "AVIS 11-06-2026 PEINTURE.pdf",
+      "sourceZip": "AVIS_11-06-2026_PEINTURE.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/38370b40-c3b2-49e6-a4ac-09a95b824ebd/AVIS_11-06-2026_PEINTURE.zip_extracted/AVIS 11-06-2026 PEINTURE.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T23:39:50.951Z",
+  "extractionNote": null
+}

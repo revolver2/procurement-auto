@@ -1,0 +1,31 @@
+{
+  "bonId": "7c92fdc3-f9f6-44c6-991c-f66e18ce2f8a",
+  "bonReference": "24/2026",
+  "attachments": [
+    {
+      "name": "Avis d'achat sur bon de commande N°24-2026.pdf",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355373/49847439",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/7c92fdc3-f9f6-44c6-991c-f66e18ce2f8a/Avis_d_achat_sur_bon_de_commande_N_24-2026.pdf",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": null,
+      "sourceZip": null,
+      "extractedPath": null,
+      "textLength": 1089,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "Retaume du Maroc Ministère de l'Intérieur t-fJ.Ji-ll l-Sl\"\"ll a-,,titJl ;JIJJ ,.,r -Âl - ,tir ai.-.e 3.r;'r a-or-. 2,[ JUN EZô AWS D'ACHAT SUR BON DE COMMANDE N\" all../2026 zr.*9l06l.tl0l {k Prérid\"nt de la commune d'Azrou, procède à l'achat sur bon de commande des prcstations objet du présenî avis, en application des dispositions de I'article 91 du décret n\"2-22-431 relatif au marchés publics. I .(F-ê Désignation Unite de mes ure Quanîité I Treillis soudé de diamètre 3,5mm plaque de (6mx2,20m) y/c livraison au parc de la commune d'Azrou U 100 ÿ Lieu d'exécuTion : Commune Azrou, -délai d'exécution : 5 rJor'.s.- ÿ Date et heure limite de réception des devis des concutentsi ,p.lO6..i.üdda ,4P:.OO t{. ÿ Les concurrents doivent obligatoirement déposer un échantillon du treillis soudé au parc communal avant la séance d'ouverture des plis, sous peine d'écartement immédiat de leur offre. \"r(? {,rbil B$t Et ffiMIBEtrl 0lrAR Province d'Ifrane Commune d'Azrou Objet de la prestation : Achat de produits de ferronnerie Consistsnce de la oreststion Observation : S.M.T Le Président Azrou",
+  "primaryAvisName": "Avis d'achat sur bon de commande N°24-2026.pdf",
+  "hasText": true,
+  "textLength": 1089,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T23:38:35.302Z",
+  "extractionNote": null
+}

@@ -1,0 +1,31 @@
+{
+  "bonId": "563c4e72-da90-48da-8072-ffd37ef89548",
+  "bonReference": "20/2026/DRI/AG",
+  "attachments": [
+    {
+      "name": "Avis d'achat N° 20-2026-DRI-AG.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354520/49728583",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/563c4e72-da90-48da-8072-ffd37ef89548/Avis_d_achat_N__20-2026-DRI-AG.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'achat N° 20-2026-DRI-AG.pdf",
+      "sourceZip": "Avis_d_achat_N__20-2026-DRI-AG.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/563c4e72-da90-48da-8072-ffd37ef89548/Avis_d_achat_N__20-2026-DRI-AG.zip_extracted/Avis d_achat N_ 20-2026-DRI-AG.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T23:41:16.513Z",
+  "extractionNote": null
+}

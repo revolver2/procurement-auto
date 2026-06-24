@@ -1,0 +1,31 @@
+{
+  "bonId": "b6005e93-a80a-43e7-b146-e754d0535139",
+  "bonReference": "6/2026",
+  "attachments": [
+    {
+      "name": "Télécharger",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/annulation/316430/45130008",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b6005e93-a80a-43e7-b146-e754d0535139/T_l_charger.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "DECION ANNUL_20260317_0001.pdf",
+      "sourceZip": "T_l_charger.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b6005e93-a80a-43e7-b146-e754d0535139/T_l_charger.zip_extracted/DECION ANNUL_20260317_0001.pdf",
+      "textLength": 527,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "r\\1-, r .âulYlI- It u 1vlAl((r(- MINISTERE DE L'INTERIEUR PROVINCE D'ALHOCEIMA COMMUNE D'IZEMMOUREN DIRECTION DES SERVICES DECISION D'ANNULATION Suite à l'avis d'appel d'offre N\" 612026 dont l'ouvefture des plis est programmée pour le 161312026, concernant la prestation de : Travaux d'installation D'un abris a la station des taxis Le Président de la commune d'Izemmouren décide 1'annulation du dit Avis. A Cause de : . Annulation est survenue par erreur Fait à Izemmourenle 171312026 SIGNE LE COMMUNE du Conse!l fiir tÿtûtrne",
+  "primaryAvisName": "DECION ANNUL_20260317_0001.pdf (depuis T_l_charger.zip)",
+  "hasText": true,
+  "textLength": 527,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T23:39:44.848Z",
+  "extractionNote": null
+}
