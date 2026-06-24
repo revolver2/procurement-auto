@@ -1,0 +1,31 @@
+{
+  "bonId": "19ba9f82-7efa-4a52-92c1-8e2a84d4f44a",
+  "bonReference": "AA012/2026/DRHMAS",
+  "attachments": [
+    {
+      "name": "AA N° 12-2026-CNSS DRHMAS.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354919/49788334",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/19ba9f82-7efa-4a52-92c1-8e2a84d4f44a/AA_N__12-2026-CNSS_DRHMAS.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "AA N� 12-2026-CNSS DRHMAS.pdf",
+      "sourceZip": "AA_N__12-2026-CNSS_DRHMAS.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/19ba9f82-7efa-4a52-92c1-8e2a84d4f44a/AA_N__12-2026-CNSS_DRHMAS.zip_extracted/AA N_ 12-2026-CNSS DRHMAS.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T22:38:07.695Z",
+  "extractionNote": null
+}

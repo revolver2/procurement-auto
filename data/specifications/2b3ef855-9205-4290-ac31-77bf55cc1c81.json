@@ -1,0 +1,31 @@
+{
+  "bonId": "2b3ef855-9205-4290-ac31-77bf55cc1c81",
+  "bonReference": "25/DRA/2026",
+  "attachments": [
+    {
+      "name": "Avis d'achat+Annexe descriptif au bc n°25.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355222/49804141",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/2b3ef855-9205-4290-ac31-77bf55cc1c81/Avis_d_achat_Annexe_descriptif_au_bc_n_25.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "Annexe descriptif au bc n°25.pdf",
+      "sourceZip": "Avis_d_achat_Annexe_descriptif_au_bc_n_25.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/2b3ef855-9205-4290-ac31-77bf55cc1c81/Avis_d_achat_Annexe_descriptif_au_bc_n_25.zip_extracted/Annexe descriptif au bc n_25.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T22:42:00.174Z",
+  "extractionNote": null
+}

@@ -1,0 +1,31 @@
+{
+  "bonId": "b3088fa7-552a-4fe6-9f9e-bf7bbad5e000",
+  "bonReference": "10/C.S/2026",
+  "attachments": [
+    {
+      "name": "avis d'achat (4).zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355352/49833698",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b3088fa7-552a-4fe6-9f9e-bf7bbad5e000/avis_d_achat__4_.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "avis d'achat (4).pdf",
+      "sourceZip": "avis_d_achat__4_.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/b3088fa7-552a-4fe6-9f9e-bf7bbad5e000/avis_d_achat__4_.zip_extracted/avis d_achat _4_.pdf",
+      "textLength": 1070,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "ROYAUME DU MAROC MINISTEREDEL’INTERIEUR PROVINCEDE LARACHEZINECAIDAT OULADOUCHIH– SOUAKEN COMMUNEDESOUAKEN ******** AVIS D'ACHAT SUR BONS DE COMMANDE N° : B.C N° 10/C.S/2026 Le président de la commune Souaken procède à l’achat sur bon de commande des prestations objet du présent avis, en application des dispositions de l’article 91 du décret n°2-22-431 relatif aux marchés publics. OBJET DE LA PRESTATION: Achat de produit de ferronnerie regards et buses (Treillis soudé 5,5) CONSISTANCE DE LA PRESTATION; N° DESIGNATIONS CARACTERISTIQUES ET SPECIFICATIONS UNITE DE MESURE QTE GARANTIES EXIGEES 01 Achat de treillis soudé 5,5 Treillis soudé 5,5 M2 5 500 --- TOTAL H.T TVA 20% TOTAL TTC - Lieu d’exécution : commune Souaken - Délai d’exécution ou date de livraison de la prestation : 07 jours - Date et heure limites de réception des devis des concurrents : 26/06/2026 A 13:00H - Les plis des concurrents sont déposés par voie électroniques dans le portail des marchés publics accessible à l’adresse www.marchéspublics.gov.ma FAIT A SOUAKEN LE : 23/06/2026 Le président",
+  "primaryAvisName": "avis d'achat (4).pdf (depuis avis_d_achat__4_.zip)",
+  "hasText": true,
+  "textLength": 1070,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T22:40:13.005Z",
+  "extractionNote": null
+}

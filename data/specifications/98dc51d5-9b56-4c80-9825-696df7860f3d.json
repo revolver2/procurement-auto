@@ -1,0 +1,31 @@
+{
+  "bonId": "98dc51d5-9b56-4c80-9825-696df7860f3d",
+  "bonReference": "13/2026",
+  "attachments": [
+    {
+      "name": "CamScanner 23-06-2026 12.50.pdf",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354946/49790252",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/98dc51d5-9b56-4c80-9825-696df7860f3d/CamScanner_23-06-2026_12.50.pdf",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": null,
+      "sourceZip": null,
+      "extractedPath": null,
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-24T22:39:15.183Z",
+  "extractionNote": null
+}

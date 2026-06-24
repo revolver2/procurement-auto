@@ -1,0 +1,31 @@
+{
+  "bonId": "10f1a227-8043-4c0d-8acf-1957eae31f97",
+  "bonReference": "19/2026/SIM",
+  "attachments": [
+    {
+      "name": "Avis d'achat.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/353398/49649767",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/10f1a227-8043-4c0d-8acf-1957eae31f97/Avis_d_achat.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "Avis d'achat.pdf",
+      "sourceZip": "Avis_d_achat.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/10f1a227-8043-4c0d-8acf-1957eae31f97/Avis_d_achat.zip_extracted/Avis d_achat.pdf",
+      "textLength": 3707,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "ROYAUME DU MAROC MINISTERE DE L'INTERIEUR DIRECTION GENERALE DE LA SURETE NATIONALE SURETE PROVINCIALE DE SALE SERVICE PROVINCIAL ADMINISTRATIT SECTION IMMOBILIERE AVIS D'ACHAT SUR BONS DE COMMANDE N'/3 1202615TI^ La Sûreté Provinciale de Salé compte procéder à l'achat sur bon de commande des prestations objet du présent avis, en application des dispositions de l'article 91 du décret N\"2-22-431 relatif aux marchés publics. Obiet de lâ Drestâtion: FOURNITURE ET INSTALLATION D'UN CLIMATISEUR A LA SALLE TRAFIC RELEVANT DU DISTRICT BETTANA TABRIQUET Consistance de !a prestâtion: Lieu d'exécution: Siège du District BETTANA TABRIQUET. Délai d'exécution ou date de livraison de la prestation: 05 jours à compter du lendemain de la date de notification du bon de commande. Date et heure limites de réception des devis des concurrents a 2 6 turn 2026 a ,tOpo Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l'adresse www.marchesoubltcs.gov.ma SIGNE : YOUSSEF BELHAJ iritcrF, ,J No Désignation Caractéristiques et Spécifications Unité de Mesure Quantité Garanties exigées I La foumiture et installation d'un climatiseur 9000 BTU/h de type inverter marque airwell carrier ou équivalent y compris câble électrique disjoncteur de protection et toutes sujétions d'installation. U 1 IAN SALE, LE, ..1.9..Juin..2025 LE PREFET DE POLICE CHEF DE LA SURETE PROVINCIALE DE SALE tciiltt. Voir descriptif ci-joint ROYAUME DU MAROC MINISTERE DE L'INTERIEUR DIRECTION GENERALE DE LA SURETE NATIONALE SURETE PROVINCIALE DE SALE SERVICE PROVINCIAL ADMINISTRATIF DESCRIPTIF D'AVIS D'ACHAT SUR BONS DE COMMANDE N\",49/2026/SIM RELATIF A LA FOUt<tr-ITURE ET INSTALLATION D,UN CLIMATISEUR A LA SALLE TRAFIC RELEVANT DU DISTRICT BETTANA TABRIQUET. Foumiture, installation et mise en service de climatiseur split system mural réversible 9000 BTU/H type lnverter marque Airwell, Carrier ou équivalent y compris câble électrique disjoncteur de protection et toutes sujétions d'installation et de mise en service. ) Données techniques des climatiseurs Unité intérieure Puissance frigorifique nominale (min/max) : 2.64 KW (0.82-3.37) EER/Classe énergétique : 3.21IA SEER/Classe énergétique (climat tempéré) i 5.611'+ Plage de température extérieure en C\" :0'/50'Bulbe sec en mode froid Redémarrage automatique en cas de coupure électrique et retour de courant Affichage digital Télécommande infrarouge équipé de sonde de température (confort I FEEL) ou (Follow me) Unité extérieure Compresseur rotatif DC inverter Echangeur avec traitement golden fin (Haute résistance à la corrosion) Fluide frigorigène : R410A Alimentation électrique : 1Ph I 220-240Y /50H2 ) Installation du climatiseur La foumiture et I'installation du climatiseur comprendra ce qui suit : Disjoncteur différentiel 30 mA; 16A (disjoncteur magnétothermique +bloc vigi) de marque Schneider, Electric, Hager, Legrand (marque originale) ou équivalent (le climatiseur doit être protégé par disjoncteur individuel). Alimentation électrique du climatiseur depuis le tableau électrique par câble U1000R2V; 3 x 2.5 m y compris gaine métallique flexible recouverte d'une gaine PVC coloris gris. Liaison frigorifique calorifugé en armaflex et protection de parties exposées au soleil par des feuilles d'aluminium. Tube d'évacuation du condensat (de l'unité intérieure et I'unité extérieure) en PVC y compris Té, coude, siphon etc.. Fixation de l'unité extérieure sur supports galvanisés ou socle en béton armé avec des plans anti vibration. Câble de liaison électrique entre l'unité intérieur et l'unité extérieur de section adéquate. Utilisation de la goulotte pour le passage de liaison électrique et frigorifique.",
+  "primaryAvisName": "Avis d'achat.pdf (depuis Avis_d_achat.zip)",
+  "hasText": true,
+  "textLength": 3707,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-24T22:41:46.892Z",
+  "extractionNote": null
+}
