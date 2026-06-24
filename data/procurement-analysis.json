@@ -5959,6 +5959,17 @@
         "date": "2026-06-18T21:27:13.157Z",
         "note": "Scraping automatique"
       }
-    ]
+    ],
+    "officialText": null,
+    "orchestrated": true,
+    "orchestratedAt": "2026-06-24T22:29:48.165Z",
+    "profitabilityScore": 50,
+    "urgencyScore": 20,
+    "winningProbability": "Faible",
+    "bidRecommendation": "Non recommandé",
+    "providerUsed": "gemini",
+    "analysisType": "full",
+    "analysisGenerated": true,
+    "lastUpdated": "2026-06-24T22:29:48.226Z"
   }
 ]
