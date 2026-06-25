@@ -1,0 +1,31 @@
+{
+  "bonId": "2fc84889-ce56-45c8-b7f9-8dd31104515a",
+  "bonReference": "37-2026PLAM1",
+  "attachments": [
+    {
+      "name": "AVIS D'ACHAT BC 37-2026PLAM1.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354677/49790362",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/2fc84889-ce56-45c8-b7f9-8dd31104515a/AVIS_D_ACHAT_BC_37-2026PLAM1.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "AVIS D'ACHAT BC 37-2026PLAM1.pdf",
+      "sourceZip": "AVIS_D_ACHAT_BC_37-2026PLAM1.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/2fc84889-ce56-45c8-b7f9-8dd31104515a/AVIS_D_ACHAT_BC_37-2026PLAM1.zip_extracted/AVIS D_ACHAT BC 37-2026PLAM1.pdf",
+      "textLength": 1906,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "ROYAUME DU MAROC LE CHEF DU GOUVERNEMENT DELEGATION GËNERALE A L'ADMINISTRATION PENITENTIAIRE ET A LA REINSERTION Prison Locale AIT MELLOUL 1 Avis d'achat sur bon de commande N°37-2026PLAM1 Le Directeur de la prison locale de AIT MELLOUL 1 procède à l'achat su bon de commande des prestations objet du présent avis, en application des dispositions de l'article 91 du décret n° 2-22- 431 relatif aux marchés publics. OZ>y.e/ cJe /a presfo/j.o7? .. Fourniture et pose de plexiglas pour les fenêtres du Prison Locale ait Melloul 1 Consistance de la prestation : NO Désignation dcs prestatïo`ns l`nitù Qt€ 01 Foumitue et pose de plexiglas 06 mm transparent première choix : U 550 diamètres des fenêtres 50cm x 50 cm. y/c dépose de vitrage existant renforcé par baguette de fixationen fer plat, Main d'œuvre, silicone de fixation et toute sujétions de mis en œuvre et dc finition *La décour)c et les dimensions des carreaux de i)lexiQlas à déterininé t)ar une visite des lieux. 02 Foumitue et pose de cadre des fenêtres en fer plat : U 85 diamètres (50cm + 50 cm) x2. 03 Foumiture et fixation des paumelles à souder pour les fenêtres U 125 - Lieu d'exécution : PRISON LOCALE AIT MELLOUL 1 - Délai et conditions d'exécution : 03 jours à partir du lendemain de la date de notification de la .;°aTemeïh:eu.reiimitederéceptiondesdevisdesconcments:£.Ç/e6./ 4à4.3.&s,o - Vu 1'urgence, le bon de commande sera résilié si le titulaire n'a pas respecté le délai d'exécution. - La société et tenus de mettre à disposition les moyens matériel et humains nécessaire pou le bon déroulement de ces travaux dans les meilleus conditions et respect de la sécurité. - Seules les entreprises spécialisées au domaine sont autorisées à la participation à cette commande l'ICE faisant foi. - Les plis des concurrents sont déposés par voie électronique dans le portail des marchés publics accessible à l'adresse www.m:Èrches ubïi¢`,Sq",
+  "primaryAvisName": "AVIS D'ACHAT BC 37-2026PLAM1.pdf (depuis AVIS_D_ACHAT_BC_37-2026PLAM1.zip)",
+  "hasText": true,
+  "textLength": 1906,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-25T10:22:43.480Z",
+  "extractionNote": null
+}

@@ -1,0 +1,31 @@
+{
+  "bonId": "4b3e0756-530a-4559-84df-81219425e239",
+  "bonReference": "Ref.61/2026",
+  "attachments": [
+    {
+      "name": "Ref.61.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355806/49895581",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/4b3e0756-530a-4559-84df-81219425e239/Ref.61.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "Ref.61.pdf",
+      "sourceZip": "Ref.61.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/4b3e0756-530a-4559-84df-81219425e239/Ref.61.zip_extracted/Ref.61.pdf",
+      "textLength": 2177,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "N° Désignation U Qté Prix Unitaire (HT) Taux TVA (%) Total TVA Prix Total (TTC) 1 Construction d’une charpente métallique pour abri de stationnement des grands taxis d’une superficie d’environ 300 m² comprenant : - Fourniture et pose de poteaux et poutres métalliques en profils HEA 240 ; - Fourniture et pose de pannes en profils IPE 120 ; - Hauteur variable de l’ouvrage comprise entre 5,00 m et 6,00 m ; - Fourniture et pose de couverture en tôle nervurée galvanisée ; - Réalisation des socles de fondation en béton armé, y compris fouilles, coffrage, ferraillage et bétonnage ; - Réalisation de la dalle en béton armé au droit des appuis selon les règles de l’art ; - Fourniture et pose des systèmes d’évacuation des eaux pluviales, y compris chéneaux et descentes d’eau ; - Toutes sujétions de transport, manutention, levage, assemblage, soudure, boulonnage, protection anticorrosion et mise en œuvre nécessaires à la parfaite exécution des travaux. Caractéristiques et exigences techniques - La prestation comprend obligatoirement l’établissement des plans d’exécution détaillés. - La prestation comprend l’établissement des notes de calcul de la structure métallique et des fondations, signées par un ingénieur compétent. - Les plans et notes de calcul devront être soumis au Maître d’Ouvrage pour validation avant démarrage des travaux m² 1 20 à : 10 Heure Le Président Ahfir le : 25/06/2026 Region de l'Orientale Royaume de Maroc Ministère de l'Interieur جهة الشرف وزارة الداخلية المملكة المغربية Province de Berkane Pachalik d'Ahfir Commune d’Ahfir عمالة إقليم بركان باشوية أحفير جماعة أحفير Dates et Heures limite de réception des devis des conccurents: 29/06/2026 Avis d'Achat sur Bon de Commande n° 61/2026 Le Président du conseil de la commuune d'Ahfir procède à l'achat sur Bon de commande des préstations objet du présent avis, en application du dispositions de l'article 91 du Décret n° 2-22- 431 relatif aux marchés publics. Objet de la préstation: Travaux de toiture de l'abri d'attente de stationnement des grands TAXIS Total TTC Lieu d'exécution: Commune d'Ahfir Délai d'éxecution ou Date de laivraison de la préstation : 10 jours après l'Engagement du B.C",
+  "primaryAvisName": "Ref.61.pdf (depuis Ref.61.zip)",
+  "hasText": true,
+  "textLength": 2177,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-25T10:24:47.668Z",
+  "extractionNote": null
+}

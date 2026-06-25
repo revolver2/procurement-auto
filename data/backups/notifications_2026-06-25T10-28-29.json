@@ -1,14 +1,5 @@
 [
   {
-    "id": 1782383309488,
-    "read": false,
-    "createdAt": "2026-06-25T10:28:29.488Z",
-    "type": "new_bons",
-    "title": "2 nouveaux bons trouvés",
-    "message": "Scraping automatique : 2 bon(s) correspondant aux activités cibles.",
-    "count": 2
-  },
-  {
     "id": 1782340991795,
     "read": false,
     "createdAt": "2026-06-24T22:43:11.795Z",

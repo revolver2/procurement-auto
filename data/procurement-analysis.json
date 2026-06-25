@@ -9148,5 +9148,184 @@
         "note": "Scraping automatique"
       }
     ]
+  },
+  {
+    "id": "905a55e9-c841-4131-874a-6707cf0d39a3",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/355935",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/355935",
+    "reference": "07/2026",
+    "title": "Objet Etude technique et suivi des travaux de construction d’une charpente métallique pour le parking communal situé à côté du siège de la Commune d’Ouled Said.",
+    "buyer": "Commune rurale de OULAD SAID",
+    "city": "Settat",
+    "location": "SETTAT",
+    "destination": "SETTAT",
+    "specifications": "",
+    "category": "Services",
+    "naturePrestation": "Études, conseil et formation",
+    "deadline": "29/06/2026 10:00",
+    "publishDate": "25/06/2026 10:26",
+    "publicationDate": "25/06/2026 10:26",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "C",
+    "activityMatched": "Métal / Métallique",
+    "keywordsMatched": [
+      "métallique",
+      "metallique",
+      "métal",
+      "metal",
+      "charpente métallique",
+      "charpente metallique"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Etude technique et suivi des travaux de construction d’une charpente métallique pour le parking communal situé à côté du siège de la Commune d’Ouled Said.",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#01Mission 1 : Projet d’exécution",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      },
+      {
+        "num": 2,
+        "designation": "#02Mission 2 : Contrôle et suivi des travaux et réception provisoire et définitive",
+        "unite": "Forfait",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355935/49903646",
+        "name": "avis 072026.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #07/2026 OBJET Etude technique et suivi des travaux de construction d’une charpente métallique pour le parking communal situé à côté du siège de la Commune d’Ouled Said. DÉTAILS Acheteur public Commune rurale de OULAD SAID Date mise en ligne 25/06/2026 10:26 Date limite de réception des devis 29/06/2026 10:00 Lieu d'exécution SETTAT Catégorie principale Services Nature de prestation Études, ",
+    "scrapedAt": "2026-06-25T10:20:50.407Z",
+    "updatedAt": "2026-06-25T10:20:50.407Z",
+    "attachments": [
+      {
+        "name": "avis 072026.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355935/49903646",
+        "type": "avis",
+        "isAvis": true,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/905a55e9-c841-4131-874a-6707cf0d39a3/avis_072026.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": false,
+        "requiresOCR": true,
+        "ocrUsed": false,
+        "sourceFile": "avis 072026.pdf",
+        "sourceZip": "avis_072026.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/905a55e9-c841-4131-874a-6707cf0d39a3/avis_072026.zip_extracted/avis 072026.pdf",
+        "textLength": 0,
+        "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+      }
+    ],
+    "officialAttachmentTextPath": null,
+    "analysisSource": "metadata_only",
+    "attachmentFound": true,
+    "attachmentHasText": false,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-25T10:28:29.471Z",
+        "note": "Scraping automatique"
+      }
+    ]
+  },
+  {
+    "id": "4b3e0756-530a-4559-84df-81219425e239",
+    "source": "marchespublics.gov.ma",
+    "officialUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/355806",
+    "sourceUrl": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/show/355806",
+    "reference": "Ref.61/2026",
+    "title": "Objet Travaux de toiture de l’abri d'attente de stationnement des grands TAXIS",
+    "buyer": "Commune urbaine de AHFIR",
+    "city": "",
+    "location": "BERKANE",
+    "destination": "BERKANE",
+    "specifications": "",
+    "category": "Travaux",
+    "naturePrestation": "Travaux d’installation de matériels divers",
+    "deadline": "29/06/2026 10:00",
+    "publishDate": "25/06/2026 09:33",
+    "publicationDate": "25/06/2026 09:33",
+    "estimatedAmount": "",
+    "estimatedBudget": "",
+    "caution": "",
+    "contact": "",
+    "categoryMatched": "E",
+    "activityMatched": "Travaux connexes",
+    "keywordsMatched": [
+      "abri"
+    ],
+    "exclusionMatched": null,
+    "description": "Objet Travaux de toiture de l’abri d'attente de stationnement des grands TAXIS",
+    "articles": [
+      {
+        "num": 1,
+        "designation": "#1Construction d’une charpente métallique pour abri de stationnement des grands taxis d’une superficie d’environ 300 m² comprenant :  - Fourniture et pose de poteaux et poutres métalliques               en profils HEA 240 ;  - Fourniture et pose de pannes en profils IPE 120 ;  - Hauteur variable de l’ouvrage comprise entre 5,00 m et 6,00 m ;  - Fourniture et pose de couverture en tôle nervurée galvanisée ;  - Réalisation des socles de fondation en béton armé, y compris fouilles, coffrage, ferraillage et bétonnage ;  - Réalisation de la dalle en béton armé au droit des appuis selon les  règles de l’art ;  - Fourniture et pose des systèmes d’évacuation des eaux pluviales,y compris chéneaux et descentes d’eau ;  - Toutes sujétions de transport, manutention, levage, assemblage,soudure, boulonnage, protection anticorrosion et mise en œuvre nécessaires à la parfaite exécution des travaux. Caractéristiques et exigences techniques  - La prestation comprend obligatoirement l’établissement des plans d’exécution détaillés.  - La prestation comprend l’établissement des notes de calcul de la structure métallique et des fondations, signées par un  ingénieur compétent.  - Les plans et notes de calcul devront être soumis au Maître d’Ouvrage pour validation avant démarrage des travaux",
+        "unite": "m²",
+        "quantite": 1,
+        "prixUnitaireHT": 0,
+        "montantHT": 0
+      }
+    ],
+    "documents": [
+      {
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355806/49895581",
+        "name": "Ref.61.zip"
+      }
+    ],
+    "totalHT": 0,
+    "tva": 0,
+    "totalTTC": 0,
+    "resultStatus": "En cours",
+    "rawTextSnapshot": "Accueil Liste des avis d'achat Consultations Résultats des avis d’achat Invité Retour à la liste Détails de l'avis d'achat Si vous voulez participer à cette consultation, vous devez d'abord vous connecter. #Ref.61/2026 OBJET Travaux de toiture de l’abri d'attente de stationnement des grands TAXIS DÉTAILS Acheteur public Commune urbaine de AHFIR Date mise en ligne 25/06/2026 09:33 Date limite de réception des devis 29/06/2026 10:00 Lieu d'exécution BERKANE Catégorie principale Travaux Nature de prestation Travaux d’installation de matériels divers PIÈCES JOINTES Ref.61.zip Articles Tout affiche",
+    "scrapedAt": "2026-06-25T10:24:43.713Z",
+    "updatedAt": "2026-06-25T10:24:43.713Z",
+    "attachments": [
+      {
+        "name": "Ref.61.zip",
+        "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355806/49895581",
+        "type": "other",
+        "isAvis": false,
+        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/4b3e0756-530a-4559-84df-81219425e239/Ref.61.zip",
+        "downloaded": true,
+        "skipped": false,
+        "textExtracted": true,
+        "requiresOCR": false,
+        "ocrUsed": false,
+        "sourceFile": "Ref.61.pdf",
+        "sourceZip": "Ref.61.zip",
+        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/4b3e0756-530a-4559-84df-81219425e239/Ref.61.zip_extracted/Ref.61.pdf",
+        "textLength": 2177,
+        "error": null
+      }
+    ],
+    "officialAttachmentTextPath": "data/specifications/4b3e0756-530a-4559-84df-81219425e239.json",
+    "analysisSource": "official_attachment_only",
+    "attachmentFound": true,
+    "attachmentHasText": true,
+    "projectStatus": "Nouveau",
+    "statusHistory": [
+      {
+        "status": "Nouveau",
+        "date": "2026-06-25T10:28:29.471Z",
+        "note": "Scraping automatique"
+      }
+    ]
   }
 ]

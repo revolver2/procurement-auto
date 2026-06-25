@@ -1,0 +1,31 @@
+{
+  "bonId": "31e6e7a9-c9b7-45b7-aab3-1e240b1c8f54",
+  "bonReference": "01/2026",
+  "attachments": [
+    {
+      "name": "TRBM_Avis Achat_01_2026.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355239/49839829",
+      "type": "avis",
+      "isAvis": true,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/31e6e7a9-c9b7-45b7-aab3-1e240b1c8f54/TRBM_Avis_Achat_01_2026.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "TRBM_Avis Achat_01_2026.pdf",
+      "sourceZip": "TRBM_Avis_Achat_01_2026.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/31e6e7a9-c9b7-45b7-aab3-1e240b1c8f54/TRBM_Avis_Achat_01_2026.zip_extracted/TRBM_Avis Achat_01_2026.pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-25T10:26:26.522Z",
+  "extractionNote": null
+}

@@ -1,0 +1,31 @@
+{
+  "bonId": "20256fc9-7674-4be1-9d31-c1e5e97ca13f",
+  "bonReference": "13/2026",
+  "attachments": [
+    {
+      "name": "grillage clôture .zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354102/49706901",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/20256fc9-7674-4be1-9d31-c1e5e97ca13f/grillage_cl_ture_.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": false,
+      "requiresOCR": true,
+      "ocrUsed": false,
+      "sourceFile": "grillage cl�ture .pdf",
+      "sourceZip": "grillage_cl_ture_.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/20256fc9-7674-4be1-9d31-c1e5e97ca13f/grillage_cl_ture_.zip_extracted/grillage cl_ture .pdf",
+      "textLength": 0,
+      "error": "PDF scanné — aucun texte extractible — ajoutez GEMINI_API_KEY dans Render pour activer l'OCR"
+    }
+  ],
+  "primaryAvisText": "",
+  "primaryAvisName": null,
+  "hasText": false,
+  "textLength": 0,
+  "noAttachmentFound": false,
+  "analysisSource": "metadata_only",
+  "extractedAt": "2026-06-25T10:21:17.327Z",
+  "extractionNote": null
+}

@@ -1,0 +1,31 @@
+{
+  "bonId": "bda38e16-37e8-42b8-9cd3-3cd88e738e6c",
+  "bonReference": "39/FNC/2026",
+  "attachments": [
+    {
+      "name": "descriptif abris fsjp.zip",
+      "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/355976/49912100",
+      "type": "other",
+      "isAvis": false,
+      "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/bda38e16-37e8-42b8-9cd3-3cd88e738e6c/descriptif_abris_fsjp.zip",
+      "downloaded": true,
+      "skipped": false,
+      "textExtracted": true,
+      "requiresOCR": false,
+      "ocrUsed": false,
+      "sourceFile": "descriptif abris fsjp.pdf",
+      "sourceZip": "descriptif_abris_fsjp.zip",
+      "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/bda38e16-37e8-42b8-9cd3-3cd88e738e6c/descriptif_abris_fsjp.zip_extracted/descriptif abris fsjp.pdf",
+      "textLength": 2428,
+      "error": null
+    }
+  ],
+  "primaryAvisText": "• Objet de la prestation : Installation des abris pour voitures (32 places) aux parkings de la FSJP Kénitra – UIT • Consistance de la prestation : N° d’artic le Désignation Unit é Quantit é 01 Poteaux en tube d’acier : Structure porteuse : en tube Acier circulaire, inclinés galvanisé à chaud (protection anticorrosion) avec finition peinture époxy blanche de diamètre 250 mm Epaisseur *4 mm, Hauteur 2,30 M, Equipé d’un sabot de fixation de sole en Platine métallique galvanisé ep 8mm ancrées sur fondations en béton armé Équipe de Boulons d’ancrage (type goujons) Renforts intermédiaire en tôles triangulaires Épaisses 4mm découpées (avec perçages circulaires pour allègement et design) Dim : 350x250 mm Charpente supérieure : tube Acier circulaire, galvanisé à chaud (protection anticorrosion) avec finition peinture époxy blanche de diamètre 140 mm Epaisseur *4 mm, fixer a la structure central grâce à un Renforts intermédiaire en tôles triangulaires Épaisseur 4mm découpées (avec perçages circulaires pour allègement et design) Support de la toile en tube d'acier équipé de systèmes d’accrochage male de diamètre 60x2mm U 18 02 Diagonal support de la toile : Support de la toile en tube d’acier en forme Arqué 60*2mm, équipé de systèmes d’accrochage -femelle, avec finition peinture époxy blanche. M² 250 03 Semelles isolées en béton : Réalisation des Semelles en béton B25 d’un 1M ancré dans le sol après terrassement, liées aux structures métallo par des tige et les éléments de boulonnerie, qui donnent la garantie d’obtenir la stabilité M3 45 04 Installation de la Toit en voile : Fourniture et pose Toile en voile PVC de marque SERGE FERRARI micro perforer 86 et 96 ou similaire avec les caractéristiques suivantes: • Toile PVC haute résistance (650g / m2) • Base de l'application: Polyester 1000DTex 1000 * 20 * 20 • Résistance à la trame (N / 5 cm): 2600 N (DIN EN ISO 2286-2) • Résistance à la tissu (N / 5 cm): 2500 N (DIN EN ISO 2286-2) M² 570 1 Garanties exigées : • L’obligation d’engager un bureau d’étude à la charge de l’entreprise. • Échantillon de la toile. • Fiche technique de la toile. • Attestation de garantie • Visite des lieux pour voir 05 Peinture sur structure métallique : Peinture laquée sur structure métallique : Traitement anticorrosion (Décapage à Sa 2 ½ - Primaire époxy 75μ - Intermédiaires époxy 125μ - Finition (la couleur) - 50μ) M² 2550 06 Peinture sur trottoirs et parking ML 13000 2",
+  "primaryAvisName": "descriptif abris fsjp.pdf (depuis descriptif_abris_fsjp.zip)",
+  "hasText": true,
+  "textLength": 2428,
+  "noAttachmentFound": false,
+  "analysisSource": "official_attachment_only",
+  "extractedAt": "2026-06-25T10:24:57.808Z",
+  "extractionNote": null
+}
