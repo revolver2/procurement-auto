@@ -6784,7 +6784,7 @@
         "url": "https://www.marchespublics.gov.ma/bdc/entreprise/consultation/download/354677/49790362",
         "type": "avis",
         "isAvis": true,
-        "localPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/e7e1ba83-2f2b-4eb4-991a-c1798263549a/AVIS_D_ACHAT_BC_37-2026PLAM1.zip",
+        "localPath": "/opt/render/project/src/data/attachments/e7e1ba83-2f2b-4eb4-991a-c1798263549a/AVIS_D_ACHAT_BC_37-2026PLAM1.zip",
         "downloaded": true,
         "skipped": false,
         "textExtracted": true,
@@ -6792,13 +6792,13 @@
         "ocrUsed": false,
         "sourceFile": "AVIS D'ACHAT BC 37-2026PLAM1.pdf",
         "sourceZip": "AVIS_D_ACHAT_BC_37-2026PLAM1.zip",
-        "extractedPath": "/home/runner/work/procurement-auto/procurement-auto/data/attachments/e7e1ba83-2f2b-4eb4-991a-c1798263549a/AVIS_D_ACHAT_BC_37-2026PLAM1.zip_extracted/AVIS D_ACHAT BC 37-2026PLAM1.pdf",
+        "extractedPath": "/opt/render/project/src/data/attachments/e7e1ba83-2f2b-4eb4-991a-c1798263549a/AVIS_D_ACHAT_BC_37-2026PLAM1.zip_extracted/AVIS D_ACHAT BC 37-2026PLAM1.pdf",
         "textLength": 1906,
         "error": null
       }
     ],
     "officialAttachmentTextPath": "data/specifications/e7e1ba83-2f2b-4eb4-991a-c1798263549a.json",
-    "analysisSource": "official_attachment_only",
+    "analysisSource": "official_avis_attachment_only",
     "attachmentFound": true,
     "attachmentHasText": true,
     "projectStatus": "Nouveau",
@@ -6808,7 +6808,16 @@
         "date": "2026-06-24T22:43:11.779Z",
         "note": "Scraping automatique"
       }
-    ]
+    ],
+    "avisDocument": {
+      "selectedPdf": "AVIS D'ACHAT BC 37-2026PLAM1.pdf (depuis AVIS_D_ACHAT_BC_37-2026PLAM1.zip)",
+      "textLength": 1906,
+      "textExtracted": true,
+      "validated": true,
+      "validatedAt": "2026-06-25T12:08:30.438Z",
+      "extractionMethod": "pdf-parse",
+      "ocrUsed": false
+    }
   },
   {
     "id": "86271e29-40e6-41de-bcd0-bda0c9e225b3",
